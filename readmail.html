@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/logo.png">
+    <title>Colombo</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="css/mailbox.css">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header">
+                <div class="top-left-part">
+                    <!-- Logo -->
+                    <a class="logo" href="index.html">
+                        <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon--><img src="../plugins/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="../plugins/images/colombo_Main.png" alt="home" class="light-logo" />
+                    </a>
+                </div>
+                <!-- /Logo -->
+                <ul class="nav navbar-top-links navbar-right pull-right">
+                    <li>
+                        <a class="profile-pic" href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">Steave</b></a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- End Top Navigation -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <div class="navbar-default sidebar" role="navigation">
+            <div class="sidebar-nav slimscrollsidebar">
+                <div class="sidebar-head">
+                    <h3><span class="fa-fw open-close"><i class="ti-close ti-menu"></i></span> <span class="hide-menu">Navigation</span></h3>
+                </div>
+                <ul class="nav" id="side-menu">
+                    <li style="padding: 70px 0 0;">
+                        <a href="index.html" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="profile.html" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Profile</a>
+                    </li>
+                    <!-- NEW AUDIT :
+                            IF AUDITOR: OPEN NEWAUDIT.HTML
+                            IF CLIENT: OPEN NEWREPORT.HTML
+                    -->
+                    <li>
+                        <a href="newaudit.html" class="waves-effect"><i class="fa fa-plus-circle fa-fw" aria-hidden="true"></i>New Audit/Report</a>
+                    </li>
+                    <li>
+                        <a href="listreports.html" class="waves-effect"><i class="fa fa-table fa-fw" aria-hidden="true"></i>Reports</a>
+                    </li>
+                    <!-- NEW AUDIT :
+                            IF AUDITOR: OPEN MYAUDITS.HTML
+                            IF CLIENT: OPEN MYREPORTs.HTML
+                    -->
+                    <li>
+                        <a href="myaudits.html" class="waves-effect"><i class="fa fa-columns fa-fw" aria-hidden="true"></i>My Audits/Reports</a>
+                    </li>
+                    <li>
+                        <a href="mailbox.html" class="waves-effect"><i class="fa fa-inbox fa-fw" aria-hidden="true"></i>Mail Box</a>
+                    </li>
+                    <li>
+                        <a href="landingpage.html" class="waves-effect"><i class="fa fa-sign-out fa-fw" aria-hidden="true"></i>Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title">Mail Box</h4> </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href="#">Dashboard</a></li>
+                            <li class="active">Mail Box</li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="container">
+                            <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+                             <div class="mail-box">
+                                      <aside class="sm-side">
+                                          <div class="user-head">
+
+                                          </div>
+                                          <div class="inbox-body">
+                                              <a href="#myModal" data-toggle="modal"  title="Compose"    class="btn btn-compose">
+                                                  Compose
+                                              </a>
+                                              <!-- Modal -->
+                                              <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="myModal" class="modal fade" style="display: none;">
+                                                  <div class="modal-dialog">
+                                                      <div class="modal-content">
+                                                          <div class="modal-header">
+                                                              <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                                                              <h4 class="modal-title">Compose</h4>
+                                                          </div>
+                                                          <div class="modal-body">
+                                                              <form role="form" class="form-horizontal">
+                                                                  <div class="form-group">
+                                                                      <label class="col-lg-2 control-label">To</label>
+                                                                      <div class="col-lg-10">
+                                                                          <input type="text" placeholder="" id="inputEmail1" class="form-control">
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                      <label class="col-lg-2 control-label">Cc / Bcc</label>
+                                                                      <div class="col-lg-10">
+                                                                          <input type="text" placeholder="" id="cc" class="form-control">
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                      <label class="col-lg-2 control-label">Subject</label>
+                                                                      <div class="col-lg-10">
+                                                                          <input type="text" placeholder="" id="inputPassword1" class="form-control">
+                                                                      </div>
+                                                                  </div>
+                                                                  <div class="form-group">
+                                                                      <label class="col-lg-2 control-label">Message</label>
+                                                                      <div class="col-lg-10">
+                                                                          <textarea rows="10" cols="30" class="form-control" id="" name=""></textarea>
+                                                                      </div>
+                                                                  </div>
+
+                                                                  <div class="form-group">
+                                                                      <div class="col-lg-offset-2 col-lg-10">
+                                                                          <span class="btn green fileinput-button">
+                                                                            <i class="fa fa-plus fa fa-white"></i>
+                                                                            <span>Attachment</span>
+                                                                            <input type="file" name="files[]" multiple="">
+                                                                          </span>
+                                                                          <button class="btn btn-send" type="submit">Send</button>
+                                                                      </div>
+                                                                  </div>
+                                                              </form>
+                                                          </div>
+                                                      </div><!-- /.modal-content -->
+                                                  </div><!-- /.modal-dialog -->
+                                              </div><!-- /.modal -->
+                                          </div>
+                                          <ul class="inbox-nav inbox-divider">
+                                              <li class="active">
+                                                  <a href="mailbox.html"><i class="fa fa-inbox"></i> Inbox <span class="label label-danger pull-right">2</span></a>
+
+                                              </li>
+                                              <li>
+                                                  <a href="#"><i class="fa fa-envelope-o"></i> Sent Mail</a>
+                                              </li>
+                                              <li>
+                                                  <a href="#"><i class="fa fa-bookmark-o"></i> Important</a>
+                                              </li>
+                                              <li>
+                                                  <a href="#"><i class=" fa fa-external-link"></i> Drafts <span class="label label-info pull-right">30</span></a>
+                                              </li>
+                                              <li>
+                                                  <a href="#"><i class=" fa fa-trash-o"></i> Trash</a>
+                                              </li>
+
+                                          <div class="inbox-body text-center">
+                                              <div class="btn-group">
+                                                  <a class="btn mini btn-info" href="javascript:;">
+                                                      <i class="fa fa-cog"></i>
+                                                  </a>
+                                              </div>
+                                          </div>
+
+                                      </aside>
+                                      <aside class="lg-side">
+                                          <div class="inbox-head">
+                                              <form action="#" class="pull-right position">
+                                                  <div class="input-append">
+                                                      <input type="text" class="sr-input" placeholder="Search Mail">
+                                                      <button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+                                                  </div>
+                                              </form>
+                                          </div>
+                                          <div class="inbox-body">
+                                              <table class="table table-inbox table-hover">
+                                                <tbody>
+                                                    <div>
+                                                      <td><strong>From:</strong> Facebook</td>
+                                                      <td class="view-message text-right">feb 14</td>
+                                                  </div>
+                                                  </tbody>
+                                              </table>
+                                              <div>
+                                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                                  <br>
+                                                  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+                                              </div>
+                                          </div>
+                                      </aside>
+                                  </div>
+                              </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> 2018 &copy; Colombo </footer>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.min.js"></script>
+</body>
+
+</html>
