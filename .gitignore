@@ -27,3 +27,5 @@
 /config/master.key
 
 /db/development.sqlite3
+
+Gemfile.lock
