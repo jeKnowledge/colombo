@@ -1,0 +1,9 @@
+<% unless local_assigns[:resource].nil? %>
+  <% if local_assigns[:resource].errors.any? %>
+    <ul>
+    <% local_assigns[:resource].errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  resources :website, only: [:new, :create, :index]
+  get '/sign_in', to: 'website#new', as: 'sign_in'
+  post '/sign_in', to: 'website#create'
   root "website#index"
 end

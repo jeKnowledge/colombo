@@ -7,7 +7,7 @@ class WebsiteController < ApplicationController
   end
 
   def create
-    user = User.where('username = ? OR email = ?', params[:username], params[:username]).first
+    user = User.find_by_username(sign_in_params)
 
     if user.nil?
       flash[:notice] = "Invalid credentials"
@@ -16,13 +16,12 @@ class WebsiteController < ApplicationController
       if params[:password] == user.password
         session[:user] = user
 
-        case user.type_id
-        when User.ADMIN
-          redirect '/admin'
-        when User.AUDITOR
-          redirect '/auditor'
-        when User.CLIENT
-          redirect '/client'
+        if user.client_id.present?
+          redirect_to users_path
+        elsif user.auditor_id.present?
+          redirect_to auditors_path
+        elsif user.admin_id.present?
+          redirect_to admin_path
         end
       else
         flash[:notice] = "Invalid credentials"
@@ -30,4 +29,9 @@ class WebsiteController < ApplicationController
       end
     end
   end
+
+  private
+    def sign_in_params
+      params.require(:username, :password)
+    end
 end
