@@ -7,7 +7,7 @@ class WebsiteController < ApplicationController
   end
 
   def create
-    user = User.find_by_username(params[:username])
+    user = User.find_by_username(sign_in_params)
 
     if user.nil?
       flash[:notice] = "Invalid credentials"
@@ -29,4 +29,9 @@ class WebsiteController < ApplicationController
       end
     end
   end
+
+  private
+    def sign_in_params
+      params.require(:username, :password)
+    end
 end
