@@ -71,49 +71,33 @@
                 <div class="row">
                     <div class="col-md-8" style="left:25px;">
                         <div class="white-box">
-                          <form id="signupauditorform">
-                              <p>
-                                  <label for="usernamesignup" class="uname" data-icon="u">Your username</label>
-                                  <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername" style="width:250px;"/>
-                              </p>
-                              <p>
-                                  <label for="emailsignup" class="youmail" data-icon="e" > Your email</label>
-                                  <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com" style="width:250px;"/>
-                              </p>
-                              <p>
-                                  <label for="companysignup" class="uname" data-icon="c">Your company</label>
-                                  <input id="companysignup" name="companysignup" required="required" type="text" placeholder="mysupercompany" />
-                              </p>
-                              <p>
-                                  <label for="addresssignup" class="uname" data-icon="u">Your address</label>
-                                  <input id="addresssignup" name="addresssignup" required="required" type="text" placeholder="mysuperaddress" />
-                              </p>
-                              <p>
-                                  <label for="passwordsignup" class="youpasswd" data-icon="p">Your password </label>
-                                  <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO" style="width:250px;"/>
-                              </p>
-                              <p>
-                                  <label for="passwordsignup_confirm" class="youpasswd" data-icon="p">Please confirm your password </label>
-                                  <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO" style="width:250px;"/>
-                              </p>
-                              <!--<p class="signin button"><a href="index.html" class="to_register"></a>
-                                  <input type="submit" value="Sign up" onclick="login()"/>
-                              </p>
-                              <p class="change_link">
-                                  Already a member ?
-                                  <a href="login.html" class="to_register"> Go and log in </a>
-                              </p>-->
-                          </form>
-                          <p class="signin button"><a href="index.html" class="to_register"></a>
-                              <input type="submit" value="Sign up" onclick="login()"/>
-                              <!--<a href="index.html">-->
-                          </p>
-                          <p class="change_link">
-                              Already a member ?
-                              <a href="login.html" class="to_register"> Go and log in </a>
-                          </p>
-                        </div>
+                            <%= render partial: "shared/error_messages", resource: @user %>
 
+                            <%= form_with url: sign_in_path do |f| %>
+                                <div class="filed">
+                                    <%= f.label :username, "Your username" %>
+                                    <%= f.text_field :username, placeholder: "secret_agent" %>
+                                </div>
+
+                                <div class="filed">
+                                    <%= f.label :password, "Your password" %>
+                                    <%= f.password_field :password, placeholder: "************" %>
+                                </div>
+
+                                <div class="filed">
+                                    <%= f.label :remember_me, "Keep me logged in?" %>   
+                                    <%= f.check_box :remember_me %>
+                                </div>
+
+                                <%= f.submit "Login" %>
+                            <% end %>
+
+                            <p class="change_link">
+                                Not a member yet ? Join us:
+                                <a href="/clients/sign_up" class="to_register">Client</a> or
+                                <a href="/auditors/sign_up" class="to_register">Auditor</a> ?
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>

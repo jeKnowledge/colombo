@@ -7,13 +7,21 @@ class AuditorController < ApplicationController
   end
 
   def create
+    user = User.new(auditor_params)
     @auditor = Auditor.new(auditor_params)
-
-    if @auditor.save
+    
+    unless user.valid? && @auditor.valid?
+      @auditor.errors.push(user.errors)
       render :new
-    else
-      redirect_to auditor_path
     end
+
+    user.username = "a_#{user.first_name[0..2]}#{user.last_name[0..2]}#{user.id}"
+
+    user.save
+    @auditor.user = user
+    @auditor.save
+
+    redirect_to auditor_path
   end
 
   private
