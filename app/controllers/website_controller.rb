@@ -7,31 +7,20 @@ class WebsiteController < ApplicationController
   end
 
   def create
-    user = User.find_by_username(sign_in_params)
+    user = User.find_by(username: params[:username])
 
-    if user.nil?
-      flash[:notice] = "Invalid credentials"
-      render :new
+    if user && user.authenticate(sign_in_params[:username])
+      session[:user] = user
+      #redirect_to get_path(user)
+      redirect_to "/"
     else
-      if params[:password] == user.password
-        session[:user] = user
-
-        if user.client_id.present?
-          redirect_to users_path
-        elsif user.auditor_id.present?
-          redirect_to auditors_path
-        elsif user.admin_id.present?
-          redirect_to admin_path
-        end
-      else
-        flash[:notice] = "Invalid credentials"
-        render :new
-      end
+      flash[:notice] = "Invalid credentials"
+      redirect_to sign_in_url
     end
   end
 
   private
-    def sign_in_params
-      params.require(:username, :password)
-    end
+  def sign_in_params
+    params.permit(:username, :password, :remember_me)
+  end
 end

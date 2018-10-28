@@ -71,8 +71,10 @@ ActiveRecord::Schema.define(version: 2018_10_28_215453) do
     t.boolean "validated", default: false, null: false
     t.integer "client_id"
     t.integer "auditor_id"
+    t.integer "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["admin_id"], name: "index_users_on_admin_id"
     t.index ["auditor_id"], name: "index_users_on_auditor_id"
     t.index ["client_id"], name: "index_users_on_client_id"
   end
