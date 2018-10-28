@@ -7,9 +7,7 @@ class WebsiteController < ApplicationController
   end
 
   def create
-    user = Client.find_by_username(params[:username])
-    user = Auditor.find_by_username(params[:username]) if user.nil?
-    user = Admin.find_by_username(params[:username]) if user.nil?
+    user = User.find_by_username(params[:username])
 
     if user.nil?
       flash[:notice] = "Invalid credentials"
@@ -18,11 +16,11 @@ class WebsiteController < ApplicationController
       if params[:password] == user.password
         session[:user] = user
 
-        if user.is_a? User
+        if user.client_id.present?
           redirect_to users_path
-        elsif user.is_a? Auditor
+        elsif user.auditor_id.present?
           redirect_to auditors_path
-        elsif user.is_a? Admin
+        elsif user.admin_id.present?
           redirect_to admin_path
         end
       else
