@@ -1,6 +1,5 @@
-class Client < ApplicationRecord
-  has_one :user
+class Client < User
+  belongs_to :user
 
-  validates_presence_of :email, :address, :company
-  validates_uniqueness_of :email
+  validates_presence_of :address, :company
 end

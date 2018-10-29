@@ -1,4 +1,4 @@
 class Admin < ApplicationRecord
-  has_one :user
+  belongs_to :user
   validates_uniqueness_of :email
 end

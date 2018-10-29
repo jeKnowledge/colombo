@@ -1,133 +1,127 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" type="image/png" sizes="16x16" href="/plugins/images/logo.png">
-    <title>Colombo</title>
-    <!-- Bootstrap Core CSS -->
-    <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Menu CSS -->
-    <link href="/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
-    <!-- animation CSS -->
-    <link href="/css/animate.css" rel="stylesheet">
-    <!-- Custom CSS -->
-    <link href="/css/style.css" rel="stylesheet">
-    <!-- color CSS -->
-    <link href="/css/colors/default.css" id="theme" rel="stylesheet">
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
-  </head>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" type="image/png" sizes="16x16" href="/plugins/images/logo.png">
+  <title>Colombo</title>
+  <!-- Bootstrap Core CSS -->
+  <link href="/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Menu CSS -->
+  <link href="/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+  <!-- animation CSS -->
+  <link href="/css/animate.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link href="/css/style.css" rel="stylesheet">
+  <!-- color CSS -->
+  <link href="/css/colors/default.css" id="theme" rel="stylesheet">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
 
-  <body class="fix-header">
+<body class="fix-header">
+  <!-- ============================================================== -->
+  <!-- Preloader -->
+  <!-- ============================================================== -->
+  <div class="preloader">
+    <svg class="circular" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+    </svg>
+  </div>
+  <!-- ============================================================== -->
+  <!-- Wrapper -->
+  <!-- ============================================================== -->
+  <div id="wrapper">
     <!-- ============================================================== -->
-    <!-- Preloader -->
+    <!-- Topbar header - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div class="preloader">
-      <svg class="circular" viewBox="25 25 50 50">
-        <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
-      </svg>
-    </div>
-    <!-- ============================================================== -->
-    <!-- Wrapper -->
-    <!-- ============================================================== -->
-    <div id="wrapper">
-      <!-- ============================================================== -->
-      <!-- Topbar header - style you can find in pages.scss -->
-      <!-- ============================================================== -->
-      <nav class="navbar navbar-default navbar-static-top m-b-0">
-        <div class="navbar-header">
-          <div class="top-left-part">
-            <!-- Logo -->
-            <a class="logo" href="index.html">
-              <!-- Logo icon image, you can use font-icon also --><b>
-                <!--This is dark logo icon--><img src="/plugins/images/logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="/plugins/images/colombo_Main.png" alt="home" class="light-logo" />
-            </a>
-          </div>
-
+    <nav class="navbar navbar-default navbar-static-top m-b-0">
+      <div class="navbar-header">
+        <div class="top-left-part">
+          <!-- Logo -->
+          <a class="logo" href="index.html">
+            <!-- Logo icon image, you can use font-icon also --><b>
+            <!--This is dark logo icon--><img src="/plugins/images/logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="/plugins/images/colombo_Main.png" alt="home" class="light-logo" />
+          </a>
         </div>
-        <!-- /.navbar-header -->
-        <!-- /.navbar-top-links -->
-        <!-- /.navbar-static-side -->
-      </nav>
-      <!-- End Top Navigation -->
-      <!-- ============================================================== -->
-
-      <!-- ============================================================== -->
-      <!-- Page Content -->
-      <!-- ============================================================== -->
-      <div id="page-wrapper" style="margin-top: 0px;">
-        <div class="container-fluid">
-          <br>
-          <h1 class="box-title">Sign up as a Client</h1> </div>
+      </div>
+      <!-- /.navbar-header -->
+      <!-- /.navbar-top-links -->
+      <!-- /.navbar-static-side -->
+    </nav>
+    <!-- End Top Navigation -->
+    <!-- ============================================================== -->
+    <!-- ============================================================== -->
+    <!-- Page Content -->
+    <!-- ============================================================== -->
+    <div id="page-wrapper" style="margin-top: 0px;">
+      <div class="container-fluid">
+        <h1 class="box-title">Sign up as a Client</h1> </div>
         <div class="row">
           <div class="col-md-8" style="left:25px;">
             <div class="white-box">
-              <form id="signupclientform" action="/client/sign_up" method="post" enctype="multipart/form-data">
-                <p>
-                  <label for="first_name" class="uname" data-icon="u">First name</label>
-                  <input id="first_name" name="first_name" required="required" type="text" placeholder="James" style="width:250px;"/>
-                </p>
+              <%= render "shared/error_messages", resource: @client %>
 
-                <p>
-                  <label for="last_name" class="uname" data-icon="u">Last name</label>
-                  <input id="last_name" name="last_name" required="required" type="text" placeholder="Bond" style="width:250px;"/>
-                </p>
+              <%= form_for @client, url: sign_up_client_path do |f| %>
+                <div class="field">
+                  <%= f.label :first_name, "First name" %>
+                  <%= f.text_field :first_name, placeholder: "James" %>
+                </div>
 
-                <p>
-                  <label for="email" class="youmail" data-icon="e" >Email</label>
-                  <input id="email" name="email" required="required" type="email" placeholder="mysupermail@mail.com" style="width:250px;"/>
-                </p>
+                <div class="field">
+                  <%= f.label :last_name, "Last name" %>
+                  <%= f.text_field :last_name, placeholder: "Bond" %>
+                </div>
 
-                <p>
-                  <label for="address" class="youmail" data-icon="e" >Address</label>
-                  <input id="address" name="address" required="required" type="text" placeholder="National road" style="width:250px;"/>
-                </p>
+                <div class="field">
+                  <%= f.label :email, "Email" %>
+                  <%= f.email_field :email, placeholder: "james_bond@secret_agent.corp" %>
+                </div>
 
-                <p>
-                  <label for="password" class="youpasswd" data-icon="p">Password</label>
-                  <input id="password" name="password" required="required" type="password" placeholder="eg. X8df!90EO" style="width:250px;"/>
-                </p>
+                <div class="field">
+                  <%= f.label :address, "Address" %>
+                  <%= f.text_field :address, placeholder: "Second street" %>
+                </div>
 
-                <p>
-                  <label for="confirm_password" class="youpasswd" data-icon="p">Confirm password </label>
-                  <input id="confirm_password" name="confirm_password" required="required" type="password" placeholder="eg. X8df!90EO" style="width:250px;"/>
-                </p>
+                <div class="field">
+                  <%= f.label :company, "Company" %>
+                  <%= f.text_field :company, placeholder: "E-Corporation" %>
+                </div>
 
-                <p>
-                  <label for="cv" class="youcv" data-icon="e" >CV</label>
-                  <input id="cv" name="cv" required="required" type="file" style="width:250px;"/>
-                </p>
+                <div class="field">
+                  <%= f.label :password, "Password" %>
+                  <%= f.password_field :password, placeholder: "************" %>
+                </div>
 
-                <p>
-                  <label for="accept_terms" class="youacceptterms" data-icon="e">Accept <a href="/terms">terms</a></label>
-                  <input id="accept_terms" name="accept_terms" type="checkbox" style="width:250px;"/>
-                </p>
-                <!--<p class="signin button">
-                  <input type="submit" value="Sign up" onclick="login()"/>
+                <div class="field">
+                  <%= f.label :password, "Password confirmation" %>
+                  <%= f.password_field :password_confirmation, placeholder: "************" %>
+                </div>
+
+                <div class="field">
+                  <p>
+                    Accept <%= link_to "terms", terms_path %>?
+                    <%= f.check_box :terms %>
                   </p>
-                  <p class="change_link">
-                  Already a member ?
-                  <a href="login.html" class="to_register"> Go and log in </a>
-                  </p>-->
-              </form>
-              <p class="signin button">
-                <input type="submit" value="Sign up"/>
-              </p>
+                </div>
+
+                <%= f.submit "Sign up" %>
+              <% end %>
+
               <p class="change_link">
-                Already a member ?
-                <a href="/sign_in" class="to_register"> Go and log in </a>
+                Not a member yet ? Join us:
+                <a href="/clients/sign_up" class="to_register">Client</a> or
+                <a href="/auditors/sign_up" class="to_register">Auditor</a> ?
               </p>
             </div>
-
           </div>
         </div>
       </div>
@@ -152,5 +146,4 @@
     <!-- Custom Theme JavaScript -->
     <script src="/js/custom.min.js"></script>
   </body>
-
 </html>

@@ -10,22 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_215453) do
-
-  create_table "admins", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "auditors", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.float "rating", default: 0.0, null: false
-    t.string "qualifications", default: "", null: false
-    t.string "cv", default: "", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
+ActiveRecord::Schema.define(version: 2018_10_28_212209) do
 
   create_table "audits", force: :cascade do |t|
     t.integer "type", null: false
@@ -37,14 +22,6 @@ ActiveRecord::Schema.define(version: 2018_10_28_215453) do
     t.integer "author_id", null: false
     t.integer "requester_id", null: false
     t.boolean "validated", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "clients", force: :cascade do |t|
-    t.string "email", default: "", null: false
-    t.string "address", default: "", null: false
-    t.string "company", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -66,19 +43,20 @@ ActiveRecord::Schema.define(version: 2018_10_28_215453) do
   end
 
   create_table "users", force: :cascade do |t|
+    t.string "type"
     t.string "username", default: "", null: false
     t.string "first_name", default: "", null: false
     t.string "last_name", default: "", null: false
     t.string "password_digest", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "company", default: "", null: false
+    t.string "email", default: "", null: false
+    t.float "rating", default: 0.0, null: false
+    t.string "qualifications", default: "", null: false
+    t.string "cv", default: "", null: false
     t.boolean "validated", default: false, null: false
-    t.integer "client_id"
-    t.integer "auditor_id"
-    t.integer "admin_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["admin_id"], name: "index_users_on_admin_id"
-    t.index ["auditor_id"], name: "index_users_on_auditor_id"
-    t.index ["client_id"], name: "index_users_on_client_id"
   end
 
 end
