@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   resource :client do
-    get '/sign_up', to: 'client#new'
-    post '/sign_up', to: 'client#create'
+    get '/sign_up', to: 'clients#new'
+    post '/sign_up', to: 'clients#create'
+    get '/dashboard', to: 'clients#index'
   end
 
   resource :auditor do

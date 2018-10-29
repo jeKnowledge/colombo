@@ -1,11 +1,13 @@
 module WebsiteHelper
-  def get_path(user)
-    if user.client_id.present?
-      redirect_to client_path
-    elsif user.auditor_id.present?
-      redirect_to auditor_path
-    elsif user.admin_id.present?
-      redirect_to admin_path
+  def dashboard_path(user)
+    if user.is_a? Client
+      return dashboard_client_path
+    elsif user.is_a? Auditor
+      return dashboard_auditor_path
+    elsif user.is_a? Admin
+      return dashboard_admin_path
+    else
+      return root_path
     end
   end
 end

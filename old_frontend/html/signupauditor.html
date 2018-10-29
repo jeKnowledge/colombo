@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/logo.png">
+    <title>Colombo</title>
+    <!-- Bootstrap Core CSS -->
+    <link href="bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Menu CSS -->
+    <link href="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.css" rel="stylesheet">
+    <!-- animation CSS -->
+    <link href="css/animate.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <!-- color CSS -->
+    <link href="css/colors/default.css" id="theme" rel="stylesheet">
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+</head>
+
+<body class="fix-header">
+    <!-- ============================================================== -->
+    <!-- Preloader -->
+    <!-- ============================================================== -->
+    <div class="preloader">
+        <svg class="circular" viewBox="25 25 50 50">
+            <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10" />
+        </svg>
+    </div>
+    <!-- ============================================================== -->
+    <!-- Wrapper -->
+    <!-- ============================================================== -->
+    <div id="wrapper">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <nav class="navbar navbar-default navbar-static-top m-b-0">
+            <div class="navbar-header">
+                <div class="top-left-part">
+                    <!-- Logo -->
+                    <a class="logo" href="index.html">
+                        <!-- Logo icon image, you can use font-icon also --><b>
+                        <!--This is dark logo icon--><img src="../plugins/images/admin-logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="../plugins/images/colombo_Main.png" alt="home" class="light-logo" />
+                    </a>
+                </div>
+
+            </div>
+            <!-- /.navbar-header -->
+            <!-- /.navbar-top-links -->
+            <!-- /.navbar-static-side -->
+        </nav>
+        <!-- End Top Navigation -->
+        <!-- ============================================================== -->
+
+        <!-- ============================================================== -->
+        <!-- Page Content -->
+        <!-- ============================================================== -->
+        <div id="page-wrapper" style="margin-top: 0px;">
+            <div class="container-fluid">
+                <br>
+                <h1 class="box-title">Sign up as a Auditor</h1> </div>
+                <div class="row">
+                    <div class="col-md-8" style="left:25px;">
+                        <div class="white-box">
+                          <form id="signupauditorform">
+                              <p>
+                                  <label for="usernamesignup" class="uname">Your username</label>
+                                  <input id="usernamesignup" name="usernamesignup" required="required" type="text" placeholder="mysuperusername" style="width:250px;"/>
+                              </p>
+                              <p>
+                                  <label for="emailsignup" class="youmail"> Your email</label>
+                                  <input id="emailsignup" name="emailsignup" required="required" type="email" placeholder="mysupermail@mail.com" style="width:250px;"/>
+                              </p>
+                              <p>
+                                  <label for="companysignup" class="uname">Your company</label>
+                                  <input id="companysignup" name="companysignup" required="required" type="text" placeholder="mysupercompany" />
+                              </p>
+                              <p>
+                                  <label for="addresssignup" class="uname">Your address</label>
+                                  <input id="addresssignup" name="addresssignup" required="required" type="text" placeholder="mysuperaddress" />
+                              </p>
+                              <p>
+                                  <label for="passwordsignup" class="youpasswd">Your password </label>
+                                  <input id="passwordsignup" name="passwordsignup" required="required" type="password" placeholder="eg. X8df!90EO" style="width:250px;"/>
+                              </p>
+                              <p>
+                                  <label for="passwordsignup_confirm" class="youpasswd">Please confirm your password </label>
+                                  <input id="passwordsignup_confirm" name="passwordsignup_confirm" required="required" type="password" placeholder="eg. X8df!90EO" style="width:250px;"/>
+                              </p>
+                              <div>
+                                  <label for="cv" class="cv" data-icon="p">Upload your CV </label>
+                                  <input type="file"  class="col-md-12"
+                                         name="cv"
+                                         accept="application/pdf" />
+                              </div>
+                              <br><br>
+                              <div>
+                                  <input type="checkbox" name="agreement" value="agreement">
+                                  <label data-icon="p">I agree with the <a href="../plugins/images/colombo_Main.pdf" download>Contract Terms</a>.</label>
+                              </div>
+                              <br>
+                              <!--<p class="signin button"><a href="index.html" class="to_register"></a>
+                                  <input type="submit" value="Sign up" onclick="login()"/>
+                              </p>
+                              <p class="change_link">
+                                  Already a member ?
+                                  <a href="login.html" class="to_register"> Go and log in </a>
+                              </p>-->
+                          </form>
+                          <p class="signin button"><a href="index.html" class="to_register"></a>
+                              <input type="submit" value="Sign up" onclick="thanks()"/>
+                              <!--<a href="index.html">-->
+                          </p>
+                          <p class="change_link">
+                              Already a member ?
+                              <a href="login.html" class="to_register"> Go and log in </a>
+                          </p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <!-- /.container-fluid -->
+            <footer class="footer text-center"> 2018 &copy; Colombo </footer>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page Content -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- /#wrapper -->
+    <!-- jQuery -->
+    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap Core JavaScript -->
+    <script src="bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- Menu Plugin JavaScript -->
+    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <!--slimscroll JavaScript -->
+    <script src="js/jquery.slimscroll.js"></script>
+    <!--Wave Effects -->
+    <script src="js/waves.js"></script>
+    <!-- Custom Theme JavaScript -->
+    <script src="js/custom.min.js"></script>
+    <script>
+        function thanks() {
+            window.open("signupthanks.html", "_self")
+        }
+    </script>
+</body>
+
+</html>

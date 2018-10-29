@@ -1,5 +1,4 @@
 class WebsiteController < ApplicationController
-
   def index
   end
 
@@ -9,13 +8,12 @@ class WebsiteController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
 
-    if user && user.authenticate(sign_in_params[:username])
+    if user && user.authenticate(sign_in_params[:password])
       session[:user] = user
-      #redirect_to get_path(user)
-      redirect_to "/"
+      redirect_to dashboard_path(user)
     else
       flash[:notice] = "Invalid credentials"
-      redirect_to sign_in_url
+      redirect_to sign_in_path
     end
   end
 

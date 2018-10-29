@@ -1,5 +1,5 @@
 class Client < User
-  belongs_to :user
+  has_one :user
 
   validates_presence_of :address, :company
 end
