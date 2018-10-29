@@ -67,6 +67,8 @@ ActiveRecord::Schema.define(version: 2018_10_28_215453) do
 
   create_table "users", force: :cascade do |t|
     t.string "username", default: "", null: false
+    t.string "first_name", default: "", null: false
+    t.string "last_name", default: "", null: false
     t.string "password_digest", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.integer "client_id"

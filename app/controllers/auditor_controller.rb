@@ -15,11 +15,10 @@ class AuditorController < ApplicationController
       render :new
     end
 
-    user.username = "a_#{user.first_name[0..2]}#{user.last_name[0..2]}#{user.id}"
-
     user.save
     @auditor.user = user
     @auditor.save
+    user.update_attribute(:username , "a_#{user.first_name[0..2]}#{user.last_name[0..2]}#{user.id}")
 
     redirect_to auditor_path
   end
