@@ -12,6 +12,6 @@ class User < ApplicationRecord
   end
 
   def generate_username
-    self.update_column(:username , "#{self.prefix}#{self.first_name[0..2]}#{self.last_name[0..2]}#{self.id}")
+    self.update_column(:username , "#{self.prefix}#{self.first_name[0..2]}#{self.last_name[0..2]}#{self.id}".downcase)
   end
 end
