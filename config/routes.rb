@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+  resource :admin do
+    get '/dashboard', to: 'admins#index'
+    resource :validations, only: [] do
+      get '/validate/:user_id', to: 'validations#validate'
+      get '/', to: 'validations#index'
+    end
+  end
+
   resource :client do
     get '/sign_up', to: 'clients#new'
     post '/sign_up', to: 'clients#create'

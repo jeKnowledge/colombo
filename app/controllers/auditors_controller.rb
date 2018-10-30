@@ -13,7 +13,6 @@ class AuditorsController < ApplicationController
       @auditor.errors.add(:terms, :blank, message: "must be accepted")
       render :new
     elsif @auditor.save
-      @auditor.update_attribute(:username , "a_#{@auditor.first_name[0..2]}#{@auditor.last_name[0..2]}#{@auditor.id}")
       redirect_to dashboard_auditor_path
     else
       render :new

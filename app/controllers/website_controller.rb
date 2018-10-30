@@ -9,7 +9,7 @@ class WebsiteController < ApplicationController
     user = User.find_by(username: params[:username])
 
     if user && user.authenticate(sign_in_params[:password])
-      session[:user] = user
+      session[:user_id] = user.id
       redirect_to dashboard_path(user)
     else
       flash[:notice] = "Invalid credentials"

@@ -13,7 +13,6 @@ class ClientsController < ApplicationController
       @client.errors.add(:terms, :blank, message: "must be accepted")
       render :new
     elsif @client.save
-      @client.update_attribute(:username , "c_#{@client.first_name[0..2]}#{@client.last_name[0..2]}#{@client.id}")
       redirect_to dashboard_client_path
     else
       render :new
