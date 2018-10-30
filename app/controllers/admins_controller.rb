@@ -17,7 +17,7 @@ class AdminsController < ApplicationController
 
   private
     def admin_authenticates?
-      unless session[:user_id].present? && Admin.exists?(session[:user_id])
+      unless session[:user_id] && Admin.exists?(session[:user_id])
         redirect_to sign_in_path
       end
     end

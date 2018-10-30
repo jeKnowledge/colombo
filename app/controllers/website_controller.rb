@@ -17,8 +17,12 @@ class WebsiteController < ApplicationController
     end
   end
 
-  private
-  def sign_in_params
-    params.permit(:username, :password, :remember_me)
+  def destroy
+    session[:user_id] = nil
   end
+
+  private
+    def sign_in_params
+      params.permit(:username, :password, :remember_me)
+    end
 end

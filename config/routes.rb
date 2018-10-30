@@ -20,6 +20,7 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'website#new', as: 'sign_in'
   post '/sign_in', to: 'website#create'
   get '/terms', to: 'website#terms', as: 'terms'
+  post '/logout', to: 'website#destroy', as: 'logout'
 
   root 'website#index'
 end
