@@ -1,11 +1,8 @@
 Rails.application.routes.draw do
   resource :admin do
     get '/dashboard', to: 'admins#index'
-    resource :validations, only: [] do
-      get '/validate/:user_id', to: 'validations#validate'
-      get '/:user_id', to: 'validations#show'
-      get '/', to: 'validations#index'
-    end
+    post '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
+    get '/show/user/:id', to: 'admins#show_user', as: 'show_user'
   end
 
   resource :client do
@@ -18,10 +15,6 @@ Rails.application.routes.draw do
     get '/sign_up', to: 'auditors#new'
     post '/sign_up', to: 'auditors#create'
     get '/dashboard', to: 'auditors#index'
-  end
-
-  resource :admin do
-    get '/dashboard', to: 'admins#index'
   end
 
   get '/sign_in', to: 'website#new', as: 'sign_in'

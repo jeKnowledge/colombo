@@ -16,8 +16,8 @@
         <td><%= user.username %></td>
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
-        <td><%= link_to "Validate", "/admin/validations/validate/#{user.id}" %></td>
-        <td><%= link_to "Details", "/admin/validations/#{user.id}" %></td>
+        <td><%= link_to "Validate", validate_user_admin_path(user.id), method: :post %></td>
+        <td><%= link_to "Details", show_user_admin_path(user.id) %></td>
       </tr>
     <% end %>
   </tbody>

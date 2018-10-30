@@ -16,13 +16,13 @@
 
   <tbody>
     <tr>
-      <td><%= @auditor.username %></td>
-      <td><%= @auditor.email %></td>
-      <td><%= @auditor.first_name %></td>
-      <td><%= @auditor.last_name %></td>
-      <td><%= @auditor.rating %></td>
-      <td><%= @auditor.qualifications %></td>
-      <td><%= link_to "CV", @auditor.cv.url %></td>
+      <td><%= @user.username %></td>
+      <td><%= @user.email %></td>
+      <td><%= @user.first_name %></td>
+      <td><%= @user.last_name %></td>
+      <td><%= @user.rating %></td>
+      <td><%= @user.qualifications %></td>
+      <td><%= link_to "CV", @user.cv.url %></td>
     </tr>
   </tbody>
 </table>
