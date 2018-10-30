@@ -1,4 +1,8 @@
 class ValidationsController < ApplicationController
+  def show
+    @auditor = Auditor.find(params[:user_id])
+  end
+
   def index
     @unvalidated_auditors = Auditor.where(validated: false)
   end

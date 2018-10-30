@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     get '/dashboard', to: 'admins#index'
     resource :validations, only: [] do
       get '/validate/:user_id', to: 'validations#validate'
+      get '/:user_id', to: 'validations#show'
       get '/', to: 'validations#index'
     end
   end

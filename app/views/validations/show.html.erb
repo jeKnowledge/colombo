@@ -1,0 +1,30 @@
+<h1>Listing Books</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Email</th>
+      <th>first_name</th>
+      <th>last_name</th>
+      <th>rating</th>
+      <th>qualifications</th>
+      <th>CV</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr>
+      <td><%= @auditor.username %></td>
+      <td><%= @auditor.email %></td>
+      <td><%= @auditor.first_name %></td>
+      <td><%= @auditor.last_name %></td>
+      <td><%= @auditor.rating %></td>
+      <td><%= @auditor.qualifications %></td>
+      <td><%= link_to "CV", @auditor.cv.url %></td>
+    </tr>
+  </tbody>
+</table>
+
+<br>

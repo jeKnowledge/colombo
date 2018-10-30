@@ -17,6 +17,7 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <td><%= link_to "Validate", "/admin/validations/validate/#{user.id}" %></td>
+        <td><%= link_to "Details", "/admin/validations/#{user.id}" %></td>
       </tr>
     <% end %>
   </tbody>
