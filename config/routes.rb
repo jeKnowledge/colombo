@@ -6,8 +6,9 @@ Rails.application.routes.draw do
   end
 
   resource :auditor do
-    get '/sign_up', to: 'auditor#new'
-    post '/sign_up', to: 'auditor#create'
+    get '/sign_up', to: 'auditors#new'
+    post '/sign_up', to: 'auditors#create'
+    get '/dashboard', to: 'auditors#index'
   end
 
   get '/sign_in', to: 'website#new', as: 'sign_in'

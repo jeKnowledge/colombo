@@ -1,8 +1,7 @@
-class Auditor < ApplicationRecord
+class Auditor < User
   mount_uploader :cv, CVUploader
 
-  belongs_to :user
+  has_one :user
 
-  validates_presence_of :email, :rating, :qualifications, :cv
-  validates_uniqueness_of :email
+  validates_presence_of :rating, :qualifications, :cv
 end
