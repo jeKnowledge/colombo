@@ -1,3 +1,5 @@
 class Request < Audit
-  validates_presence_of :requester_id, :author_id
+  belongs_to :client
+
+  validates_presence_of :client
 end

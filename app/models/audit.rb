@@ -1,3 +1,5 @@
 class Audit < ApplicationRecord
-  validates_presence_of :site, :address, :date, :products, :validated
+  has_many :reports
+  has_many :plans
+  validates_presence_of :site, :address, :date, :products
 end

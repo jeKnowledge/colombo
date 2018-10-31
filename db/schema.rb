@@ -13,17 +13,19 @@
 ActiveRecord::Schema.define(version: 2018_10_28_212209) do
 
   create_table "audits", force: :cascade do |t|
-    t.integer "type", null: false
+    t.string "type"
     t.string "site", null: false
     t.string "address", null: false
     t.date "date", null: false
     t.string "products", null: false
-    t.float "rate", null: false
-    t.integer "author_id", null: false
-    t.integer "requester_id", null: false
-    t.boolean "validated", null: false
+    t.boolean "validated", default: false, null: false
+    t.float "rate", default: 0.0, null: false
+    t.integer "auditor_id"
+    t.integer "client_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["auditor_id"], name: "index_audits_on_auditor_id"
+    t.index ["client_id"], name: "index_audits_on_client_id"
   end
 
   create_table "messages", force: :cascade do |t|
