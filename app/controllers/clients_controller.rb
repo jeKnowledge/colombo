@@ -23,6 +23,21 @@ class ClientsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def mail
+  end
+
+  def requests
+  end
+
+  def reservations
+  end
+
+  def purchases
+  end
+
   private
     def client_params
       params.require(:client).permit(:password, :password_confirmation, :first_name, :last_name, :email, :address, :company, :terms)
