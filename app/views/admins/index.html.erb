@@ -1,3 +1,5 @@
+<%= link_to "Sign out", sign_out_path %>
+
 <h1>Listing Auditors</h1>
 
 <table>
@@ -24,7 +26,8 @@
     <% end %>
   </tbody>
 </table>
-<%= page_entries_info @posts %>
+
+<%= paginate @auditors, param_name: :auditor_page %>
 
 <h1>Listing Clients</h1>
 
@@ -53,3 +56,5 @@
   </tbody>
 </table>
 <br>
+
+<%= paginate @clients, param_name: :client_page %>

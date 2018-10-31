@@ -3,8 +3,8 @@ class AdminsController < ApplicationController
   before_action :set_user, only: [:show_user, :validate_user]
 
   def index
-    @auditors = Auditor.order(:validated).page(params[:page]).per(5)
-    @clients = Client.order(:validated).page(params[:page]).per(5)
+    @auditors = Auditor.order(:validated).page(params[:auditor_page]).per(5)
+    @clients = Client.order(:validated).page(params[:client_page]).per(5)
   end
 
   def show_user
