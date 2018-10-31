@@ -4,7 +4,7 @@ class CreateAudits < ActiveRecord::Migration[5.2]
       t.string :type
       t.string :site, null: false, defaut: ""
       t.string :address, null: false, defaut: ""
-      t.date :date, null: false
+      t.date :date, null: false, default: Date.today
       t.string :products, null: false, defaut: ""
       t.boolean :validated, null: false, default: false
 
