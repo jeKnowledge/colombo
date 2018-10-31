@@ -1,0 +1,22 @@
+<h1> CREATE REPORT </h1>
+
+<%= render 'shared/error_messages', resource: @report %>
+<%= form_for Report.new, url: "/auditor/audits/report"  do |f| %>
+  <div>
+    <%= f.label :site, "Site" %>
+    <%= f.text_field :site, placeholder: "google.com" %>
+  </div>
+  <div>
+    <%= f.label :address, "Address" %>
+    <%= f.text_field :address, placeholder: "2nd street" %>
+  </div>
+  <div>
+    <%= f.label :date, "Date" %>
+    <%= f.date_field :date, placeholder: "01/01/2020" %>
+  </div>
+  <div>
+    <%= f.label :products, "Products" %>
+    <%= f.text_field :products, placeholder: "something" %>
+  </div>
+  <%= f.submit "Create" %>
+<% end %>
