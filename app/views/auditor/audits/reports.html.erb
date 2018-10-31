@@ -1,0 +1,24 @@
+<h1>My report list</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>Address</th>
+      <th>Date</th>
+      <th>Products</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.site %></td>
+        <td><%= report.address %></td>
+        <td><%= report.date %></td>
+        <td><%= report.products %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

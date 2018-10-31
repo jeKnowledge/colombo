@@ -1,0 +1,24 @@
+<h1>My plan list</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>Address</th>
+      <th>Date</th>
+      <th>Products</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plans.each do |plan| %>
+      <tr>
+        <td><%= plan.site %></td>
+        <td><%= plan.address %></td>
+        <td><%= plan.date %></td>
+        <td><%= plan.products %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

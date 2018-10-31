@@ -1,0 +1,27 @@
+<h1>New audit request</h1>
+
+<%= render 'shared/error_messages', resource: @request %>
+
+<%= form_for @request, url: request_client_audits_path do |f| %>
+  <div>
+    <%= f.label :site %>
+    <%= f.text_field :site, placeholder: "google.com" %>
+  </div>
+
+  <div>
+    <%= f.label :address %>
+    <%= f.text_field :address, placeholder: "2nd street" %>
+  </div>
+
+  <div>
+    <%= f.label :date, "Date" %>
+    <%= f.date_field :date, placeholder: "01/01/2020" %>
+  </div>
+  
+  <div>
+    <%= f.label :products %>
+    <%= f.text_field :products, placeholder: "Paracetamol" %>
+  </div>
+
+  <%= f.submit "Send audit request" %>
+<% end %>
