@@ -13,6 +13,14 @@ Rails.application.routes.draw do
     get '/requests', to: 'clients#requests'
     get '/reservations', to: 'clients#reservations'
     get '/purchases', to: 'clients#purchases'
+
+    namespace 'audits' do
+      get '/search', to: 'clients/audits#search'
+      post '/reserve', to: 'clients/audits#reserve'
+      post '/buy', to: 'clients/audits#buy'
+      get '/request', to: 'clients/audit#request'
+      post '/request', to: 'clients/audit#request_send'
+    end
   end
 
   resource :auditor do
