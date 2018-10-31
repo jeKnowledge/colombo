@@ -18,8 +18,8 @@ Rails.application.routes.draw do
       get '/search', to: 'client/audits#search'
       post '/reserve', to: 'client/audits#reserve'
       post '/buy', to: 'client/audits#buy'
-      get '/request', to: 'client/audit#request'
-      post '/request', to: 'client/audit#request_send'
+      get '/request', to: 'client/audits#new_request'
+      post '/request', to: 'client/audits#request_send'
     end
   end
 

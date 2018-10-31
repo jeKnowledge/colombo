@@ -8,7 +8,6 @@ class Auditor::AuditsController < ApplicationController
     if @report.save
       redirect_to dashboard_path(current_user)
     else
-      ap @report.errors.full_messages
       render :report
     end
   end
@@ -22,7 +21,6 @@ class Auditor::AuditsController < ApplicationController
     if @plan.save
       redirect_to dashboard_path(current_user)
     else
-      ap @plan.errors.full_messages
       render :plan
     end
   end
