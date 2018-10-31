@@ -1,4 +1,4 @@
-class Clients::AuditsController < ApplicationController
+class Client::AuditController < ApplicationController
   def search
   end
 

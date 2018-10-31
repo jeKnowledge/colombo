@@ -14,12 +14,12 @@ Rails.application.routes.draw do
     get '/reservations', to: 'clients#reservations'
     get '/purchases', to: 'clients#purchases'
 
-    namespace 'audits' do
-      get '/search', to: 'clients/audits#search'
-      post '/reserve', to: 'clients/audits#reserve'
-      post '/buy', to: 'clients/audits#buy'
-      get '/request', to: 'clients/audit#request'
-      post '/request', to: 'clients/audit#request_send'
+    resource :audits do
+      get '/search', to: 'client/audits#search'
+      post '/reserve', to: 'client/audits#reserve'
+      post '/buy', to: 'client/audits#buy'
+      get '/request', to: 'client/audit#request'
+      post '/request', to: 'client/audit#request_send'
     end
   end
 
@@ -27,6 +27,17 @@ Rails.application.routes.draw do
     get '/sign_up', to: 'auditors#new'
     post '/sign_up', to: 'auditors#create'
     get '/dashboard', to: 'auditors#index'
+    get '/mail', to: 'auditors#mail'
+    get '/requests', to: 'auditors#requests'
+    get '/reservations', to: 'auditors#reservations'
+    get '/purchases', to: 'auditors#purchases'
+
+    resource :audits do
+      get '/report', to: 'auditor/audits#report'
+      post '/report', to: 'auditor/audits#report_send'
+      get '/plan', to: 'auditor/audits#plan'
+      post '/plan', to: 'auditor/audits#plan_send'
+    end
   end
 
   get '/sign_in', to: 'website#new', as: 'sign_in'
