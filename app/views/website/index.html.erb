@@ -2,28 +2,26 @@
 <html lang="en">
 
   <head>
-
     <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
-
+    <link rel="icon" type="image/png" sizes="16x16" href="/plugins/images/logo.png">
     <title>Colombo</title>
-    <link rel="icon" type="image/png" sizes="16x16" href="../plugins/images/logo.png">
-
     <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
 
     <!-- Plugin CSS -->
-    <link href="vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="/vendor/magnific-popup/magnific-popup.css" rel="stylesheet">
 
     <!-- Custom styles for this template -->
-    <link href="css/creative.min.css" rel="stylesheet">
+    <link href="/css/creative.min.css" rel="stylesheet">
 
   </head>
 
@@ -38,7 +36,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/sign_in" class="waves-effect">Login</a>
+              <%= link_to "Login", sign_in_path, class: "nav-link js-scroll-trigger" %>
             </li>
           </ul>
         </div>
@@ -56,8 +54,8 @@
           </div>
           <div class="col-lg-8 mx-auto">
             <p class="text-faded mb-5">Cost Effective | Secure | Fast and Easy</p>
-            <a class="btn btn-primary btn-xl js-scroll-trigger"  href="/client/sign_up" class="waves-effect">Signup as a Client</a>
-            <a class="btn btn-primary btn-xl js-scroll-trigger"  href="/auditor/sign_up" class="waves-effect">Signup as an Auditor</a>
+            <%= link_to "Signup as a Client", sign_up_client_path , class: "btn btn-primary btn-xl js-scroll-trigger waves-effect" %>
+            <%= link_to "Signup as a Auditor", sign_up_auditor_path , class: "btn btn-primary btn-xl js-scroll-trigger waves-effect" %>
           </div>
         </div>
         </div>
@@ -67,7 +65,7 @@
       <div class="container">
         <div class="row">
           <div class="col-lg-8 mx-auto text-center">
-              <img src="images/logo.png" style="width:200px; height:200px; position:relative;">
+              <img src="/images/logo.png" style="width:200px; height:200px; position:relative;">
               <br>
               <br>
               <br>
@@ -80,16 +78,16 @@
     </section>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <script src="/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-    <script src="vendor/scrollreveal/scrollreveal.min.js"></script>
-    <script src="vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
+    <script src="/vendor/jquery-easing/jquery.easing.min.js"></script>
+    <script src="/vendor/scrollreveal/scrollreveal.min.js"></script>
+    <script src="/vendor/magnific-popup/jquery.magnific-popup.min.js"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="js/creative.min.js"></script>
+    <script src="/js/creative.min.js"></script>
 
   </body>
 

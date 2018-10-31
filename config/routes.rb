@@ -9,6 +9,10 @@ Rails.application.routes.draw do
     get '/sign_up', to: 'clients#new'
     post '/sign_up', to: 'clients#create'
     get '/dashboard', to: 'clients#index'
+    get '/mail', to: 'clients#mail'
+    get '/requests', to: 'clients#requests'
+    get '/reservations', to: 'clients#reservations'
+    get '/purchases', to: 'clients#purchases'
   end
 
   resource :auditor do
@@ -20,7 +24,7 @@ Rails.application.routes.draw do
   get '/sign_in', to: 'website#new', as: 'sign_in'
   post '/sign_in', to: 'website#create'
   get '/terms', to: 'website#terms', as: 'terms'
-  post '/logout', to: 'website#destroy', as: 'logout'
+  post '/sign_out', to: 'website#destroy', as: 'sign_out'
 
   root 'website#index'
 end

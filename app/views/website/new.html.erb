@@ -47,10 +47,13 @@
         <div class="navbar-header">
           <div class="top-left-part">
             <!-- Logo -->
-            <a class="logo" href="/">
+            <%= link_to root_path do %>
               <!-- Logo icon image, you can use font-icon also --><b>
-                <!--This is dark logo icon--><img src="/plugins/images/logo.png" alt="home" class="dark-logo" /><!--This is light logo icon--><img src="/plugins/images/colombo_Main.png" alt="home" class="light-logo" />
-            </a>
+              <!--This is dark logo icon-->
+              <%= image_tag "/plugins/images/logo.png", class: "dark-logo" %>
+              <!--This is light logo icon-->
+              <%= image_tag "/plugins/images/colombo_Main.png", class: "light-logo" %>
+            <% end %>
           </div>
 
         </div>
@@ -72,6 +75,7 @@
           <div class="col-md-8" style="left:25px;">
             <div class="white-box">
               <%= render partial: "shared/error_messages", resource: @user %>
+
               <%= form_with url: sign_in_path do |f| %>
                 <div class="filed">
                   <%= f.label :username, "Your username" %>
@@ -93,8 +97,8 @@
 
               <p class="change_link">
                 Not a member yet ? Join us:
-                <a href="/clients/sign_up" class="to_register">Client</a> or
-                <a href="/auditors/sign_up" class="to_register">Auditor</a> ?
+                <%= link_to "Client", sign_up_client_path, class: "to_register" %> or
+                <%= link_to "Auditor", sign_up_auditor_path, class: "to_register" %> ?
               </p>
             </div>
 
