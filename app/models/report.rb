@@ -1,3 +1,4 @@
 class Report < Audit
-  validates_presence_of :rate, :author_id
+  belongs_to :auditor
+  validates_presence_of :rate, :auditor
 end

@@ -1,5 +1,5 @@
 class Client < User
-  has_one :user
+  has_many :requests
 
   validates_presence_of :address, :company
 

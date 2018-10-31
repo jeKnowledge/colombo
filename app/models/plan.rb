@@ -1,3 +1,4 @@
 class Plan < Audit
-  validates_presence_of :requester_id, :author_id
+  belongs_to :auditor
+  validates_presence_of :auditor
 end
