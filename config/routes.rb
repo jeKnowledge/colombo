@@ -15,11 +15,11 @@ Rails.application.routes.draw do
     get '/purchases', to: 'clients#purchases'
 
     namespace 'audits' do
-      get '/search', to: 'client/audits#search'
-      post '/reserve', to: 'client/audits#reserve'
-      post '/buy', to: 'client/audits#buy'
-      get '/request', to: 'client/audit#request'
-      post '/request', to: 'client/audit#request_send'
+      get '/search', to: 'clients/audits#search'
+      post '/reserve', to: 'clients/audits#reserve'
+      post '/buy', to: 'clients/audits#buy'
+      get '/request', to: 'clients/audit#request'
+      post '/request', to: 'clients/audit#request_send'
     end
   end
 
