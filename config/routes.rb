@@ -37,6 +37,7 @@ Rails.application.routes.draw do
       post '/report', to: 'auditor/audits#report_send'
       get '/plan', to: 'auditor/audits#plan'
       post '/plan', to: 'auditor/audits#plan_send'
+      get '/', to: 'auditor/audits#audits'
     end
   end
 

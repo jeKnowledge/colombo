@@ -17,11 +17,28 @@ class Auditor::AuditsController < ApplicationController
   end
 
   def plan_send
+    @plan = Plan.new(plan_params)
+
+    if @plan.save
+      redirect_to dashboard_path(current_user)
+    else
+      ap @plan.errors.full_messages
+      render :plan
+    end
+  end
+
+  def audits
+    @reports = Report.where(auditor_id: current_user.id)
+    @plans = Plan.where(auditor_id: current_user.id)
   end
 
   private
 
-    def report_params
-      params.require(:report).permit(:site, :address, :date, :products).merge(auditor_id: current_user.id)
-    end
+  def report_params
+    params.require(:report).permit(:site, :address, :date, :products).merge(auditor_id: current_user.id)
+  end
+
+  def plan_params
+    params.require(:plan).permit(:site, :address, :date, :products).merge(auditor_id: current_user.id)
+  end
 end
