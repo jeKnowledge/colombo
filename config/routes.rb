@@ -14,7 +14,7 @@ Rails.application.routes.draw do
     get '/reservations', to: 'clients#reservations'
     get '/purchases', to: 'clients#purchases'
 
-    resource :audits do
+    resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/search', to: 'client/audits#search'
       post '/reserve', to: 'client/audits#reserve'
       post '/buy', to: 'client/audits#buy'
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     get '/reservations', to: 'auditors#reservations'
     get '/purchases', to: 'auditors#purchases'
 
-    resource :audits do
+    resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/report', to: 'auditor/audits#report'
       post '/report', to: 'auditor/audits#report_send'
       get '/plan', to: 'auditor/audits#plan'
