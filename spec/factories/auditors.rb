@@ -5,6 +5,6 @@ FactoryBot.define do
     last_name { Faker::Name.first_name }
     password { "password" }
     qualifications { Faker::Job.key_skill }
-    cv { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/logo.png'), 'image/png') }
+    cv { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/resume.pdf')) }
   end
 end
