@@ -11,6 +11,7 @@ class CreateAudits < ActiveRecord::Migration[5.2]
       t.float :rating, null: false, default: 0
       t.float :price, null: false, default: 0
       t.string :report, null: false, default: ""
+      t.string :summary, null: false, default: ""
 
       # Report, Plan
       t.references :auditor, index: true
