@@ -3,22 +3,25 @@
 <table>
   <thead>
     <tr>
-      <th>Site</th>
-      <th>Address</th>
-      <th>Date</th>
       <th>Products</th>
+      <th>Price</th>
+      <th>Rating</th>
+      <th>Date</th>
+      <th>Summary</th>
+      <th>Report</th>
       <th>Validated</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @reports.each do |report| %>
       <tr>
-        <td><%= report.site %></td>
-        <td><%= report.address %></td>
-        <td><%= report.date %></td>
         <td><%= report.products %></td>
+        <td><%= report.price %></td>
+        <td><%= (report.rating == 0) ? "Not rated" : report.rating %></td>
+        <td><%= report.date %></td>
+        <td><%= report.summary %></td>
+        <td><%= link_to "File", report.report.url %></td>
         <td><%= report.validated %></td>
       </tr>
     <% end %>

@@ -5,7 +5,7 @@ class Plan < Audit
 
   def date_validation
     if self.date <= Time.now
-      erros.add(:date, 'has to be in the future')
+      errors.add(:date, 'has to be in the future')
     end
   end
 end

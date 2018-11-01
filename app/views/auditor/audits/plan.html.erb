@@ -4,23 +4,23 @@
 
 <%= form_for @plan, url: plan_auditor_audits_path  do |f| %>
   <div>
-    <%= f.label :site %>
-    <%= f.text_field :site, placeholder: "google.com" %>
+    <%= f.label :products %>
+    <%= f.text_field :products, placeholder: "Paracetamol" %>
   </div>
 
   <div>
-    <%= f.label :address %>
-    <%= f.text_field :address, placeholder: "2nd street" %>
+    <%= f.label :price %>
+    <%= f.number_field :price, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= f.label :summary %>
+    <%= f.text_field :summary, placeholder: "Audit for paracetamol" %>
   </div>
 
   <div>
     <%= f.label :date %>
-    <%= f.date_field :date, placeholder: "01/01/2020" %>
-  </div>
-
-  <div>
-    <%= f.label :products %>
-    <%= f.text_field :products, placeholder: "Paracetamol" %>
+    <%= f.date_field :date, min: Time.now + 1.days  %>
   </div>
 
   <%= f.submit "Send audit plan" %>

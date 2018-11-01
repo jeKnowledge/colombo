@@ -3,22 +3,21 @@
 <table>
   <thead>
     <tr>
-      <th>Site</th>
-      <th>Address</th>
-      <th>Date</th>
       <th>Products</th>
+      <th>Price</th>
+      <th>Date</th>
+      <th>Summary</th>
       <th>Validated</th>
-      <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @plans.each do |plan| %>
       <tr>
-        <td><%= plan.site %></td>
-        <td><%= plan.address %></td>
-        <td><%= plan.date %></td>
         <td><%= plan.products %></td>
+        <td><%= plan.price %></td>
+        <td><%= plan.date %></td>
+        <td><%= plan.summary %></td>
         <td><%= plan.validated %></td>
       </tr>
     <% end %>

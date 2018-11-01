@@ -12,14 +12,14 @@ class Auditor::AuditsController < ApplicationController
     @report = Report.new(report_params)
 
     if @report.save
-      redirect_to dashboard_path(current_user)
+      redirect_to reports_auditor_audits_path
     else
       render :report
     end
   end
 
   def reports
-    @reports = Report.where(auditor_id: current_user.id)
+    @reports = current_user.reports.order(:date)
   end
 
   def plan
@@ -30,25 +30,25 @@ class Auditor::AuditsController < ApplicationController
     @plan = Plan.new(plan_params)
 
     if @plan.save
-      redirect_to dashboard_path(current_user)
+      redirect_to plans_auditor_audits_path
     else
       render :plan
     end
   end
 
   def plans
-    @plans = Plan.where(auditor_id: current_user.id)
+    @plans = current_user.plans.order(:date)
   end
 
   private
 
   def report_params
     params.require(:report)
-      .permit(:site, :address, :date, :products).merge(auditor_id: current_user.id)
+      .permit(:products, :price, :summary, :report).merge(auditor_id: current_user.id)
   end
 
   def plan_params
     params.require(:plan)
-      .permit(:site, :address, :date, :products).merge(auditor_id: current_user.id)
+      .permit(:products, :price, :date, :summary).merge(auditor_id: current_user.id)
   end
 end

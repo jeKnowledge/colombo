@@ -2,20 +2,25 @@
 
 <%= render 'shared/error_messages', resource: @report %>
 
-<%= form_for @report, url: report_auditor_audits_path  do |f| %>
-  <div>
-    <%= f.label :site %>
-    <%= f.text_field :site, placeholder: "google.com" %>
-  </div>
-
-  <div>
-    <%= f.label :address %>
-    <%= f.text_field :address, placeholder: "2nd street" %>
-  </div>
-
+<%= form_for @report, url: report_auditor_audits_path, multipart: true  do |f| %>
   <div>
     <%= f.label :products %>
     <%= f.text_field :products, placeholder: "Paracetamol" %>
+  </div>
+
+  <div>
+    <%= f.label :price %>
+    <%= f.number_field :price, step: 0.01 %>
+  </div>
+
+  <div>
+    <%= f.label :summary %>
+    <%= f.text_field :summary, placeholder: "Audit for paracetamol" %>
+  </div>
+
+  <div>
+    <%= f.label :report %>
+    <%= f.file_field :report %>
   </div>
 
   <%= f.submit "Send audit report" %>
