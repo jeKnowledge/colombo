@@ -1,6 +1,7 @@
 class ClientsController < ApplicationController
   before_action :client_authenticated?, only: [:index, :edit, :update, :show, :destory]
   before_action :client_validated?, only: [:index, :edit, :update, :show, :destory]
+  before_action :set_client, only: [:show]
 
   layout 'client', except: [:new, :create]
 
@@ -43,5 +44,9 @@ class ClientsController < ApplicationController
   private
     def client_params
       params.require(:client).permit(:password, :password_confirmation, :first_name, :last_name, :email, :address, :company, :terms)
+    end
+
+    def set_client
+      @client = current_user
     end
 end

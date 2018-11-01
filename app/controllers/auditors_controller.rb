@@ -1,6 +1,7 @@
 class AuditorsController < ApplicationController
   before_action :auditor_authenticated?, except: [:create, :new]
   before_action :auditor_validated?, except: [:create, :new]
+  before_action :set_auditor, only: [:show]
 
   layout 'auditor', except: [:new, :create]
 
@@ -30,11 +31,16 @@ class AuditorsController < ApplicationController
 
   def destroy
     current_user.destroy
+    puts "DELETED"
     redirect_to sign_out_path
   end
 
   private
     def auditor_params
       params.require(:auditor).permit(:first_name, :last_name, :email, :qualifications, :cv, :password, :password_confirmation, :terms)
+    end
+
+    def set_auditor
+      @auditor = current_user
     end
 end

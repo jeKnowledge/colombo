@@ -69,7 +69,7 @@ class Client::AuditsController < ApplicationController
   def reserve
   end
 
-  def buy
+  def purchase
   end
 
 =begin 

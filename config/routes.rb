@@ -18,13 +18,11 @@ Rails.application.routes.draw do
     post '/sign_up', to: 'clients#create'
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
-      get '/request', to: 'client/audits#new_request'
+      post '/request', to: 'client/audits#request'
       get '/search', to: 'client/audits#search'
       get '/advanced_search', to: 'client/audits#advanced_search'
-      post '/reserve/:id', to: 'client/audits#reserve'
-      post '/buy/:id', to: 'client/audits#buy', as: 'buy'
-      post '/request', to: 'client/audits#request'
       post '/reserve', to: 'client/audits#reserve'
+      post '/purchase', to: 'client/audits#purchase'
     end
   end
 
@@ -39,8 +37,6 @@ Rails.application.routes.draw do
     post '/sign_up', to: 'auditors#create'
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
-      get '/plan', to: 'auditor/audits#plan'
-      get '/plans', to: 'auditor/audits#plans'
       get '/report', to: 'auditor/audits#report'
       post '/report', to: 'auditor/audits#report_send'
       get '/reports', to: 'auditor/audits#reports'
