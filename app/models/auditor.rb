@@ -3,7 +3,7 @@ class Auditor < User
 
   has_one :user
 
-  validates_presence_of :rating, :qualifications, :cv
+  validates_presence_of :rating, :qualifications, :cv, :address, :company
 
   def prefix
     'a_'

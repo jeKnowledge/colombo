@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   after_save :generate_username
 
-  validates_presence_of :email
+  validates_presence_of :email, :first_name, :last_name
 
   def prefix
     ''
