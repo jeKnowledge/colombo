@@ -1,6 +1,7 @@
 class AuditorsController < ApplicationController
-  before_action :auditor_authenticated?, only: [:index, :edit, :update, :show, :destory]
-  before_action :auditor_validated?, only: [:index, :edit, :update, :show, :destory]
+  before_action :auditor_authenticated?, except: [:create, :new]
+  before_action :auditor_validated?, except: [:create, :new]
+  before_action :set_auditor, only: [ :show, :destroy ] 
 
   def index
   end
@@ -23,6 +24,14 @@ class AuditorsController < ApplicationController
     end
   end
 
+  def show
+  end
+
+  def destroy
+    @auditor.destroy
+    redirect_to sign_out_path
+  end
+
   private
     def auditor_params
       params.require(:auditor).permit(:first_name, :last_name, :email, :qualifications, :cv, :password, :password_confirmation, :terms)
@@ -38,5 +47,9 @@ class AuditorsController < ApplicationController
       unless current_user.validated
         render '/shared/not_validated'
       end
+    end
+
+    def set_auditor
+      @auditor = current_user
     end
 end

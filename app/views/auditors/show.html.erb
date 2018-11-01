@@ -1,0 +1,14 @@
+<%= render partial: '/auditors/shared/sidebar' %>
+
+<h1>Profile</h1>
+
+<p><b>Username: </b><%= @auditor.username %></p>
+<p><b>First name: </b><%= @auditor.first_name %></p>
+<p><b>Last name: </b><%= @auditor.last_name %></p>
+<p><b>Email: </b><%= @auditor.email %></p>
+<p><b>Rating: </b><%= @auditor.rating %></p>
+<p><b>Qualifications: </b><%= @auditor.qualifications %></p>
+<p><b>CV: </b><%= @auditor.cv %></p>
+
+<%= link_to "Edit account", edit_auditor_path %>
+<%= link_to "Delete account", auditor_path, method: :delete, data: { confirm: 'Are you sure?' } %>

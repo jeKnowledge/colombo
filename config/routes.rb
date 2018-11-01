@@ -7,8 +7,9 @@ Rails.application.routes.draw do
     post '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
   end
 
-  resource :client, except: [:show] do
+  resource :client do
     get '/', to: 'clients#index', as: 'dashboard'
+    get '/profile', to: 'clients#show'
     get '/mail', to: 'clients#mail'
     get '/purchases', to: 'clients#purchases'
     get '/requests', to: 'clients#requests'
@@ -27,8 +28,9 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :auditor, except: [:show] do
+  resource :auditor do
     get '/', to: 'auditors#index', as: 'dashboard'
+    get '/profile', to: 'auditors#show'
     get '/mail', to: 'auditors#mail'
     get '/purchases', to: 'auditors#purchases'
     get '/requests', to: 'auditors#requests'
