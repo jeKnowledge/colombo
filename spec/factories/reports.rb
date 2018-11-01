@@ -4,5 +4,6 @@ FactoryBot.define do
     address { Faker::Address.street_name }
     products { Faker::Lorem.sentence(3) }
     auditor { FactoryBot.create(:auditor) }
+    price { Faker::Number.decimal(2) }
   end
 end

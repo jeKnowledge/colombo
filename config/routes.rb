@@ -16,8 +16,8 @@ Rails.application.routes.draw do
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/search', to: 'client/audits#search'
-      post '/reserve', to: 'client/audits#reserve'
-      post '/buy', to: 'client/audits#buy'
+      post '/reserve/:id', to: 'client/audits#reserve'
+      post '/buy/:id', to: 'client/audits#buy', as: 'buy'
       get '/request', to: 'client/audits#new_request'
       post '/request', to: 'client/audits#request_send'
     end
@@ -34,10 +34,10 @@ Rails.application.routes.draw do
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/report', to: 'auditor/audits#report'
-      post '/report', to: 'auditor/audits#report_send'
+      post '/report/:id', to: 'auditor/audits#report_send'
       get '/reports', to: 'auditor/audits#reports'
       get '/plan', to: 'auditor/audits#plan'
-      post '/plan', to: 'auditor/audits#plan_send'
+      post '/plan/:id', to: 'auditor/audits#plan_send'
       get '/plans', to: 'auditor/audits#plans'
     end
   end

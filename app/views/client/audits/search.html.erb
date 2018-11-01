@@ -1,0 +1,74 @@
+<%= render partial: '/clients/shared/sidebar' %>
+
+<h1>Search results</h1>
+
+<h2>Audit reports</h2>
+
+<% if @reports.size == 0 %>
+  <p>No reports available</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Products</th>
+        <th>Auditor</th>
+        <th>Rating</th>
+        <th>Site</th>
+        <th>Address</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+
+    <tbody>    
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= report.products %></td>
+          <td><%= report.auditor.username %></td>
+          <td><%= (report.rating != 0) ? report.rating : "Not rated" %></td>
+          <td><%= report.site %></td>
+          <td><%= report.address %></td>
+          <td><%= report.date %></td>
+          <td><%= link_to "Buy", buy_client_audits_path(report.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @reports, param_name: :report_page %>
+<% end %>
+
+<h2>Audit plans</h2>
+
+<% if @plans.size == 0 %>
+  <p>No plans available</p>
+<% else %>
+  <table>
+    <thead>
+      <tr>
+        <th>Products</th>
+        <th>Auditor</th>
+        <th>Site</th>
+        <th>Address</th>
+        <th>Date</th>
+      </tr>
+    </thead>
+
+    <tbody>    
+      <% @plans.each do |plan| %>
+        <tr>
+          <td><%= plan.products %></td>
+          <td><%= plan.auditor.username %></td>
+          <td><%= plan.site %></td>
+          <td><%= plan.address %></td>
+          <td><%= plan.date %></td>
+          <td><%= link_to "Reserve", reserve_client_audits_path(plan.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= paginate @plans, param_name: :plan_page %>
+<% end %>
+
+<h1>Audit request</h1>
+<%= link_to "Send audit request", request_client_audits_path %>

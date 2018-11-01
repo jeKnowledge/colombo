@@ -2,8 +2,8 @@
 
 <h1>Search audit</h1>
 
-<%= form_with url: search_client_audits_path, method: :get do |f| %>
-  <%= f.text_field :query %>
+<%= form_tag search_client_audits_path, method: :get do %>
+  <%= text_field_tag :query %>
 
-  <%= f.submit "Search" %>  
+  <%= submit_tag "Search" %>  
 <% end %>

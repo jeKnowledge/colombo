@@ -9,11 +9,12 @@ class CreateAudits < ActiveRecord::Migration[5.2]
       t.boolean :validated, null: false, default: false
 
       # Report
-      t.float :rate, null: false, default: 0
+      t.float :rating, null: false, default: 0
+      t.float :price, null: false, default: 0
       # Report, Plan
-      t.belongs_to :auditor, index: true
+      t.references :auditor, index: true
       # Request
-      t.belongs_to :client, index: true
+      t.references :client, index: true
 
       t.timestamps
     end
