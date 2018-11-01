@@ -1,5 +1,7 @@
 class Client::AuditsController < ApplicationController
   def search
+    @search_query = params[:query]
+
     if params[:query] && !params[:query].empty?
       reports = Report.products_like(params[:query])
       plans = Plan.products_like(params[:query])
@@ -13,8 +15,55 @@ class Client::AuditsController < ApplicationController
       plans = Plan.all
     end
 
-    @reports = reports.distinct.validated().paginate(params[:report_page], 5)
-    @plans = plans.distinct.validated().not_expired().paginate(params[:report_page], 5)
+    @reports = reports.validated().paginate(params[:report_page], 5)
+    @plans = plans.validated().not_expired().paginate(params[:report_page], 5)
+  end
+
+  def advanced_search
+    @search_company = params[:company]
+    @search_address = params[:address]
+    @search_products = params[:products] 
+
+    reports = Report.all.validated()
+    plans = Plan.all.validated().not_expired()
+
+    unless params[:products].empty?
+      collection = Report.products_like(params[:query])
+      reports = reports.merge(collection)
+      collection = Plan.products_like(params[:query])
+      plans = plans.merge(collection)
+    end
+
+    unless params[:company].empty?
+      collection = nil
+      Auditor.company_like(params[:company]).each do |auditor|
+        if collection.nil?
+          collection = auditor.reports
+        else
+          collection = collection.or(auditor.reports)
+        end
+      end
+
+      reports = reports.merge(collection) unless collection.nil?
+    end
+
+    unless params[:address].empty?
+      collection = nil
+      Auditor.address_like(params[:address]).each do |auditor|
+        if collection.nil?
+          collection = auditor.reports
+        else
+          collection = collection.or(auditor.reports)
+        end
+      end
+
+      reports = reports.merge(collection) unless collection.nil?
+    end 
+  
+    @reports = reports.distinct.paginate(params[:report_page], 5)
+    @plans = plans.distinct.paginate(params[:report_page], 5)
+
+    render :search
   end
 
   def reserve

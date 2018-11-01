@@ -3,9 +3,30 @@
 <h1>Search audit</h1>
 
 <%= form_tag search_client_audits_path, method: :get do %>
-  <%= text_field_tag :query %>
+  <%= text_field_tag :query, @search_query %>
 
   <%= submit_tag "Search" %>  
+<% end %>
+
+<h2>Advanced search</h2>
+
+<%= form_tag advanced_search_client_audits_path, method: :get do %>
+  <div>
+    <%= label_tag :company %>
+    <%= text_field_tag :company, @search_company %>
+  </div>
+
+  <div>
+    <%= label_tag :address %>
+    <%= text_field_tag :address, @search_address %>
+  </div>
+
+  <div>
+    <%= label_tag :products %>
+    <%= text_field_tag :products, @search_products %>
+  </div>
+
+  <%= submit_tag "Advanced search" %>  
 <% end %>
 
 <h1>Search results</h1>

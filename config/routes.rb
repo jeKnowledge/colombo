@@ -20,6 +20,7 @@ Rails.application.routes.draw do
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/request', to: 'client/audits#new_request'
       get '/search', to: 'client/audits#search'
+      get '/advanced_search', to: 'client/audits#advanced_search'
       post '/reserve/:id', to: 'client/audits#reserve'
       post '/buy/:id', to: 'client/audits#buy', as: 'buy'
       post '/request', to: 'client/audits#request'
