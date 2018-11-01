@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_10_28_212209) do
     t.string "type"
     t.string "site", null: false
     t.string "address", null: false
-    t.date "date", default: "2018-10-31", null: false
+    t.date "date", default: "2018-11-01", null: false
     t.string "products", null: false
     t.boolean "validated", default: false, null: false
     t.float "rate", default: 0.0, null: false
