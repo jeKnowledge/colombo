@@ -1,0 +1,2 @@
+class Consern < ApplicationRecord
+end

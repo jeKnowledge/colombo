@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_28_212209) do
+ActiveRecord::Schema.define(version: 2018_11_01_012117) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
@@ -29,18 +29,18 @@ ActiveRecord::Schema.define(version: 2018_10_28_212209) do
     t.index ["client_id"], name: "index_audits_on_client_id"
   end
 
+  create_table "conserns", force: :cascade do |t|
+    t.string "title", default: "", null: false
+    t.text "description", default: "", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "messages", force: :cascade do |t|
     t.integer "source_id", null: false
     t.integer "destiny_id", null: false
     t.text "description", default: "", null: false
     t.boolean "read", default: false, null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "terms", force: :cascade do |t|
-    t.string "title", default: "", null: false
-    t.text "description", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
