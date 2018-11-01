@@ -3,8 +3,8 @@ Rails.application.routes.draw do
     get '/', to: 'admins#index', as: 'dashboard'
     get '/show/user/:id', to: 'admins#show_user', as: 'show_user'
     get '/show/audit/:id', to: 'admins#show_audit', as: 'show_audit'
-    post '/validate/audit/:id', to: 'admins#validate_audit', as: 'validate_audit'
-    post '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
+    get '/validate/audit/:id', to: 'admins#validate_audit', as: 'validate_audit'
+    get '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
   end
 
   resource :client do

@@ -14,4 +14,34 @@ module WebsiteHelper
   def current_user
     User.find(session[:user_id])
   end
+
+  def client_authenticated?
+    unless session[:user_id] && Client.exists?(session[:user_id])
+      redirect_to sign_in_path
+    end
+  end
+
+  def client_validated?
+    unless current_user.validated
+      render '/shared/not_validated'
+    end
+  end
+
+  def auditor_authenticated?
+    unless session[:user_id] && Auditor.exists?(session[:user_id])
+      redirect_to sign_in_path
+    end
+  end
+
+  def auditor_validated?
+    unless current_user.validated
+      render '/shared/not_validated'
+    end
+  end
+
+  def admin_authenticated?
+    unless session[:user_id] && Admin.exists?(session[:user_id])
+      redirect_to sign_in_path
+    end
+  end
 end

@@ -1,4 +1,9 @@
 class Auditor::AuditsController < ApplicationController
+  before_action :auditor_authenticated?
+  before_action :auditor_validated?
+
+  layout 'auditor'
+
   def report
     @report = Report.new
   end

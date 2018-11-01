@@ -1,7 +1,8 @@
 class AuditorsController < ApplicationController
   before_action :auditor_authenticated?, except: [:create, :new]
   before_action :auditor_validated?, except: [:create, :new]
-  before_action :set_auditor, only: [ :show, :destroy ] 
+
+  layout 'auditor', except: [:new, :create]
 
   def index
   end
@@ -28,28 +29,12 @@ class AuditorsController < ApplicationController
   end
 
   def destroy
-    @auditor.destroy
+    current_user.destroy
     redirect_to sign_out_path
   end
 
   private
     def auditor_params
       params.require(:auditor).permit(:first_name, :last_name, :email, :qualifications, :cv, :password, :password_confirmation, :terms)
-    end
-
-    def auditor_authenticated?
-      unless session[:user_id] && Auditor.exists?(session[:user_id])
-        redirect_to sign_in_path
-      end
-    end
-
-    def auditor_validated?
-      unless current_user.validated
-        render '/shared/not_validated'
-      end
-    end
-
-    def set_auditor
-      @auditor = current_user
     end
 end

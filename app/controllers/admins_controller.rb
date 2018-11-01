@@ -1,7 +1,9 @@
 class AdminsController < ApplicationController
-  before_action :admin_authenticates?
+  before_action :admin_authenticated?
   before_action :set_user, only: [:show_user, :validate_user]
   before_action :set_audit, only: [:show_audit, :validate_audit]
+
+  layout 'admin'
 
   def index
     @auditors = Auditor.order(:validated).page(params[:auditor_page]).per(5)
@@ -35,11 +37,5 @@ class AdminsController < ApplicationController
 
   def set_audit
     @audit = Audit.find(params[:id])
-  end
-
-  def admin_authenticates?
-    unless session[:user_id] && Admin.exists?(session[:user_id])
-      redirect_to sign_in_path
-    end
   end
 end
