@@ -1,17 +1,19 @@
 default: &default
-  adapter: sqlite3
+  adapter: postgresql
+  encoding: unicode
   pool: 5
-  timeout: 5000
+  username: <%= ENV['COLOMBO_DATABASE_USERNAME'] %>
+  password: <%= ENV['COLOMBO_DATABASE_PASSWORD'] %>
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  database: colombo_development
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  database: colombo_test
 
 production:
+  <<: *default
   database: colombo_production
-  username: colombo
-  password: <%= ENV['COLOMBO_DATABASE_PASSWORD'] %>
+

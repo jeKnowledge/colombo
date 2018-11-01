@@ -12,12 +12,15 @@
 
 ActiveRecord::Schema.define(version: 2018_11_01_144606) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "audit_requests", force: :cascade do |t|
     t.string "company", default: "", null: false
     t.string "address", default: "", null: false
     t.string "products", default: "", null: false
     t.date "date", null: false
-    t.integer "client_id"
+    t.bigint "client_id"
     t.boolean "validated", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -29,7 +32,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_144606) do
     t.date "date", default: "2018-11-01", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
-    t.integer "auditor_id"
+    t.bigint "auditor_id"
     t.float "price", default: 0.0, null: false
     t.string "summary", default: "", null: false
     t.float "rating", default: 0.0, null: false
