@@ -8,6 +8,7 @@ class AdminsController < ApplicationController
     @clients = Client.order(:validated).page(params[:client_page]).per(5)
     @reports = Report.order(:validated).page(params[:report_page]).per(5)
     @plans = Plan.order(:validated).page(params[:plan_page]).per(5)
+    @requests = Request.order(:validated).page(params[:request_page]).per(5)
   end
 
   def show_user

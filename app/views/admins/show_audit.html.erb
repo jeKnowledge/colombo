@@ -7,6 +7,11 @@
       <th>Address</th>
       <th>Date</th>
       <th>Products</th>
+      <% if @audit.is_a? Report or @audot.is_a? Plan %>
+        <td><%= @audit.auditor.username %></td>
+      <% else %>
+        <td><%= @audit.client.username %></td>
+      <% end %>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,7 +22,11 @@
       <td><%= @audit.address %></td>
       <td><%= @audit.date %></td>
       <td><%= @audit.products %></td>
-      <td><%= @audit.auditor.username %></td>
+      <% if @audit.is_a? Report or @audot.is_a? Plan %>
+        <td><%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %></td>
+      <% else %>
+        <td><%= link_to @audit.client.username, show_user_admin_path(@audit.client_id) %></td>
+      <% end %>
     </tr>
   </tbody>
 </table>
