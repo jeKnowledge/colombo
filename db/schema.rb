@@ -10,23 +10,33 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_012513) do
+ActiveRecord::Schema.define(version: 2018_11_01_144606) do
+
+  create_table "audit_requests", force: :cascade do |t|
+    t.string "company", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "products", default: "", null: false
+    t.date "date", null: false
+    t.integer "client_id"
+    t.boolean "validated", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_audit_requests_on_client_id"
+  end
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.string "site", null: false
-    t.string "address", null: false
     t.date "date", default: "2018-11-01", null: false
-    t.string "products", null: false
+    t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
-    t.float "rating", default: 0.0, null: false
-    t.float "price", default: 0.0, null: false
     t.integer "auditor_id"
-    t.integer "client_id"
+    t.float "price", default: 0.0, null: false
+    t.string "summary", default: "", null: false
+    t.float "rating", default: 0.0, null: false
+    t.string "report", default: "", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["auditor_id"], name: "index_audits_on_auditor_id"
-    t.index ["client_id"], name: "index_audits_on_client_id"
   end
 
   create_table "consents", force: :cascade do |t|

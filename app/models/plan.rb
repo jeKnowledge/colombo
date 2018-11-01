@@ -1,8 +1,7 @@
 class Plan < Audit
-  belongs_to :auditor
+  validate :date_validation
 
-  validates_presence_of :auditor, :price
-  validates :date_validation
+  scope :not_expired, -> { where("date > ?", Time.now) }
 
   def date_validation
     if self.date <= Time.now

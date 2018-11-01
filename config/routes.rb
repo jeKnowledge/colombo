@@ -22,8 +22,7 @@ Rails.application.routes.draw do
       get '/search', to: 'client/audits#search'
       post '/reserve/:id', to: 'client/audits#reserve'
       post '/buy/:id', to: 'client/audits#buy', as: 'buy'
-      get '/request', to: 'client/audits#new_request'
-      post '/request', to: 'client/audits#request_send'
+      post '/request', to: 'client/audits#request'
       post '/reserve', to: 'client/audits#reserve'
     end
   end

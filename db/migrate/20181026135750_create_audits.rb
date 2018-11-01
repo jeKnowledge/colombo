@@ -2,22 +2,16 @@ class CreateAudits < ActiveRecord::Migration[5.2]
   def change
     create_table :audits do |t|
       t.string :type
-      t.string :address, null: false, defaut: ""
-      t.date :date, null: false
-      t.string :products, null: false, defaut: ""
+      t.date :date, null: false, default: Time.now
+      t.string :products, null: false, default: ""
       t.boolean :validated, null: false, default: false
+      t.references :auditor, index: true
+      t.float :price, null: false, default: 0
+      t.string :summary, null: false, default: ""
 
       # Report
       t.float :rating, null: false, default: 0
-      t.float :price, null: false, default: 0
       t.string :report, null: false, default: ""
-      t.string :summary, null: false, default: ""
-
-      # Report, Plan
-      t.references :auditor, index: true
-
-      # Request
-      t.references :client, index: true
 
       t.timestamps
     end

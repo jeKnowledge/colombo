@@ -1,33 +1,44 @@
 <%= render partial: '/clients/shared/sidebar' %>
 
+<h1>Search audit</h1>
+
+<%= form_tag search_client_audits_path, method: :get do %>
+  <%= text_field_tag :query %>
+
+  <%= submit_tag "Search" %>  
+<% end %>
+
 <h1>Search results</h1>
 
 <h2>Audit reports</h2>
 
-<% if @reports.size == 0 %>
+<% if @reports.length == 0 %>
   <p>No reports available</p>
 <% else %>
   <table>
     <thead>
       <tr>
-        <th>Products</th>
-        <th>Auditor</th>
-        <th>Rating</th>
-        <th>Site</th>
+        <th>Company</th>
         <th>Address</th>
+        <th>Auditor</th>
+        <th>Products</th>
         <th>Date</th>
+        <th>Price</th>
+        <th>Rating</th>
+        <th>Action<th>
       </tr>
     </thead>
 
     <tbody>    
       <% @reports.each do |report| %>
         <tr>
-          <td><%= report.products %></td>
+          <td><%= report.auditor.company %></td>
+          <td><%= report.auditor.address %></td>
           <td><%= report.auditor.username %></td>
-          <td><%= (report.rating != 0) ? report.rating : "Not rated" %></td>
-          <td><%= report.site %></td>
-          <td><%= report.address %></td>
+          <td><%= report.products %></td>
           <td><%= report.date %></td>
+          <td><%= report.price %></td>
+          <td><%= (report.rating != 0) ? report.rating : "Not rated" %></td>
           <td><%= link_to "Buy", buy_client_audits_path(report.id) %></td>
         </tr>
       <% end %>
@@ -39,28 +50,31 @@
 
 <h2>Audit plans</h2>
 
-<% if @plans.size == 0 %>
+<% if @plans.count == 0 %>
   <p>No plans available</p>
 <% else %>
   <table>
     <thead>
       <tr>
-        <th>Products</th>
-        <th>Auditor</th>
-        <th>Site</th>
+        <th>Company</th>
         <th>Address</th>
+        <th>Auditor</th>
+        <th>Products</th>
         <th>Date</th>
+        <th>Price</th>
+        <th>Action<th>
       </tr>
     </thead>
 
     <tbody>    
       <% @plans.each do |plan| %>
         <tr>
-          <td><%= plan.products %></td>
+          <td><%= plan.auditor.company %></td>
+          <td><%= plan.auditor.address %></td>
           <td><%= plan.auditor.username %></td>
-          <td><%= plan.site %></td>
-          <td><%= plan.address %></td>
+          <td><%= plan.products %></td>
           <td><%= plan.date %></td>
+          <td><%= plan.price %></td>
           <td><%= link_to "Reserve", reserve_client_audits_path(plan.id) %></td>
         </tr>
       <% end %>
@@ -70,5 +84,6 @@
   <%= paginate @plans, param_name: :plan_page %>
 <% end %>
 
-<h1>Audit request</h1>
+<h2>Audit request</h2>
+FORM MISSING
 <%= link_to "Send audit request", request_client_audits_path %>
