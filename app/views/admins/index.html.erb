@@ -58,3 +58,91 @@
 <br>
 
 <%= paginate @clients, param_name: :client_page %>
+
+<h1>Listing Reports</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>Address</th>
+      <th>Auditor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.site %></td>
+        <td><%= report.date %></td>
+        <td><%= link_to report.auditor.username, show_user_admin_path(report.auditor_id) %></td>
+        <% if !report.validated %>
+          <td><%= link_to "Validate", validate_audit_admin_path(report.id), method: :post %></td>
+        <% end %>
+        <td><%= link_to "Details", show_audit_admin_path(report.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @reports, param_name: :report_page %>
+
+
+<h1>Listing Plans</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>Address</th>
+      <th>Auditor</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plans.each do |plan| %>
+      <tr>
+        <td><%= plan.site %></td>
+        <td><%= plan.date %></td>
+        <td><%= link_to plan.auditor.username, show_user_admin_path(plan.auditor_id) %></td>
+        <% if !plan.validated %>
+          <td><%= link_to "Validate", validate_audit_admin_path(plan.id), method: :post %></td>
+        <% end %>
+        <td><%= link_to "Details", show_audit_admin_path(plan.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @plans, param_name: :plan_page %>
+
+<h1>Listing Requests</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Site</th>
+      <th>Address</th>
+      <th>Client</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.site %></td>
+        <td><%= request.date %></td>
+        <td><%= link_to request.client.username, show_user_admin_path(request.client_id) %></td>
+        <% if !request.validated %>
+          <td><%= link_to "Validate", validate_audit_admin_path(request.id), method: :post %></td>
+        <% end %>
+        <td><%= link_to "Details", show_audit_admin_path(request.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @requests, param_name: :request_page %>
