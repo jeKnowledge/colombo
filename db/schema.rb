@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_012117) do
+ActiveRecord::Schema.define(version: 2018_11_01_012513) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_012117) do
     t.index ["client_id"], name: "index_audits_on_client_id"
   end
 
-  create_table "conserns", force: :cascade do |t|
+  create_table "consents", force: :cascade do |t|
     t.string "title", default: "", null: false
     t.text "description", default: "", null: false
     t.datetime "created_at", null: false

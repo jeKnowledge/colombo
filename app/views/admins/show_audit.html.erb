@@ -1,37 +1,16 @@
-<h1>Listing Books</h1>
+<h1>Audit Details</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Site</th>
-      <th>Address</th>
-      <th>Date</th>
-      <th>Products</th>
-      <% if @audit.is_a? Report or @audot.is_a? Plan %>
-        <td><%= @audit.auditor.username %></td>
-      <% else %>
-        <td><%= @audit.client.username %></td>
-      <% end %>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <tr>
-      <td><%= @audit.site %></td>
-      <td><%= @audit.address %></td>
-      <td><%= @audit.date %></td>
-      <td><%= @audit.products %></td>
-      <% if @audit.is_a? Report or @audot.is_a? Plan %>
-        <td><%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %></td>
-      <% else %>
-        <td><%= link_to @audit.client.username, show_user_admin_path(@audit.client_id) %></td>
-      <% end %>
-    </tr>
-  </tbody>
-</table>
-
+<b>Site: </b><%= @audit.site %> <br>
+<b>Address: </b><%= @audit.address %> <br>
+<b>Date: </b><%= @audit.date %> <br>
+<b>Products: </b><%= @audit.products %> <br>
+<b>Auditor: </b>
+<% if @audit.is_a? Report or @audit.is_a? Plan %>
+  <%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %>
+<% else %>
+  <%= link_to @audit.client.username, show_user_admin_path(@audit.client_id) %>
+<% end %>
+<br>
 <% if !@audit.validated %>
   <%= link_to "Validate", validate_audit_admin_path(@audit.id), method: :post %>
 <% end %>
-<br>
