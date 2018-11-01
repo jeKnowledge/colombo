@@ -1,9 +1,8 @@
 class Auditor < User
   mount_uploader :cv, CVUploader
 
-  has_one :user
-  has_many :reports
-  has_many :plans
+  has_many :reports, dependent: :destroy
+  has_many :plans, dependent: :destroy
 
   validates_presence_of :rating, :qualifications, :cv, :address, :company
 

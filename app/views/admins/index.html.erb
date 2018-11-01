@@ -17,7 +17,7 @@
         <td><%= user.first_name %></td>
         <td><%= user.last_name %></td>
         <% if !user.validated %>
-          <td><%= link_to "Validate", validate_user_admin_path(user.id), method: :post %></td>
+          <td><%= link_to "Validate", validate_user_admin_path(user.id) %></td>
         <% end %>
         <td><%= link_to "Details", show_user_admin_path(user.id) %></td>
       </tr>
@@ -45,7 +45,7 @@
         <td><%= client.first_name %></td>
         <td><%= client.last_name %></td>
         <% unless client.validated %>
-          <td><%= link_to "Validate", validate_user_admin_path(client.id), method: :post %></td>
+          <td><%= link_to "Validate", validate_user_admin_path(client.id) %></td>
         <% end %>
         <td><%= link_to "Details", show_user_admin_path(client.id) %></td>
       </tr>
@@ -74,7 +74,7 @@
         <td><%= report.date %></td>
         <td><%= link_to report.auditor.username, show_user_admin_path(report.auditor_id) %></td>
         <% unless report.validated %>
-          <td><%= link_to "Validate", validate_audit_admin_path(report.id), method: :post %></td>
+          <td><%= link_to "Validate", validate_audit_admin_path(report.id) %></td>
         <% end %>
         <td><%= link_to "Details", show_audit_admin_path(report.id) %></td>
       </tr>
@@ -103,7 +103,7 @@
         <td><%= plan.date %></td>
         <td><%= link_to plan.auditor.username, show_user_admin_path(plan.auditor_id) %></td>
         <% unless plan.validated %>
-          <td><%= link_to "Validate", validate_audit_admin_path(plan.id), method: :post %></td>
+          <td><%= link_to "Validate", validate_audit_admin_path(plan.id) %></td>
         <% end %>
         <td><%= link_to "Details", show_audit_admin_path(plan.id) %></td>
       </tr>
@@ -131,7 +131,7 @@
         <td><%= request.date %></td>
         <td><%= link_to request.client.username, show_user_admin_path(request.client_id) %></td>
         <% unless request.validated %>
-          <td><%= link_to "Validate", validate_audit_admin_path(request.id), method: :post %></td>
+          <td><%= link_to "Validate", validate_audit_admin_path(request.id) %></td>
         <% end %>
         <td><%= link_to "Details", show_audit_admin_path(request.id) %></td>
       </tr>

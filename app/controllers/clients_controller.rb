@@ -1,7 +1,8 @@
 class ClientsController < ApplicationController
   before_action :client_authenticated?, only: [:index, :edit, :update, :show, :destory]
   before_action :client_validated?, only: [:index, :edit, :update, :show, :destory]
-  before_action :set_client, only: [:show]
+  
+  before_action :set_client, only: [:show, :edit, :update]
 
   layout 'client', except: [:new, :create]
 
@@ -13,7 +14,7 @@ class ClientsController < ApplicationController
   end
 
   def create
-    @client = Client.new(client_params)
+    @client = Client.new(client_signup_params)
 
     if @client.terms == "0"
       @client.errors.add(:terms, :blank, message: "must be accepted")
@@ -29,6 +30,17 @@ class ClientsController < ApplicationController
   def show
   end
 
+  def edit
+  end
+
+  def update
+    if @client.update_attributes(client_params)
+      redirect_to profile_auditor_path
+    else
+      render :edit
+    end
+  end
+
   def mail
   end
 
@@ -42,8 +54,12 @@ class ClientsController < ApplicationController
   end
 
   private
-    def client_params
+    def client_signup_params
       params.require(:client).permit(:password, :password_confirmation, :first_name, :last_name, :email, :address, :company, :terms)
+    end
+
+    def client_params
+      params.require(:client).permit(:first_name, :last_name, :email, :address, :company)
     end
 
     def set_client

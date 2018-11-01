@@ -1,5 +1,5 @@
 class Client < User
-  has_many :requests
+  has_many :requests, dependent: :destroy
 
   validates_presence_of :address, :company
 
