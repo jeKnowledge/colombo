@@ -41,6 +41,11 @@ class ClientsController < ApplicationController
     end
   end
 
+  def destroy
+    current_user.destroy
+    redirect_to sign_out_path
+  end
+
   def mail
   end
 
