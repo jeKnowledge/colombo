@@ -1,5 +1,7 @@
 class Consent < ApplicationRecord
 
+  validates_presence_of :type_id, :description
+
   def get_type
     case self.type_id
     when 0
