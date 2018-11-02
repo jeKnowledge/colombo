@@ -4,22 +4,21 @@
 <table>
   <thead>
     <tr>
-      <th></th>
       <th>Type</th>
       <th>Description</th>
-      <th colspan="3"></th>
+      <th>Status</th>
     </tr>
   </thead>
 
   <tbody>
     <% @consents.each do |consent| %>
       <tr>
-        <td><%= consent.get_type %></td>
+        <td><%= Consent::TYPES[consent.type_id] %></td>
         <td><%= consent.description %></td>
-        <% if !consent.active %>
-          <td><%= link_to "Activate", toggle_consent_admin_path(consent.id) %></td>
+        <% if consent.active != 0 %>
+          <td>Active</td>
         <% else %>
-          <td><%= link_to "Deactivate", toggle_consent_admin_path(consent.id) %></td>
+          <td>Not active</td>
         <% end %>
         <td><%= link_to "Details", admin_consent_path(consent.id) %></td>
       </tr>

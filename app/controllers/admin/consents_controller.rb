@@ -9,9 +9,7 @@ class Admin::ConsentsController < ApplicationController
   end
 
   def create
-    p = consent_params
-    p[:type_id] = Consent.get_type_id(p[:type_id])
-    @consent = Consent.new(p)
+    @consent = Consent.new(consent_params)
 
     if @consent.save
       redirect_to admin_consents_path
@@ -21,7 +19,7 @@ class Admin::ConsentsController < ApplicationController
   end
 
   def index
-    @consents = Consent.all
+    @consents = Consent.all.order(active: :desc)
   end
 
   def show
@@ -33,23 +31,10 @@ class Admin::ConsentsController < ApplicationController
   end
 
   def edit
-    @term_checked = false
-    @contract_checked = false
-    @cookies_checked = false
-    case @consent.type_id
-    when 0
-      @term_checked = true
-    when 1
-      @contract_checked = true
-    when 2
-      @cookies_checked = true
-    end
   end
 
   def update
-    p = consent_params
-    p[:type_id] = Consent.get_type_id(p[:type_id])
-    if @consent.update_attributes(p)
+    if @consent.update_attributes(consent_params)
       redirect_to admin_consents_path
     else
       render :edit
@@ -57,7 +42,8 @@ class Admin::ConsentsController < ApplicationController
   end
 
   def toggle
-    @consent.update_column(:active, !@consent.active)
+    current_value = @consent.active != 0
+    @consent.update_attributes(active: !current_value)
     redirect_to admin_consents_path
   end
 

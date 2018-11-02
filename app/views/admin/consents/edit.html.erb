@@ -4,12 +4,12 @@
 
 <%= form_for @consent, url: admin_consent_path do |f| %>
   <div class="field">
-    <%= f.radio_button :type_id, "Terms", checked: @term_checked %>
+    <%= f.radio_button :type_id, Consent::TYPES.key("Terms"), checked: Consent::TYPES.key("Terms") == @consent.type_id %>
     <%= f.label :type_id, "Terms" %>
-    <%= f.radio_button :type_id, "Contract", checked: @contract_checked %>
-    <%= f.label :type_id, "Contract" %>
-    <%= f.radio_button :type_id, "Cookies", checked: @cookies_checked %>
-    <%= f.label :type_id, "Cookies" %>
+    <%= f.radio_button :type_id, Consent::TYPES.key("Contract"), checked: Consent::TYPES.key("Contract") == @consent.type_id %>
+    <%= f.label :type_id, "Contract"%>
+    <%= f.radio_button :type_id, Consent::TYPES.key("Cookies"), checked: Consent::TYPES.key("Cookies") == @consent.type_id %>
+    <%= f.label :type_id, "Cookies"%>
   </div>
 
   <div class="field">

@@ -1,15 +1,15 @@
-<h1>Edit Consent details</h1>
+<h1>New consent</h1>
 
 <%= render "shared/error_messages", resource: @consent %>
 
 <%= form_for @consent, url: admin_consents_path do |f| %>
   <div class="field">
-    <%= f.radio_button :type_id, "Terms" %>
+    <%= f.radio_button :type_id, Consent::TYPES.key("Terms"), checked: Consent::TYPES.key("Terms") == @consent.type_id %>
     <%= f.label :type_id, "Terms" %>
-    <%= f.radio_button :type_id, "Contract" %>
-    <%= f.label :type_id, "Contract" %>
-    <%= f.radio_button :type_id, "Cookies" %>
-    <%= f.label :type_id, "Cookies" %>
+    <%= f.radio_button :type_id, Consent::TYPES.key("Contract"), checked: Consent::TYPES.key("Contract") == @consent.type_id %>
+    <%= f.label :type_id, "Contract"%>
+    <%= f.radio_button :type_id, Consent::TYPES.key("Cookies"), checked: Consent::TYPES.key("Cookies") == @consent.type_id %>
+    <%= f.label :type_id, "Cookies"%>
   </div>
 
   <div class="field">
