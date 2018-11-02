@@ -1,6 +1,6 @@
 class Admin::ConsentsController < ApplicationController
   before_action :admin_authenticated?
-  before_action :set_consent, only: [:toggle, :show]
+  before_action :set_consent, only: [:toggle, :show, :destroy]
 
   layout 'admin'
 
@@ -13,6 +13,7 @@ class Admin::ConsentsController < ApplicationController
 
   def destroy
     @consent.destroy
+    redirect_to admin_consents_path
   end
 
   def update

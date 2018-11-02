@@ -4,7 +4,7 @@
 <b>Description: </b><%= @consent.description %> <br>
 <br>
 <td><%= link_to "Edit", update_admin_consents_path(@consent.id) %></td>
-<td><%= link_to "Delete", destroy_admin_consents_path(@consent.id) %></td>
+<td><%= link_to "Delete", destroy_admin_consents_path(@consent.id), method: :delete %></td>
 <% if !@consent.active %>
   <td><%= link_to "Activate", toggle_admin_consents_path(@consent.id) %></td>
 <% else %>
