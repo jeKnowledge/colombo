@@ -1,0 +1,16 @@
+<h1>Audit Details</h1>
+
+<b>Site: </b><%= @audit.site %> <br>
+<b>Address: </b><%= @audit.address %> <br>
+<b>Date: </b><%= @audit.date %> <br>
+<b>Products: </b><%= @audit.products %> <br>
+<b>Auditor: </b>
+<% if @audit.is_a? Report or @audit.is_a? Plan %>
+  <%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %>
+<% else %>
+  <%= link_to @audit.client.username, show_user_admin_path(@audit.client_id) %>
+<% end %>
+<br>
+<% if !@audit.validated %>
+  <%= link_to "Validate", validate_audit_admin_path(@audit.id), method: :post %>
+<% end %>
