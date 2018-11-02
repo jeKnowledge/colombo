@@ -1,6 +1,8 @@
 class Plan < Audit
   validate :date_validation
 
+  has_many :reservations, dependent: :destroy
+
   scope :not_expired, -> { where("date > ?", Time.now) }
 
   def date_validation

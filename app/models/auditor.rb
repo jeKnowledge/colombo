@@ -3,6 +3,8 @@ class Auditor < User
 
   has_many :reports, dependent: :destroy
   has_many :plans, dependent: :destroy
+  has_many :purchases, dependent: :destroy
+  has_many :reservations, dependent: :destroy
 
   validates_presence_of :rating, :qualifications, :cv, :address, :company
 

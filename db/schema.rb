@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_01_144606) do
+ActiveRecord::Schema.define(version: 2018_11_02_164102) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,6 +57,30 @@ ActiveRecord::Schema.define(version: 2018_11_01_144606) do
     t.boolean "read", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "purchases", force: :cascade do |t|
+    t.float "price", null: false
+    t.bigint "report_id", null: false
+    t.bigint "client_id", null: false
+    t.bigint "auditor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["auditor_id"], name: "index_purchases_on_auditor_id"
+    t.index ["client_id"], name: "index_purchases_on_client_id"
+    t.index ["report_id"], name: "index_purchases_on_report_id"
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.float "price", null: false
+    t.bigint "plan_id", null: false
+    t.bigint "client_id", null: false
+    t.bigint "auditor_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["auditor_id"], name: "index_reservations_on_auditor_id"
+    t.index ["client_id"], name: "index_reservations_on_client_id"
+    t.index ["plan_id"], name: "index_reservations_on_plan_id"
   end
 
   create_table "users", force: :cascade do |t|
