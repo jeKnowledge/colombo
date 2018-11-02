@@ -2,40 +2,20 @@
 
 <%= render "shared/error_messages", resource: @consent %>
 
-<%= form_for @consent do |f| %>
+<%= form_for @consent, url: admin_consent_path do |f| %>
   <div class="field">
-    <%= f.radio_button :type, "Terms" %>
-    <%= f.label :type, "Terms" %>
-    <%= f.radio_button :type, "Contract" %>
-    <%= f.radio_button :type, "Contract" %>
-    <%= f.label :type, "Cookies" %>
-    <%= f.label :type, "Cookies" %>
+    <%= f.radio_button :type_id, "Terms", checked: @term_checked %>
+    <%= f.label :type_id, "Terms" %>
+    <%= f.radio_button :type_id, "Contract", checked: @contract_checked %>
+    <%= f.label :type_id, "Contract" %>
+    <%= f.radio_button :type_id, "Cookies", checked: @cookies_checked %>
+    <%= f.label :type_id, "Cookies" %>
   </div>
 
   <div class="field">
-    <%= f.label :last_name, "Last name" %>
-    <%= f.text_field :last_name, placeholder: "Bond" %>
+    <%= f.label :description, "Description" %>
+    <%= f.text_field :description, value: @consent.description %>
   </div>
 
-  <div class="field">
-    <%= f.label :email, "Email" %>
-    <%= f.email_field :email, placeholder: "james_bond@secret_agent.corp" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :address %>
-    <%= f.text_field :address, placeholder: "Second street" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :company %>
-    <%= f.text_field :company, placeholder: "E-Corporation" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :qualifications, "Qualifications" %>
-    <%= f.text_field :qualifications, placeholder: "Senior agent" %>
-  </div>
-
-  <%= f.submit "Update account" %>
+  <%= f.submit "Update consent" %>
 <% end %>

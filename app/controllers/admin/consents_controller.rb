@@ -17,11 +17,24 @@ class Admin::ConsentsController < ApplicationController
   end
 
   def edit
+    @term_checked = false
+    @contract_checked = false
+    @cookies_checked = false
+    case @consent.type_id
+    when 0
+      @term_checked = true
+    when 1
+      @contract_checked = true
+    when 2
+      @cookies_checked = true
+    end
   end
 
   def update
-    if @consent.update_attributes(auditor_params)
-      redirect_to profile_auditor_path
+    p = consent_params
+    p[:type_id] = Consent.get_type_id(p[:type_id])
+    if @consent.update_attributes(p)
+      redirect_to admin_consents_path
     else
       render :edit
     end
@@ -34,7 +47,11 @@ class Admin::ConsentsController < ApplicationController
 
   private
 
-    def set_consent
-      @consent = Consent.find(params[:id])
-    end
+  def set_consent
+    @consent = Consent.find(params[:id])
+  end
+
+  def consent_params
+    params.require(:consent).permit(:type_id, :description)
+  end
 end
