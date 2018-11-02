@@ -1,0 +1,11 @@
+<h1>Request details</h1>
+
+<b>Products: </b><%= @request.products %> <br>
+<b>Address: </b><%= @request.address %> <br>
+<b>Company: </b><%= @request.company %> <br>
+<b>Date: </b><%= @request.date %> <br>
+<b>Client: </b><%= link_to @request.client.username, show_user_admin_path(@request.client.id) %><br>
+
+<% unless @request.validated %>
+  <%= link_to "Validate", validate_request_admin_path(@request.id) %>
+<% end %>

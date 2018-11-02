@@ -3,8 +3,12 @@ Rails.application.routes.draw do
     get '/', to: 'admins#index', as: 'dashboard'
     get '/show/user/:id', to: 'admins#show_user', as: 'show_user'
     get '/show/audit/:id', to: 'admins#show_audit', as: 'show_audit'
+    get '/show/request/:id', to: 'admins#show_request', as: 'show_request'
     get '/validate/audit/:id', to: 'admins#validate_audit', as: 'validate_audit'
     get '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
+    get '/validate/request/:id', to: 'admins#validate_request', as: 'validate_request'
+    get '/consents', to: 'admin/consents#index'
+    get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
 
     scope module: :admin do
       resources :consents, only: [:update, :destroy, :index, :show, :edit, :new, :create]

@@ -1,16 +1,21 @@
-<h1>Audit Details</h1>
-
-<b>Site: </b><%= @audit.site %> <br>
-<b>Address: </b><%= @audit.address %> <br>
-<b>Date: </b><%= @audit.date %> <br>
-<b>Products: </b><%= @audit.products %> <br>
-<b>Auditor: </b>
-<% if @audit.is_a? Report or @audit.is_a? Plan %>
-  <%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %>
+<% if @audit.is_a? Report %>
+  <h1>Report details</h1>
 <% else %>
-  <%= link_to @audit.client.username, show_user_admin_path(@audit.client_id) %>
+  <h1>Plan details</h1>
 <% end %>
-<br>
-<% if !@audit.validated %>
+
+<b>Products: </b><%= @audit.products %> <br>
+<b>Price: </b><%= @audit.price %> <br>
+<b>Date: </b><%= @audit.date %> <br>
+<b>Summary: </b><%= @audit.summary %> <br>
+<b>Auditor: </b><%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %><br>
+
+<% if @audit.is_a? Report %>
+  <b>Rating: </b><%= @audit.rating %> <br>
+  <%= link_to "Report file", @audit.report.url %><br>
+<% end %>
+
+
+<% unless @audit.validated %>
   <%= link_to "Validate", validate_audit_admin_path(@audit.id), method: :post %>
 <% end %>
