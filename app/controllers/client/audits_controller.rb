@@ -5,7 +5,7 @@ class Client::AuditsController < ApplicationController
     if params[:query] && !params[:query].empty?
       reports = Report.products_like(params[:query])
       plans = Plan.products_like(params[:query])
-      
+
       Auditor.company_address_like(params[:query]).each do |auditor|
         reports = reports.or(auditor.reports)
         plans = plans.or(auditor.plans)
@@ -72,21 +72,23 @@ class Client::AuditsController < ApplicationController
   def purchase
   end
 
-=begin 
-  def request
+  def make_request
+    @request = Request.new
+    render :request
+  end
+
+  def request_send
     @request = Request.new(request_params)
 
     if @request.save
-      redirect_to dashboard_client_path
+      redirect_to requests_client_path
     else
-      render :search
+      render :request
     end
   end
 
   private
     def request_params
-      params.require(:request)
-        .permit(:company, :address, :date, :products).merge(client_id: current_user.id)
+      params.require(:request).permit(:company, :address, :date, :products).merge(client_id: current_user.id)
     end
-=end
 end
