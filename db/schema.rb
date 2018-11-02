@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_144606) do
   create_table "consents", force: :cascade do |t|
     t.integer "type_id", null: false
     t.text "description", default: "", null: false
-    t.integer "active", default: 0, null: false
+    t.boolean "active", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

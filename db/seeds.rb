@@ -15,3 +15,5 @@ end
 FactoryBot.create :request
 FactoryBot.create :report
 FactoryBot.create :plan
+
+FactoryBot.create :consent

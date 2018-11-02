@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     get '/show/audit/:id', to: 'admins#show_audit', as: 'show_audit'
     get '/validate/audit/:id', to: 'admins#validate_audit', as: 'validate_audit'
     get '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
+    get '/consents', to: 'admin/consents#index'
+    get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
   end
 
   resource :client do
