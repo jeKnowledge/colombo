@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     get '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
 
     scope module: :admin do
-      resources :consents, only: [:update, :destroy, :index, :show, :edit]
+      resources :consents, only: [:update, :destroy, :index, :show, :edit, :new, :create]
     end
     get 'consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
   end

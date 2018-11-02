@@ -4,6 +4,22 @@ class Admin::ConsentsController < ApplicationController
 
   layout 'admin'
 
+  def new
+    @consent = Consent.new
+  end
+
+  def create
+    p = consent_params
+    p[:type_id] = Consent.get_type_id(p[:type_id])
+    @consent = Consent.new(p)
+
+    if @consent.save
+      redirect_to admin_consents_path
+    else
+      render :new
+    end
+  end
+
   def index
     @consents = Consent.all
   end
