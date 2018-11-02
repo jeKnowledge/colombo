@@ -16,11 +16,11 @@
         <td><%= consent.get_type %></td>
         <td><%= consent.description %></td>
         <% if !consent.active %>
-          <td><%= link_to "Activate", toggle_consent_admin_path(consent.id) %></td>
+          <td><%= link_to "Activate", toggle_admin_consents_path(consent.id) %></td>
         <% else %>
-          <td><%= link_to "Deactivate", toggle_consent_admin_path(consent.id) %></td>
+          <td><%= link_to "Deactivate", toggle_admin_consents_path(consent.id) %></td>
         <% end %>
-        <%#<td><%= link_to "Details", show_user_admin_path(user.id) %></td>%>
+        <td><%= link_to "Details", show_admin_consents_path(consent.id) %></td>
       </tr>
     <% end %>
   </tbody>

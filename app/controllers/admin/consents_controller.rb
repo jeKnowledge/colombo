@@ -11,9 +11,16 @@ class Admin::ConsentsController < ApplicationController
   def show
   end
 
+  def destroy
+    @consent.destroy
+  end
+
+  def update
+  end
+
   def toggle
     @consent.update_column(:active, !@consent.active)
-    redirect_to consents_admin_path
+    redirect_to admin_consents_path
   end
 
   private
