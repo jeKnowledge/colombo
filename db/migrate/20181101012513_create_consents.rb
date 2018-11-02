@@ -1,8 +1,9 @@
 class CreateConsents < ActiveRecord::Migration[5.2]
   def change
     create_table :consents do |t|
-      t.string :title, null: false, default: ""
+      t.integer :type_id, null: false
       t.text :description, null: false, default: ""
+      t.integer :active, null: false, default: false
       t.timestamps
     end
   end

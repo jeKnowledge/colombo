@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_01_144606) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2018-11-01", null: false
+    t.date "date", default: "2018-11-02", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(version: 2018_11_01_144606) do
   end
 
   create_table "consents", force: :cascade do |t|
-    t.string "title", default: "", null: false
+    t.integer "type_id", null: false
     t.text "description", default: "", null: false
+    t.integer "active", default: 0, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
