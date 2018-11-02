@@ -50,6 +50,7 @@ class ClientsController < ApplicationController
   end
 
   def requests
+    @requests = current_user.requests
   end
 
   def reservations
