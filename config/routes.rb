@@ -13,7 +13,6 @@ Rails.application.routes.draw do
     scope module: :admin do
       resources :consents, only: [:update, :destroy, :index, :show, :edit, :new, :create]
     end
-    get 'consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
   end
 
   resource :client do

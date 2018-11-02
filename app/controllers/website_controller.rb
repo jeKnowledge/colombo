@@ -22,6 +22,10 @@ class WebsiteController < ApplicationController
     redirect_to root_path
   end
 
+  def terms
+    @terms = Consent.where(type_id: 0)
+  end
+
   private
     def sign_in_params
       params.permit(:username, :password, :remember_me)
