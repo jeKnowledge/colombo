@@ -3,10 +3,10 @@
 <b>Type: </b><%= @consent.get_type %> <br>
 <b>Description: </b><%= @consent.description %> <br>
 <br>
-<td><%= link_to "Edit", update_admin_consents_path(@consent.id) %></td>
-<td><%= link_to "Delete", destroy_admin_consents_path(@consent.id), method: :delete %></td>
+<td><%= link_to "Edit", admin_consent_path(@consent.id) %></td>
+<td><%= link_to "Delete", admin_consent_path(@consent.id), method: :delete %></td>
 <% if !@consent.active %>
-  <td><%= link_to "Activate", toggle_admin_consents_path(@consent.id) %></td>
+  <td><%= link_to "Activate", toggle_consent_admin_path(@consent.id) %></td>
 <% else %>
-  <td><%= link_to "Deactivate", toggle_admin_consents_path(@consent.id) %></td>
+  <td><%= link_to "Deactivate", toggle_consent_admin_path(@consent.id) %></td>
 <% end %>

@@ -1,6 +1,6 @@
 class Admin::ConsentsController < ApplicationController
   before_action :admin_authenticated?
-  before_action :set_consent, only: [:toggle, :show, :destroy]
+  before_action :set_consent, only: [:toggle, :show, :destroy, :update, :edit]
 
   layout 'admin'
 
@@ -16,7 +16,15 @@ class Admin::ConsentsController < ApplicationController
     redirect_to admin_consents_path
   end
 
+  def edit
+  end
+
   def update
+    if @consent.update_attributes(auditor_params)
+      redirect_to profile_auditor_path
+    else
+      render :edit
+    end
   end
 
   def toggle

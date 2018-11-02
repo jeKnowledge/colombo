@@ -1,0 +1,41 @@
+<h1>Edit Consent details</h1>
+
+<%= render "shared/error_messages", resource: @consent %>
+
+<%= form_for @consent do |f| %>
+  <div class="field">
+    <%= f.radio_button :type, "Terms" %>
+    <%= f.label :type, "Terms" %>
+    <%= f.radio_button :type, "Contract" %>
+    <%= f.radio_button :type, "Contract" %>
+    <%= f.label :type, "Cookies" %>
+    <%= f.label :type, "Cookies" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :last_name, "Last name" %>
+    <%= f.text_field :last_name, placeholder: "Bond" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :email, "Email" %>
+    <%= f.email_field :email, placeholder: "james_bond@secret_agent.corp" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :address %>
+    <%= f.text_field :address, placeholder: "Second street" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :company %>
+    <%= f.text_field :company, placeholder: "E-Corporation" %>
+  </div>
+
+  <div class="field">
+    <%= f.label :qualifications, "Qualifications" %>
+    <%= f.text_field :qualifications, placeholder: "Senior agent" %>
+  </div>
+
+  <%= f.submit "Update account" %>
+<% end %>
