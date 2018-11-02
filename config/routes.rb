@@ -9,6 +9,14 @@ Rails.application.routes.draw do
     get '/validate/request/:id', to: 'admins#validate_request', as: 'validate_request'
     get '/consents', to: 'admin/consents#index'
     get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
+
+    resource :consents, only: [] do
+      delete '/:id', to: 'admin/consents#destroy', as: 'destroy'
+      get '/', to: 'admin/consents#index'
+      get '/toggle/:id', to: 'admin/consents#toggle', as: 'toggle'
+      put '/:id', to: 'admin/consents#update', as: 'update'
+      get '/:id', to: 'admin/consents#show', as: 'show'
+    end
   end
 
   resource :client do

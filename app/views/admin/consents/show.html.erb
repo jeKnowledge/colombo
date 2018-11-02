@@ -1,16 +1,12 @@
-<h1>Audit Details</h1>
+<h1>Consent Details</h1>
 
-<b>Site: </b><%= @audit.site %> <br>
-<b>Address: </b><%= @audit.address %> <br>
-<b>Date: </b><%= @audit.date %> <br>
-<b>Products: </b><%= @audit.products %> <br>
-<b>Auditor: </b>
-<% if @audit.is_a? Report or @audit.is_a? Plan %>
-  <%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %>
-<% else %>
-  <%= link_to @audit.client.username, show_user_admin_path(@audit.client_id) %>
-<% end %>
+<b>Type: </b><%= @consent.get_type %> <br>
+<b>Description: </b><%= @consent.description %> <br>
 <br>
-<% if !@audit.validated %>
-  <%= link_to "Validate", validate_audit_admin_path(@audit.id), method: :post %>
+<td><%= link_to "Edit", update_admin_consents_path(@consent.id) %></td>
+<td><%= link_to "Delete", destroy_admin_consents_path(@consent.id), method: :delete %></td>
+<% if !@consent.active %>
+  <td><%= link_to "Activate", toggle_admin_consents_path(@consent.id) %></td>
+<% else %>
+  <td><%= link_to "Deactivate", toggle_admin_consents_path(@consent.id) %></td>
 <% end %>
