@@ -26,12 +26,12 @@ Rails.application.routes.draw do
     post '/sign_up', to: 'clients#create'
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
-      get '/request', to: 'client/audits#make_request'
-      post '/request', to: 'client/audits#request_send'
-      get '/search', to: 'client/audits#search'
       get '/advanced_search', to: 'client/audits#advanced_search'
-      post '/reserve', to: 'client/audits#reserve'
-      post '/purchase', to: 'client/audits#purchase'
+      get '/purchase/:id', to: 'client/audits#purchase', as: 'purchase'
+      get '/request', to: 'client/audits#make_request'
+      get '/reserve/:id', to: 'client/audits#reserve', as: 'reserve'
+      get '/search', to: 'client/audits#search'
+      post '/request', to: 'client/audits#request_send'
     end
   end
 

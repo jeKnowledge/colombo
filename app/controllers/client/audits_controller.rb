@@ -22,7 +22,7 @@ class Client::AuditsController < ApplicationController
   def advanced_search
     @search_company = params[:company]
     @search_address = params[:address]
-    @search_products = params[:products] 
+    @search_products = params[:products]
 
     reports = Report.all.validated()
     plans = Plan.all.validated().not_expired()
@@ -58,8 +58,8 @@ class Client::AuditsController < ApplicationController
       end
 
       reports = reports.merge(collection) unless collection.nil?
-    end 
-  
+    end
+
     @reports = reports.distinct.paginate(params[:report_page], 5)
     @plans = plans.distinct.paginate(params[:report_page], 5)
 
@@ -67,9 +67,15 @@ class Client::AuditsController < ApplicationController
   end
 
   def reserve
+    plan = Plan.find(params[:id])
+    Reservation.create(price: plan.price, plan_id: plan.id, client_id: current_user.id, auditor_id: plan.auditor.id)
+    redirect_to search_client_audits_path
   end
 
   def purchase
+    report = Report.find(params[:id])
+    Purchase.create(price: report.price, report_id: report.id, client_id: current_user.id, auditor_id: report.auditor.id)
+    redirect_to search_client_audits_path
   end
 
   def make_request

@@ -3,7 +3,7 @@
 <%= form_tag search_client_audits_path, method: :get do %>
   <%= text_field_tag :query, @search_query %>
 
-  <%= submit_tag "Search" %>  
+  <%= submit_tag "Search" %>
 <% end %>
 
 <h2>Advanced search</h2>
@@ -24,7 +24,7 @@
     <%= text_field_tag :products, @search_products %>
   </div>
 
-  <%= submit_tag "Advanced search" %>  
+  <%= submit_tag "Advanced search" %>
 <% end %>
 
 <h1>Search results</h1>
@@ -48,7 +48,7 @@
       </tr>
     </thead>
 
-    <tbody>    
+    <tbody>
       <% @reports.each do |report| %>
         <tr>
           <td><%= report.auditor.company %></td>
@@ -58,7 +58,7 @@
           <td><%= report.date %></td>
           <td><%= report.price %></td>
           <td><%= (report.rating != 0) ? report.rating : "Not rated" %></td>
-          <td><%= link_to "Purchase", buy_client_audits_path(report.id) %></td>
+          <td><%= link_to "Purchase", purchase_client_audits_path(report.id) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -85,7 +85,7 @@
       </tr>
     </thead>
 
-    <tbody>    
+    <tbody>
       <% @plans.each do |plan| %>
         <tr>
           <td><%= plan.auditor.company %></td>
