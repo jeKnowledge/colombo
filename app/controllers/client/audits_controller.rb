@@ -1,4 +1,9 @@
 class Client::AuditsController < ApplicationController
+  before_action :client_authenticated?
+  before_action :client_validated?
+  
+  layout 'client'
+
   def search
     @search_query = params[:query]
 
