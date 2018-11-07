@@ -32,6 +32,10 @@ class AuditorsController < ApplicationController
   def edit
   end
 
+  def purchases
+    @purchases = Purchase.where(auditor_id: current_user.id)
+  end
+
   def update
     if @auditor.update_attributes(auditor_params)
       redirect_to profile_auditor_path

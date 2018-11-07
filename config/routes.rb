@@ -7,12 +7,9 @@ Rails.application.routes.draw do
     get '/validate/audit/:id', to: 'admins#validate_audit', as: 'validate_audit'
     get '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
     get '/validate/request/:id', to: 'admins#validate_request', as: 'validate_request'
-    get '/consents', to: 'admin/consents#index'
-    get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
 
-    scope module: :admin do
-      resources :consents, only: [:update, :destroy, :index, :show, :edit, :new, :create]
-    end
+    get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
+    resources :consents , controller: 'admin/consents'
   end
 
   resource :client do

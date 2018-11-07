@@ -1,0 +1,21 @@
+<h1>My purchase list</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Report</th>
+      <th>Client</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @purchases.each do |purchase| %>
+      <tr>
+        <td><%= purchase.report_id %></td>
+
+<%= link_to "Report", edit_auditor_path %>
+<%= link_to purchase.client.username, edit_auditor_path %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

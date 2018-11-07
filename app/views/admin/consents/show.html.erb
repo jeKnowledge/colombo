@@ -1,11 +1,12 @@
 <h1>Consent Details</h1>
 
-<b>Type: </b><%= @consent.get_type %> <br>
+<b>Type: </b><%= Consent::TYPES[@consent.type_id] %> <br>
 <b>Description: </b><%= @consent.description %> <br>
 <br>
 <td><%= link_to "Edit", edit_admin_consent_path(@consent.id) %></td>
-<td><%= link_to "Delete", admin_consent_path(@consent.id), method: :delete %></td>
-<% if !@consent.active %>
+<td><%= link_to "Delete", admin_consent_path(@consent.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+
+<% if @consent.active == 0 %>
   <td><%= link_to "Activate", toggle_consent_admin_path(@consent.id) %></td>
 <% else %>
   <td><%= link_to "Deactivate", toggle_consent_admin_path(@consent.id) %></td>

@@ -1,0 +1,37 @@
+<h1>Profile</h1>
+
+<p><b>Username: </b><%= @client.username %></p>
+<p><b>First name: </b><%= @client.first_name %></p>
+<p><b>Last name: </b><%= @client.last_name %></p>
+<p><b>Email: </b><%= @client.email %></p>
+<p><b>Address: </b><%= @client.address %></p>
+<p><b>Company: </b><%= @client.company %></p>
+
+<%= link_to "Edit account", edit_client_path %>
+<%= link_to "Delete account", client_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+
+<h1>Purchases list</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Products</th>
+      <th>Company</th>
+      <th>Address</th>
+      <th>Date</th>
+      <th>Validated</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.products %></td>
+        <td><%= request.company %></td>
+        <td><%= request.address %></td>
+        <td><%= request.date %></td>
+        <td><%= request.validated %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
