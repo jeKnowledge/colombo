@@ -23,7 +23,7 @@ class WebsiteController < ApplicationController
   end
 
   def terms
-    @terms = Consent.where(type_id: 0)
+    @terms = Consent.terms.active
   end
 
   private
