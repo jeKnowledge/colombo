@@ -45,7 +45,9 @@ Rails.application.routes.draw do
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/show_report/:id', to: 'auditor/audits#show_report', as: 'show_report'
+      get '/show_plan/:id', to: 'auditor/audits#show_plan', as: 'show_plan'
       get '/purchases', to: 'auditor/audits#purchases'
+      get '/reservations', to: 'auditor/audits#reservations'
       get '/report', to: 'auditor/audits#report'
       post '/report', to: 'auditor/audits#report_send'
       get '/reports', to: 'auditor/audits#reports'

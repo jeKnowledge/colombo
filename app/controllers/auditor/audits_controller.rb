@@ -44,8 +44,16 @@ class Auditor::AuditsController < ApplicationController
     @plans = current_user.plans.order(:date)
   end
 
+  def show_plan
+    @plan = Plan.find(params[:id])
+  end
+
   def purchases
     @purchases = Purchase.where(auditor_id: current_user.id)
+  end
+
+  def reservations
+    @reservations = Reservation.where(auditor_id: current_user.id)
   end
 
   private
