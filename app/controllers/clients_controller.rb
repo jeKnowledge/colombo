@@ -1,7 +1,7 @@
 class ClientsController < ApplicationController
   before_action :client_authenticated?, only: [:index, :edit, :update, :show, :destory]
   before_action :client_validated?, only: [:index, :edit, :update, :show, :destory]
-  before_action :set_client, only: [:show, :edit, :update]
+  before_action :set_client, except: [:new, :create]
 
   layout 'client', except: [:new, :create]
 
@@ -15,14 +15,16 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_signup_params)
 
-    if @client.terms == "0"
+    unless @client.terms_accepted
       @client.errors.add(:terms, :blank, message: "must be accepted")
       render :new
-    elsif @client.save
-      session[:user_id] = @client.id
-      redirect_to dashboard_client_path
     else
-      render :new
+      if @client.save
+        session[:user_id] = @client.id
+        redirect_to dashboard_client_path
+      else
+        render :new
+      end
     end
   end
 
@@ -64,7 +66,10 @@ class ClientsController < ApplicationController
 
   private
     def client_signup_params
-      params.require(:client).permit(:password, :password_confirmation, :first_name, :last_name, :email, :address, :company, :terms)
+      params.require(:client).permit(
+        :password, :password_confirmation, :first_name, :last_name,
+        :email, :address,:company, :terms_accepted
+      )
     end
 
     def client_params

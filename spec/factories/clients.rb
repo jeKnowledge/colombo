@@ -6,5 +6,6 @@ FactoryBot.define do
     password { "password" }
     address { Faker::Address.street_name }
     company { Faker::Company.name }
+    terms_accepted { true }
   end
 end

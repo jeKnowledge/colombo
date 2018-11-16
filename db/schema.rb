@@ -29,7 +29,11 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
+<<<<<<< HEAD
     t.date "date", default: "2018-11-16", null: false
+=======
+    t.date "date", default: "2018-11-07", null: false
+>>>>>>> 1c36ab542a7678610aab1b678dd49a24c7ed564d
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -60,7 +64,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
   end
 
   create_table "purchases", force: :cascade do |t|
-    t.float "price", null: false
+    t.float "price", default: 0.0, null: false
     t.bigint "report_id", null: false
     t.bigint "client_id", null: false
     t.bigint "auditor_id", null: false
@@ -72,7 +76,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
   end
 
   create_table "reservations", force: :cascade do |t|
-    t.float "price", null: false
+    t.float "price", default: 0.0, null: false
     t.bigint "plan_id", null: false
     t.bigint "client_id", null: false
     t.bigint "auditor_id", null: false
@@ -91,6 +95,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
     t.string "last_name", default: "", null: false
     t.string "password_digest", default: "", null: false
     t.boolean "validated", default: false, null: false
+    t.boolean "terms_accepted", null: false
     t.string "address", default: "", null: false
     t.string "company", default: "", null: false
     t.float "rating", default: 0.0, null: false

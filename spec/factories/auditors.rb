@@ -8,5 +8,6 @@ FactoryBot.define do
     cv { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/resume.pdf')) }
     address { Faker::Address.street_name }
     company { Faker::Company.name }
+    terms_accepted { true }
   end
 end
