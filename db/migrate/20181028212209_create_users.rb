@@ -8,7 +8,6 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :last_name, null: false, default: ""
       t.string :password_digest, null: false, default: ""
       t.boolean :validated, null: false, default: false, index: true
-      t.boolean :ters_accepted, null: false
 
       # client
       t.string :address, null: false, default: ""

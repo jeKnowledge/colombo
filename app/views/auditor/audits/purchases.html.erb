@@ -11,10 +11,8 @@
   <tbody>
     <% @purchases.each do |purchase| %>
       <tr>
-        <td><%= purchase.report_id %></td>
-
-<%= link_to "Report", edit_auditor_path %>
-<%= link_to purchase.client.username, edit_auditor_path %>
+        <td><%= link_to "Details", show_report_auditor_audits_path(purchase.report_id) %></td>
+        <td><%= link_to purchase.client.username, show_profile_client_path(purchase.client.id) %></td>
       </tr>
     <% end %>
   </tbody>

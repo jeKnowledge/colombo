@@ -29,6 +29,10 @@ class ClientsController < ApplicationController
   def show
   end
 
+  def profile
+    @client = Client.find(params[:id])
+  end
+
   def edit
   end
 

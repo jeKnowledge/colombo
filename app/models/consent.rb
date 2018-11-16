@@ -1,5 +1,4 @@
 class Consent < ApplicationRecord
-<<<<<<< HEAD
 
   validates_presence_of :type_id, :description
 
@@ -24,11 +23,4 @@ class Consent < ApplicationRecord
       return 2
     end
   end
-=======
-  TYPES = {
-    0 => "Terms",
-    1 => "Contract",
-    2 => "Cookies"
-  }
->>>>>>> b366e830c2f55b93d719fdac00d5e47be02cbef3
 end

@@ -6,6 +6,3 @@
 <p><b>Email: </b><%= @client.email %></p>
 <p><b>Address: </b><%= @client.address %></p>
 <p><b>Company: </b><%= @client.company %></p>
-
-<%= link_to "Edit account", edit_client_path %>
-<%= link_to "Delete account", client_path, method: :delete, data: { confirm: 'Are you sure?' } %>

@@ -22,6 +22,10 @@ class Auditor::AuditsController < ApplicationController
     @reports = current_user.reports.order(:date)
   end
 
+  def show_report
+    @report = Report.find(params[:id])
+  end
+
   def plan
     @plan = Plan.new
   end
@@ -40,15 +44,19 @@ class Auditor::AuditsController < ApplicationController
     @plans = current_user.plans.order(:date)
   end
 
+  def purchases
+    @purchases = Purchase.where(auditor_id: current_user.id)
+  end
+
   private
 
-  def report_params
-    params.require(:report)
-      .permit(:products, :price, :summary, :report).merge(auditor_id: current_user.id)
-  end
+    def report_params
+      params.require(:report)
+        .permit(:products, :price, :summary, :report).merge(auditor_id: current_user.id)
+    end
 
-  def plan_params
-    params.require(:plan)
-      .permit(:products, :price, :date, :summary).merge(auditor_id: current_user.id)
-  end
+    def plan_params
+      params.require(:plan)
+        .permit(:products, :price, :date, :summary).merge(auditor_id: current_user.id)
+    end
 end
