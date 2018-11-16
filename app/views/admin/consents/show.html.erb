@@ -6,7 +6,7 @@
 <td><%= link_to "Edit", edit_admin_consent_path(@consent.id) %></td>
 <td><%= link_to "Delete", admin_consent_path(@consent.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
 
-<% if @consent.active == 0 %>
+<% unless @consent.active %>
   <td><%= link_to "Activate", toggle_consent_admin_path(@consent.id) %></td>
 <% else %>
   <td><%= link_to "Deactivate", toggle_consent_admin_path(@consent.id) %></td>

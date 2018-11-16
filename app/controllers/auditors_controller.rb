@@ -45,6 +45,14 @@ class AuditorsController < ApplicationController
     redirect_to sign_out_path
   end
 
+  def purchases
+    @purchases = Purchase.where(auditor_id: current_user.id)
+  end
+
+  def reservations
+    @reservations = Reservation.where(auditor_id: current_user.id)
+  end
+
   private
     def auditor_signup_params
       params.require(:auditor).permit(:first_name, :last_name, :email, :qualifications, :cv, :password, :password_confirmation, :terms)

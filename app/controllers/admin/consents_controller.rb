@@ -42,7 +42,7 @@ class Admin::ConsentsController < ApplicationController
   end
 
   def toggle
-    current_value = @consent.active != 0
+    current_value = @consent.active
     @consent.update_attributes(active: !current_value)
     redirect_to admin_consents_path
   end

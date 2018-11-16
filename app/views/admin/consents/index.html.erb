@@ -15,7 +15,7 @@
       <tr>
         <td><%= Consent::TYPES[consent.type_id] %></td>
         <td><%= consent.description %></td>
-        <% if consent.active != 0 %>
+        <% if consent.active %>
           <td>Active</td>
         <% else %>
           <td>Not active</td>

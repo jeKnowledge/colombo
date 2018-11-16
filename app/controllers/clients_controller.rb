@@ -59,9 +59,11 @@ class ClientsController < ApplicationController
   end
 
   def reservations
+    @reservations = current_user.reservations
   end
 
   def purchases
+    @purchases = current_user.purchases
   end
 
   private
