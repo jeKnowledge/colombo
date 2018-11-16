@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
-  before_action :client_authenticated?, only: [:index, :edit, :update, :show, :destory]
-  before_action :client_validated?, only: [:index, :edit, :update, :show, :destory]
+  before_action :client_authenticated?, only: [:index, :edit, :update, :show, :destory, :profile]
+  before_action :client_validated?, only: [:index, :edit, :update, :show, :destory, :profile]
   before_action :set_client, except: [:new, :create]
 
   layout 'client', except: [:new, :create]
