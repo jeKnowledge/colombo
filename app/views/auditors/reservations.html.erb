@@ -1,18 +1,19 @@
-<h1>My reservation list</h1>
+<h1>Sold plans</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Plan</th>
       <th>Client</th>
+      <th>Products</th>
     </tr>
   </thead>
 
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to "Details", show_plan_auditor_audits_path(reservation.plan_id) %></td>
-        <td><%= link_to reservation.client.username, show_profile_client_path(reservation.client.id) %></td>
+        <td><%= link_to reservation.client.username, show_client_auditor_path(reservation.client_id) %></td>
+        <td><%= reservation.plan.products %></td>
+        <td><%= link_to "Plan", show_plan_auditor_audits_path(reservation.plan_id) %></td>
       </tr>
     <% end %>
   </tbody>
