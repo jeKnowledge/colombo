@@ -1,18 +1,19 @@
-<h1>My purchase list</h1>
+<h1>Sold reports</h1>
 
 <table>
   <thead>
     <tr>
-      <th>Report</th>
       <th>Client</th>
+      <th>Products</th>
     </tr>
   </thead>
 
   <tbody>
     <% @purchases.each do |purchase| %>
       <tr>
-        <td><%= link_to "Details", show_report_auditor_audits_path(purchase.report_id) %></td>
-        <td><%= link_to purchase.client.username, show_profile_client_path(purchase.client.id) %></td>
+        <td><%= link_to purchase.client.username %></td>
+        <td><%= purchase.report.products %></td>
+        <td><%= link_to "Report", show_report_auditor_audits_path(purchase.report_id) %></td>
       </tr>
     <% end %>
   </tbody>
