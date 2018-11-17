@@ -1,7 +1,7 @@
 class AuditorsController < ApplicationController
   before_action :auditor_authenticated?, except: [:create, :new]
   before_action :auditor_validated?, except: [:create, :new]
-  before_action :set_auditor, only: [:show, :edit, :update]
+  before_action :set_auditor, except: [:create, :new]
 
   layout 'auditor', except: [:new, :create]
 
