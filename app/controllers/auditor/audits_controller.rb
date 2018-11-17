@@ -19,7 +19,7 @@ class Auditor::AuditsController < ApplicationController
   end
 
   def reports
-    @reports = current_user.reports.order(:date)
+    @reports = @auditor.reports.order(:date)
   end
 
   def show_report
@@ -41,7 +41,7 @@ class Auditor::AuditsController < ApplicationController
   end
 
   def plans
-    @plans = current_user.plans.order(:date)
+    @plans = @auditor.plans.order(:date)
   end
 
   def show_plan
@@ -52,11 +52,11 @@ class Auditor::AuditsController < ApplicationController
 
     def report_params
       params.require(:report)
-        .permit(:products, :price, :summary, :report).merge(auditor_id: current_user.id)
+        .permit(:products, :price, :summary, :report).merge(auditor_id: @auditor.id)
     end
 
     def plan_params
       params.require(:plan)
-        .permit(:products, :price, :date, :summary).merge(auditor_id: current_user.id)
+        .permit(:products, :price, :date, :summary).merge(auditor_id: @auditor.id)
     end
 end

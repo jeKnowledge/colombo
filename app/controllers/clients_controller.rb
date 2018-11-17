@@ -1,7 +1,6 @@
 class ClientsController < ApplicationController
   before_action :client_authenticated?, except: [:create, :new]
-  before_action :client_validated?, except: [:create, :new]
-  before_action :set_client, except: [:new, :create]
+  before_action :client_validated?, except: [:create, :new, :accept_terms]
 
   layout 'client', except: [:new, :create]
 
@@ -47,7 +46,7 @@ class ClientsController < ApplicationController
   end
 
   def destroy
-    current_user.destroy
+    @client.destroy
     redirect_to sign_out_path
   end
 
@@ -55,15 +54,20 @@ class ClientsController < ApplicationController
   end
 
   def requests
-    @requests = current_user.requests
+    @requests = @client.requests
   end
 
   def reservations
-    @reservations = current_user.reservations
+    @reservations = @client.reservations
   end
 
   def purchases
-    @purchases = current_user.purchases
+    @purchases = @client.purchases
+  end
+
+  def accept_terms
+    @client.update_attribute(:terms_accepted, true)
+    redirect_to dashboard_client_path
   end
 
   private
@@ -79,6 +83,6 @@ class ClientsController < ApplicationController
     end
 
     def set_client
-      @client = current_user
+      @client = Client.find(session[:user_id])
     end
 end

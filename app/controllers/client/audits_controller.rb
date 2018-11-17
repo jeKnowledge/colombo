@@ -73,13 +73,13 @@ class Client::AuditsController < ApplicationController
 
   def reserve
     plan = Plan.find(params[:id])
-    Reservation.create(price: plan.price, plan_id: plan.id, client_id: current_user.id, auditor_id: plan.auditor.id)
+    Reservation.create(price: plan.price, plan_id: plan.id, client_id: @client.id, auditor_id: plan.auditor.id)
     redirect_to search_client_audits_path
   end
 
   def purchase
     report = Report.find(params[:id])
-    Purchase.create(price: report.price, report_id: report.id, client_id: current_user.id, auditor_id: report.auditor.id)
+    Purchase.create(price: report.price, report_id: report.id, client_id: @client.id, auditor_id: report.auditor.id)
     redirect_to search_client_audits_path
   end
 
@@ -100,6 +100,6 @@ class Client::AuditsController < ApplicationController
 
   private
     def request_params
-      params.require(:request).permit(:company, :address, :date, :products).merge(client_id: current_user.id)
+      params.require(:request).permit(:company, :address, :date, :products).merge(client_id: @client.id)
     end
 end

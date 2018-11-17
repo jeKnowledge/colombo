@@ -7,7 +7,6 @@ Rails.application.routes.draw do
     get '/validate/audit/:id', to: 'admins#validate_audit', as: 'validate_audit'
     get '/validate/user/:id', to: 'admins#validate_user', as: 'validate_user'
     get '/validate/request/:id', to: 'admins#validate_request', as: 'validate_request'
-
     get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
     resources :consents , controller: 'admin/consents'
   end
@@ -21,6 +20,7 @@ Rails.application.routes.draw do
     get '/reservations', to: 'clients#reservations'
     get '/sign_up', to: 'clients#new'
     post '/sign_up', to: 'clients#create'
+    post '/accept_terms', to: 'clients#accept_terms'
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/advanced_search', to: 'client/audits#advanced_search'
@@ -42,6 +42,7 @@ Rails.application.routes.draw do
     get '/sign_up', to: 'auditors#new'
     post '/sign_up', to: 'auditors#create'
     get '/show_client/:id', to: 'auditors#show_client', as: 'show_client'
+    post '/accept_terms', to: 'auditors#accept_terms'
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/show_report/:id', to: 'auditor/audits#show_report', as: 'show_report'

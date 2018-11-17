@@ -27,6 +27,9 @@ class Admin::ConsentsController < ApplicationController
 
   def destroy
     @consent.destroy
+
+    User.update_all(terms_accepted: false)
+
     redirect_to admin_consents_path
   end
 
@@ -35,6 +38,8 @@ class Admin::ConsentsController < ApplicationController
 
   def update
     if @consent.update_attributes(consent_params)
+      User.update_all(terms_accepted: false)
+
       redirect_to admin_consents_path
     else
       render :edit
@@ -42,8 +47,10 @@ class Admin::ConsentsController < ApplicationController
   end
 
   def toggle
-    current_value = @consent.active
-    @consent.update_attributes(active: !current_value)
+    @consent.update_attributes(active: !@consent.active)
+
+    User.update_all(terms_accepted: false) if @consent.active
+
     redirect_to admin_consents_path
   end
 

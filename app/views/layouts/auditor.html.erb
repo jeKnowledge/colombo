@@ -10,6 +10,8 @@
   </head>
 
   <body>
+    <%= render "shared/error_messages", resource: @auditor %>
+
     <%= render partial: '/auditors/shared/sidebar' %>
 
     <%= yield %>

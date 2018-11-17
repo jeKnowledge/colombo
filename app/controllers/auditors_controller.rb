@@ -1,7 +1,6 @@
 class AuditorsController < ApplicationController
   before_action :auditor_authenticated?, except: [:create, :new]
-  before_action :auditor_validated?, except: [:create, :new]
-  before_action :set_auditor, except: [:create, :new]
+  before_action :auditor_validated?, except: [:create, :new, :accept_terms]
 
   layout 'auditor', except: [:new, :create]
 
@@ -15,7 +14,7 @@ class AuditorsController < ApplicationController
   def create
     @auditor = Auditor.new(auditor_signup_params)
 
-    if @auditor.terms == "0"
+    if @auditor.terms_accepted
       @auditor.errors.add(:terms, :blank, message: "must be accepted")
       render :new
     elsif @auditor.save
@@ -41,20 +40,25 @@ class AuditorsController < ApplicationController
   end
 
   def destroy
-    current_user.destroy
+    @auditor.destroy
     redirect_to sign_out_path
   end
 
   def purchases
-    @purchases = Purchase.where(auditor_id: current_user.id)
+    @purchases = Purchase.where(auditor_id: @auditor.id)
   end
 
   def reservations
-    @reservations = Reservation.where(auditor_id: current_user.id)
+    @reservations = Reservation.where(auditor_id: @auditor.id)
   end
 
   def show_client
     @client = Client.find(params[:id])
+  end
+
+  def accept_terms
+    @auditor.update_attribute(:terms_accepted, true)
+    redirect_to dashboard_auditor_path
   end
 
   private
@@ -64,9 +68,5 @@ class AuditorsController < ApplicationController
 
     def auditor_params
       params.require(:auditor).permit(:first_name, :last_name, :email, :qualifications)
-    end
-
-    def set_auditor
-      @auditor = current_user
     end
 end
