@@ -53,6 +53,10 @@ class AuditorsController < ApplicationController
     @reservations = Reservation.where(auditor_id: current_user.id)
   end
 
+  def show_client
+    @client = Client.find(params[:id])
+  end
+
   private
     def auditor_signup_params
       params.require(:auditor).permit(:first_name, :last_name, :email, :qualifications, :cv, :password, :password_confirmation, :terms)

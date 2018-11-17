@@ -20,7 +20,6 @@ Rails.application.routes.draw do
     get '/requests', to: 'clients#requests'
     get '/reservations', to: 'clients#reservations'
     get '/sign_up', to: 'clients#new'
-    get '/show_profile/:id', to: 'clients#profile', as: 'show_profile'
     post '/sign_up', to: 'clients#create'
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
@@ -42,6 +41,7 @@ Rails.application.routes.draw do
     get '/reservations', to: 'auditors#reservations'
     get '/sign_up', to: 'auditors#new'
     post '/sign_up', to: 'auditors#create'
+    get '/show_client/:id', to: 'auditors#show_client', as: 'show_client'
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/show_report/:id', to: 'auditor/audits#show_report', as: 'show_report'
