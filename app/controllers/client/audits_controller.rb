@@ -29,44 +29,42 @@ class Client::AuditsController < ApplicationController
     @search_address = params[:address]
     @search_products = params[:products]
 
-    reports = Report.all.validated()
-    plans = Plan.all.validated().not_expired()
+    reports = Report.validated()
+    plans = Plan.validated().not_expired()
 
     unless params[:products].empty?
-      collection = Report.products_like(params[:query])
-      reports = reports.merge(collection)
-      collection = Plan.products_like(params[:query])
-      plans = plans.merge(collection)
+      reports = reports.products_like(params[:products])
+      plans = plans.products_like(params[:products])
     end
 
     unless params[:company].empty?
-      collection = nil
+      report_collection = nil
+      plan_collection = nil
+
       Auditor.company_like(params[:company]).each do |auditor|
-        if collection.nil?
-          collection = auditor.reports
-        else
-          collection = collection.or(auditor.reports)
-        end
+        report_collection = (report_collection.nil?) ? auditor.reports : report_collection.or(auditor.reports)
+        plan_collection = (plan_collection.nil?) ? auditor.plans : plan_collection.or(auditor.plans)
       end
 
-      reports = reports.merge(collection) unless collection.nil?
+      reports = reports.merge(report_collection) unless report_collection.nil?
+      plans = plans.merge(plan_collection) unless plan_collection.nil?
     end
 
     unless params[:address].empty?
-      collection = nil
-      Auditor.address_like(params[:address]).each do |auditor|
-        if collection.nil?
-          collection = auditor.reports
-        else
-          collection = collection.or(auditor.reports)
-        end
+      report_collection = nil
+      plan_collection = nil
+
+      Auditor.address_like(params[:company]).each do |auditor|
+        report_collection = (report_collection.nil?) ? auditor.reports : report_collection.or(auditor.reports)
+        plan_collection = (plan_collection.nil?) ? auditor.plans : plan_collection.or(auditor.plans)
       end
 
-      reports = reports.merge(collection) unless collection.nil?
+      reports = reports.merge(report_collection) unless report_collection.nil?
+      plans = plans.merge(plan_collection) unless plan_collection.nil?
     end
 
-    @reports = reports.distinct.paginate(params[:report_page], 5)
-    @plans = plans.distinct.paginate(params[:report_page], 5)
+    @reports = reports.paginate(params[:report_page], 5)
+    @plans = plans.paginate(params[:report_page], 5)
 
     render :search
   end

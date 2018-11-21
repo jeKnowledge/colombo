@@ -57,7 +57,7 @@
           <td><%= report.products %></td>
           <td><%= report.date %></td>
           <td><%= report.price %></td>
-          <td><%= (report.rating != 0) ? report.rating : "Not rated" %></td>
+          <td><%= report.rating %></td>
           <td><%= link_to "Purchase", purchase_preview_client_audits_path(report.id) %></td>
         </tr>
       <% end %>

@@ -10,7 +10,8 @@ class CreateAudits < ActiveRecord::Migration[5.2]
       t.string :summary, null: false, default: ""
 
       # Report
-      t.float :rating, null: false, default: 0
+      t.integer :rating_sum, null: false, default: 0
+      t.integer :ratings, null: false, default: 0
       t.string :report, null: false, default: ""
 
       t.timestamps

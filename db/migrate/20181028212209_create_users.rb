@@ -15,7 +15,8 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :company, null: false, default: ""
 
       # auditor
-      t.float :rating, null: false, default: 0
+      t.integer :rating_sum, null: false, default: 0
+      t.integer :ratings, null: false, default: 0
       t.string :qualifications, null: false, default: ""
       t.string :cv, null: false, default: ""
       t.timestamps

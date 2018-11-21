@@ -5,7 +5,7 @@ class Audit < ApplicationRecord
 
   scope :paginate, -> (page, per_page) { page(page).per(per_page) }
 
-  scope :products_like, -> (query) { where("products LIKE '%#{query}%'") }
+  scope :products_like, -> (query) { where("products ILIKE '%#{query}%'") }
 
   validates_presence_of :products, :date, :auditor, :price, :summary
 end
