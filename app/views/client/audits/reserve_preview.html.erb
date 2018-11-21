@@ -4,3 +4,5 @@
 <p><b>Products: </b><%= @plan.products %></p>
 <p><b>Price: </b><%= @plan.price %></p>
 <p><b>Summary: </b><%= @plan.summary %></p>
+
+<%= link_to "Reserve", reserve_client_audits_path(@plan.id) %>

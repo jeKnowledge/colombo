@@ -71,10 +71,18 @@ class Client::AuditsController < ApplicationController
     render :search
   end
 
+  def reserve_preview
+    @plan = Plan.find(params[:id])
+  end
+
   def reserve
     plan = Plan.find(params[:id])
     Reservation.create(price: plan.price, plan_id: plan.id, client_id: @client.id, auditor_id: plan.auditor.id)
     redirect_to search_client_audits_path
+  end
+
+  def purchase_preview
+    @report = Report.find(params[:id])
   end
 
   def purchase

@@ -24,8 +24,10 @@ Rails.application.routes.draw do
 
     resource :audits, except: [:new, :create, :edit, :update, :show, :destroy] do
       get '/advanced_search', to: 'client/audits#advanced_search'
+      get '/purchase_preview/:id', to: 'client/audits#purchase_preview', as: 'purchase_preview'
       get '/purchase/:id', to: 'client/audits#purchase', as: 'purchase'
       get '/request', to: 'client/audits#make_request'
+      get '/reserve_preview/:id', to: 'client/audits#reserve_preview', as: 'reserve_preview'
       get '/reserve/:id', to: 'client/audits#reserve', as: 'reserve'
       get '/search', to: 'client/audits#search'
       post '/request', to: 'client/audits#request_send'
