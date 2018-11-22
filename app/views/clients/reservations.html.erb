@@ -1,0 +1,25 @@
+<h1>Reservations list</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Products</th>
+      <th>Price</th>
+      <th>Company</th>
+      <th>Address</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.plan.products %></td>
+        <td><%= reservation.price %></td>
+        <td><%= reservation.plan.auditor.company %></td>
+        <td><%= reservation.plan.auditor.address %></td>
+        <td><%= reservation.plan.date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
