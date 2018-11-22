@@ -8,7 +8,6 @@
       <th>Rating</th>
       <th>Date</th>
       <th>Summary</th>
-      <th>Report</th>
       <th>Validated</th>
     </tr>
   </thead>
@@ -21,8 +20,8 @@
         <td><%= (report.rating == 0) ? "Not rated" : report.rating %></td>
         <td><%= report.date %></td>
         <td><%= report.summary %></td>
-        <td><%= link_to "Download", report.report.url %></td>
         <td><%= report.validated %></td>
+        <td><%= link_to "Download", report.report.url %></td>
       </tr>
     <% end %>
   </tbody>

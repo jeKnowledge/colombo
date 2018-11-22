@@ -12,7 +12,7 @@ class Auditor::AuditsController < ApplicationController
     @report = Report.new(report_params)
 
     if @report.save
-      redirect_to reports_auditor_audits_path
+      redirect_to reports_auditor_audits_path, notice: "Report sent successfully"
     else
       render :report
     end
@@ -34,7 +34,7 @@ class Auditor::AuditsController < ApplicationController
     @plan = Plan.new(plan_params)
 
     if @plan.save
-      redirect_to plans_auditor_audits_path
+      redirect_to plans_auditor_audits_path, notice: "Plan sent successfully"
     else
       render :plan
     end
@@ -49,7 +49,6 @@ class Auditor::AuditsController < ApplicationController
   end
 
   private
-
     def report_params
       params.require(:report)
         .permit(:products, :price, :summary, :report).merge(auditor_id: @auditor.id)
