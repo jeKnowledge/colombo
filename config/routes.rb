@@ -16,6 +16,7 @@ Rails.application.routes.draw do
     get '/profile', to: 'clients#show'
     get '/mail', to: 'clients#mail'
     get '/purchases', to: 'clients#purchases'
+    post '/purchases/:id/rate', to: 'clients#rate_purchase', as: 'rate_purchase'
     get '/requests', to: 'clients#requests'
     get '/reservations', to: 'clients#reservations'
     get '/sign_up', to: 'clients#new'

@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2018-11-21", null: false
+    t.date "date", default: "2018-11-22", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
     t.bigint "report_id", null: false
     t.bigint "client_id", null: false
     t.bigint "auditor_id", null: false
-    t.integer "rating", default: 0, null: false
+    t.integer "rating", default: -1, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["auditor_id"], name: "index_purchases_on_auditor_id"

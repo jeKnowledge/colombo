@@ -13,6 +13,7 @@ class Report < Audit
   end
 
   def rate(rating)
+    self.auditor.rate(rating)
     self.rating_sum += rating
     self.ratings += 1
     self.save

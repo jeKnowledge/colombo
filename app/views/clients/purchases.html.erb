@@ -1,36 +1,36 @@
-<h1>Profile</h1>
-
-<p><b>Username: </b><%= @client.username %></p>
-<p><b>First name: </b><%= @client.first_name %></p>
-<p><b>Last name: </b><%= @client.last_name %></p>
-<p><b>Email: </b><%= @client.email %></p>
-<p><b>Address: </b><%= @client.address %></p>
-<p><b>Company: </b><%= @client.company %></p>
-
-<%= link_to "Edit account", edit_client_path %>
-<%= link_to "Delete account", client_path, method: :delete, data: { confirm: 'Are you sure?' } %>
-
 <h1>Purchases list</h1>
 
 <table>
   <thead>
     <tr>
       <th>Products</th>
+      <th>Price</th>
       <th>Company</th>
       <th>Address</th>
       <th>Date</th>
-      <th>Validated</th>
+      <th>Rating</th>
     </tr>
   </thead>
 
   <tbody>
-    <% @requests.each do |request| %>
+    <% @purchases.each do |purchase| %>
       <tr>
-        <td><%= request.products %></td>
-        <td><%= request.company %></td>
-        <td><%= request.address %></td>
-        <td><%= request.date %></td>
-        <td><%= request.validated %></td>
+        <td><%= purchase.report.products %></td>
+        <td><%= purchase.price %></td>
+        <td><%= purchase.report.auditor.company %></td>
+        <td><%= purchase.report.auditor.address %></td>
+        <td><%= purchase.report.date %></td>
+        <td>
+          <% if purchase.rating == -1 %>
+            <%= form_with url: rate_purchase_client_path(purchase.id) do |f| %>
+              <%= f.number_field :rating, value: 0, min: 0, max: 5 %>
+              <%= f.submit "Rate" %>
+            <% end %>
+          <% else %>
+            <%= purchase.rating %>
+          <% end %>
+        </td>
+        <td><%= link_to "Download", purchase.report.report.url %></td>
       </tr>
     <% end %>
   </tbody>

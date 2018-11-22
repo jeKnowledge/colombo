@@ -5,7 +5,7 @@ class CreatePurchases < ActiveRecord::Migration[5.2]
       t.references :report, null: false
       t.references :client, null: false
       t.references :auditor, null: false
-      t.integer :rating, null: false, default: 0
+      t.integer :rating, null: false, default: -1
       
       t.timestamps
     end

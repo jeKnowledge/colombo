@@ -21,7 +21,7 @@
         <td><%= (report.rating == 0) ? "Not rated" : report.rating %></td>
         <td><%= report.date %></td>
         <td><%= report.summary %></td>
-        <td><%= link_to "File", report.report.url %></td>
+        <td><%= link_to "Download", report.report.url %></td>
         <td><%= report.validated %></td>
       </tr>
     <% end %>

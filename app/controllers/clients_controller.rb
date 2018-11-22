@@ -65,6 +65,18 @@ class ClientsController < ApplicationController
     @purchases = @client.purchases
   end
 
+  def rate_purchase
+    purchase = Purchase.find(params[:id])
+
+    if @client.purchases.include?(purchase)
+      purchase.rate(params[:rating].to_i.clamp(0, 5))
+    end
+
+    byebug
+
+    redirect_to purchases_client_path
+  end
+
   def accept_terms
     @client.update_attribute(:terms_accepted, true)
     redirect_to dashboard_client_path
