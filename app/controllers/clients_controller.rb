@@ -72,7 +72,7 @@ class ClientsController < ApplicationController
       purchase.rate(params[:rating].to_i.clamp(0, 5))
     end
 
-    redirect_to purchases_client_path
+    redirect_to purchases_client_path, note: "Thanks for the rating"
   end
 
   def accept_terms
