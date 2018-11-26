@@ -14,7 +14,7 @@
         <tr>
           <td><%= link_to reservation.client.username, show_client_auditor_path(reservation.client_id) %></td>
           <td><%= reservation.plan.products %></td>
-          <td class="btn"><%= link_to "Plan", show_plan_auditor_audits_path(reservation.plan_id) %></td>
+          <td><%= link_to "Plan", show_plan_auditor_audits_path(reservation.plan_id) %></td>
         </tr>
       <% end %>
     </tbody>

@@ -1,30 +1,50 @@
 <h1>Search audit</h1>
 
 <%= form_tag search_client_audits_path, method: :get do %>
-  <%= text_field_tag :query, @search_query %>
 
-  <%= submit_tag "Search" %>
+<div class="form-material form-horizontal">
+  
+  <div class="form-group">
+    <div class="col-md-12">
+      <%= text_field_tag :query, @search_query, class:"form-control form-control-line" %>
+    </div>
+  <%= submit_tag "Search", class:"btn" %>
+  </div>
+</div>
+
 <% end %>
 
 <h2>Advanced search</h2>
 
 <%= form_tag advanced_search_client_audits_path, method: :get do %>
-  <div>
-    <%= label_tag :company %>
-    <%= text_field_tag :company, @search_company %>
-  </div>
 
-  <div>
-    <%= label_tag :address %>
-    <%= text_field_tag :address, @search_address %>
-  </div>
+<div class="form-material form-horizontal">
 
-  <div>
-    <%= label_tag :products %>
-    <%= text_field_tag :products, @search_products %>
-  </div>
+    <div class="form-group">
+      <%= label_tag :company %>
+      <div class="col-md-12">
+        <%= text_field_tag :company, @search_company, class:"form-control form-control-line" %>
+      </div>
+    </div>
 
-  <%= submit_tag "Advanced search" %>
+    <div class="form-group">
+      <%= label_tag :address %>
+      <div class="col-md-12">
+        <%= text_field_tag :address, @search_address, class:"form-control form-control-line" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :products %>
+      <div class="col-md-12">
+        <%= text_field_tag :products, @search_products, class:"form-control form-control-line" %>
+      </div>
+    </div>
+
+    <%= submit_tag "Advanced search", class:"btn" %>
+
+</div>
+
 <% end %>
 
 <h1>Search results</h1>
@@ -34,7 +54,8 @@
 <% if @reports.length == 0 %>
   <p>No reports available</p>
 <% else %>
-  <table>
+<div class="table-responsive">
+  <table class="table">
     <thead>
       <tr>
         <th>Company</th>
@@ -63,7 +84,7 @@
       <% end %>
     </tbody>
   </table>
-
+</div>
   <%= paginate @reports, param_name: :report_page %>
 <% end %>
 
@@ -72,7 +93,8 @@
 <% if @plans.count == 0 %>
   <p>No plans available</p>
 <% else %>
-  <table>
+<div class="table-responsive">
+  <table class="table">
     <thead>
       <tr>
         <th>Company</th>
@@ -99,9 +121,9 @@
       <% end %>
     </tbody>
   </table>
-
+</div>
   <%= paginate @plans, param_name: :plan_page %>
 <% end %>
 
 <h2>Audit request</h2>
-<%= link_to "Send audit request", request_client_audits_path %>
+<%= link_to "Send audit request", request_client_audits_path, class:"btn" %>
