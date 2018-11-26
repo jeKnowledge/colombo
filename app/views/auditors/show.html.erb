@@ -1,14 +1,43 @@
 <h1>Profile</h1>
+<div class="form-material form-horizontal">
+<div class="form group">
+  <div class="form group">
+    <label class="col-md-12">Username</label>
+    <p class="form-control form-control-line"><%= @auditor.username %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">First name</label>
+    <p class="form-control form-control-line"><%= @auditor.first_name %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Last name</label>
+    <p class="form-control form-control-line"><%= @auditor.last_name %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Email</label>
+    <p class="form-control form-control-line"><%= @auditor.email %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Address</label>
+    <p class="form-control form-control-line"><%= @auditor.address %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Company</label>
+    <p class="form-control form-control-line"><%= @auditor.company %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Rating</label>
+  <p class="form-control form-control-line"><%= @auditor.rating %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Qualifications</label>
+  <p class="form-control form-control-line"><%= @auditor.qualifications %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">CV</label>
+  <p class="form-control form-control-line"><%= @auditor.cv %></p>
+  </div>
+</div>
 
-<p><b>Username: </b><%= @auditor.username %></p>
-<p><b>First name: </b><%= @auditor.first_name %></p>
-<p><b>Last name: </b><%= @auditor.last_name %></p>
-<p><b>Email: </b><%= @auditor.email %></p>
-<p><b>Address: </b><%= @auditor.address %></p>
-<p><b>Company: </b><%= @auditor.company %></p>
-<p><b>Rating: </b><%= @auditor.rating %></p>
-<p><b>Qualifications: </b><%= @auditor.qualifications %></p>
-<p><b>CV: </b><%= @auditor.cv %></p>
-
-<%= link_to "Edit account", edit_auditor_path %>
-<%= link_to 'Delete account', auditor_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+<button class="btn"><%= link_to "Edit account", edit_auditor_path %></button>
+<button class="btn"><%= link_to 'Delete account', auditor_path, method: :delete, data: { confirm: 'Are you sure?' } %></button>

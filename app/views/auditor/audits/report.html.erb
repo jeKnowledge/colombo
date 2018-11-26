@@ -1,27 +1,37 @@
 <h1>New audit report</h1>
 
 <%= render 'shared/error_messages', resource: @report %>
-
+<div class="main">
 <%= form_for @report, url: report_auditor_audits_path, multipart: true  do |f| %>
-  <div>
+<div class="form-material form-horizontal">
+  <div class="form-group">
     <%= f.label :products %>
-    <%= f.text_field :products, placeholder: "Paracetamol" %>
+    <div class="col-md-12">
+      <%= f.text_field :products, placeholder: "Paracetamol", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :price %>
-    <%= f.number_field :price, step: 0.01 %>
+    <div class="col-md-12">
+      <%= f.number_field :price, step: 0.01, class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :summary %>
-    <%= f.text_field :summary, placeholder: "Audit for paracetamol" %>
+    <div class="col-md-12">
+      <%= f.text_field :summary, placeholder: "Audit for paracetamol", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :report %>
-    <%= f.file_field :report %>
+    <div class="col-md-12">
+      <%= f.file_field :report , class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <%= f.submit "Send audit report" %>
+  <%= f.submit "Send audit report", class:"btn" %>
+</div>
 <% end %>

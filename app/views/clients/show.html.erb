@@ -1,11 +1,30 @@
 <h1>Profile</h1>
+<div class="form-material form-horizontal">
+  <div class="form group">
+    <label class="col-md-12">Username</label>
+    <p class="form-control form-control-line"><%= @client.username %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">First name</label>
+    <p class="form-control form-control-line"><%= @client.first_name %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Last name</label>
+    <p class="form-control form-control-line"><%= @client.last_name %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Email</label>
+    <p class="form-control form-control-line"><%= @client.email %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Address</label>
+    <p class="form-control form-control-line"><%= @client.address %></p>
+  </div>
+  <div class="form group">
+    <label class="col-md-12">Company</label>
+    <p class="form-control form-control-line"><%= @client.company %></p>
+  </div>
+</div>
 
-<p><b>Username: </b><%= @client.username %></p>
-<p><b>First name: </b><%= @client.first_name %></p>
-<p><b>Last name: </b><%= @client.last_name %></p>
-<p><b>Email: </b><%= @client.email %></p>
-<p><b>Address: </b><%= @client.address %></p>
-<p><b>Company: </b><%= @client.company %></p>
-
-<%= link_to "Edit account", edit_client_path %>
-<%= link_to "Delete account", client_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+<button class="btn"><%= link_to "Edit account", edit_client_path %></button>
+<button class="btn"><%= link_to "Delete account", client_path, method: :delete, data: { confirm: 'Are you sure?' } %></button>

@@ -3,35 +3,48 @@
 <%= render "shared/error_messages", resource: @auditor %>
 
 <%= form_for @auditor do |f| %>
-  <div class="field">
-  <%= f.label :first_name, "First name" %>
-  <%= f.text_field :first_name, placeholder: "James" %>
+<div class="form-material form-horizontal">
+  <div class="form-group">
+    <%= f.label :first_name, "First name" %>
+    <div class="col-md-12">
+      <%= f.text_field :first_name, placeholder: "James", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div class="field">
-  <%= f.label :last_name, "Last name" %>
-  <%= f.text_field :last_name, placeholder: "Bond" %>
+  <div class="form-group">
+    <%= f.label :last_name, "Last name" %>
+    <div class="col-md-12">
+      <%= f.text_field :last_name, placeholder: "Bond", class:"form-control form-control-line"%>
+    </div>
   </div>
 
-  <div class="field">
-  <%= f.label :email, "Email" %>
-  <%= f.email_field :email, placeholder: "james_bond@secret_agent.corp" %>
+  <div class="form-group">
+    <%= f.label :email, "Email" %>
+    <div class="col-md-12">
+      <%= f.email_field :email, placeholder: "james_bond@secret_agent.corp", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div class="field">
-  <%= f.label :address %>
-  <%= f.text_field :address, placeholder: "Second street" %>
+  <div class="form-group">
+    <%= f.label :address %>
+    <div class="col-md-12">
+      <%= f.text_field :address, placeholder: "Second street", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div class="field">
-  <%= f.label :company %>
-  <%= f.text_field :company, placeholder: "E-Corporation" %>
+  <div class="form-group">
+    <%= f.label :company %>
+    <div class="col-md-12">
+      <%= f.text_field :company, placeholder: "E-Corporation", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div class="field">
-  <%= f.label :qualifications, "Qualifications" %>
-  <%= f.text_field :qualifications, placeholder: "Senior agent" %>
+  <div class="form-group">
+    <%= f.label :qualifications, "Qualifications" %>
+    <div class="col-md-12">
+      <%= f.text_field :qualifications, placeholder: "Senior agent", class:"form-control form-control-line" %>
+    </div>
   </div>
-
-  <%= f.submit "Update account" %>
+</div>
+  <%= f.submit "Update account", class:"btn" %>
 <% end %>
