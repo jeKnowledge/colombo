@@ -2,26 +2,39 @@
 
 <%= render "shared/error_messages", resource: @request %>
 
+<div class="main">
+
 <%= form_for @request, url: request_client_audits_path do |f| %>
-  <div>
+
+<div class="form-material form-horizontal">
+
+  <div class="form-group">
     <%= f.label :company %>
-    <%= f.text_field :company, placeholder: "E-corp" %>
+    <div class="col-md-12">
+      <%= f.text_field :company, placeholder: "E-corp", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :address %>
-    <%= f.text_field :address, placeholder: "Second street" %>
+    <div class="col-md-12">
+      <%= f.text_field :address, placeholder: "Second street", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :products %>
-    <%= f.text_field :products, placeholder: "Paracetamol" %>
+    <div class="col-md-12">
+      <%= f.text_field :products, placeholder: "Paracetamol", class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <div>
+  <div class="form-group">
     <%= f.label :date %>
-    <%= f.date_field :date, min: Time.now + 1.day %>
+    <div class="col-md-12">
+      <%= f.date_field :date, min: Time.now + 1.day, class:"form-control form-control-line" %>
+    </div>
   </div>
 
-  <%= f.submit "Send audit request"%>
+  <%= f.submit "Send audit request", class:"btn"%>
 <% end %>

@@ -1,9 +1,32 @@
 <h1>Report</h1>
 
-<p><b>Date: </b><%= @report.date %></p>
-<p><b>Products: </b><%= @report.products %></p>
-<p><b>Price: </b><%= @report.price %></p>
-<p><b>Summary: </b><%= @report.summary %></p>
-<p><b>Rating: </b><%= @report.rating %></p>
+<div class="form-material form-horizontal">
 
-<%= link_to "Purchase", purchase_client_audits_path(@report.id) %>
+  <div class="form group">
+    <label class="col-md-12">Date</label>
+    <p class="form-control form-control-line"><%= @report.date %></p>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Products</label>
+    <p class="form-control form-control-line"><%= @report.products %></p>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Price</label>
+    <p class="form-control form-control-line"><%= @report.price %></p>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Summary</label>
+    <p class="form-control form-control-line"><%= @report.summary %></p>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Rating</label>
+    <p class="form-control form-control-line"><%= @report.rating %></p>
+  </div>
+
+  <%= link_to "Purchase", purchase_client_audits_path(@report.id), class:"btn" %>
+
+</div>
