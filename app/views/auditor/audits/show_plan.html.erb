@@ -1,6 +1,24 @@
 <h1>Plan</h1>
 
-<p><b>Date: </b><%= @plan.date %></p>
-<p><b>Products: </b><%= @plan.products %></p>
-<p><b>Price: </b><%= @plan.price %></p>
-<p><b>Summary: </b><%= @plan.summary %></p>
+<div class="form-material form-horizontal">
+
+  <div class="form group">
+    <label class="col-md-12">Date</label>
+    <p class="form-control form-control-line"><%= @plan.date %></p>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Products</label>
+    <p class="form-control form-control-line"><%= @plan.products %></p>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Price</label>
+    <p class="form-control form-control-line"><%= @plan.price %></p>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Summary</label>
+    <p class="form-control form-control-line"><%= @plan.summary %></p>
+  </div>
+</div>

@@ -1,6 +1,7 @@
 <h1>My reservation list</h1>
 
-<table>
+<div class="table-responsive">
+<table class="table">
   <thead>
     <tr>
       <th>Plan</th>
@@ -11,8 +12,8 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= link_to "Details", show_plan_auditor_audits_path(reservation.plan_id) %></td>
-        <td><%= link_to reservation.client.username, show_profile_client_path(reservation.client.id) %></td>
+        <td class="btn"><%= link_to "Details", show_plan_auditor_audits_path(reservation.plan_id) %></td>
+        <td class="btn"><%= link_to reservation.client.username, show_profile_client_path(reservation.client.id) %></td>
       </tr>
     <% end %>
   </tbody>
