@@ -1,6 +1,7 @@
 <h1>Listing Auditors</h1>
 
-<table>
+<div class="table-responsive">
+  <table class="table">
   <thead>
     <tr>
       <th>Username</th>
@@ -24,12 +25,13 @@
     <% end %>
   </tbody>
 </table>
-
 <%= paginate @auditors, param_name: :auditor_page %>
+</div>
 
 <h1>Listing Clients</h1>
 
-<table>
+<div class="table-responsive">
+  <table class="table">
   <thead>
     <tr>
       <th>Username</th>
@@ -53,12 +55,13 @@
   </tbody>
 </table>
 <br>
-
 <%= paginate @clients, param_name: :client_page %>
+</div>
 
 <h1>Listing Reports</h1>
 
-<table>
+<div class="table-responsive">
+  <table class="table">
   <thead>
     <tr>
       <th>Products</th>
@@ -81,13 +84,13 @@
     <% end %>
   </tbody>
 </table>
-
 <%= paginate @reports, param_name: :report_page %>
-
+</div>
 
 <h1>Listing Plans</h1>
 
-<table>
+<div class="table-responsive">
+  <table class="table">
   <thead>
     <tr>
       <th>Products</th>
@@ -110,12 +113,13 @@
     <% end %>
   </tbody>
 </table>
-
 <%= paginate @plans, param_name: :plan_page %>
+</div>
 
 <h1>Listing Requests</h1>
 
-<table>
+<div class="table-responsive">
+  <table class="table">
   <thead>
     <tr>
       <th>Products</th>
@@ -138,12 +142,13 @@
     <% end %>
   </tbody>
 </table>
-
 <%= paginate @requests, param_name: :request_page %>
+</div>
 
 <h1>Listing Messages</h1>
 
-<table>
+<div class="table-responsive">
+  <table class="table">
   <thead>
     <tr>
       <th>Source</th>
@@ -168,3 +173,4 @@
 </table>
 
 <%= paginate @messages, param_name: :message_page %>
+</div>

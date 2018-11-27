@@ -1,11 +1,41 @@
 <h1>Request details</h1>
 
-<b>Products: </b><%= @request.products %> <br>
-<b>Address: </b><%= @request.address %> <br>
-<b>Company: </b><%= @request.company %> <br>
-<b>Date: </b><%= @request.date %> <br>
-<b>Client: </b><%= link_to @request.client.username, show_user_admin_path(@request.client.id) %><br>
+<div class="form-material form-horizontal">
+  <div class="form group">
+    <label class="col-md-12">Products</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @request.products %> </p>
+    </div>
+  </div>
 
-<% unless @request.validated %>
-  <%= link_to "Validate", validate_request_admin_path(@request.id) %>
+  <div class="form group">
+    <label class="col-md-12">Address</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><<<%= @request.address %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Company</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @request.company %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Date</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @request.date %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Client</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= link_to @request.client.username, show_user_admin_path(@request.client.id) %></p>
+    </div>
+  </div>
+</div>
+<% unless @audit.validated %>
+  <%= link_to "Validate", validate_audit_admin_path(@audit.id), method: :post %>
 <% end %>

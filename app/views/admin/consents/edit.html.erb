@@ -3,7 +3,9 @@
 <%= render "shared/error_messages", resource: @consent %>
 
 <%= form_for @consent, url: admin_consent_path do |f| %>
-  <div class="field">
+<div class="form-material form-horizontal">
+
+  <div class="form group">
     <%= f.radio_button :type_id, Consent::TYPES.key("Terms"), checked: Consent::TYPES.key("Terms") == @consent.type_id %>
     <%= f.label :type_id, "Terms" %>
     <%= f.radio_button :type_id, Consent::TYPES.key("Contract"), checked: Consent::TYPES.key("Contract") == @consent.type_id %>
@@ -12,10 +14,12 @@
     <%= f.label :type_id, "Cookies"%>
   </div>
 
-  <div class="field">
-    <%= f.label :description, "Description" %>
-    <%= f.text_field :description, value: @consent.description %>
-  </div>
-
-  <%= f.submit "Update consent" %>
+    <div class="form group">
+      <%= f.label :description, "Description", class:"col-md-12" %>
+      <div class="col-md-12">
+        <p class="form-control form-control-line">  <%= f.text_field :description, value: @consent.description %> </p>
+      </div>
+    </div>
+</div>
+  <%= f.submit "Update consent", class:"btn" %>
 <% end %>
