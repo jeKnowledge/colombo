@@ -45,11 +45,11 @@ class AuditorsController < ApplicationController
   end
 
   def purchases
-    @purchases = Purchase.where(auditor_id: @auditor.id)
+    @purchases = @auditor.purchases
   end
 
   def reservations
-    @reservations = Reservation.where(auditor_id: @auditor.id)
+    @reservations = @auditor.reservations
   end
 
   def requests
@@ -63,7 +63,32 @@ class AuditorsController < ApplicationController
         @requests << request
       end
     end
+  end
 
+  def messages
+    @messages_sent = @auditor.messages_sent.validated
+    @messages_recieved = @auditor.messages_received.validated
+  end
+
+  def show_message
+    @message = Message.find(params[:id])
+  end
+
+  def new_message
+    @message = Message.new
+    @clients_audits = @auditor.purchases.collect { |purchase| { client_id: purchase.client_id, products: purchase.report.products } }
+    @clients_audits = @clients_audits + @auditor.reservations.collect { |reservation| { client_id: reservation.client_id, products: reservation.plan.products } }
+  end
+
+  def send_message
+    audit = Audit.find(params[:message][:audit_id])
+    message = Message.new(source: @auditor, destiny: audit.client, audit: audit, body: params[:message][:body])
+
+    if message.save
+      redirect_to messages_auditor_path, notice: "Message sent"
+    else
+      render :new_message
+    end
   end
 
   def show_client

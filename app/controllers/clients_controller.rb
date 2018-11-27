@@ -50,7 +50,34 @@ class ClientsController < ApplicationController
     redirect_to sign_out_path
   end
 
-  def mail
+  def messages
+    @messages_sent = @client.messages_sent
+    @messages_recieved = @client.messages_received.validated
+  end
+
+  def show_message    
+    @message = Message.find(params[:id])
+    @message.update_attribute(:read, true) if params[:read].present?
+  end
+
+  def new_message
+    @message = Message.new(source: @client)
+    @audits = @client.purchases.collect { |purchase| purchase.report }
+    @audits = @audits + @client.reservations.collect { |reservation| reservation.plan }
+  end
+
+  def send_message
+    audit = Audit.find(params[:message][:audit_id])
+    message = Message.new(source: @client, destiny: audit.auditor, audit: audit, body: params[:message][:body])
+
+    if message.save
+      redirect_to messages_client_path, notice: "Message sent"
+    else
+      @message = message
+      @audits = @client.purchases.collect { |purchase| purchase.report }
+      @audits = @audits + @client.reservations.collect { |reservation| reservation.plan }
+      render :new_message
+    end
   end
 
   def requests

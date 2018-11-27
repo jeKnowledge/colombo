@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_02_164102) do
+ActiveRecord::Schema.define(version: 2018_11_27_011638) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2018-11-26", null: false
+    t.date "date", default: "2018-11-27", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -52,12 +52,17 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
   end
 
   create_table "messages", force: :cascade do |t|
-    t.integer "source_id", null: false
-    t.integer "destiny_id", null: false
-    t.text "description", default: "", null: false
+    t.bigint "source_id", null: false
+    t.bigint "destiny_id", null: false
+    t.bigint "audit_id", null: false
+    t.text "body", default: "", null: false
     t.boolean "read", default: false, null: false
+    t.boolean "validated", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["audit_id"], name: "index_messages_on_audit_id"
+    t.index ["destiny_id"], name: "index_messages_on_destiny_id"
+    t.index ["source_id"], name: "index_messages_on_source_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -105,4 +110,6 @@ ActiveRecord::Schema.define(version: 2018_11_02_164102) do
     t.index ["validated"], name: "index_users_on_validated"
   end
 
+  add_foreign_key "messages", "users", column: "destiny_id"
+  add_foreign_key "messages", "users", column: "source_id"
 end

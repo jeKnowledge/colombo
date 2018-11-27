@@ -14,7 +14,10 @@ Rails.application.routes.draw do
   resource :client do
     get '/', to: 'clients#index', as: 'dashboard'
     get '/profile', to: 'clients#show'
-    get '/mail', to: 'clients#mail'
+    get '/messages', to: 'clients#messages'
+    post '/messages', to: 'clients#send_message'
+    get '/message/:id', to: 'clients#show_message', as: 'message'
+    get '/messages/new', to: 'clients#new_message'
     get '/purchases', to: 'clients#purchases'
     post '/purchases/:id/rate', to: 'clients#rate_purchase', as: 'rate_purchase'
     get '/requests', to: 'clients#requests'
@@ -38,7 +41,10 @@ Rails.application.routes.draw do
   resource :auditor do
     get '/', to: 'auditors#index', as: 'dashboard'
     get '/profile', to: 'auditors#show'
-    get '/mail', to: 'auditors#mail'
+    get '/messages', to: 'auditors#messages'
+    post '/messages', to: 'clients#send_message'
+    get '/message/:id', to: 'auditors#show_message', as: 'message'
+    get '/messages/new', to: 'auditors#new_message'
     get '/purchases', to: 'auditors#purchases'
     get '/requests', to: 'auditors#requests'
     get '/reservations', to: 'auditors#reservations'
