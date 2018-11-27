@@ -20,7 +20,8 @@ label {
     border-top-left-radius: 4px;
     border-bottom-left-radius: 4px;
 }
-.form-material .form-control, .form-material .form-control.focus, .form-material .form-control:focus {
+
+html .form-material .form-control, html .form-material .form-control.focus, html .form-material .form-control:focus {
     background-image: linear-gradient(var(--color-pink), var(--color-pink)), linear-gradient(rgba(120, 130, 140, .13), rgba(120, 130, 140, .13));
     border: 0;
     border-radius: 0;
@@ -58,10 +59,11 @@ label {
   color: var(--color-white);
 }
 
-.btn:hover {
+html .btn:hover {
     background: var(--color-pink);
     opacity: .8;
     border: 1px solid var(--color-pink);
+    color: var(--color-white);
 }
 
 .white-box {

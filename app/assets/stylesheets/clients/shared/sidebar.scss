@@ -20,8 +20,7 @@ html {
     -ms-text-size-adjust: 100%;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
-
-body {
+html body {
     font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
     font-size: 14px;
     line-height: 1.42857143;
@@ -31,6 +30,7 @@ body {
     overflow-x: hidden;
     color: var(--color-black);
     font-weight: 300;
+    padding-top: 0;
 }
 
 .sidebar {
@@ -75,21 +75,21 @@ body {
 }
 
 
-#side-menu > li > a {
+html #side-menu > li > a {
     border-left: 3px solid transparent;
     padding: 15px 35px 15px 20px;
     display: block;
 }
-#side-menu li a {
+html #side-menu li a {
     color: var(--color-black);
     border-left: 0px solid var(--color-white);
 }
 
-#side-menu > li > a:hover, #side-menu > li > a:focus {
+html #side-menu > li > a:hover, #side-menu > li > a:focus {
     background: var(--color-pink);
 }
 
-#side-menu > li > a.active {
+html #side-menu > li > a.active {
     background: var(--color-pink);
     color: var(--color-white);
     border-left: 3px solid var(--color-pink);
@@ -99,7 +99,6 @@ body {
 #wrapper .navbar {
   margin-bottom: 0;
 }
-
 
 #wrapper .navbar-header {
     display: flex;
@@ -147,12 +146,18 @@ body {
       padding-top: 0;
       height: 100%;
       transition: .05s ease-in;
+
   }
 
   .navbar-header {
       float: left;
   }
 }
+
+html .top-left-part {
+    width: 240px;
+}
+
 
 li {
     display: list-item;
@@ -177,6 +182,15 @@ html a {
     cursor: pointer;
     text-decoration: none;
 }
+
+html a:hover {
+    color: var(--color-black);
+}
+
+html .btn a:hover {
+    color: var(--color-white);
+}
+
 
 
 b {

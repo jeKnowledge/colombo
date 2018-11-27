@@ -74,62 +74,82 @@
                             <%= render "shared/error_messages", resource: @auditor %>
 
                             <%= form_for @auditor, url: sign_up_auditor_path, multipart: true do |f| %>
-                                <div class="field">
-                                <%= f.label :first_name, "First name" %>
-                                <%= f.text_field :first_name, placeholder: "James" %>
+                            <div class="form-material form-horizontal">
+                                <div class="form-group">
+                                  <%= f.label :first_name, "First name", class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.text_field :first_name, placeholder: "James", class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
-                                <%= f.label :last_name, "Last name" %>
-                                <%= f.text_field :last_name, placeholder: "Bond" %>
+                                <div class="form-group">
+                                  <%= f.label :last_name, "Last name", class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.text_field :last_name, placeholder: "Bond", class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
-                                <%= f.label :email, "Email" %>
-                                <%= f.email_field :email, placeholder: "james_bond@secret_agent.corp" %>
+                                <div class="form-group">
+                                  <%= f.label :email, "Email", class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.text_field :email, placeholder: "james_bond@secret_agent.corp", class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
-                                <%= f.label :address %>
-                                <%= f.text_field :address, placeholder: "Second street" %>
+                                <div class="form-group">
+                                  <%= f.label :address, class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.text_field :address, placeholder: "Second street", class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
-                                <%= f.label :company %>
-                                <%= f.text_field :company, placeholder: "E-Corporation" %>
+                                <div class="form-group">
+                                  <%= f.label :company, class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.text_field :company, placeholder: "E-Corporation", class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
-                                <%= f.label :qualifications, "Qualifications" %>
-                                <%= f.text_field :qualifications, placeholder: "Senior agent" %>
+                                <div class="form-group">
+                                  <%= f.label :qualifications, "Qualifications", class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.text_field :qualifications, placeholder: "Senior agent", class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
-                                <%= f.label :password, "Password" %>
-                                <%= f.password_field :password, placeholder: "************" %>
+                                <div class="form-group">
+                                  <%= f.label :password, "Password", class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.text_field :password, placeholder: "************", class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
-                                <%= f.label :password_confirmation, "Password confirmation" %>
-                                <%= f.password_field :password_confirmation, placeholder: "************" %>
+                                <div class="form-group">
+                                  <%= f.label :password_confirmation, "Password confirmation", class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.text_field :password_confirmation, placeholder: "************", class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
-                                    <%= f.label :cv, "CV" %>
-                                    <%= f.file_field :cv %>
-                                    <%= f.hidden_field :cv_cache %>
+                                <div class="form-group">
+                                  <%= f.label :cv, "cv", class:"col-md-12" %>
+                                  <div class="col-md-12">
+                                    <%= f.file_field :cv, class:"form-control form-control-line" %>
+                                    <%= f.hidden_field :cv_cache, class:"form-control form-control-line" %>
+                                  </div>
                                 </div>
 
-                                <div class="field">
+
+                                <div class="form-group">
                                 <p>
                                     Accept <%= link_to "terms", terms_path %>?
                                     <%= f.check_box :terms_accepted %>
                                 </p>
                                 </div>
 
-                                <%= f.submit "Sign up" %>
+                                <%= f.submit "Sign up", class:"btn", style:"margin-bottom:1em" %>
                             <% end %>
-
+                          </div>
                             <p class="change_link">
                                 Not a member yet ? Join us:
                                 <a href="/client/sign_up" class="to_register">Client</a> or
@@ -140,7 +160,6 @@
                 </div>
             </div>
             <!-- /.container-fluid -->
-            <footer class="footer text-center"> 2018 &copy; Colombo </footer>
         </div>
         <!-- ============================================================== -->
         <!-- End Page Content -->
@@ -148,11 +167,11 @@
     </div>
     <!-- /#wrapper -->
     <!-- jQuery -->
-    <script src="../plugins/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/plugins/bower_components/jquery/dist/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- Menu Plugin JavaScript -->
-    <script src="../plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+    <script src="/plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
     <!--slimscroll JavaScript -->
     <script src="/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
