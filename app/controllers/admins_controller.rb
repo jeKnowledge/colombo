@@ -3,6 +3,7 @@ class AdminsController < ApplicationController
   before_action :set_user, only: [:show_user, :validate_user]
   before_action :set_audit, only: [:show_audit, :validate_audit]
   before_action :set_request, only: [:show_request, :validate_request]
+  before_action :set_message, only: [:show_message, :validate_message]
 
   layout 'admin'
 
@@ -12,6 +13,7 @@ class AdminsController < ApplicationController
     @reports = Report.order(:validated).page(params[:report_page]).per(5)
     @plans = Plan.order(:validated).page(params[:plan_page]).per(5)
     @requests = Request.order(:validated).page(params[:request_page]).per(5)
+    @messages = Message.order(:validated, :created_at).page(params[:message_page]).per(5)
   end
 
   def show_user
@@ -21,6 +23,9 @@ class AdminsController < ApplicationController
   end
 
   def show_request
+  end
+
+  def show_message
   end
 
   def validate_user
@@ -38,17 +43,25 @@ class AdminsController < ApplicationController
     redirect_to dashboard_admin_path
   end
 
+  def validate_message
+    @message.update_column(:validated, true)
+    redirect_to dashboard_admin_path
+  end
+
   private
+    def set_user
+      @user = User.find(params[:id])
+    end
 
-  def set_user
-    @user = User.find(params[:id])
-  end
+    def set_audit
+      @audit = Audit.find(params[:id])
+    end
 
-  def set_audit
-    @audit = Audit.find(params[:id])
-  end
+    def set_request
+      @request = Request.find(params[:id])
+    end
 
-  def set_request
-    @request = Request.find(params[:id])
-  end
+    def set_message
+      @message = Message.find(params[:id])
+    end
 end

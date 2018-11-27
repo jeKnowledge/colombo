@@ -140,3 +140,31 @@
 </table>
 
 <%= paginate @requests, param_name: :request_page %>
+
+<h1>Listing Messages</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Source</th>
+      <th>Destiny</th>
+      <th>Products</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @messages.each do |message| %>
+      <tr>
+        <td><%= message.source.username %></td>
+        <td><%= message.destiny.username %></td>
+        <td><%= message.audit.products %></td>
+        <% unless message.validated %>
+          <td><%= link_to "Validate", validate_message_admin_path(message.id) %></td>
+        <% end %>
+        <td><%= link_to "Details", show_message_admin_path(message.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @messages, param_name: :message_page %>

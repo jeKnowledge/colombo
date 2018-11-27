@@ -45,11 +45,57 @@ class AuditorsController < ApplicationController
   end
 
   def purchases
-    @purchases = Purchase.where(auditor_id: @auditor.id)
+    @purchases = @auditor.purchases
   end
 
   def reservations
-    @reservations = Reservation.where(auditor_id: @auditor.id)
+    @reservations = @auditor.reservations
+  end
+
+  def requests
+    @requests = []
+    
+    Request.validated.each do |request|
+      like_address = !(@auditor.address =~ /.*#{request.address}.*/).nil?
+      like_company = !(@auditor.company =~ /.*#{request.company}.*/).nil?
+
+      if like_address && like_company
+        @requests << request
+      end
+    end
+  end
+
+  def messages
+    @messages_sent = @auditor.messages_sent
+    @messages_recieved = @auditor.messages_received.validated
+  end
+
+  def show_message
+    @message = Message.find(params[:id])
+    @message.update_attribute(:read, true) if params[:read].present?
+  end
+
+  def new_message
+    @message = Message.new
+    @clients_audits = @auditor.purchases.collect { |purchase| [ purchase.report.products, "#{purchase.client_id}_#{purchase.report_id}" ] }
+    @clients_audits = @clients_audits + @auditor.reservations.collect { |reservation| [ reservation.plan.products, "#{reservation.client_id}_#{reservation.plan_id}" ] }
+  end
+
+  def send_message
+    client_audit_ids = params[:message][:client_audit_ids].split('_')
+    client = Client.find(client_audit_ids[0].to_i)
+    audit = Audit.find(client_audit_ids[1].to_i)
+
+    message = Message.new(source: @auditor, destiny: client, audit: audit, body: params[:message][:body])
+
+    if message.save
+      redirect_to messages_auditor_path, notice: "Message sent"
+    else
+      @message = message
+      @clients_audits = @auditor.purchases.collect { |purchase| [ purchase.report.products, purchase.client_id ] }
+      @clients_audits = @clients_audits + @auditor.reservations.collect { |reservation| [ reservation.plan.products, reservation.client_id ] }
+      render :new_message
+    end
   end
 
   def show_client

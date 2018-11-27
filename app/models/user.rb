@@ -7,6 +7,14 @@ class User < ApplicationRecord
 
   validates_presence_of :email, :first_name, :last_name
 
+  def messages_sent
+    Message.where(source_id: self.id)
+  end
+
+  def messages_received
+    Message.where(destiny_id: self.id)
+  end
+
   def prefix
     ''
   end

@@ -1,0 +1,25 @@
+<h1>Request listing</h1>
+
+<div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+            <th>Products</th>
+            <th>Company</th>
+            <th>Client</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <% @requests.each do |request| %>
+            <tr>
+                <td><%= request.products %></td>
+                <td><%= request.company %></td>
+                <td><%= request.address %></td>
+                <td><%= request.date %></td>
+                <td><%= link_to request.client.username, show_client_auditor_path(request.client_id) %></td>
+            </tr>
+            <% end %>
+        </tbody>
+    </table>
+</div>

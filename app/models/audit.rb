@@ -1,5 +1,6 @@
 class Audit < ApplicationRecord
   belongs_to :auditor
+  has_many :messages, dependent: :destroy
 
   scope :validated, -> { where(validated: true)}
 
