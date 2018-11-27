@@ -10,7 +10,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.boolean :validated, null: false, default: false, index: true
       t.boolean :terms_accepted, null: false
 
-      # client
+      # client and auditor
       t.string :address, null: false, default: ""
       t.string :company, null: false, default: ""
 

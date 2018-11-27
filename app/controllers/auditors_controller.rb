@@ -52,6 +52,20 @@ class AuditorsController < ApplicationController
     @reservations = Reservation.where(auditor_id: @auditor.id)
   end
 
+  def requests
+    @requests = []
+    
+    Request.validated.each do |request|
+      like_address = !(@auditor.address =~ /.*#{request.address}.*/).nil?
+      like_company = !(@auditor.company =~ /.*#{request.company}.*/).nil?
+
+      if like_address && like_company
+        @requests << request
+      end
+    end
+
+  end
+
   def show_client
     @client = Client.find(params[:id])
   end
