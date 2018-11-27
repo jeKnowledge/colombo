@@ -52,7 +52,7 @@
         </td>
         <td>
             <%= "<b>".html_safe unless message.read %>
-            <%= link_to "See message", message_client_path(message.id, read: true) %>
+            <%= link_to "See message", message_auditor_path(message.id, read: true) %>
         </td>
       </tr>
     <% end %>

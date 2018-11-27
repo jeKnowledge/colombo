@@ -72,6 +72,7 @@ class AuditorsController < ApplicationController
 
   def show_message
     @message = Message.find(params[:id])
+    @message.update_attribute(:read, true) if params[:read].present?
   end
 
   def new_message
