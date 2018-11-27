@@ -47,14 +47,14 @@
   </head>
 
   <body id='<%= "#{controller_name}_#{action_name}" %>'>
-    <%= render "shared/error_messages", resource: @client %>
-
     <div id="wrapper">
       <%= render partial: '/clients/shared/sidebar' %>
 
       <div id="page-wrapper">
         <div class="container-fluid">
           <div class="whitebox">
+            <%= render "shared/error_messages", resource: @client %>
+
             <%= yield %>
 
           </div>

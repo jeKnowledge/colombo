@@ -1,13 +1,11 @@
 <% unless local_assigns[:resource].nil? %>
   <% if local_assigns[:resource].errors.any? %>
-    <ul>
-      <% local_assigns[:resource].errors.full_messages.each do |msg| %>
-        <li><%= msg.html_safe %></li>
-      <% end %>
-    </ul>
+    <% local_assigns[:resource].errors.full_messages.each do |msg| %>
+      <p><%= msg.html_safe %></p>
+    <% end %>
   <% end %>
 <% end %>
 
 <% if flash[:notice] %>
-  <li><%= flash[:notice] %></li>
+  <p><%= flash[:notice] %></p>
 <% end %>

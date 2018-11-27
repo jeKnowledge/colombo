@@ -14,14 +14,16 @@ class AuditorsController < ApplicationController
   def create
     @auditor = Auditor.new(auditor_signup_params)
 
-    if @auditor.terms_accepted
+    unless @auditor.terms_accepted
       @auditor.errors.add(:terms, :blank, message: "must be accepted")
       render :new
-    elsif @auditor.save
-      session[:user_id] = @auditor.id
-      redirect_to dashboard_auditor_path
     else
-      render :new
+      if @auditor.save
+        session[:user_id] = @auditor.id
+        redirect_to dashboard_auditor_path
+      else
+        render :new
+      end
     end
   end
 
@@ -109,7 +111,7 @@ class AuditorsController < ApplicationController
 
   private
     def auditor_signup_params
-      params.require(:auditor).permit(:first_name, :last_name, :email, :qualifications, :cv, :password, :password_confirmation, :terms)
+      params.require(:auditor).permit(:first_name, :last_name, :email, :qualifications, :cv, :password, :password_confirmation, :terms_accepted, :address, :company)
     end
 
     def auditor_params
