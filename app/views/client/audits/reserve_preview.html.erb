@@ -4,22 +4,30 @@
 
   <div class="form group">
     <label class="col-md-12">Date</label>
-    <p class="form-control form-control-line"><%= @plan.date %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.date %></p>
+    </div>
   </div>
 
   <div class="form group">
     <label class="col-md-12">Products</label>
-    <p class="form-control form-control-line"><%= @plan.products %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.products %></p>
+    </div>
   </div>
 
   <div class="form group">
     <label class="col-md-12">Price</label>
-    <p class="form-control form-control-line"><%= @plan.price %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.price %></p>
+    </div>
   </div>
 
   <div class="form group">
     <label class="col-md-12">Summary</label>
-    <p class="form-control form-control-line"><%= @plan.summary %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.summary %></p>
+    </div>
   </div>
 
   <%= link_to "Reserve", reserve_client_audits_path(@plan.id) %>

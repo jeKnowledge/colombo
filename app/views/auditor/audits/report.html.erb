@@ -6,28 +6,28 @@
 <div class="form-material form-horizontal">
 
   <div class="form-group">
-    <%= f.label :products %>
+    <%= f.label :products, class:"col-md-12" %>
     <div class="col-md-12">
       <%= f.text_field :products, placeholder: "Paracetamol", class:"form-control form-control-line" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :price %>
+    <%= f.label :price, class:"col-md-12" %>
     <div class="col-md-12">
       <%= f.number_field :price, step: 0.01, class:"form-control form-control-line" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :summary %>
+    <%= f.label :summary, class:"col-md-12" %>
     <div class="col-md-12">
       <%= f.text_field :summary, placeholder: "Audit for paracetamol", class:"form-control form-control-line" %>
     </div>
   </div>
 
   <div class="form-group">
-    <%= f.label :report %>
+    <%= f.label :report, class:"col-md-12" %>
     <div class="col-md-12">
       <%= f.file_field :report , class:"form-control form-control-line" %>
     </div>

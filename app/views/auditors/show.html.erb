@@ -1,42 +1,60 @@
-<h1>Profile</h1>
-<div class="form-material form-horizontal">
-  <div class="form group">
-    <label class="col-md-12">Username</label>
-    <p class="form-control form-control-line"><%= @auditor.username %></p>
+  <h1>Profile</h1>
+  <div class="form-material form-horizontal">
+    <div class="form group">
+      <label class="col-md-12">Username</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.username %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">First name</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.first_name %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">Last name</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.last_name %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">Email</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.email %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">Address</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.address %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">Company</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.company %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">Rating</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.rating %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">Qualifications</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.qualifications %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">CV</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.cv %></p>
+      </div>
+    </div>
   </div>
-  <div class="form group">
-    <label class="col-md-12">First name</label>
-    <p class="form-control form-control-line"><%= @auditor.first_name %></p>
-  </div>
-  <div class="form group">
-    <label class="col-md-12">Last name</label>
-    <p class="form-control form-control-line"><%= @auditor.last_name %></p>
-  </div>
-  <div class="form group">
-    <label class="col-md-12">Email</label>
-    <p class="form-control form-control-line"><%= @auditor.email %></p>
-  </div>
-  <div class="form group">
-    <label class="col-md-12">Address</label>
-    <p class="form-control form-control-line"><%= @auditor.address %></p>
-  </div>
-  <div class="form group">
-    <label class="col-md-12">Company</label>
-    <p class="form-control form-control-line"><%= @auditor.company %></p>
-  </div>
-  <div class="form group">
-    <label class="col-md-12">Rating</label>
-  <p class="form-control form-control-line"><%= @auditor.rating %></p>
-  </div>
-  <div class="form group">
-    <label class="col-md-12">Qualifications</label>
-  <p class="form-control form-control-line"><%= @auditor.qualifications %></p>
-  </div>
-  <div class="form group">
-    <label class="col-md-12">CV</label>
-  <p class="form-control form-control-line"><%= @auditor.cv %></p>
-  </div>
-</div>
 
-<button class="btn"><%= link_to "Edit account", edit_auditor_path %></button>
-<button class="btn"><%= link_to 'Delete account', auditor_path, method: :delete, data: { confirm: 'Are you sure?' } %></button>
+  <button class="btn"><%= link_to "Edit account", edit_auditor_path %></button>
+  <button class="btn"><%= link_to 'Delete account', auditor_path, method: :delete, data: { confirm: 'Are you sure?' } %></button>

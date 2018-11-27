@@ -4,27 +4,37 @@
 
   <div class="form group">
     <label class="col-md-12">Date</label>
-    <p class="form-control form-control-line"><%= @report.date %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.date %></p>
+    </div>
   </div>
 
   <div class="form group">
     <label class="col-md-12">Products</label>
-    <p class="form-control form-control-line"><%= @report.products %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.products %></p>
+    </div>
   </div>
 
   <div class="form group">
     <label class="col-md-12">Price</label>
-    <p class="form-control form-control-line"><%= @report.price %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.price %></p>
+    </div>
   </div>
 
   <div class="form group">
     <label class="col-md-12">Summary</label>
-    <p class="form-control form-control-line"><%= @report.summary %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.summary %></p>
+    </div>
   </div>
 
   <div class="form group">
     <label class="col-md-12">Rating</label>
-    <p class="form-control form-control-line"><%= @report.rating %></p>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.rating %></p>
+    </div>
   </div>
 
   <%= link_to "Purchase", purchase_client_audits_path(@report.id), class:"btn" %>

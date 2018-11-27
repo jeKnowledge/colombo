@@ -5,31 +5,31 @@
 <%= form_for @client do |f| %>
   <div class="form-material form-horizontal">
     <div class="form-group">
-      <%= f.label :first_name, "First name" %>
+      <%= f.label :first_name, "First name", class:"col-md-12" %>
       <div class="col-md-12">
         <%= f.text_field :first_name, placeholder: "James", class:"form-control form-control-line" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :last_name, "Last name" %>
+      <%= f.label :last_name, "Last name", class:"col-md-12" %>
       <div class="col-md-12">
         <%= f.text_field :last_name, placeholder: "Bond", class:"form-control form-control-line"%>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :email, "Email" %>
+      <%= f.label :email, "Email", class:"col-md-12" %>
       <div class="col-md-12">
         <%= f.email_field :email, placeholder: "james_bond@secret_agent.corp", class:"form-control form-control-line" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :address %>
+      <%= f.label :address, "Adress", class:"col-md-12" %>
       <div class="col-md-12">
         <%= f.text_field :address, placeholder: "Second street", class:"form-control form-control-line" %>
       </div>
     </div>
     <div class="form-group">
-      <%= f.label :company %>
+      <%= f.label :company, "Company", class:"col-md-12" %>
       <div class="col-md-12">
         <%= f.text_field :company, placeholder: "E-Corporation", class:"form-control form-control-line" %>
       </div>

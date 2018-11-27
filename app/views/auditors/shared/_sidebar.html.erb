@@ -1,45 +1,62 @@
-<ul class="nav in" id="side-menu-auditor">
-  <li>
-    <%= link_to "Dashboard", dashboard_auditor_path, class:"waves-effect" %>
-  </li>
+<nav class="navbar navbar-default navbar-static-top m-b-0">
+    <div class="navbar-header">
+        <div class="navbar_logo">
+            <a class="logo" href="index.html">
+              <img src="../plugins/images/colombo_Main.png" alt="home" class="light-logo" />
+            </a>
+        </div>
+        <div class="profile_logo">
+          <a href="#"> <img src="../plugins/images/users/varun.jpg" alt="user-img" width="36" class="img-circle">Steave</a>
+        </div>
+    </div>
+</nav>
 
-  <li>
-    <%= link_to "Profile", profile_auditor_path, class:"waves-effect" %>
-  </li>
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav slimscrollsidebar">
+        <ul class="nav in" id="side-menu-auditor">
+          <li>
+            <%= link_to "Dashboard", dashboard_auditor_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Mail box", mail_auditor_path, class:"waves-effect" %>
-  </li>
+          <li>
+            <%= link_to "Profile", profile_auditor_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Send audit report", report_auditor_audits_path, class:"waves-effect" %>
-  </li>
+          <li>
+            <%= link_to "Mail box", mail_auditor_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Send audit plan", plan_auditor_audits_path, class:"waves-effect" %>
-  </li>
+          <li>
+            <%= link_to "Send audit report", report_auditor_audits_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Audit reports", reports_auditor_audits_path, class:"waves-effect" %>
-  </li>
+          <li>
+            <%= link_to "Send audit plan", plan_auditor_audits_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Audit plans", plans_auditor_audits_path, class:"waves-effect" %>
-  </li>
+          <li>
+            <%= link_to "Audit reports", reports_auditor_audits_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Requests", requests_auditor_path, class:"waves-effect" %>
-  </li>
+          <li>
+            <%= link_to "Audit plans", plans_auditor_audits_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Sold plans", reservations_auditor_path, class:"waves-effect" %>
-  </li>
+          <li>
+            <%= link_to "Requests", requests_auditor_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Sold reports", purchases_auditor_path, class:"waves-effect" %>
-  </li>
+          <li>
+            <%= link_to "Sold plans", reservations_auditor_path, class:"waves-effect" %>
+          </li>
 
-  <li>
-    <%= link_to "Sign out", sign_out_path, class:"waves-effect" %>
-  </li>
-</ul>
+          <li>
+            <%= link_to "Sold reports", purchases_auditor_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Sign out", sign_out_path, class:"waves-effect" %>
+          </li>
+        </ul>
+      </div>
+    </div>
