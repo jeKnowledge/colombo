@@ -66,7 +66,7 @@ class AuditorsController < ApplicationController
   end
 
   def messages
-    @messages_sent = @auditor.messages_sent.validated
+    @messages_sent = @auditor.messages_sent
     @messages_recieved = @auditor.messages_received.validated
   end
 
@@ -76,17 +76,23 @@ class AuditorsController < ApplicationController
 
   def new_message
     @message = Message.new
-    @clients_audits = @auditor.purchases.collect { |purchase| { client_id: purchase.client_id, products: purchase.report.products } }
-    @clients_audits = @clients_audits + @auditor.reservations.collect { |reservation| { client_id: reservation.client_id, products: reservation.plan.products } }
+    @clients_audits = @auditor.purchases.collect { |purchase| [ purchase.report.products, "#{purchase.client_id}_#{purchase.report_id}" ] }
+    @clients_audits = @clients_audits + @auditor.reservations.collect { |reservation| [ reservation.plan.products, "#{reservation.client_id}_#{reservation.plan_id}" ] }
   end
 
   def send_message
-    audit = Audit.find(params[:message][:audit_id])
-    message = Message.new(source: @auditor, destiny: audit.client, audit: audit, body: params[:message][:body])
+    client_audit_ids = params[:message][:client_audit_ids].split('_')
+    client = Client.find(client_audit_ids[0].to_i)
+    audit = Audit.find(client_audit_ids[1].to_i)
+
+    message = Message.new(source: @auditor, destiny: client, audit: audit, body: params[:message][:body])
 
     if message.save
       redirect_to messages_auditor_path, notice: "Message sent"
     else
+      @message = message
+      @clients_audits = @auditor.purchases.collect { |purchase| [ purchase.report.products, purchase.client_id ] }
+      @clients_audits = @clients_audits + @auditor.reservations.collect { |reservation| [ reservation.plan.products, reservation.client_id ] }
       render :new_message
     end
   end

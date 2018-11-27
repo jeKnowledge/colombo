@@ -42,7 +42,7 @@ Rails.application.routes.draw do
     get '/', to: 'auditors#index', as: 'dashboard'
     get '/profile', to: 'auditors#show'
     get '/messages', to: 'auditors#messages'
-    post '/messages', to: 'clients#send_message'
+    post '/messages', to: 'auditors#send_message'
     get '/message/:id', to: 'auditors#show_message', as: 'message'
     get '/messages/new', to: 'auditors#new_message'
     get '/purchases', to: 'auditors#purchases'
