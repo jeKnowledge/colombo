@@ -79,8 +79,8 @@ class AuditorsController < ApplicationController
 
   def new_message
     @message = Message.new
-    @clients_audits = @auditor.purchases.collect { |purchase| [ purchase.report.products, "#{purchase.client_id}_#{purchase.report_id}" ] }
-    @clients_audits = @clients_audits + @auditor.reservations.collect { |reservation| [ reservation.plan.products, "#{reservation.client_id}_#{reservation.plan_id}" ] }
+    @clients_audits = @auditor.purchases.collect { |purchase| [ "Products: #{purchase.report.products} Client: #{purchase.client.username}", "#{purchase.client_id}_#{purchase.report_id}" ] }
+    @clients_audits = @clients_audits + @auditor.reservations.collect { |reservation| [ "Products: #{reservation.plan.products} Client: #{reservation.client.username}", "#{reservation.client_id}_#{reservation.plan_id}" ] }
   end
 
   def send_message
