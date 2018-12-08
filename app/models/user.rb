@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   after_save :generate_username
 
-  validates_presence_of :email, :first_name, :last_name
+  validates_presence_of :email, :name
 
   def messages_sent
     Message.where(source_id: self.id)
@@ -20,6 +20,6 @@ class User < ApplicationRecord
   end
 
   def generate_username
-    self.update_column(:username , "#{self.prefix}#{self.first_name[0..2]}#{self.last_name[0..2]}#{self.id}".downcase)
+    self.update_column(:username , "#{self.prefix}#{self.name[0..2]}#{self.id}".downcase)
   end
 end

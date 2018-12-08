@@ -16,16 +16,9 @@
   </div>
 
   <div class="form group">
-    <label class="col-md-12">First name</label>
+    <label class="col-md-12">Name</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @user.first_name %></p>
-    </div>
-  </div>
-
-  <div class="form group">
-    <label class="col-md-12">Last name</label>
-    <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @user.last_name %></p>
+      <p class="form-control form-control-line"><%= @user.name %></p>
     </div>
   </div>
 
@@ -51,7 +44,7 @@
     </div>
       <div class="col-md-12">
         <p class="form-control form-control-line"><%= link_to "CV", @user.cv.url %></p>
-      </div>    
+      </div>
   <% end %>
 </div>
 

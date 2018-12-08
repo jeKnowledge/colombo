@@ -55,7 +55,7 @@ class ClientsController < ApplicationController
     @messages_recieved = @client.messages_received.validated
   end
 
-  def show_message    
+  def show_message
     @message = Message.find(params[:id])
     @message.update_attribute(:read, true) if params[:read].present?
   end
@@ -110,13 +110,13 @@ class ClientsController < ApplicationController
   private
     def client_signup_params
       params.require(:client).permit(
-        :password, :password_confirmation, :first_name, :last_name,
+        :password, :password_confirmation, :name,
         :email, :address,:company, :terms_accepted
       )
     end
 
     def client_params
-      params.require(:client).permit(:first_name, :last_name, :email, :address, :company)
+      params.require(:client).permit(:name, :email, :address, :company)
     end
 
     def set_client

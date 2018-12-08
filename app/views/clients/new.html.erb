@@ -75,37 +75,30 @@
           <%= form_for @client, url: sign_up_client_path do |f| %>
           <div class="form-material form-horizontal">
             <div class="form-group">
-              <%= f.label :first_name, "First name", class:"col-md-12" %>
+              <%= f.label :name, "Name", class:"col-md-12" %>
               <div class="col-md-12">
-                <%= f.text_field :first_name, placeholder: "James", class:"form-control form-control-line" %>
-              </div>
-            </div>
-
-            <div class="form-group">
-              <%= f.label :last_name, "Last name", class:"col-md-12" %>
-              <div class="col-md-12">
-                <%= f.text_field :last_name, placeholder: "Bond", class:"form-control form-control-line" %>
+                <%= f.text_field :name, placeholder: "Franky Howell Coleman", class:"form-control form-control-line" %>
               </div>
             </div>
 
             <div class="form-group">
               <%= f.label :email, "Email", class:"col-md-12" %>
               <div class="col-md-12">
-                <%= f.text_field :email, placeholder: "james_bond@secret_agent.corp", class:"form-control form-control-line" %>
+                <%= f.text_field :email, placeholder: "francole@clmb.com", class:"form-control form-control-line" %>
               </div>
             </div>
 
             <div class="form-group">
               <%= f.label :address, class:"col-md-12" %>
               <div class="col-md-12">
-                <%= f.text_field :address, placeholder: "Second street", class:"form-control form-control-line" %>
+                <%= f.text_field :address, placeholder: "6485 Bay Ave", class:"form-control form-control-line" %>
               </div>
             </div>
 
             <div class="form-group">
               <%= f.label :company, class:"col-md-12" %>
               <div class="col-md-12">
-                <%= f.text_field :company, placeholder: "E-Corporation", class:"form-control form-control-line" %>
+                <%= f.text_field :company, placeholder: "Platt Industries", class:"form-control form-control-line" %>
               </div>
             </div>
 
