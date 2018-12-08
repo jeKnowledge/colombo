@@ -14,16 +14,11 @@ class ClientsController < ApplicationController
   def create
     @client = Client.new(client_signup_params)
 
-    unless @client.terms_accepted
-      @client.errors.add(:terms, :blank, message: "must be accepted")
-      render :new
+    if @client.save
+      session[:user_id] = @client.id
+      redirect_to dashboard_client_path
     else
-      if @client.save
-        session[:user_id] = @client.id
-        redirect_to dashboard_client_path
-      else
-        render :new
-      end
+      render :new
     end
   end
 
@@ -103,7 +98,7 @@ class ClientsController < ApplicationController
   end
 
   def accept_terms
-    @client.update_attribute(:terms_accepted, true)
+    @client.update_attribute(:terms_of_service, true)
     redirect_to dashboard_client_path
   end
 
@@ -111,7 +106,7 @@ class ClientsController < ApplicationController
     def client_signup_params
       params.require(:client).permit(
         :password, :password_confirmation, :name,
-        :email, :address,:company, :terms_accepted
+        :email, :address,:company, :terms_of_service
       )
     end
 

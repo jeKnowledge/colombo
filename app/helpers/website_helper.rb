@@ -26,7 +26,7 @@ module WebsiteHelper
       @client.errors.add(:your_account, "hasn't been validated yet, please wait until our administrators have done so.")
     end
 
-    unless @client.terms_accepted
+    unless @client.terms_of_service
       @client.errors.add(:new_terms, "have been set. To continue using the platform you must accept them. Accept #{link_to 'terms', terms_path}. #{link_to 'Accept', accept_terms_client_path, method: :post}")
     end
 
@@ -48,7 +48,7 @@ module WebsiteHelper
       @auditor.errors.add(:your_account, "hasn't been validated yet, please wait until our administrators have done so.")
     end
 
-    unless @auditor.terms_accepted
+    unless @auditor.terms_of_service
       @auditor.errors.add(:new_terms, "have been set. To continue using the platform you must accept them. Accept #{link_to 'terms', terms_path}. #{link_to 'Accept', accept_terms_auditor_path, method: :post}")
     end
 

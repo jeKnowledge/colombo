@@ -1,11 +1,10 @@
 class User < ApplicationRecord
-  attr_accessor :terms
-
   has_secure_password
 
   after_save :generate_username
 
   validates_presence_of :email, :name
+  validates :terms_of_service, acceptance: true
 
   def messages_sent
     Message.where(source_id: self.id)
