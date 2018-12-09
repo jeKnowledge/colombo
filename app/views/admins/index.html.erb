@@ -19,6 +19,7 @@
           <td><%= link_to "Validate", validate_user_admin_path(user.id) %></td>
         <% end %>
         <td><%= link_to "Details", show_user_admin_path(user.id) %></td>
+        <td><%= link_to "Delete", delete_user_admin_path(user.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -46,6 +47,7 @@
           <td><%= link_to "Validate", validate_user_admin_path(client.id) %></td>
         <% end %>
         <td><%= link_to "Details", show_user_admin_path(client.id) %></td>
+        <td><%= link_to "Delete", delete_user_admin_path(client.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -131,9 +133,9 @@
         <td><%= request.date %></td>
         <td><%= link_to request.client.username, show_user_admin_path(request.client_id) %></td>
         <% unless request.validated %>
-          <td><%= link_to "Validate", validate_request_admin_path(request.id) %></td>
+          <td><%= link_to "Validate", validate_audit_admin_path(request.id) %></td>
         <% end %>
-        <td><%= link_to "Details", show_request_admin_path(request.id) %></td>
+        <td><%= link_to "Details", show_audit_admin_path(request.id) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -1,8 +1,7 @@
 class AdminsController < ApplicationController
   before_action :admin_authenticated?
-  before_action :set_user, only: [:show_user, :validate_user]
+  before_action :set_user, only: [:show_user, :validate_user, :delete_user]
   before_action :set_audit, only: [:show_audit, :validate_audit]
-  before_action :set_request, only: [:show_request, :validate_request]
   before_action :set_message, only: [:show_message, :validate_message]
 
   layout 'admin'
@@ -22,14 +21,16 @@ class AdminsController < ApplicationController
   def show_audit
   end
 
-  def show_request
-  end
-
   def show_message
   end
 
   def validate_user
     @user.update_column(:validated, true)
+    redirect_to dashboard_admin_path
+  end
+
+  def delete_user
+    @user.destroy
     redirect_to dashboard_admin_path
   end
 
@@ -55,10 +56,6 @@ class AdminsController < ApplicationController
 
     def set_audit
       @audit = Audit.find(params[:id])
-    end
-
-    def set_request
-      @request = Request.find(params[:id])
     end
 
     def set_message
