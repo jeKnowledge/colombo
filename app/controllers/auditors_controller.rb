@@ -52,7 +52,7 @@ class AuditorsController < ApplicationController
   def requests
     @requests = []
 
-    Request.validated.each do |request|
+    Request.each do |request|
       like_address = !(@auditor.address =~ /.*#{request.address}.*/).nil?
       like_company = !(@auditor.company =~ /.*#{request.company}.*/).nil?
 

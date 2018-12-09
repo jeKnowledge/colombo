@@ -36,6 +36,3 @@
     </div>
   </div>
 </div>
-<% unless @audit.validated %>
-  <%= link_to "Validate", validate_audit_admin_path(@audit.id), method: :post %>
-<% end %>

@@ -11,7 +11,7 @@ class AdminsController < ApplicationController
     @clients = Client.order(:validated).page(params[:client_page]).per(5)
     @reports = Report.order(:validated).page(params[:report_page]).per(5)
     @plans = Plan.order(:validated).page(params[:plan_page]).per(5)
-    @requests = Request.order(:validated).page(params[:request_page]).per(5)
+    @requests = Request.page(params[:request_page]).per(5)
     @messages = Message.order(:validated, :created_at).page(params[:message_page]).per(5)
   end
 
@@ -41,11 +41,6 @@ class AdminsController < ApplicationController
 
   def validate_audit
     @audit.update_column(:validated, true)
-    redirect_to dashboard_admin_path
-  end
-
-  def validate_request
-    @request.update_column(:validated, true)
     redirect_to dashboard_admin_path
   end
 

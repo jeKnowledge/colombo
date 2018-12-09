@@ -136,9 +136,6 @@
         <td><%= request.products %></td>
         <td><%= request.date %></td>
         <td><%= link_to request.client.username, show_user_admin_path(request.client_id) %></td>
-        <% unless request.validated %>
-          <td><%= link_to "Validate", validate_audit_admin_path(request.id) %></td>
-        <% end %>
         <td><%= link_to "Details", show_audit_admin_path(request.id) %></td>
       </tr>
     <% end %>
