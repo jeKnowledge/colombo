@@ -2,7 +2,7 @@ FactoryBot.define do
   factory :auditor do
     email { Faker::Internet.email }
     name { Faker::Name.name }
-    password { "password" }
+    password { "Password#2018" }
     qualifications { Faker::Job.key_skill }
     cv { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/resume.pdf')) }
     address { Faker::Address.street_name }
