@@ -1,4 +1,4 @@
-class AuditorsController < ApplicationController
+class Auditor::GeneralController < ApplicationController
   before_action :auditor_authenticated?, except: [:create, :new]
   before_action :auditor_validated?, except: [:create, :new, :accept_terms]
 
@@ -16,7 +16,7 @@ class AuditorsController < ApplicationController
 
     if @auditor.save
       session[:user_id] = @auditor.id
-      redirect_to dashboard_auditor_path
+      redirect_to auditor_dashboard_path
     else
       render :new
     end
@@ -101,7 +101,7 @@ class AuditorsController < ApplicationController
 
   def accept_terms
     @auditor.update_attribute(:terms_of_service, true)
-    redirect_to dashboard_auditor_path
+    redirect_to auditor_dashboard_path
   end
 
   private

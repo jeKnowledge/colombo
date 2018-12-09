@@ -21,30 +21,32 @@ Rails.application.routes.draw do
     resources :consents, controller: 'admin/consents'
   end
 
-  resource :client do
-    get '/', to: 'clients#index', as: 'dashboard'
-    get '/profile', to: 'clients#show'
-    get '/sign_up', to: 'clients#new'
-    post '/sign_up', to: 'clients#create'
-    post '/accept_terms', to: 'clients#accept_terms'
+  namespace :client do
+    get '/', to: 'general#index', as: 'dashboard'
+    get '/profile', to: 'general#show'
+    delete '/profile', to: 'general#delete'
+    get '/profile/edit', to: 'general#edit'
+    get '/sign_up', to: 'general#new'
+    post '/sign_up', to: 'general#create'
+    post '/accept_terms', to: 'general#accept_terms'
 
     ### Messages ###
-    get '/messages', to: 'clients#messages'
-    post '/messages', to: 'clients#send_message'
-    get '/message/:id', to: 'clients#show_message', as: 'message'
-    get '/messages/new', to: 'clients#new_message'
+    get '/messages', to: 'general#messages'
+    post '/messages', to: 'general#send_message'
+    get '/message/:id', to: 'general#show_message', as: 'message'
+    get '/messages/new', to: 'general#new_message'
 
     ### Purchases ###
-    get '/purchases', to: 'clients#purchases'
-    post '/purchases/:id/rate', to: 'clients#rate_purchase', as: 'rate_purchase'
+    get '/purchases', to: 'general#purchases'
+    post '/purchases/:id/rate', to: 'general#rate_purchase', as: 'rate_purchase'
 
     ### Requests ###
-    get '/requests', to: 'clients#requests'
+    get '/requests', to: 'general#requests'
 
     ### Reservations ###
-    get '/reservations', to: 'clients#reservations'
+    get '/reservations', to: 'general#reservations'
 
-    namespace :audits do
+    scope :audits do
       get '/search', to: 'audits#search'
       get '/advanced_search', to: 'audits#advanced_search'
 
@@ -62,32 +64,32 @@ Rails.application.routes.draw do
     end
   end
 
-  resource :auditor do
-    get '/', to: 'auditors#index', as: 'dashboard'
-    get '/profile', to: 'auditors#show'
-    get '/sign_up', to: 'auditors#new'
-    post '/sign_up', to: 'auditors#create'
-    post '/accept_terms', to: 'auditors#accept_terms'
+  namespace :auditor do
+    get '/', to: 'general#index', as: 'dashboard'
+    get '/profile', to: 'general#show'
+    get '/sign_up', to: 'general#new'
+    post '/sign_up', to: 'general#create'
+    post '/accept_terms', to: 'general#accept_terms'
 
     ### Messages ###
-    get '/messages', to: 'auditors#messages'
-    post '/messages', to: 'auditors#send_message'
-    get '/message/:id', to: 'auditors#show_message', as: 'message'
-    get '/messages/new', to: 'auditors#new_message'
+    get '/messages', to: 'general#messages'
+    post '/messages', to: 'general#send_message'
+    get '/message/:id', to: 'general#show_message', as: 'message'
+    get '/messages/new', to: 'general#new_message'
 
     ### Purchases ###
-    get '/purchases', to: 'auditors#purchases'
+    get '/purchases', to: 'general#purchases'
 
     ### Requests ###
-    get '/requests', to: 'auditors#requests'
+    get '/requests', to: 'general#requests'
 
     ### Reservations ###
-    get '/reservations', to: 'auditors#reservations'
+    get '/reservations', to: 'general#reservations'
 
     ### Clients ###
-    get '/show_client/:id', to: 'auditors#show_client', as: 'show_client'
+    get '/show_client/:id', to: 'general#show_client', as: 'show_client'
 
-    namespace :audits do
+    scope :audits do
       ### Report ###
       get '/show_report/:id', to: 'audits#show_report', as: 'show_report'
       get '/report', to: 'audits#report'

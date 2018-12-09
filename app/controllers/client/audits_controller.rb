@@ -1,4 +1,4 @@
-class Client::AuditsController < ApplicationController
+class Audits::AuditsController < ApplicationController
   before_action :client_authenticated?
   before_action :client_validated?
 
@@ -76,7 +76,7 @@ class Client::AuditsController < ApplicationController
   def reserve
     plan = Plan.find(params[:id])
     Reservation.create(price: plan.price, plan_id: plan.id, client_id: @client.id, auditor_id: plan.auditor.id)
-    redirect_to search_client_audits_path, notice: "Reservation completed successfully"
+    redirect_to client_search_audits_path, notice: "Reservation completed successfully"
   end
 
   def purchase_preview
@@ -86,7 +86,7 @@ class Client::AuditsController < ApplicationController
   def purchase
     report = Report.find(params[:id])
     Purchase.create(price: report.price, report_id: report.id, client_id: @client.id, auditor_id: report.auditor.id)
-    redirect_to search_client_audits_path, notice: "Purchase completed successfully"
+    redirect_to client_search_audits_path, notice: "Purchase completed successfully"
   end
 
   def make_request
@@ -98,7 +98,7 @@ class Client::AuditsController < ApplicationController
     @request = Request.new(request_params)
 
     if @request.save
-      redirect_to search_client_audits_path, notice: "Request sent successfully"
+      redirect_to client_search_audits_path, notice: "Request sent successfully"
     else
       render :request
     end

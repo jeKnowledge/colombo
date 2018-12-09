@@ -23,7 +23,7 @@
           <td><%= purchase.report.date %></td>
           <td>
             <% if purchase.rating == -1 %>
-              <%= form_with url: rate_purchase_client_path(purchase.id) do |f| %>
+              <%= form_with url: client_rate_purchase_path(purchase.id) do |f| %>
                 <%= f.number_field :rating, value: 0, min: 0, max: 5 %>
                 <%= f.submit "Rate", class:"btn" %>
               <% end %>

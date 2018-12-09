@@ -72,7 +72,7 @@
         <div class="white-box">
           <%= render "shared/error_messages", resource: @client %>
 
-          <%= form_for @client, url: sign_up_client_path do |f| %>
+          <%= form_for @client, url: client_sign_up_path do |f| %>
           <div class="form-material form-horizontal">
             <div class="form-group">
               <%= f.label :name, "Name", class:"col-md-12" %>
@@ -128,8 +128,8 @@
         </div>
           <p class="change_link">
             Not a member yet ? Join us:
-            <a href="/client/sign_up" class="to_register">Client</a> or
-            <a href="/auditor/sign_up" class="to_register">Auditor</a> ?
+            <%= link_to "Client", client_sign_up_path %> or
+            <%= link_to "Auditor", auditor_sign_up_path %> ?
           </p>
         </div>
       </div>

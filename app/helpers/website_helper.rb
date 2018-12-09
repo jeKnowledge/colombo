@@ -3,9 +3,9 @@ module WebsiteHelper
 
   def dashboard_path(user)
     if user.is_a? Client
-      return dashboard_client_path
+      return client_dashboard_path
     elsif user.is_a? Auditor
-      return dashboard_auditor_path
+      return auditor_dashboard_path
     elsif user.is_a? Admin
       return dashboard_admin_path
     else
@@ -27,11 +27,11 @@ module WebsiteHelper
     end
 
     unless @client.terms_of_service
-      @client.errors.add(:new_terms, "have been set. To continue using the platform you must accept them. Accept #{link_to 'terms', terms_path}. #{link_to 'Accept', accept_terms_client_path, method: :post}")
+      @client.errors.add(:new_terms, "have been set. To continue using the platform you must accept them. Accept #{link_to 'terms', terms_path}. #{link_to 'Accept', client_accept_terms_path, method: :post}")
     end
 
     unless @client.errors.count == 0
-      render 'shared/not_allowed' unless profile_client_path == request.path
+      render 'shared/not_allowed' unless client_profile_path == request.path
     end
   end
 
@@ -53,7 +53,7 @@ module WebsiteHelper
     end
 
     unless @auditor.errors.count == 0
-      render 'shared/not_allowed' unless profile_auditor_path == request.path
+      render 'shared/not_allowed' unless auditor_profile_path == request.path
     end
   end
 

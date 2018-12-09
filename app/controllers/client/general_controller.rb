@@ -1,4 +1,4 @@
-class ClientsController < ApplicationController
+class Client::GeneralController < ApplicationController
   before_action :client_authenticated?, except: [:create, :new]
   before_action :client_validated?, except: [:create, :new, :accept_terms]
 
@@ -16,7 +16,7 @@ class ClientsController < ApplicationController
 
     if @client.save
       session[:user_id] = @client.id
-      redirect_to dashboard_client_path
+      redirect_to client_dashboard_path
     else
       render :new
     end
@@ -40,7 +40,7 @@ class ClientsController < ApplicationController
     end
   end
 
-  def destroy
+  def delete
     @client.destroy
     redirect_to sign_out_path
   end
@@ -66,7 +66,7 @@ class ClientsController < ApplicationController
     message = Message.new(source: @client, destiny: audit.auditor, audit: audit, body: params[:message][:body])
 
     if message.save
-      redirect_to messages_client_path, notice: "Message sent"
+      redirect_to client_messages_path, notice: "Message sent"
     else
       @message = message
       @audits = @client.purchases.collect { |purchase| purchase.report }
@@ -94,12 +94,12 @@ class ClientsController < ApplicationController
       purchase.rate(params[:rating].to_i.clamp(0, 5))
     end
 
-    redirect_to purchases_client_path, note: "Thanks for the rating"
+    redirect_to pclient_urchases_path, note: "Thanks for the rating"
   end
 
   def accept_terms
     @client.update_attribute(:terms_of_service, true)
-    redirect_to dashboard_client_path
+    redirect_to client_dashboard_path
   end
 
   private

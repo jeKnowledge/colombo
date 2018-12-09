@@ -6,7 +6,6 @@ class CreateMessages < ActiveRecord::Migration[5.2]
       t.references :audit, null: false
       t.text :body, null: false, default: ""
       t.boolean :read, null: false, default: false
-      t.boolean :validated, null: false, default: false
 
       t.timestamps
     end

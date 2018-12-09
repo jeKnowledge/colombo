@@ -1,6 +1,6 @@
 <h1>Search audit</h1>
 
-<%= form_tag search_client_audits_path, method: :get do %>
+<%= form_tag client_search_path, method: :get do %>
 
 <div class="form-material form-horizontal">
 
@@ -16,7 +16,7 @@
 
 <h2>Advanced search</h2>
 
-<%= form_tag advanced_search_client_audits_path, method: :get do %>
+<%= form_tag client_advanced_search_path, method: :get do %>
 
 <div class="form-material form-horizontal">
 
@@ -79,7 +79,7 @@
           <td><%= report.date %></td>
           <td><%= report.price %></td>
           <td><%= report.rating %></td>
-          <td><%= link_to "Purchase", purchase_preview_client_audits_path(report.id) %></td>
+          <td><%= link_to "Purchase", client_purchase_preview_audits_path(report.id) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -116,7 +116,7 @@
           <td><%= plan.products %></td>
           <td><%= plan.date %></td>
           <td><%= plan.price %></td>
-          <td><%= link_to "Reserve", reserve_preview_client_audits_path(plan.id) %></td>
+          <td><%= link_to "Reserve",client_ reserve_preview_audits_path(plan.id) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -126,4 +126,4 @@
 <% end %>
 
 <h2>Audit request</h2>
-<%= link_to "Send audit request", request_client_audits_path, class:"btn" %>
+<%= link_to "Send audit rclient_equest", request_audits_path, class:"btn" %>

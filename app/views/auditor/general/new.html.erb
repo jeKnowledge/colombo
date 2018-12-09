@@ -73,7 +73,7 @@
                         <div class="white-box">
                             <%= render "shared/error_messages", resource: @auditor %>
 
-                            <%= form_for @auditor, url: sign_up_auditor_path, multipart: true do |f| %>
+                            <%= form_for @auditor, url: auditor_sign_up_path, multipart: true do |f| %>
                             <div class="form-material form-horizontal">
                                 <div class="form-group">
                                   <%= f.label :name, "Name", class:"col-md-12" %>
@@ -143,9 +143,9 @@
                             <% end %>
                           </div>
                             <p class="change_link">
-                                Not a member yet ? Join us:
-                                <a href="/client/sign_up" class="to_register">Client</a> or
-                                <a href="/auditor/sign_up" class="to_register">Auditor</a> ?
+                              Not a member yet ? Join us:
+                              <%= link_to "Client", client_sign_up_path %> or
+                              <%= link_to "Auditor", auditor_sign_up_path %> ?
                             </p>
                         </div>
                     </div>

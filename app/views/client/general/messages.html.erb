@@ -1,5 +1,5 @@
 <h1>New message</h1>
-<%= link_to "Send message", messages_new_auditor_path, class: "btn" %>
+<%= link_to "Send message", messaclient_ges_new_path, class: "btn" %>
 
 <h1>Messages sent</h1>
 
@@ -19,8 +19,7 @@
       <tr>
         <td><%= message.destiny.username %></td>
         <td><%= message.audit.products %></td>
-        <td><%= message.validated %></td>
-        <td><%= link_to "See message", message_auditor_path(message.id) %></td>
+        <td><%= link_to "See message", client_message_path(message.id) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -52,7 +51,7 @@
         </td>
         <td>
             <%= "<b>".html_safe unless message.read %>
-            <%= link_to "See message", message_auditor_path(message.id, read: true) %>
+            <%= link_to "See message", client_message_path(message.id, read: true) %>
         </td>
       </tr>
     <% end %>

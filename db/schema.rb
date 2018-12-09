@@ -57,7 +57,6 @@ ActiveRecord::Schema.define(version: 2018_11_27_011638) do
     t.bigint "audit_id", null: false
     t.text "body", default: "", null: false
     t.boolean "read", default: false, null: false
-    t.boolean "validated", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["audit_id"], name: "index_messages_on_audit_id"

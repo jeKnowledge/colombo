@@ -5,8 +5,6 @@ class Message < ApplicationRecord
 
     attr_accessor :client_audit_ids
 
-    scope :validated, -> { where(validated: true)}
-
     scope :paginate, -> (page, per_page) { page(page).per(per_page) }
 
     validates_presence_of :source, :destiny, :audit, :body

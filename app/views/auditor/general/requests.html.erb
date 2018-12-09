@@ -17,7 +17,7 @@
                 <td><%= request.company %></td>
                 <td><%= request.address %></td>
                 <td><%= request.date %></td>
-                <td><%= link_to request.client.username, show_client_auditor_path(request.client_id) %></td>
+                <td><%= link_to request.client.username, client_show_auditor_path(request.client_id) %></td>
             </tr>
             <% end %>
         </tbody>

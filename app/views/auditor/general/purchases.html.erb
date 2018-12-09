@@ -12,7 +12,7 @@
     <tbody>
       <% @purchases.each do |purchase| %>
         <tr>
-          <td><%= link_to purchase.client.username, show_client_auditor_path(purchase.client_id) %></td>
+          <td><%= link_to purchase.client.username, client_show_auditor_path(purchase.client_id) %></td>
           <td><%= purchase.report.products %></td>
           <td><%= link_to "Report", show_report_auditor_audits_path(purchase.report_id) %></td>
         </tr>
