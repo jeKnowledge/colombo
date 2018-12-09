@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
   before_action :admin_authenticated?
-  before_action :set_user, only: [:show_user, :validate_user, :delete_user]
+  before_action :set_user, only: [:show_user, :validate_user, :invalidate_user, :delete_user]
   before_action :set_audit, only: [:show_audit, :validate_audit]
   before_action :set_message, only: [:show_message, :validate_message]
 
@@ -26,6 +26,11 @@ class AdminsController < ApplicationController
 
   def validate_user
     @user.update_column(:validated, true)
+    redirect_to dashboard_admin_path
+  end
+
+  def invalidate_user
+    @user.update_column(:validated, false)
     redirect_to dashboard_admin_path
   end
 

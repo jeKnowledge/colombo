@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     ### Users ###
     get '/user/:id', to: 'admins#show_user', as: 'show_user'
     post '/user/validate/:id', to: 'admins#validate_user', as: 'validate_user'
+    post '/user/invalidate/:id', to: 'admins#invalidate_user', as: 'invalidate_user'
     delete '/user/:id', to: 'admins#delete_user', as: 'delete_user'
 
     ### Audits ###

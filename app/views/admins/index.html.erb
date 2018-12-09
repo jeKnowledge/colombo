@@ -15,8 +15,10 @@
       <tr>
         <td><%= user.username %></td>
         <td><%= user.name %></td>
-        <% if !user.validated %>
-          <td><%= link_to "Validate", validate_user_admin_path(user.id) %></td>
+        <% if user.validated %>
+          <td><%= link_to "Invalidate", invalidate_user_admin_path(user.id), method: :post %></td>
+        <% else %>
+          <td><%= link_to "Validate", validate_user_admin_path(user.id), method: :post %></td>
         <% end %>
         <td><%= link_to "Details", show_user_admin_path(user.id) %></td>
         <td><%= link_to "Delete", delete_user_admin_path(user.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -43,8 +45,10 @@
       <tr>
         <td><%= client.username %></td>
         <td><%= client.name %></td>
-        <% unless client.validated %>
-          <td><%= link_to "Validate", validate_user_admin_path(client.id) %></td>
+        <% if client.validated %>
+          <td><%= link_to "Invalidate", invalidate_user_admin_path(client.id), method: :post %></td>
+        <% else %>
+          <td><%= link_to "Validate", validate_user_admin_path(client.id), method: :post %></td>
         <% end %>
         <td><%= link_to "Details", show_user_admin_path(client.id) %></td>
         <td><%= link_to "Delete", delete_user_admin_path(client.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
