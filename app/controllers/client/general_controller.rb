@@ -1,6 +1,7 @@
 class Client::GeneralController < ApplicationController
   before_action :client_authenticated?, except: [:create, :new]
   before_action :client_validated?, except: [:create, :new, :accept_terms]
+  before_action :set_client, except: [:new, :create]
 
   layout 'client', except: [:new, :create]
 
@@ -12,7 +13,7 @@ class Client::GeneralController < ApplicationController
   end
 
   def create
-    @client = Client.new(client_signup_params)
+    @client = Client.new(client_params)
 
     if @client.save
       session[:user_id] = @client.id
@@ -26,7 +27,6 @@ class Client::GeneralController < ApplicationController
   end
 
   def profile
-    @client = Client.find(params[:id])
   end
 
   def edit
@@ -34,7 +34,7 @@ class Client::GeneralController < ApplicationController
 
   def update
     if @client.update_attributes(client_params)
-      redirect_to profile_auditor_path
+      redirect_to client_profile_path
     else
       render :edit
     end
@@ -94,7 +94,7 @@ class Client::GeneralController < ApplicationController
       purchase.rate(params[:rating].to_i.clamp(0, 5))
     end
 
-    redirect_to pclient_urchases_path, note: "Thanks for the rating"
+    redirect_to client_purchases_path, note: "Thanks for the rating"
   end
 
   def accept_terms
@@ -103,15 +103,11 @@ class Client::GeneralController < ApplicationController
   end
 
   private
-    def client_signup_params
+    def client_params
       params.require(:client).permit(
         :password, :password_confirmation, :name,
         :email, :address,:company, :terms_of_service
       )
-    end
-
-    def client_params
-      params.require(:client).permit(:name, :email, :address, :company)
     end
 
     def set_client

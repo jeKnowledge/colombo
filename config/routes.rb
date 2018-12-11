@@ -23,11 +23,12 @@ Rails.application.routes.draw do
 
   namespace :client do
     get '/', to: 'general#index', as: 'dashboard'
-    get '/profile', to: 'general#show'
-    delete '/profile', to: 'general#delete'
-    get '/profile/edit', to: 'general#edit'
     get '/sign_up', to: 'general#new'
     post '/sign_up', to: 'general#create'
+    get '/profile/edit', to: 'general#edit'
+    patch '/profile/edit', to: 'general#update'
+    get '/profile', to: 'general#show'
+    delete '/profile', to: 'general#delete'
     post '/accept_terms', to: 'general#accept_terms'
 
     ### Messages ###
@@ -64,7 +65,9 @@ Rails.application.routes.draw do
     end
   end
 
+  get '/auditor', to: 'auditor/general#index'
   namespace :auditor do
+    root 'general#index'
     get '/', to: 'general#index', as: 'dashboard'
     get '/profile', to: 'general#show'
     get '/sign_up', to: 'general#new'

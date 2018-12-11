@@ -2,10 +2,11 @@
 
 <%= render "shared/error_messages", resource: @client %>
 
-<%= form_for @client do |f| %>
+<%= form_for @client, url: client_profile_edit_path do |f| %>
   <div class="form-material form-horizontal">
     <div class="form-group">
       <%= f.label :name, "Name", class:"col-md-12" %>
+
       <div class="col-md-12">
         <%= f.text_field :name, placeholder: "Franky Howell Coleman", class:"form-control form-control-line" %>
       </div>
@@ -13,22 +14,44 @@
 
     <div class="form-group">
       <%= f.label :email, "Email", class:"col-md-12" %>
+
       <div class="col-md-12">
         <%= f.email_field :email, placeholder: "francole@clmb.com", class:"form-control form-control-line" %>
       </div>
     </div>
+
     <div class="form-group">
       <%= f.label :address, "Adress", class:"col-md-12" %>
+
       <div class="col-md-12">
         <%= f.text_field :address, placeholder: "6485 Bay Ave", class:"form-control form-control-line" %>
       </div>
     </div>
+
     <div class="form-group">
       <%= f.label :company, "Company", class:"col-md-12" %>
+
       <div class="col-md-12">
         <%= f.text_field :company, placeholder: "Platt Industries", class:"form-control form-control-line" %>
       </div>
     </div>
+
+    <div class="form-group">
+      <%= f.label :password, "Password", class:"col-md-12" %>
+
+      <div class="col-md-12">
+        <%= f.password_field :password, placeholder: "************", class:"form-control form-control-line" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "Password confirmation", class:"col-md-12" %>
+
+      <div class="col-md-12">
+        <%= f.password_field :password_confirmation, placeholder: "************", class:"form-control form-control-line" %>
+      </div>
+    </div>
   </div>
+
   <%= f.submit "Update account", class:"btn" %>
 <% end %>
