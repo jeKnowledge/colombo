@@ -47,7 +47,7 @@ class Client::GeneralController < ApplicationController
 
   def messages
     @messages_sent = @client.messages_sent
-    @messages_recieved = @client.messages_received.validated
+    @messages_recieved = @client.messages_received
   end
 
   def show_message
