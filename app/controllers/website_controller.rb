@@ -1,4 +1,6 @@
 class WebsiteController < ApplicationController
+  include BCrypt
+
   def index
   end
 
@@ -8,7 +10,7 @@ class WebsiteController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
 
-    if user && user.authenticate(sign_in_params[:password])
+    if user && Password.new(user.password) == sign_in_params[:password]
       session[:user_id] = user.id
       redirect_to dashboard_path(user)
     else

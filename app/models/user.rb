@@ -1,6 +1,5 @@
 class User < ApplicationRecord
-  has_secure_password
-  attr_accessor :password
+  attr_accessor :password_confirmation
 
   after_save :generate_username
   validate :password_validation, on: :create
@@ -26,17 +25,18 @@ class User < ApplicationRecord
   end
 
   def password_validation
+    same_as_confirmation = self.password == self.password_confirmation
     has_at_least_8_length = self.password.length >= 8
     has_digit = !(self.password =~ /[0-9]/).nil?
     has_lower_case_character = !(self.password =~ /[a-z]/).nil?
     has_upper_case_character = !(self.password =~ /[A-Z]/).nil?
     has_symbol = !(self.password =~ /^([0-9]|[a-z]|[A-Z])/).nil?
 
-    unless has_digit && has_lower_case_character && has_upper_case_character && has_symbol
-      self.errors.add(:password, "must be at least 8 characters long, contain a digit, a lower case letter, a upper case letter and a symbol")
+    unless same_as_confirmation && has_digit && has_lower_case_character && has_upper_case_character && has_symbol
+      self.errors.add(:password, "must match password confirmation and be at least 8 characters long, contain a digit, a lower case letter, a upper case letter and a symbol")
       puts self.errors.inspect
     else
-      self.password_digest = BCrypt::Password.create(self.password)
+      self.password = BCrypt::Password.create(self.password)
     end
   end
 
