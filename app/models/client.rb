@@ -6,6 +6,6 @@ class Client < User
   validates_presence_of :address, :company
 
   def prefix
-    'c_'
+    'cus'
   end
 end

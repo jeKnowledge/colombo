@@ -16,12 +16,8 @@ class User < ApplicationRecord
     Message.where(destiny_id: self.id)
   end
 
-  def prefix
-    ''
-  end
-
   def generate_username
-    self.update_column(:username , "#{self.prefix}#{self.name[0..2]}#{self.id}".downcase)
+    self.update_column(:username , "#{self.prefix}#{Date.today.year}#{self.id}".downcase)
   end
 
   def password_validation
