@@ -10,21 +10,20 @@
       <th>Planned audit date</th>
       <th>Summary</th>
       <th>Price</th>
-      <th>Proposed fee</th>
+      <th>Fee</th>
     </tr>
   </thead>
 
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservetion.plan.auditor.company %>
-        <td><%= reservetion.plan.auditor.address %></td>
-        <td><%= reservetion.plan.roducts %></td>
-        <td><%= reservetion.plan.price %></td>
-        <td><%= reservetion.plan.date %></td>
-        <td><%= reservetion.plan.summary %></td>
-        <td><%= reservetion.plan.fee %></td>
-        <td><%= reservetion.plan.validated %></td>
+        <td><%= reservation.plan.auditor.company %>
+        <td><%= reservation.plan.auditor.address %></td>
+        <td><%= reservation.plan.products %></td>
+        <td><%= reservation.plan.date %></td>
+        <td><%= reservation.plan.summary %></td>
+        <td><%= reservation.plan.price %></td>
+        <td><%= reservation.plan.fee %></td>
       </tr>
     <% end %>
   </tbody>
