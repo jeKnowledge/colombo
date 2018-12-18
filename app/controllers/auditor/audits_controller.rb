@@ -56,6 +56,6 @@ class Auditor::AuditsController < ApplicationController
 
     def plan_params
       params.require(:plan)
-        .permit(:products, :price, :date, :summary).merge(auditor_id: @auditor.id)
+        .permit(:products, :price, :date, :summary, :fee).merge(auditor_id: @auditor.id)
     end
 end

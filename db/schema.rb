@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_011638) do
     t.bigint "auditor_id"
     t.float "price", default: 0.0, null: false
     t.string "summary", default: "", null: false
+    t.float "fee", default: 0.0, null: false
     t.integer "rating_sum", default: 0, null: false
     t.integer "ratings", default: 0, null: false
     t.string "report", default: "", null: false

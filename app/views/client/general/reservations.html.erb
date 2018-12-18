@@ -4,22 +4,27 @@
   <table class="table">
   <thead>
     <tr>
-      <th>Products</th>
-      <th>Price</th>
       <th>Company</th>
       <th>Address</th>
-      <th>Date</th>
+      <th>Products</th>
+      <th>Planned audit date</th>
+      <th>Summary</th>
+      <th>Price</th>
+      <th>Proposed fee</th>
     </tr>
   </thead>
 
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td><%= reservation.plan.products %></td>
-        <td><%= reservation.price %></td>
-        <td><%= reservation.plan.auditor.company %></td>
-        <td><%= reservation.plan.auditor.address %></td>
-        <td><%= reservation.plan.date %></td>
+        <td><%= reservetion.plan.auditor.company %>
+        <td><%= reservetion.plan.auditor.address %></td>
+        <td><%= reservetion.plan.roducts %></td>
+        <td><%= reservetion.plan.price %></td>
+        <td><%= reservetion.plan.date %></td>
+        <td><%= reservetion.plan.summary %></td>
+        <td><%= reservetion.plan.fee %></td>
+        <td><%= reservetion.plan.validated %></td>
       </tr>
     <% end %>
   </tbody>

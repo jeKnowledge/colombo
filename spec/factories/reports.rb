@@ -5,5 +5,6 @@ FactoryBot.define do
     price { Faker::Number.decimal(2) }
     report { Rack::Test::UploadedFile.new(Rails.root.join('spec/support/resume.pdf')) }
     summary { Faker::Lorem.sentence(3) }
+    fee { Faker::Number.decimal(2) }
   end
 end
