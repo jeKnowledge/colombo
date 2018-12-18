@@ -34,7 +34,6 @@ class User < ApplicationRecord
 
     unless same_as_confirmation && has_digit && has_lower_case_character && has_upper_case_character && has_symbol
       self.errors.add(:password, "must match password confirmation and be at least 8 characters long, contain a digit, a lower case letter, a upper case letter and a symbol")
-      puts self.errors.inspect
     else
       self.password = BCrypt::Password.create(self.password)
     end

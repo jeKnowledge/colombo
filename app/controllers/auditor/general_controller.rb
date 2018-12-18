@@ -30,7 +30,7 @@ class Auditor::GeneralController < ApplicationController
 
   def update
     if @auditor.update_attributes(auditor_params)
-      redirect_to profile_auditor_path
+      redirect_to auditor_profile_path
     else
       render :edit
     end
@@ -64,7 +64,7 @@ class Auditor::GeneralController < ApplicationController
 
   def messages
     @messages_sent = @auditor.messages_sent
-    @messages_recieved = @auditor.messages_received.validated
+    @messages_recieved = @auditor.messages_received
   end
 
   def show_message
@@ -86,7 +86,7 @@ class Auditor::GeneralController < ApplicationController
     message = Message.new(source: @auditor, destiny: client, audit: audit, body: params[:message][:body])
 
     if message.save
-      redirect_to messages_auditor_path, notice: "Message sent"
+      redirect_to auditor_messages_path, notice: "Message sent"
     else
       @message = message
       @clients_audits = @auditor.purchases.collect { |purchase| [ purchase.report.products, purchase.client_id ] }
@@ -106,10 +106,17 @@ class Auditor::GeneralController < ApplicationController
 
   private
     def auditor_signup_params
-      params.require(:auditor).permit(:name, :email, :qualifications, :cv, :password, :password_confirmation, :terms_of_service, :address, :company)
+      params.require(:auditor).permit(
+        :name, :email, :qualifications,:cv, :password,
+        :password_confirmation, :terms_of_service,
+        :address, :company
+      )
     end
 
     def auditor_params
-      params.require(:auditor).permit(:name, :email, :qualifications)
+      params.require(:auditor).permit(
+        :name, :email, :qualifications, :password, :password_confirmation,
+        :address, :company
+      )
     end
 end
