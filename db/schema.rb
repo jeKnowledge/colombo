@@ -94,7 +94,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_011638) do
     t.string "username", default: "", null: false
     t.string "email", default: "", null: false
     t.string "name", default: "", null: false
-    t.string "password_digest", default: "", null: false
+    t.string "password", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.boolean "terms_of_service", null: false
     t.string "address", default: "", null: false
