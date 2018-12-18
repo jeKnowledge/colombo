@@ -12,8 +12,8 @@
   <tbody>
     <% @reservations.each do |reservation| %>
       <tr>
-        <td class="btn"><%= link_to "Details", show_plan_auditor_audits_path(reservation.plan_id) %></td>
-        <td class="btn"><%= link_to reservation.client.username, client_show_profile_path(reservation.client.id) %></td>
+        <td class="btn"><%= link_to "Details", auditor_show_plan_path(reservation.plan_id) %></td>
+        <td class="btn"><%= link_to reservation.client.username,  auditor_show_client_path(reservation.client.id) %></td>
       </tr>
     <% end %>
   </tbody>

@@ -2,7 +2,7 @@
 
 <%= render "shared/error_messages", resource: @message %>
 
-<%= form_for @message, url: messages_auditor_path do |f| %>
+<%= form_for @message, url: auditor_messages_path do |f| %>
 <div class="form-material form-horizontal">
   <div class="form-group">
     <%= f.label :audit, class:"col-md-12" %>

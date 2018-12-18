@@ -34,7 +34,6 @@ class User < ApplicationRecord
 
     unless has_digit && has_lower_case_character && has_upper_case_character && has_symbol
       self.errors.add(:password, "must be at least 8 characters long, contain a digit, a lower case letter, a upper case letter and a symbol")
-      puts self.errors.inspect
     else
       self.password_digest = BCrypt::Password.create(self.password)
     end
