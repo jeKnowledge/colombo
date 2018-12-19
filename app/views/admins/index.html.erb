@@ -152,7 +152,6 @@
     <tr>
       <th>Source</th>
       <th>Destiny</th>
-      <th>Products</th>
     </tr>
   </thead>
 
@@ -161,8 +160,7 @@
       <tr>
         <td><%= message.source.username %></td>
         <td><%= message.destiny.username %></td>
-        <td><%= message.audit.products %></td>
-        <td><%= link_to "Details", show_message_admin_path(message.id) %></td>
+        <td><%= link_to "Read", show_message_admin_path(message.id) %></td>
       </tr>
     <% end %>
   </tbody>
