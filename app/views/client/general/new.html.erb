@@ -75,23 +75,23 @@
           <%= form_for @client, url: client_sign_up_path do |f| %>
           <div class="form-material form-horizontal">
             <div class="form-group">
-              <%= f.label :name, "Name", class:"col-md-12" %>
+              <%= f.label :name, "Full name", class:"col-md-12" %>
               <div class="col-md-12">
-                <%= f.text_field :name, placeholder: "Franky Howell Coleman", class:"form-control form-control-line" %>
+                <%= f.text_field :name, placeholder: "Full name", class:"form-control form-control-line" %>
               </div>
             </div>
 
             <div class="form-group">
               <%= f.label :email, "Email", class:"col-md-12" %>
               <div class="col-md-12">
-                <%= f.text_field :email, placeholder: "francole@clmb.com", class:"form-control form-control-line" %>
+                <%= f.text_field :email, placeholder: "Email", class:"form-control form-control-line" %>
               </div>
             </div>
 
             <div class="form-group">
               <%= f.label :address, class:"col-md-12" %>
               <div class="col-md-12">
-                <%= f.text_field :address, placeholder: "6485 Bay Ave", class:"form-control form-control-line" %>
+                <%= f.text_field :address, placeholder: "Address", class:"form-control form-control-line" %>
               </div>
             </div>
 
@@ -105,7 +105,7 @@
             <div class="form-group">
               <%= f.label :company, class:"col-md-12" %>
               <div class="col-md-12">
-                <%= f.text_field :company, placeholder: "Platt Industries", class:"form-control form-control-line" %>
+                <%= f.text_field :company, placeholder: "Company", class:"form-control form-control-line" %>
               </div>
             </div>
 

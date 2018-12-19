@@ -64,6 +64,7 @@
         <th>Products</th>
         <th>Date</th>
         <th>Price</th>
+        <th>Fee</th>
         <th>Rating</th>
         <th>Action<th>
       </tr>
@@ -78,6 +79,7 @@
           <td><%= report.products %></td>
           <td><%= report.date %></td>
           <td><%= report.price %></td>
+          <td><%= report.fee %></td>
           <td><%= report.rating %></td>
           <td><%= link_to "Purchase", client_purchase_preview_path(report.id) %></td>
         </tr>
