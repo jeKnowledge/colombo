@@ -12,6 +12,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       # client and auditor
       t.string :address, null: false, default: ""
       t.string :company, null: false, default: ""
+      t.string :country, null: false, default: ""
 
       # auditor
       t.integer :rating_sum, null: false, default: 0

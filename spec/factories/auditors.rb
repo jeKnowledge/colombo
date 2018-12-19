@@ -9,5 +9,6 @@ FactoryBot.define do
     address { Faker::Address.street_name }
     company { Faker::Company.name }
     terms_of_service { true }
+    country { Faker::Address.country_code }
   end
 end

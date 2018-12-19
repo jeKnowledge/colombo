@@ -38,4 +38,8 @@ class User < ApplicationRecord
   def update_password_validation
     password_validation unless self.password.length == 0
   end
+
+  def country_name
+    ISO3166::Country[self.country].name
+  end
 end
