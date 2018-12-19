@@ -107,16 +107,16 @@ class Auditor::GeneralController < ApplicationController
   private
     def auditor_signup_params
       params.require(:auditor).permit(
-        :name, :email, :qualifications,:cv, :password,
+        :name, :email, :qualifications, :cv, :password,
         :password_confirmation, :terms_of_service,
-        :address, :company
+        :address, :company, :country
       )
     end
 
     def auditor_params
       params.require(:auditor).permit(
         :name, :email, :qualifications, :password, :password_confirmation,
-        :address, :company
+        :address, :company, :country, :cv
       )
     end
 end
