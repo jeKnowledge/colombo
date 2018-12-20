@@ -6,10 +6,32 @@
         <p class="form-control form-control-line"><%= @auditor.username %></p>
       </div>
     </div>
+
+    <div class="form group">
+      <label class="col-md-12">Rating</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.rating %></p>
+      </div>
+    </div>
+
+    <div class="form group">
+      <label class="col-md-12">Registered since</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.created_at.to_date %></p>
+      </div>
+    </div>
+
     <div class="form group">
       <label class="col-md-12">Name</label>
       <div class="col-md-12">
         <p class="form-control form-control-line"><%= @auditor.name %></p>
+      </div>
+    </div>
+
+    <div class="form group">
+      <label class="col-md-12">Country</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @auditor.country_name %></p>
       </div>
     </div>
 
@@ -19,24 +41,21 @@
         <p class="form-control form-control-line"><%= @auditor.email %></p>
       </div>
     </div>
-    <div class="form group">
-      <label class="col-md-12">Address</label>
-      <div class="col-md-12">
-        <p class="form-control form-control-line"><%= @auditor.address %></p>
-      </div>
-    </div>
+
     <div class="form group">
       <label class="col-md-12">Company</label>
       <div class="col-md-12">
         <p class="form-control form-control-line"><%= @auditor.company %></p>
       </div>
     </div>
+
     <div class="form group">
-      <label class="col-md-12">Rating</label>
+      <label class="col-md-12">Address</label>
       <div class="col-md-12">
-        <p class="form-control form-control-line"><%= @auditor.rating %></p>
+        <p class="form-control form-control-line"><%= @auditor.address %></p>
       </div>
     </div>
+
     <div class="form group">
       <label class="col-md-12">Qualifications</label>
       <div class="col-md-12">

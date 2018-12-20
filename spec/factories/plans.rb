@@ -5,5 +5,6 @@ FactoryBot.define do
     summary { Faker::Lorem.sentence(3) }
     auditor { FactoryBot.create(:auditor) }
     price { Faker::Number.decimal(2) }
+    fee { Faker::Number.decimal(2) }
   end
 end

@@ -12,9 +12,9 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :price, class:"col-md-12" %>
+    <%= f.label :date, class:"col-md-12" %>
     <div class="col-md-12">
-      <%= f.number_field :price, step: 0.01, class:"form-control form-control-line" %>
+      <%= f.date_field :date, min: Time.now + 1.days, class:"form-control form-control-line" %>
     </div>
   </div>
 
@@ -26,13 +26,19 @@
   </div>
 
   <div class="form-group">
-    <%= f.label :date, class:"col-md-12" %>
+    <%= f.label :price, class:"col-md-12" %>
     <div class="col-md-12">
-      <%= f.date_field :date, min: Time.now + 1.days, class:"form-control form-control-line" %>
+      <%= f.number_field :price, step: 0.01, class:"form-control form-control-line" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :fee, class:"col-md-12" %>
+    <div class="col-md-12">
+      <%= f.number_field :fee, class:"form-control form-control-line" %>
     </div>
   </div>
 
   <%= f.submit "Send audit plan", class:"btn" %>
-
 </div>
 <% end %>

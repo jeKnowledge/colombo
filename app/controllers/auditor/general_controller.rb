@@ -52,7 +52,7 @@ class Auditor::GeneralController < ApplicationController
   def requests
     @requests = []
 
-    Request.each do |request|
+    Request.all.each do |request|
       like_address = !(@auditor.address =~ /.*#{request.address}.*/).nil?
       like_company = !(@auditor.company =~ /.*#{request.company}.*/).nil?
 
@@ -107,16 +107,16 @@ class Auditor::GeneralController < ApplicationController
   private
     def auditor_signup_params
       params.require(:auditor).permit(
-        :name, :email, :qualifications,:cv, :password,
+        :name, :email, :qualifications, :cv, :password,
         :password_confirmation, :terms_of_service,
-        :address, :company
+        :address, :company, :country, :cv_cache
       )
     end
 
     def auditor_params
       params.require(:auditor).permit(
         :name, :email, :qualifications, :password, :password_confirmation,
-        :address, :company
+        :address, :company, :country, :cv, :cv_cache
       )
     end
 end

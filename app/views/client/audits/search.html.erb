@@ -64,6 +64,7 @@
         <th>Products</th>
         <th>Date</th>
         <th>Price</th>
+        <th>Fee</th>
         <th>Rating</th>
         <th>Action<th>
       </tr>
@@ -78,8 +79,9 @@
           <td><%= report.products %></td>
           <td><%= report.date %></td>
           <td><%= report.price %></td>
+          <td><%= report.fee %></td>
           <td><%= report.rating %></td>
-          <td><%= link_to "Purchase", client_purchase_preview_audits_path(report.id) %></td>
+          <td><%= link_to "Purchase", client_purchase_preview_path(report.id) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -88,7 +90,7 @@
   <%= paginate @reports, param_name: :report_page %>
 <% end %>
 
-<h2>Audit plans</h2>
+<h2>Planned audits</h2>
 
 <% if @plans.count == 0 %>
   <p>No plans available</p>
@@ -103,7 +105,7 @@
         <th>Products</th>
         <th>Date</th>
         <th>Price</th>
-        <th>Action<th>
+        <th>Fee<th>
       </tr>
     </thead>
 
@@ -116,7 +118,8 @@
           <td><%= plan.products %></td>
           <td><%= plan.date %></td>
           <td><%= plan.price %></td>
-          <td><%= link_to "Reserve",client_ reserve_preview_audits_path(plan.id) %></td>
+          <td><%= plan.fee %></td>
+          <td><%= link_to "Reserve", client_reserve_preview_path(plan.id) %></td>
         </tr>
       <% end %>
     </tbody>
@@ -126,4 +129,4 @@
 <% end %>
 
 <h2>Audit request</h2>
-<%= link_to "Send audit rclient_equest", request_audits_path, class:"btn" %>
+<%= link_to "Send audit request", client_request_path, class:"btn" %>

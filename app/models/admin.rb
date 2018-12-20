@@ -1,4 +1,5 @@
 class Admin < User
-  def generate_username
+  def prefix
+    'adm'
   end
 end

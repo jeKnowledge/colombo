@@ -2,9 +2,7 @@ require 'factory_bot'
 
 FactoryBot.find_definitions
 
-FactoryBot.create :admin, username: "admin"
-
-FactoryBot.create :auditor, email: "tiagomartins282@gmail.com"
+FactoryBot.create :admin
 
 2.times do
   FactoryBot.create :auditor

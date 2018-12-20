@@ -106,7 +106,7 @@ class Client::GeneralController < ApplicationController
     def client_params
       params.require(:client).permit(
         :password, :password_confirmation, :name,
-        :email, :address,:company, :terms_of_service
+        :email, :address,:company, :terms_of_service, :country
       )
     end
 

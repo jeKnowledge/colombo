@@ -18,7 +18,7 @@ class Auditor < User
   scope :address_like, -> (query) { where("address ILIKE ?", "%#{query}%")}
 
   def prefix
-    'a_'
+    'aud'
   end
 
   def rating

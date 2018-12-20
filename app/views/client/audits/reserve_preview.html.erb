@@ -3,9 +3,16 @@
 <div class="form-material form-horizontal">
 
   <div class="form group">
-    <label class="col-md-12">Date</label>
+    <label class="col-md-12">Company</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @plan.date %></p>
+      <p class="form-control form-control-line"><%= @plan.auditor.company %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Address</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.auditor.address %></p>
     </div>
   </div>
 
@@ -17,9 +24,9 @@
   </div>
 
   <div class="form group">
-    <label class="col-md-12">Price</label>
+    <label class="col-md-12">Planned audit date</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @plan.price %></p>
+      <p class="form-control form-control-line"><%= @plan.date %></p>
     </div>
   </div>
 
@@ -30,7 +37,21 @@
     </div>
   </div>
 
-  <%= link_to "Reserve", client_reserve_audits_path(@plan.id), class: 'btn', id: 'purchase_button' %>
+  <div class="form group">
+    <label class="col-md-12">Price</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.price %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Proposed fee</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.fee %></p>
+    </div>
+  </div>
+
+  <%= link_to "Reserve", client_reserve_path(@plan.id), class: 'btn', id: 'purchase_button' %>
 
   <div id="paypal-button"></div>
 </div>
@@ -60,7 +81,7 @@
       return actions.payment.create({
         transactions: [{
           amount: {
-            total: '<%= @plan.price %>',
+            total: '<%= @plan.price + @plan.fee %>',
             currency: 'USD'
           }
         }]

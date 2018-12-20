@@ -35,6 +35,7 @@ ActiveRecord::Schema.define(version: 2018_12_20_181043) do
     t.bigint "auditor_id"
     t.float "price", default: 0.0, null: false
     t.string "summary", default: "", null: false
+    t.float "fee", default: 0.0, null: false
     t.integer "rating_sum", default: 0, null: false
     t.integer "ratings", default: 0, null: false
     t.string "report", default: "", null: false
@@ -107,6 +108,7 @@ ActiveRecord::Schema.define(version: 2018_12_20_181043) do
     t.boolean "terms_of_service", null: false
     t.string "address", default: "", null: false
     t.string "company", default: "", null: false
+    t.string "country", default: "", null: false
     t.integer "rating_sum", default: 0, null: false
     t.integer "ratings", default: 0, null: false
     t.string "qualifications", default: "", null: false

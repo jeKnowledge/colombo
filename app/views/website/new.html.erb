@@ -73,15 +73,15 @@
             <div class="white-box">
               <%= render partial: "shared/error_messages", resource: @user %>
 
-              <%= form_with url: sign_in_path do |f| %>
+               <%= form_with url: sign_in_path do |f| %>
                 <div class="form-material form-horizontal">
                   <div class="form-group">
                     <%= f.label :username, "Your username", class:"col-md-12" %>
                     <div class="col-md-12">
-                      <%= f.text_field :username, placeholder: "secret_agent", class:"form-control form-control-line" %>
+                      <%= f.text_field :username, placeholder: "Username", class:"form-control form-control-line" %>
                     </div>
                   </div>
-
+                  
                   <div class="form-group">
                     <%= f.label :password, "Your password", class:"col-md-12" %>
                     <div class="col-md-12">

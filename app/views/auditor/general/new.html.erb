@@ -76,37 +76,45 @@
                             <%= form_for @auditor, url: auditor_sign_up_path, multipart: true do |f| %>
                             <div class="form-material form-horizontal">
                                 <div class="form-group">
-                                  <%= f.label :name, "Name", class:"col-md-12" %>
+                                  <%= f.label :name, "Full name", class:"col-md-12" %>
                                   <div class="col-md-12">
-                                    <%= f.text_field :name, placeholder: "Franky Howell Coleman", class:"form-control form-control-line" %>
+                                    <%= f.text_field :name, placeholder: "Full name", class:"form-control form-control-line" %>
                                   </div>
                                 </div>
 
                                 <div class="form-group">
                                   <%= f.label :email, "Email", class:"col-md-12" %>
                                   <div class="col-md-12">
-                                    <%= f.text_field :email, placeholder: "francole@clmb.com", class:"form-control form-control-line" %>
+                                    <%= f.text_field :email, placeholder: "Email", class:"form-control form-control-line" %>
                                   </div>
                                 </div>
 
                                 <div class="form-group">
                                   <%= f.label :address, class:"col-md-12" %>
                                   <div class="col-md-12">
-                                    <%= f.text_field :address, placeholder: "6485 Bay Ave", class:"form-control form-control-line" %>
+                                    <%= f.text_field :address, placeholder: "Address", class:"form-control form-control-line" %>
+                                  </div>
+                                </div>
+
+                                <div class="form group">
+                                  <label class="col-md-12">Country</label>
+
+                                  <div class="col-md-12">
+                                    <%= f.country_select :country, {}, class:"form-control form-control-line" %>
                                   </div>
                                 </div>
 
                                 <div class="form-group">
                                   <%= f.label :company, class:"col-md-12" %>
                                   <div class="col-md-12">
-                                    <%= f.text_field :company, placeholder: "Platt Industries", class:"form-control form-control-line" %>
+                                    <%= f.text_field :company, placeholder: "Company", class:"form-control form-control-line" %>
                                   </div>
                                 </div>
 
                                 <div class="form-group">
                                   <%= f.label :qualifications, "Qualifications", class:"col-md-12" %>
                                   <div class="col-md-12">
-                                    <%= f.text_field :qualifications, placeholder: "Senior agent", class:"form-control form-control-line" %>
+                                    <%= f.text_field :qualifications, placeholder: "Qualifications", class:"form-control form-control-line" %>
                                   </div>
                                 </div>
 
@@ -125,7 +133,7 @@
                                 </div>
 
                                 <div class="form-group">
-                                  <%= f.label :cv, "cv", class:"col-md-12" %>
+                                  <%= f.label :cv, "CV", class:"col-md-12" %>
                                   <div class="col-md-12">
                                     <%= f.file_field :cv, class:"form-control form-control-line" %>
                                     <%= f.hidden_field :cv_cache, class:"form-control form-control-line" %>

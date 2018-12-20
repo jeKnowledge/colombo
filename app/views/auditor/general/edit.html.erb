@@ -2,7 +2,7 @@
 
 <%= render "shared/error_messages", resource: @auditor %>
 
-<%= form_for @auditor, url: auditor_profile_edit_path do |f| %>
+<%= form_for @auditor, url: auditor_profile_edit_path, multipart: true do |f| %>
 <div class="form-material form-horizontal">
   <div class="form-group">
     <%= f.label :name, "Name", class:"col-md-12" %>
@@ -18,10 +18,10 @@
     </div>
   </div>
 
-  <div class="form-group">
-    <%= f.label :address, "Adress", class:"col-md-12" %>
+  <div class="form group">
+    <label class="col-md-12">Country</label>
     <div class="col-md-12">
-      <%= f.text_field :address, placeholder: "6485 Bay Ave", class:"form-control form-control-line" %>
+      <%= f.country_select :country, {}, class:"form-control form-control-line" %>
     </div>
   </div>
 
@@ -29,6 +29,13 @@
     <%= f.label :company, "Company", class:"col-md-12" %>
     <div class="col-md-12">
       <%= f.text_field :company, placeholder: "Platt Industries", class:"form-control form-control-line" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :address, "Adress", class:"col-md-12" %>
+    <div class="col-md-12">
+      <%= f.text_field :address, placeholder: "6485 Bay Ave", class:"form-control form-control-line" %>
     </div>
   </div>
 
@@ -52,6 +59,14 @@
 
       <div class="col-md-12">
         <%= f.password_field :password_confirmation, placeholder: "************", class:"form-control form-control-line" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :cv, "CV", class:"col-md-12" %>
+      <div class="col-md-12">
+        <%= f.file_field :cv, class:"form-control form-control-line" %>
+        <%= f.hidden_field :cv_cache, class:"form-control form-control-line" %>
       </div>
     </div>
 </div>
