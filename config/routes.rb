@@ -115,5 +115,10 @@ Rails.application.routes.draw do
   get '/terms', to: 'website#terms', as: 'terms'
   post '/sign_in', to: 'website#create'
 
+  get '/new_forgot_password', to: 'website#new_forgot_password'
+  post '/create_forgot_password', to: 'website#create_forgot_password'
+  get '/new_change_password/:token', to: 'website#new_change_password', as: 'new_change_password'
+  post '/create_change_password', to: 'website#create_change_password'
+
   root 'website#index'
 end
