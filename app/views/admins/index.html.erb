@@ -1,4 +1,4 @@
-<h1>Listing Auditors</h1>
+<h1>Auditors</h1>
 
 <div class="table-responsive">
   <table class="table">
@@ -29,7 +29,7 @@
 <%= paginate @auditors, param_name: :auditor_page %>
 </div>
 
-<h1>Listing Clients</h1>
+<h1>Clients</h1>
 
 <div class="table-responsive">
   <table class="table">
@@ -60,7 +60,12 @@
 <%= paginate @clients, param_name: :client_page %>
 </div>
 
-<h1>Listing Reports</h1>
+<h1>Reports</h1>
+
+<%= form_tag set_default_report_rating_path do |f| %>
+  <%= f.number_field :rating, in: 0..5, step: 0.1 %>
+  <%= f.submit "Set" %>
+<%= end %>
 
 <div class="table-responsive">
   <table class="table">

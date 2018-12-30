@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     ### Audits ###
     get '/audit/show/:id', to: 'admins#show_audit', as: 'show_audit'
     get '/audit/validate/:id', to: 'admins#validate_audit', as: 'validate_audit'
+    post '/audit/set_default_rating', to: 'admins#set_default_report_rating', as: 'set_default_report_rating'
 
     ### Messages ###
     get '/message/show/:id', to: 'admins#show_message', as: 'show_message'
