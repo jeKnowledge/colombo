@@ -1,5 +1,5 @@
 class Audit < ApplicationRecord
-  DEFAULT_RATING = 0
+  @@DEFAULT_RATING = 0
 
   # Relationships
   belongs_to :auditor
@@ -18,7 +18,7 @@ class Audit < ApplicationRecord
 
   # Methods
   def self.set_default_rating(rating)
-    Audit::DEFAULT_RATING = rating
+    @@DEFAULT_RATING = rating
   end
 
   # Callback methods
