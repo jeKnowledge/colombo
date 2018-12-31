@@ -40,6 +40,6 @@ class CVUploader < CarrierWave::Uploader::Base
   # end
 
   def filename
-    "cv_#{model.id}_#{Time.current.to_i.to_s}.#{file.extension}"
+    "cv_#{Time.current.to_i.to_s}.#{file.extension}"
   end
 end
