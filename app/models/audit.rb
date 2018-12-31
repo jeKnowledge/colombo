@@ -23,6 +23,6 @@ class Audit < ApplicationRecord
 
   # Callback methods
   def set_rating
-    self.rating = Auditor::DEFAULT_RATING
+    self.rating = @@DEFAULT_RATING
   end
 end
