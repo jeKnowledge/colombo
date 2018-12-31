@@ -5,9 +5,6 @@ class Audit < ApplicationRecord
   belongs_to :auditor
   has_many :messages, dependent: :destroy
 
-  # Callbacks
-  before_create :set_rating
-
   # Validations
   validates_presence_of :products, :date, :auditor, :price, :summary
 
@@ -21,8 +18,7 @@ class Audit < ApplicationRecord
     @@DEFAULT_RATING = rating
   end
 
-  # Callback methods
-  def set_rating
-    self.rating = @@DEFAULT_RATING
+  def self.get_default_rating
+    @@DEFAULT_RATING
   end
 end

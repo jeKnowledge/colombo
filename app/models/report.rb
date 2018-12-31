@@ -5,10 +5,10 @@ class Report < Audit
   validates_presence_of :rating, :report
 
   def rating
-    if ratings != 0
+    if rating_sum != 0
       return rating_sum / self.ratings
     else
-      return "Not rated"
+      return Audit::get_default_rating()
     end
   end
 
