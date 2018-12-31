@@ -74,6 +74,7 @@
       <th>Products</th>
       <th>Date</th>
       <th>Auditor</th>
+      <th>Upload date</th>
     </tr>
   </thead>
 
@@ -83,6 +84,7 @@
         <td><%= report.products %></td>
         <td><%= report.date %></td>
         <td><%= link_to report.auditor.username, show_user_admin_path(report.auditor_id) %></td>
+        <td><%= report.report_identifier %></td>
         <% unless report.validated %>
           <td><%= link_to "Validate", validate_audit_admin_path(report.id) %></td>
         <% end %>
@@ -94,7 +96,7 @@
 <%= paginate @reports, param_name: :report_page %>
 </div>
 
-<h1>Listing Plans</h1>
+<h1>Plans</h1>
 
 <div class="table-responsive">
   <table class="table">
