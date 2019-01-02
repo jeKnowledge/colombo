@@ -30,6 +30,21 @@
   </div>
 
   <div class="form group">
+    <label class="col-md-12">Rating</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.rating %></p>
+    </div>
+  </div>
+
+
+  <div class="form group">
+    <label class="col-md-12">Upload date</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.upload_date %></p>
+    </div>
+  </div>
+
+  <div class="form group">
     <label class="col-md-12">Client</label>
     <div class="col-md-12">
       <p class="form-control form-control-line"><%= link_to @request.client.username, show_user_admin_path(@request.client.id) %></p>
