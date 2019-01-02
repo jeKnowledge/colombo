@@ -37,6 +37,13 @@
     </div>
   </div>
 
+  <div class="form group">
+    <label class="col-md-12">Upload date</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.upload_date %></p>
+    </div>
+  </div>
+
   <%= link_to "Purchase", client_purchase_path(@report.id), class:"btn", id: 'purchase_button' %>
 
   <div id="paypal-button"></div>
