@@ -6,7 +6,6 @@ class User < ApplicationRecord
   validate :password_validation, on: :update
 
   validates_presence_of :email, :name
-  validates :terms_of_service, acceptance: true, on: :create
 
   def messages_sent
     Message.where(source_id: self.id)
