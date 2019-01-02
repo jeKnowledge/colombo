@@ -102,6 +102,10 @@ class Client::GeneralController < ApplicationController
     redirect_to client_dashboard_path
   end
 
+  def show_auditor
+    @auditor = Auditor.find(params[:id])
+  end
+
   private
     def client_params
       params.require(:client).permit(
