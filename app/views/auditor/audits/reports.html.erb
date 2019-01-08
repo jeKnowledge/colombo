@@ -6,7 +6,6 @@
       <th>Products</th>
       <th>Price</th>
       <th>Rating</th>
-      <th>Date</th>
       <th>Summary</th>
       <th>Upload date</th>
       <th>Validated</th>
@@ -18,8 +17,7 @@
       <tr>
         <td><%= report.products %></td>
         <td><%= report.price %></td>
-        <td><%= (report.rating == 0) ? "Not rated" : report.rating %></td>
-        <td><%= report.date %></td>
+        <td><%= report.rating %></td>
         <td><%= report.summary %></td>
         <td><%= report.upload_date %></td>
         <td><%= report.validated %></td>
