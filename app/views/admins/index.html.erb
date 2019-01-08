@@ -63,7 +63,7 @@
 <h1>Reports</h1>
 
 <%= form_with url: set_default_report_rating_admin_path do |f| %>
-  <%= f.number_field :rating, in: 0..5, step: 0.1, min: 0, max: 5, value: Audit.get_default_rating %>
+  <%= f.number_field :rating, in: 0..5, step: 0.1, min: 0, max: 5, value: Report::get_default_rating %>
   <%= f.submit "Set" %>
 <% end %>
 

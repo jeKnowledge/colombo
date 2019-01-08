@@ -25,7 +25,7 @@ class Auditor < User
     if ratings != 0
       return rating_sum / self.ratings
     else
-      return Audit::get_default_rating()
+      return Report::get_default_rating()
     end
   end
 
