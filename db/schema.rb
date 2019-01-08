@@ -10,10 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_11_27_011638) do
+ActiveRecord::Schema.define(version: 2018_12_30_224653) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "admin_notifications", force: :cascade do |t|
+    t.string "body", default: "", null: false
+    t.boolean "read", default: false, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "audit_requests", force: :cascade do |t|
     t.string "company", default: "", null: false
@@ -29,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_011638) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2018-12-19", null: false
+    t.date "date", default: "2019-01-08", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"

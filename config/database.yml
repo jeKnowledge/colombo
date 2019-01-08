@@ -1,6 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: localhost
   pool: 5
   username: <%= ENV['DATABASE_USERNAME'] %>
   password: <%= ENV['DATABASE_PASSWORD'] %>
@@ -16,4 +17,3 @@ test:
 production:
   <<: *default
   database: colombo_production
-

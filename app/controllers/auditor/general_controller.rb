@@ -30,6 +30,8 @@ class Auditor::GeneralController < ApplicationController
 
   def update
     if @auditor.update_attributes(auditor_params)
+      @auditor.notify_cv_update if auditor_params[:cv].present?
+
       redirect_to auditor_profile_path
     else
       render :edit
