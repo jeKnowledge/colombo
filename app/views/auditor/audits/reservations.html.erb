@@ -1,0 +1,20 @@
+<h1>My reservation list</h1>
+
+<div class="table-responsive">
+<table class="table">
+  <thead>
+    <tr>
+      <th>Plan</th>
+      <th>Client</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @reservations.each do |reservation| %>
+      <tr>
+        <td class="btn"><%= link_to "Details", auditor_show_plan_path(reservation.plan_id) %></td>
+        <td class="btn"><%= link_to reservation.client.username,  auditor_show_client_path(reservation.client.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

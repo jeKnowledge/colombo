@@ -1,0 +1,39 @@
+<h1>Purchases list</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Products</th>
+        <th>Price</th>
+        <th>Company</th>
+        <th>Address</th>
+        <th>Date</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @purchases.each do |purchase| %>
+        <tr>
+          <td><%= purchase.report.products %></td>
+          <td><%= purchase.price %></td>
+          <td><%= purchase.report.auditor.company %></td>
+          <td><%= purchase.report.auditor.address %></td>
+          <td><%= purchase.report.date %></td>
+          <td>
+            <% if purchase.rating == -1 %>
+              <%= form_with url: client_rate_purchase_path(purchase.id) do |f| %>
+                <%= f.number_field :rating, value: 0, min: 0, max: 5 %>
+                <%= f.submit "Rate", class:"btn" %>
+              <% end %>
+            <% else %>
+              <%= purchase.rating %>
+            <% end %>
+          </td>
+          <td><%= link_to "Download", purchase.report.report.url %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,20 @@
+#side-menu-auditor > li > a {
+    border-left: 3px solid transparent;
+    padding: 15px 35px 15px 20px;
+    display: block;
+}
+#side-menu-auditor li a {
+    color: var(--color-black);
+    border-left: 0px solid var(--color-white);
+}
+
+#side-menu-auditor > li > a:hover, #side-menu > li > a:focus {
+    background: var(--color-pink);
+}
+
+#side-menu-auditor > li > a.active {
+    background: var(--color-pink);
+    color: var(--color-white);
+    border-left: 3px solid var(--color-pink);
+    font-weight: 500;
+}

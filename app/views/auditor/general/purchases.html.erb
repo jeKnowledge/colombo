@@ -1,0 +1,22 @@
+<h1>Sold reports</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Products</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @purchases.each do |purchase| %>
+        <tr>
+          <td><%= link_to purchase.client.username, auditor_show_client_path(purchase.client_id) %></td>
+          <td><%= purchase.report.products %></td>
+          <td><%= link_to "Report", auditor_show_report_path(purchase.report_id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

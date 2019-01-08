@@ -1,0 +1,84 @@
+<h1>Report</h1>
+
+<div class="form-material form-horizontal">
+
+  <div class="form group">
+    <label class="col-md-12">Date</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.date %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Products</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.products %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Price</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.price %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Summary</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.summary %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Rating</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @report.rating %></p>
+    </div>
+  </div>
+
+  <%= link_to "Purchase", client_purchase_path(@report.id), class:"btn", id: 'purchase_button' %>
+
+  <div id="paypal-button"></div>
+</div>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+  paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+      sandbox: 'AR2WJqYoN559PEEfyPeOKkHgvNXi6mcOWl9tPkiCCYUI9Dh71WtkBxaWbwX-Z_haiHS8XcC6ZQ7_sR74',
+      production: 'demo_production_client_id'
+    },
+    // Customize button (optional)
+    locale: 'en_US',
+    style: {
+      size: 'small',
+      color: 'gold',
+      shape: 'pill',
+    },
+
+    // Enable Pay Now checkout flow (optional)
+    commit: true,
+
+    // Set up a payment
+    payment: function(data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: '<%= @report.price %>',
+            currency: 'USD'
+          }
+        }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        // Show a confirmation message to the buyer
+        document.getElementById("purchase_button").click();
+      });
+    }
+  }, '#paypal-button');
+</script>

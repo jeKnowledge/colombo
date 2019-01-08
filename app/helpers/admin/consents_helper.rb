@@ -1,0 +1,2 @@
+module Admin::ConsentsHelper
+end

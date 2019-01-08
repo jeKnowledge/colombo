@@ -1,0 +1,48 @@
+@media (max-width: 1170px){
+  .content-wrapper #page-wrapper {
+     margin-left: 0;
+   }
+}
+
+@media (min-width: 768px){
+  .fix-header #page-wrapper {
+     margin-top: 60px;
+   }
+
+   #page-wrapper {
+      position: inherit;
+      margin: 0 0 0 240px;
+    }
+}
+
+#page-wrapper {
+   padding: 0;
+   min-height: 600px;
+   background: #edf5f5;
+}
+
+#wrapper {
+  background: var(--color-white);
+}
+
+
+#wrapper .container-fluid {
+    padding: 5em 1em;
+    margin: 0 auto;
+}
+
+.whitebox {
+    background: var(--color-white);
+    border-radius: 1rem;
+    padding: 1rem;
+}
+
+.footer {
+    bottom: 0;
+    left: 240px;
+    right: 0;
+    color: var(--color-black);
+    padding: 1em;
+    position: fixed;
+    background: var(--color-white);
+}

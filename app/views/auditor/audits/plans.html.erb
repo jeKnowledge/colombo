@@ -1,0 +1,33 @@
+<h1>My plan list</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Address</th>
+        <th>Products</th>
+        <th>Price</th>
+        <th>Planned audit date</th>
+        <th>Summary</th>
+        <th>Proposed fee</th>
+        <th>Validated</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @plans.each do |plan| %>
+        <tr>
+          <td><%= plan.auditor.company %>
+          <td><%= plan.auditor.address %></td>
+          <td><%= plan.products %></td>
+          <td><%= plan.price %></td>
+          <td><%= plan.date %></td>
+          <td><%= plan.summary %></td>
+          <td><%= plan.fee %></td>
+          <td><%= plan.validated %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

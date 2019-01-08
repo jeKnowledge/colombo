@@ -1,0 +1,44 @@
+<nav class="navbar navbar-default navbar-static-top m-b-0">
+    <div class="navbar-header">
+        <div class="navbar_logo">
+            <a class="logo" href="index.html">
+              <img src="/plugins/images/colombo_Main.png" alt="home" class="light-logo" />
+            </a>
+        </div>
+    </div>
+</nav>
+
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav slimscrollsidebar">
+        <ul class="nav in" id="side-menu">
+          <li>
+            <%= link_to "Dashboard", client_dashboard_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Profile", client_profile_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Messages", client_messages_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Requests", client_requests_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Reservations", client_reservations_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Purchases", client_purchases_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Sign out", sign_out_path, class:"waves-effect" %>
+          </li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,25 @@
+<h1>My request list</h1>
+
+<div class="table-responsive">
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Products</th>
+      <th>Company</th>
+      <th>Address</th>
+      <th>Date</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @requests.each do |request| %>
+      <tr>
+        <td><%= request.products %></td>
+        <td><%= request.company %></td>
+        <td><%= request.address %></td>
+        <td><%= request.date %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>

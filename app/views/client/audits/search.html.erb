@@ -1,0 +1,132 @@
+<h1>Search audit</h1>
+
+<%= form_tag client_search_path, method: :get do %>
+
+<div class="form-material form-horizontal">
+
+  <div class="form-group">
+    <div class="col-md-12">
+      <%= text_field_tag :query, @search_query, class:"form-control form-control-line" %>
+    </div>
+  <%= submit_tag "Search", class:"btn" %>
+  </div>
+</div>
+
+<% end %>
+
+<h2>Advanced search</h2>
+
+<%= form_tag client_advanced_search_path, method: :get do %>
+
+<div class="form-material form-horizontal">
+
+    <div class="form-group">
+      <%= label_tag :company, nil, class:"col-md-12" %>
+      <div class="col-md-12">
+        <%= text_field_tag :company, @search_company, class:"form-control form-control-line" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :address, nil, class:"col-md-12" %>
+      <div class="col-md-12">
+        <%= text_field_tag :address, @search_address, class:"form-control form-control-line" %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= label_tag :products, nil, class:"col-md-12" %>
+      <div class="col-md-12">
+        <%= text_field_tag :products, @search_products, class:"form-control form-control-line" %>
+      </div>
+    </div>
+
+    <%= submit_tag "Advanced search", class:"btn" %>
+
+</div>
+
+<% end %>
+
+<h1>Search results</h1>
+
+<h2>Audit reports</h2>
+
+<% if @reports.length == 0 %>
+  <p>No reports available</p>
+<% else %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Address</th>
+        <th>Auditor</th>
+        <th>Products</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Fee</th>
+        <th>Rating</th>
+        <th>Action<th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reports.each do |report| %>
+        <tr>
+          <td><%= report.auditor.company %></td>
+          <td><%= report.auditor.address %></td>
+          <td><%= report.auditor.username %></td>
+          <td><%= report.products %></td>
+          <td><%= report.date %></td>
+          <td><%= report.price %></td>
+          <td><%= report.fee %></td>
+          <td><%= report.rating %></td>
+          <td><%= link_to "Purchase", client_purchase_preview_path(report.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+  <%= paginate @reports, param_name: :report_page %>
+<% end %>
+
+<h2>Planned audits</h2>
+
+<% if @plans.count == 0 %>
+  <p>No plans available</p>
+<% else %>
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Address</th>
+        <th>Auditor</th>
+        <th>Products</th>
+        <th>Date</th>
+        <th>Price</th>
+        <th>Fee<th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @plans.each do |plan| %>
+        <tr>
+          <td><%= plan.auditor.company %></td>
+          <td><%= plan.auditor.address %></td>
+          <td><%= plan.auditor.username %></td>
+          <td><%= plan.products %></td>
+          <td><%= plan.date %></td>
+          <td><%= plan.price %></td>
+          <td><%= plan.fee %></td>
+          <td><%= link_to "Reserve", client_reserve_preview_path(plan.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+  <%= paginate @plans, param_name: :plan_page %>
+<% end %>
+
+<h2>Audit request</h2>
+<%= link_to "Send audit request", client_request_path, class:"btn" %>

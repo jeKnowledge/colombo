@@ -1,0 +1,19 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+
+development:
+  <<: *default
+  database: colombo_development
+
+test:
+  <<: *default
+  database: colombo_test
+
+production:
+  <<: *default
+  database: colombo_production
+

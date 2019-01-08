@@ -1,0 +1,22 @@
+<h1>Booked audit plans</h1>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Client</th>
+        <th>Products</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @reservations.each do |reservation| %>
+        <tr>
+          <td><%= link_to reservation.client.username, auditor_show_client_path(reservation.client_id) %></td>
+          <td><%= reservation.plan.products %></td>
+          <td><%= link_to "Plan", auditor_show_plan_path(reservation.plan_id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

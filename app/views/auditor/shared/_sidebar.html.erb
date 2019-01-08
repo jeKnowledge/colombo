@@ -1,0 +1,59 @@
+<nav class="navbar navbar-default navbar-static-top m-b-0">
+    <div class="navbar-header">
+        <div class="navbar_logo">
+            <a class="logo" href="index.html">
+              <img src="/plugins/images/colombo_Main.png" alt="home" class="light-logo" />
+            </a>
+        </div>
+    </div>
+</nav>
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav slimscrollsidebar">
+        <ul class="nav in" id="side-menu-auditor">
+          <li>
+            <%= link_to "Dashboard", auditor_dashboard_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Profile", auditor_profile_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Messages", auditor_messages_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Send audit report", auditor_report_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Send audit plan", auditor_plan_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Audit reports", auditor_reports_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Planned audits", auditor_plans_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Requests", auditor_requests_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Booked audit plans", auditor_reservations_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Sold reports", auditor_purchases_path, class:"waves-effect" %>
+          </li>
+
+          <li>
+            <%= link_to "Sign out", sign_out_path, class:"waves-effect" %>
+          </li>
+        </ul>
+      </div>
+    </div>

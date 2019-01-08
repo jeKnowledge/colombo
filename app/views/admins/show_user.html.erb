@@ -1,0 +1,62 @@
+<h1>User Details</h1>
+
+<div class="form-material form-horizontal">
+  <div class="form group">
+    <label class="col-md-12">Username</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @user.username %> </p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Email</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @user.email %> </p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Name</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @user.name %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Country</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @user.country_name %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Address</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @user.address %></p>
+    </div>
+  </div>
+
+  <% if @user.is_a? Auditor %>
+    <div class="form group">
+      <label class="col-md-12">Rating</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @user.rating %></p>
+      </div>
+    </div>
+    <div class="form group">
+      <label class="col-md-12">Qualifications</label>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= @user.qualifications %></p>
+      </div>
+    </div>
+      <div class="col-md-12">
+        <p class="form-control form-control-line"><%= link_to "CV", @user.cv.url %></p>
+      </div>
+  <% end %>
+</div>
+
+<br>
+<% if !@user.validated %>
+  <%= link_to "Validate", validate_user_admin_path(@user.id), method: :post %>
+<% end %>
+<br>

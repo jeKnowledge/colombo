@@ -1,0 +1,11 @@
+.btn {
+    color: var(--color-white);
+}
+
+ .form-material .form-control:focus {
+    background-image: linear-gradient(var(--color-pink), var(--color-pink)), linear-gradient(rgba(120, 130, 140, 0.13), rgba(120, 130, 140, 0.13));
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    float: none;
+}

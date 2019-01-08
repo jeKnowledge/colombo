@@ -1,0 +1,168 @@
+#capa {
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+}
+
+body {
+    margin: 0px 0px 0px 0px;
+    background-color: white;
+    font-family: sans-serif;
+    /*overflow-y: auto;
+    overflow-x: auto;*/
+}
+
+h1 {
+    padding: 0px 0px 0px 0px;
+}
+
+#welcome {
+    left: 45vw;
+    color: #066A75;
+    font-size: 302%;
+    font-weight: bold;
+    margin: 0px 0px 0px 0px;
+}
+
+#log {
+    position: fixed;
+    left: 35vw;
+    width: 30vw;
+    top: 5vh;
+}
+
+#describ3words {
+    position: absolute;
+    bottom: 5vh;
+    left: 3vw;
+    font-size: 20px;
+}
+
+#colombo_main {
+    position: absolute;
+    height: 80px;
+    left: 0px;
+}
+#colombo_main2 {
+    position: absolute;
+    width: 20vw;
+    bottom: 7vh;
+    left: 4vw;
+}
+
+nav {
+    position: absolute;
+    top: -50px;
+}
+
+header {
+    background-color: rgb(8,8,8);
+    position: relative;
+    height: 80px;
+    top: -50px;
+}
+
+#navbar {
+    border-radius: 0px;
+}
+/* - TABS - */
+/* Style the tab */
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+}
+
+/* Style the buttons inside the tab */
+.tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+    font-size: 17px;
+    width: 50%;
+}
+#profileTabBtn {
+    width: 33.33%
+}
+
+/* Change background color of buttons on hover */
+.tab button:hover {
+    background-color: #ddd;
+}
+
+/* Create an active/current tablink class */
+.tab button.active {
+    background-color: #ccc;
+}
+
+/* Style the tab content */
+.tabcontent {
+    display: none;
+    padding: 6px 12px;
+    -webkit-animation: fadeEffect 1s;
+    animation: fadeEffect 1s;
+}
+
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+#colombo_landing {
+    width: 70vw;
+}
+
+.landingtext {
+    width: 70vw;
+    left: 10vw;
+    top: 30vh;
+    position: relative;
+}
+
+#blur {
+    width: 100vw;
+    height: 70vh;
+    position: absolute;
+}
+
+.blurdiv {
+    position: relative;
+    top: 10vh;
+}
+
+#enterbutton {
+    top: 58vh;
+    position: fixed;
+}
+
+.loginbtn {
+	border:2px solid #dcdcdc;
+	display:inline-block;
+	cursor:pointer;
+	color:#fff;
+	font-family:Arial;
+	font-size:14px;
+	text-decoration:none;
+	text-shadow:0px 1px 0px #ffffff;
+    width: 70px;
+    height: 55px;
+    left: 90vw;
+    top: 2vh;
+}
+.loginbtn:hover {
+	background-color:#f6f6f6;
+    color: #ff6902;
+}
+.loginbtn:active {
+	position: absolute;
+}

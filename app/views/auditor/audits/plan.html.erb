@@ -1,0 +1,44 @@
+<h1>New audit plan</h1>
+
+<%= render 'shared/error_messages', resource: @plan %>
+
+<%= form_for @plan, url: auditor_plan_path  do |f| %>
+<div class="form-material form-horizontal">
+  <div class="form-group">
+    <%= f.label :products, class:"col-md-12" %>
+    <div class="col-md-12">
+      <%= f.text_field :products, placeholder: "Paracetamol", class:"form-control form-control-line" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :date, class:"col-md-12" %>
+    <div class="col-md-12">
+      <%= f.date_field :date, min: Time.now + 1.days, class:"form-control form-control-line" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :summary, class:"col-md-12" %>
+    <div class="col-md-12">
+      <%= f.text_field :summary, placeholder: "Audit for paracetamol", class:"form-control form-control-line" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :price, class:"col-md-12" %>
+    <div class="col-md-12">
+      <%= f.number_field :price, step: 0.01, class:"form-control form-control-line" %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :fee, class:"col-md-12" %>
+    <div class="col-md-12">
+      <%= f.number_field :fee, class:"form-control form-control-line" %>
+    </div>
+  </div>
+
+  <%= f.submit "Send audit plan", class:"btn" %>
+</div>
+<% end %>

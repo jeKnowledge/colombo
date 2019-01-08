@@ -1,0 +1,29 @@
+<h1>Listing Consents</h1>
+<div class="table-responsive">
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Type</th>
+      <th>Description</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @consents.each do |consent| %>
+      <tr>
+        <td><%= Consent::TYPES[consent.type_id] %></td>
+        <td><%= consent.description %></td>
+        <% if consent.active %>
+          <td>Active</td>
+        <% else %>
+          <td>Not active</td>
+        <% end %>
+        <td><%= link_to "Details", admin_consent_path(consent.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= link_to "New consent", new_admin_consent_path, class:"btn" %>

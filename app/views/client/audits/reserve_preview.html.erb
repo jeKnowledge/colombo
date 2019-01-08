@@ -1,0 +1,98 @@
+<h1>Plan</h1>
+
+<div class="form-material form-horizontal">
+
+  <div class="form group">
+    <label class="col-md-12">Company</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.auditor.company %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Address</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.auditor.address %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Products</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.products %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Planned audit date</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.date %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Summary</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.summary %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Price</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.price %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Proposed fee</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @plan.fee %></p>
+    </div>
+  </div>
+
+  <%= link_to "Reserve", client_reserve_path(@plan.id), class: 'btn', id: 'purchase_button' %>
+
+  <div id="paypal-button"></div>
+</div>
+
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+<script>
+  paypal.Button.render({
+    // Configure environment
+    env: 'sandbox',
+    client: {
+      sandbox: 'AR2WJqYoN559PEEfyPeOKkHgvNXi6mcOWl9tPkiCCYUI9Dh71WtkBxaWbwX-Z_haiHS8XcC6ZQ7_sR74',
+      production: 'demo_production_client_id'
+    },
+    // Customize button (optional)
+    locale: 'en_US',
+    style: {
+      size: 'small',
+      color: 'gold',
+      shape: 'pill',
+    },
+
+    // Enable Pay Now checkout flow (optional)
+    commit: true,
+
+    // Set up a payment
+    payment: function(data, actions) {
+      return actions.payment.create({
+        transactions: [{
+          amount: {
+            total: '<%= @plan.price + @plan.fee %>',
+            currency: 'USD'
+          }
+        }]
+      });
+    },
+    // Execute the payment
+    onAuthorize: function(data, actions) {
+      return actions.payment.execute().then(function() {
+        // Show a confirmation message to the buyer
+        document.getElementById("purchase_button").click();
+      });
+    }
+  }, '#paypal-button');
+</script>
