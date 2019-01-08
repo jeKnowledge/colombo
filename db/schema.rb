@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_12_30_224653) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2018-12-30", null: false
+    t.date "date", default: "2019-01-08", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"

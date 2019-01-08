@@ -36,6 +36,6 @@ class Auditor < User
   end
 
   def notify_cv_update
-    AdminNotification.create(body: "User #{} uploaded a new CV")
+    AdminNotification.create(body: "User #{self.name} uploaded a new CV")
   end
 end
