@@ -25,7 +25,7 @@ class Auditor < User
     if ratings != 0
       return rating_sum / self.ratings
     else
-      return "Not rated"
+      return Audit::get_default_rating()
     end
   end
 
