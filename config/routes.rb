@@ -17,6 +17,9 @@ Rails.application.routes.draw do
     get '/message/show/:id', to: 'admins#show_message', as: 'show_message'
     get '/message/validate/:id', to: 'admins#validate_message', as: 'validate_message'
 
+    ### Requests ###
+    get '/request/show/:id', to: 'admins#show_request', as: 'show_request'
+
     ### Consents ###
     get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
     resources :consents, controller: 'admin/consents'
