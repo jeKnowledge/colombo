@@ -49,7 +49,7 @@ class AdminsController < ApplicationController
   end
 
   def set_default_report_rating
-    Audit::set_default_rating(params[:rating])
+    Report::set_default_rating(params[:rating])
     redirect_to dashboard_admin_path
   end
 
