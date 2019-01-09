@@ -44,12 +44,14 @@ Rails.application.routes.draw do
     ### Purchases ###
     get '/purchases', to: 'general#purchases'
     post '/purchases/:id/rate', to: 'general#rate_purchase', as: 'rate_purchase'
+    get '/purchase/:id/auditor', to: 'general#show_auditor', as: 'purchase_auditor'
 
     ### Requests ###
     get '/requests', to: 'general#requests'
 
     ### Reservations ###
     get '/reservations', to: 'general#reservations'
+    get '/reservation/:id/auditor', to: 'general#show_auditor', as: 'reservation_auditor'
 
     scope :audits do
       get '/search', to: 'audits#search'
