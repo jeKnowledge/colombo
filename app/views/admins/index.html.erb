@@ -71,10 +71,10 @@
 
 <h1>Reports</h1>
 
-<%= form_tag set_default_report_rating_path do |f| %>
-  <%= f.number_field :rating, in: 0..5, step: 0.1 %>
+<%= form_with url: set_default_report_rating_admin_path do |f| %>
+  <%= f.number_field :rating, in: 0..5, step: 0.1, min: 0, max: 5, value: Report::get_default_rating %>
   <%= f.submit "Set" %>
-<%= end %>
+<% end %>
 
 <div class="table-responsive">
   <table class="table">
@@ -93,7 +93,7 @@
         <td><%= report.products %></td>
         <td><%= report.date %></td>
         <td><%= link_to report.auditor.username, show_user_admin_path(report.auditor_id) %></td>
-        <td><%= report.report_identifier %></td>
+        <td><%= report.upload_date %></td>
         <% unless report.validated %>
           <td><%= link_to "Validate", validate_audit_admin_path(report.id) %></td>
         <% end %>
@@ -152,7 +152,7 @@
         <td><%= request.products %></td>
         <td><%= request.date %></td>
         <td><%= link_to request.client.username, show_user_admin_path(request.client_id) %></td>
-        <td><%= link_to "Details", show_audit_admin_path(request.id) %></td>
+        <td><%= link_to "Details", show_request_admin_path(request.id) %></td>
       </tr>
     <% end %>
   </tbody>

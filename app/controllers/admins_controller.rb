@@ -2,7 +2,6 @@ class AdminsController < ApplicationController
   before_action :admin_authenticated?
   before_action :set_user, only: [:show_user, :validate_user, :invalidate_user, :delete_user]
   before_action :set_audit, only: [:show_audit, :validate_audit]
-  before_action :set_message, only: [:show_message]
 
   layout 'admin'
 
@@ -33,7 +32,12 @@ class AdminsController < ApplicationController
   def show_audit
   end
 
+  def show_request
+    @request = Request.find(params[:id])
+  end
+
   def show_message
+    @message = Message.find(params[:id])
   end
 
   def validate_user
@@ -57,7 +61,8 @@ class AdminsController < ApplicationController
   end
 
   def set_default_report_rating
-    Audit::set_default_rating(params[:rating])
+    Report::set_default_rating(params[:rating])
+    redirect_to dashboard_admin_path
   end
 
   private
@@ -67,13 +72,5 @@ class AdminsController < ApplicationController
 
     def set_audit
       @audit = Audit.find(params[:id])
-    end
-
-    def set_message
-      @message = Message.find(params[:id])
-    end
-
-    def admin_params
-      params.require(:client).permit(:username)
     end
 end

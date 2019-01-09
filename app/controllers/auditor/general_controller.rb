@@ -1,6 +1,6 @@
 class Auditor::GeneralController < ApplicationController
   before_action :auditor_authenticated?, except: [:create, :new]
-  before_action :auditor_validated?, except: [:create, :new, :accept_terms]
+  before_action :user_validated?, except: [:create, :new]
 
   layout 'auditor', except: [:new, :create]
 
@@ -99,11 +99,6 @@ class Auditor::GeneralController < ApplicationController
 
   def show_client
     @client = Client.find(params[:id])
-  end
-
-  def accept_terms
-    @auditor.update_attribute(:terms_of_service, true)
-    redirect_to auditor_dashboard_path
   end
 
   private
