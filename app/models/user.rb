@@ -8,7 +8,6 @@ class User < ApplicationRecord
 
   # Validations
   validates_presence_of :email, :name
-  validates :terms_of_service, acceptance: true, on: :create
   validate :password_validation, on: :update
 
   # Methods

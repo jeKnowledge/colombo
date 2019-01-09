@@ -33,7 +33,6 @@ Rails.application.routes.draw do
     patch '/profile/edit', to: 'general#update'
     get '/profile', to: 'general#show'
     delete '/profile', to: 'general#delete'
-    post '/accept_terms', to: 'general#accept_terms'
 
     ### Messages ###
     get '/messages', to: 'general#messages'
@@ -120,6 +119,7 @@ Rails.application.routes.draw do
   get '/sign_out', to: 'website#destroy', as: 'sign_out'
   get '/terms', to: 'website#terms', as: 'terms'
   post '/sign_in', to: 'website#create'
+  post '/accept_terms', to: 'website#accept_terms'
 
   root 'website#index'
 end

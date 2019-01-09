@@ -1,6 +1,6 @@
 class Client::GeneralController < ApplicationController
   before_action :client_authenticated?, except: [:create, :new]
-  before_action :client_validated?, except: [:create, :new, :accept_terms]
+  before_action :user_validated?, except: [:create, :new]
   before_action :set_client, except: [:new, :create]
 
   layout 'client', except: [:new, :create]
@@ -109,7 +109,7 @@ class Client::GeneralController < ApplicationController
   private
     def client_params
       params.require(:client).permit(
-        :name, :email, :address, :terms_of_service, :country, :company
+        :name, :email, :address, :country, :company
       )
     end
 

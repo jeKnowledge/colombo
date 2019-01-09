@@ -1,6 +1,6 @@
 class Auditor::AuditsController < ApplicationController
   before_action :auditor_authenticated?
-  before_action :auditor_validated?
+  before_action :user_validated?
 
   layout 'auditor'
 
