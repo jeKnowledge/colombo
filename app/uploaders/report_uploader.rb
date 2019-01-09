@@ -40,6 +40,6 @@ class ReportUploader < CarrierWave::Uploader::Base
   # end
 
   def filename
-    "rerport_#{model.id}_#{Time.current.to_i.to_s}.#{file.extension}"
+    "rerport_#{Time.current.to_i.to_s}.#{file.extension}"
   end
 end

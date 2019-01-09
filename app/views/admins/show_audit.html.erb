@@ -46,11 +46,18 @@
     <div class="col-md-12">
       <p class="form-control form-control-line"><%= @audit.rating %></p>
     </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Upload date</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= link_to "Report file", @audit.report.url %></p>
+      <p class="form-control form-control-line"><%= @audit.upload_date %></p>
     </div>
   </div>
-</div>
+
+  <div class="col-md-12">
+    <p class="form-control form-control-line"><%= link_to "Report file", @audit.report.url %></p>
+  </div>
 <% end %>
 
 
