@@ -1,13 +1,17 @@
 class User < ApplicationRecord
+  # Attributes
   attr_accessor :password_confirmation
 
+  # Callbacks
   after_create :generate_username
   before_create :generate_password
-  validate :password_validation, on: :update
 
+  # Validations
   validates_presence_of :email, :name
   validates :terms_of_service, acceptance: true, on: :create
+  validate :password_validation, on: :update
 
+  # Methods
   def messages_sent
     Message.where(source_id: self.id)
   end
@@ -16,15 +20,21 @@ class User < ApplicationRecord
     Message.where(destiny_id: self.id)
   end
 
+  def country_name
+    ISO3166::Country[self.country].name
+  end
+
+  # Callback methods
+  def generate_password
+    generated_password = SecureRandom.base64(12)
+    self.password = BCrypt::Password.create(generated_password)
+  end
+
   def generate_username
     self.update_column(:username , "#{self.prefix}#{Date.today.year}#{self.id}".downcase)
   end
 
-  def generate_password
-    generated_password = SecureRandom.base64(12)
-    self.password = BCrypt::Password.create(generate_password)
-  end
-
+  # Validation methods
   def password_validation
     return if self.password.length == 0
 
@@ -40,9 +50,5 @@ class User < ApplicationRecord
     else
       self.password = BCrypt::Password.create(self.password)
     end
-  end
-
-  def country_name
-    ISO3166::Country[self.country].name
   end
 end
