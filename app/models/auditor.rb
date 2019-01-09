@@ -25,7 +25,7 @@ class Auditor < User
     if ratings != 0
       return rating_sum / self.ratings
     else
-      return Audit::get_default_rating()
+      return Report::get_default_rating()
     end
   end
 
@@ -36,6 +36,6 @@ class Auditor < User
   end
 
   def notify_cv_update
-    AdminNotification.create(body: "User #{} uploaded a new CV")
+    AdminNotification.create(body: "User #{self.name} uploaded a new CV")
   end
 end
