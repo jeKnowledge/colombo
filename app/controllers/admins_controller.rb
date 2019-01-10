@@ -5,13 +5,25 @@ class AdminsController < ApplicationController
 
   layout 'admin'
 
-  def index
+  def index(admin=Admin.new)
+    @admin = admin
     @auditors = Auditor.order(:validated).page(params[:auditor_page]).per(5)
     @clients = Client.order(:validated).page(params[:client_page]).per(5)
     @reports = Report.order(:validated).page(params[:report_page]).per(5)
     @plans = Plan.order(:validated).page(params[:plan_page]).per(5)
     @requests = Request.order(:created_at).page(params[:request_page]).per(5)
     @messages = Message.order(:created_at).page(params[:message_page]).per(5)
+  end
+
+  def create
+    @admin = Admin.new(admin_params)
+
+    if @admin.save
+      redirect_to dashboard_admin_path
+    else
+      index(@admin)
+      render :index
+    end
   end
 
   def show_user
@@ -60,5 +72,9 @@ class AdminsController < ApplicationController
 
     def set_audit
       @audit = Audit.find(params[:id])
+    end
+
+    def admin_params
+      params.require(:admin).permit(:email)
     end
 end

@@ -1,4 +1,4 @@
-class Auditor < User
+class Auditor < NormalUser
   mount_uploader :cv, CVUploader
 
   has_many :reports, dependent: :destroy
@@ -6,7 +6,7 @@ class Auditor < User
   has_many :purchases, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
-  validates_presence_of :rating, :qualifications, :cv, :address, :company
+  validates_presence_of :rating, :qualifications, :cv
 
   scope :company_address_like, -> (query) {
     query = "%#{query}%"
