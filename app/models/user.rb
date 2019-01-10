@@ -7,7 +7,7 @@ class User < ApplicationRecord
   before_create :generate_password
 
   # Validations
-  validates_presence_of :email, :name
+  validates_presence_of :email
   validate :password_validation, on: :update
 
   # Methods
@@ -25,8 +25,8 @@ class User < ApplicationRecord
 
   # Callback methods
   def generate_password
-    generated_password = SecureRandom.base64(12)
-    self.password = BCrypt::Password.create(generated_password)
+    self.password = SecureRandom.base64(12) unless self.password.present?
+    self.password = BCrypt::Password.create(self.password)
   end
 
   def generate_username

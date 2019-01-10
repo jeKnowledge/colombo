@@ -3,8 +3,8 @@
 <div>
   <%= render "shared/error_messages", resource: @admin %>
 
-  <%= form_for @admin do |f| %>
-    <%= f.email_field :email %>
+  <%= form_for @admin, url: admin_path do |f| %>
+    <%= f.email_field :email, placeholder: "New admin email" %>
     <%= f.submit "Create" %>
   <% end %>
 </div>

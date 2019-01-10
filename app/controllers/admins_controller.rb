@@ -21,7 +21,7 @@ class AdminsController < ApplicationController
     if @admin.save
       redirect_to dashboard_admin_path
     else
-      indes(@admin)
+      index(@admin)
       render :index
     end
   end
@@ -72,5 +72,9 @@ class AdminsController < ApplicationController
 
     def set_audit
       @audit = Audit.find(params[:id])
+    end
+
+    def admin_params
+      params.require(:admin).permit(:email)
     end
 end
