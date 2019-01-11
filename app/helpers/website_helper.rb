@@ -41,7 +41,15 @@ module WebsiteHelper
     end
 
     unless @current_user.errors.count == 0
-      render 'shared/not_allowed' if auditor_profile_path != request.path && client_profile_path != request.path
+      allowed = true
+
+      if @current_user.is_a? Auditor
+        allowed = auditor_profile_edit_path == request.path || auditor_profile_path == request.path
+      else
+        allowed = client_profile_edit_path == request.path || client_profile_path == request.path
+      end
+
+      render 'shared/not_allowed' unless allowed
     end
   end
 

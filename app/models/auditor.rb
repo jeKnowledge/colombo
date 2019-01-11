@@ -6,7 +6,8 @@ class Auditor < NormalUser
   has_many :purchases, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
-  validates_presence_of :rating, :qualifications, :cv
+  validates_presence_of :rating, :qualifications
+  validates_presence_of :cv, on: :create
 
   scope :company_address_like, -> (query) {
     query = "%#{query}%"
