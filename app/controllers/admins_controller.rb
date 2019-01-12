@@ -2,11 +2,11 @@ class AdminsController < ApplicationController
   before_action :admin_authenticated?
   before_action :set_user, only: [:show_user, :validate_user, :invalidate_user, :delete_user]
   before_action :set_audit, only: [:show_audit, :validate_audit]
-  before_action :set_message, only: [:show_message]
 
   layout 'admin'
 
-  def index
+  def index(admin=Admin.new)
+    @admin = admin
     @auditors = Auditor.order(:validated).page(params[:auditor_page]).per(5)
     @clients = Client.order(:validated).page(params[:client_page]).per(5)
     @reports = Report.order(:validated).page(params[:report_page]).per(5)
@@ -15,13 +15,29 @@ class AdminsController < ApplicationController
     @messages = Message.order(:created_at).page(params[:message_page]).per(5)
   end
 
+  def create
+    @admin = Admin.new(admin_params)
+
+    if @admin.save
+      redirect_to dashboard_admin_path
+    else
+      index(@admin)
+      render :index
+    end
+  end
+
   def show_user
   end
 
   def show_audit
   end
 
+  def show_request
+    @request = Request.find(params[:id])
+  end
+
   def show_message
+    @message = Message.find(params[:id])
   end
 
   def validate_user
@@ -44,6 +60,11 @@ class AdminsController < ApplicationController
     redirect_to dashboard_admin_path
   end
 
+  def set_default_report_rating
+    Report::set_default_rating(params[:rating])
+    redirect_to dashboard_admin_path
+  end
+
   private
     def set_user
       @user = User.find(params[:id])
@@ -53,7 +74,7 @@ class AdminsController < ApplicationController
       @audit = Audit.find(params[:id])
     end
 
-    def set_message
-      @message = Message.find(params[:id])
+    def admin_params
+      params.require(:admin).permit(:email)
     end
 end

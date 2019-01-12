@@ -96,13 +96,6 @@
                                   </div>
                                 </div>
 
-                                <div class="form group">
-                                  <label class="col-md-12">Country</label>
-
-                                  <div class="col-md-12">
-                                    <%= f.country_select :country, {}, class:"form-control form-control-line" %>
-                                  </div>
-                                </div>
 
                                 <div class="form-group">
                                   <%= f.label :company, class:"col-md-12" %>
@@ -119,16 +112,10 @@
                                 </div>
 
                                 <div class="form-group">
-                                  <%= f.label :password, "Password", class:"col-md-12" %>
-                                  <div class="col-md-12">
-                                    <%= f.password_field :password, placeholder: "************", class:"form-control form-control-line" %>
-                                  </div>
-                                </div>
+                                  <label class="col-md-12">Country</label>
 
-                                <div class="form-group">
-                                  <%= f.label :password_confirmation, "Password confirmation", class:"col-md-12" %>
                                   <div class="col-md-12">
-                                    <%= f.password_field :password_confirmation, placeholder: "************", class:"form-control form-control-line" %>
+                                    <%= f.country_select :country, {}, class:"form-control form-control-line" %>
                                   </div>
                                 </div>
 
@@ -139,13 +126,6 @@
                                     <%= f.hidden_field :cv_cache, class:"form-control form-control-line" %>
                                   </div>
                                 </div>
-
-                                <div class="form-group">
-                                  <p>
-                                      Accept <%= link_to "terms", terms_path %>?
-                                      <%= f.check_box :terms_of_service %>
-                                  </p>
-                                  </div>
 
                                 <%= f.submit "Sign up", class:"btn", style:"margin-bottom:1em" %>
                             <% end %>

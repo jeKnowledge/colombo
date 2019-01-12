@@ -21,20 +21,6 @@ module WebsiteHelper
     end
   end
 
-  def client_validated?
-    unless @client.validated
-      @client.errors.add(:your_account, "hasn't been validated yet, please wait until our administrators have done so.")
-    end
-
-    unless @client.terms_of_service
-      @client.errors.add(:new_terms, "have been set. To continue using the platform you must accept them. Accept #{link_to 'terms', terms_path}. #{link_to 'Accept', client_accept_terms_path, method: :post}")
-    end
-
-    unless @client.errors.count == 0
-      render 'shared/not_allowed' unless client_profile_path == request.path
-    end
-  end
-
   def auditor_authenticated?
     unless session[:user_id] && Auditor.exists?(session[:user_id])
       redirect_to sign_in_path
@@ -43,17 +29,27 @@ module WebsiteHelper
     end
   end
 
-  def auditor_validated?
-    unless @auditor.validated
-      @auditor.errors.add(:your_account, "hasn't been validated yet, please wait until our administrators have done so.")
+  def user_validated?
+    @current_user = User.find(session[:user_id])
+
+    unless @current_user.validated
+      @current_user.errors.add(:your_account, "hasn't been validated yet, please wait until our administrators have done so.")
     end
 
-    unless @auditor.terms_of_service
-      @auditor.errors.add(:new_terms, "have been set. To continue using the platform you must accept them. Accept #{link_to 'terms', terms_path}. #{link_to 'Accept', accept_terms_auditor_path, method: :post}")
+    unless @current_user.terms_of_service
+      @current_user.errors.add(:new_terms, "have been set. To continue using the platform you must accept them. Accept #{link_to 'terms', terms_path}. #{link_to 'Accept', accept_terms_path, method: :post}")
     end
 
-    unless @auditor.errors.count == 0
-      render 'shared/not_allowed' unless auditor_profile_path == request.path
+    unless @current_user.errors.count == 0
+      allowed = true
+
+      if @current_user.is_a? Auditor
+        allowed = auditor_profile_edit_path == request.path || auditor_profile_path == request.path
+      else
+        allowed = client_profile_edit_path == request.path || client_profile_path == request.path
+      end
+
+      render 'shared/not_allowed' unless allowed
     end
   end
 

@@ -6,7 +6,6 @@ FactoryBot.define do
     password_confirmation { "Password#2018" }
     address { Faker::Address.street_name }
     company { Faker::Company.name }
-    terms_of_service { true }
     country { Faker::Address.country_code }
   end
 end

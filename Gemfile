@@ -19,6 +19,7 @@ gem 'local-env', '~> 0.0.1'
 gem 'factory_bot', '~> 4.11.1'
 gem 'faker', '~> 1.9.1'
 gem 'country_select', '~> 3.1'
+gem 'rubysl-securerandom', '~> 2.0'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -26,6 +27,7 @@ group :development, :test do
 end
 
 group :development do
+  gem 'letter_opener', '~> 1.4', '>= 1.4.1'
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
   gem 'spring'
