@@ -1,9 +1,14 @@
 class UserMailer < ApplicationMailer
-  default from: ENV.fetch("GMAIL_EMAIL")
+  def send_credentials(user, password)
+    @username = user.username
+    @password = password
+
+    mail(to: user.email, subject: "Thanks for signing up on Colombo!")
+  end
 
   def password_recovery(user, token)
     @user = user
     @token = token
-    mail(to: "#{user.username} <#{user.email}>", subject: "Password Recovery")
+    mail(to: user.email, subject: "Forgot password?")
   end
 end
