@@ -24,6 +24,12 @@ class User < ApplicationRecord
     ISO3166::Country[self.country].name
   end
 
+  def reset_password
+    self.password = nil
+    self.generate_password()
+    self.send_credentials() if self.save(:validate => false)
+  end
+
   # Callback methods
   def generate_password
     self.password = SecureRandom.base64(12) unless self.password.present?

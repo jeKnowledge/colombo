@@ -123,8 +123,7 @@ Rails.application.routes.draw do
 
   get '/new_forgot_password', to: 'website#new_forgot_password'
   post '/create_forgot_password', to: 'website#create_forgot_password'
-  get '/new_change_password/:token', to: 'website#new_change_password', as: 'new_change_password'
-  post '/create_change_password', to: 'website#create_change_password'
+  get '/new_credentials/:token', to: 'website#new_credentials', as: 'new_credentials'
 
   root 'website#index'
 end

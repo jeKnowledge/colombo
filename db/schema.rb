@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_12_30_224653) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2019-01-11", null: false
+    t.date "date", default: "2019-01-12", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -64,6 +64,7 @@ ActiveRecord::Schema.define(version: 2018_12_30_224653) do
     t.string "token"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_forgot_passwords_on_token"
     t.index ["user_id"], name: "index_forgot_passwords_on_user_id"
   end
 

@@ -30,36 +30,31 @@ class WebsiteController < ApplicationController
   end
 
   def create_forgot_password
-    user = User.find_by(email: forgot_password_params[:email])
+    user = User.find_by(username: forgot_password_params[:username])
 
     if user
       forgot_password = ForgotPassword.create(user: user)
-      UserMailer.password_recovery(user, forgot_password.token).deliver
+      UserMailer.password_recovery(user, forgot_password.token).deliver_now
       redirect_to sign_in_path
     else
-      flash.now[:notice] = "Invalid email"
+      flash.now[:notice] = "Invalid username"
       render :new_forgot_password
     end
   end
 
-  def new_change_password
+  def new_credentials
     forgot_password = ForgotPassword.find_by(token: params[:token])
 
     if forgot_password
       @user = forgot_password.user
       forgot_password.destroy
+
+      @user.reset_password()
     else
-      render file: "#{Rails.root}/public/Colombo/Colombo/html/404.html", layout: false, status: 404
+      render file: "#{Rails.root}/public/404.html", layout: false, status: 404
     end
   end
 
-  def create_change_password
-    @user = User.find(params[:user_id])
-
-    if @user.update(password: params[:password], password_confirmation: params[:password_confirmation])
-      redirect_to sign_in_path
-    else
-      render :new_change_password
   def accept_terms
     unless User.exists?(session[:user_id])
       redirect_to sign_in_path
@@ -76,6 +71,6 @@ class WebsiteController < ApplicationController
     end
 
     def forgot_password_params
-      params.permit(:email)
+      params.permit(:username)
     end
 end
