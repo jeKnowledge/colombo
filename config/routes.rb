@@ -121,5 +121,9 @@ Rails.application.routes.draw do
   post '/sign_in', to: 'website#create'
   post '/accept_terms', to: 'website#accept_terms'
 
+  get '/new_forgot_password', to: 'website#new_forgot_password'
+  post '/create_forgot_password', to: 'website#create_forgot_password'
+  get '/new_credentials/:token', to: 'website#new_credentials', as: 'new_credentials'
+
   root 'website#index'
 end
