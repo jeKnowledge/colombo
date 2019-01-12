@@ -1,6 +1,6 @@
 class Auditor::GeneralController < ApplicationController
   before_action :auditor_authenticated?, except: [:create, :new]
-  before_action :auditor_validated?, except: [:create, :new, :accept_terms]
+  before_action :user_validated?, except: [:create, :new]
 
   layout 'auditor', except: [:new, :create]
 
@@ -30,6 +30,8 @@ class Auditor::GeneralController < ApplicationController
 
   def update
     if @auditor.update_attributes(auditor_params)
+      @auditor.notify_cv_update if auditor_params[:cv].present?
+
       redirect_to auditor_profile_path
     else
       render :edit
@@ -99,17 +101,10 @@ class Auditor::GeneralController < ApplicationController
     @client = Client.find(params[:id])
   end
 
-  def accept_terms
-    @auditor.update_attribute(:terms_of_service, true)
-    redirect_to auditor_dashboard_path
-  end
-
   private
     def auditor_signup_params
       params.require(:auditor).permit(
-        :name, :email, :qualifications, :cv, :password,
-        :password_confirmation, :terms_of_service,
-        :address, :company, :country, :cv_cache
+        :name, :email, :qualifications, :cv, :address, :company, :country, :cv_cache
       )
     end
 

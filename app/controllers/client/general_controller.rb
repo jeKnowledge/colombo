@@ -1,6 +1,6 @@
 class Client::GeneralController < ApplicationController
   before_action :client_authenticated?, except: [:create, :new]
-  before_action :client_validated?, except: [:create, :new, :accept_terms]
+  before_action :user_validated?, except: [:create, :new]
   before_action :set_client, except: [:new, :create]
 
   layout 'client', except: [:new, :create]
@@ -102,11 +102,14 @@ class Client::GeneralController < ApplicationController
     redirect_to client_dashboard_path
   end
 
+  def show_auditor
+    @auditor = Auditor.find(params[:id])
+  end
+
   private
     def client_params
       params.require(:client).permit(
-        :password, :password_confirmation, :name,
-        :email, :address,:company, :terms_of_service, :country
+        :name, :email, :address, :country, :company
       )
     end
 

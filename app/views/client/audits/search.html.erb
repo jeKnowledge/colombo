@@ -66,6 +66,7 @@
         <th>Price</th>
         <th>Fee</th>
         <th>Rating</th>
+        <th>Upload date</th>
         <th>Action<th>
       </tr>
     </thead>
@@ -75,12 +76,13 @@
         <tr>
           <td><%= report.auditor.company %></td>
           <td><%= report.auditor.address %></td>
-          <td><%= report.auditor.username %></td>
+          <td><%= link_to report.auditor.username, client_purchase_auditor_path(report.auditor.id) %></td>
           <td><%= report.products %></td>
           <td><%= report.date %></td>
           <td><%= report.price %></td>
           <td><%= report.fee %></td>
           <td><%= report.rating %></td>
+          <td><%= report.upload_date %></td>
           <td><%= link_to "Purchase", client_purchase_preview_path(report.id) %></td>
         </tr>
       <% end %>
@@ -114,7 +116,7 @@
         <tr>
           <td><%= plan.auditor.company %></td>
           <td><%= plan.auditor.address %></td>
-          <td><%= plan.auditor.username %></td>
+          <td><%= link_to plan.auditor.username, client_reservation_auditor_path(plan.auditor.id) %></td>
           <td><%= plan.products %></td>
           <td><%= plan.date %></td>
           <td><%= plan.price %></td>

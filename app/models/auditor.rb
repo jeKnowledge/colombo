@@ -1,4 +1,4 @@
-class Auditor < User
+class Auditor < NormalUser
   mount_uploader :cv, CVUploader
 
   has_many :reports, dependent: :destroy
@@ -6,7 +6,8 @@ class Auditor < User
   has_many :purchases, dependent: :destroy
   has_many :reservations, dependent: :destroy
 
-  validates_presence_of :rating, :qualifications, :cv, :address, :company
+  validates_presence_of :rating, :qualifications
+  validates_presence_of :cv, on: :create
 
   scope :company_address_like, -> (query) {
     query = "%#{query}%"
@@ -25,7 +26,7 @@ class Auditor < User
     if ratings != 0
       return rating_sum / self.ratings
     else
-      return "Not rated"
+      return Report::get_default_rating()
     end
   end
 
@@ -33,5 +34,9 @@ class Auditor < User
     self.rating_sum += rating
     self.ratings += 1
     self.save
+  end
+
+  def notify_cv_update
+    AdminNotification.create(body: "User #{self.name} uploaded a new CV")
   end
 end

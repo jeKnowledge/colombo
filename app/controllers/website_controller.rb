@@ -1,6 +1,4 @@
 class WebsiteController < ApplicationController
-  include BCrypt
-
   def index
   end
 
@@ -10,7 +8,9 @@ class WebsiteController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
 
-    if user && Password.new(user.password) == sign_in_params[:password]
+    puts "P #{user.password}"
+
+    if user && BCrypt::Password.new(user.password) == sign_in_params[:password]
       session[:user_id] = user.id
       redirect_to dashboard_path(user)
     else
@@ -62,6 +62,13 @@ class WebsiteController < ApplicationController
       redirect_to sign_in_path
     else
       render :new_change_password
+  def accept_terms
+    unless User.exists?(session[:user_id])
+      redirect_to sign_in_path
+    else
+      current_user = User.find(session[:user_id])
+      current_user.update_attribute(:terms_of_service, true)
+      redirect_to dashboard_path(current_user)
     end
   end
 

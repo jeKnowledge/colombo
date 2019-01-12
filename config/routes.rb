@@ -11,10 +11,14 @@ Rails.application.routes.draw do
     ### Audits ###
     get '/audit/show/:id', to: 'admins#show_audit', as: 'show_audit'
     get '/audit/validate/:id', to: 'admins#validate_audit', as: 'validate_audit'
+    post '/audit/set_default_rating', to: 'admins#set_default_report_rating', as: 'set_default_report_rating'
 
     ### Messages ###
     get '/message/show/:id', to: 'admins#show_message', as: 'show_message'
     get '/message/validate/:id', to: 'admins#validate_message', as: 'validate_message'
+
+    ### Requests ###
+    get '/request/show/:id', to: 'admins#show_request', as: 'show_request'
 
     ### Consents ###
     get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
@@ -29,7 +33,6 @@ Rails.application.routes.draw do
     patch '/profile/edit', to: 'general#update'
     get '/profile', to: 'general#show'
     delete '/profile', to: 'general#delete'
-    post '/accept_terms', to: 'general#accept_terms'
 
     ### Messages ###
     get '/messages', to: 'general#messages'
@@ -40,12 +43,14 @@ Rails.application.routes.draw do
     ### Purchases ###
     get '/purchases', to: 'general#purchases'
     post '/purchases/:id/rate', to: 'general#rate_purchase', as: 'rate_purchase'
+    get '/purchase/:id/auditor', to: 'general#show_auditor', as: 'purchase_auditor'
 
     ### Requests ###
     get '/requests', to: 'general#requests'
 
     ### Reservations ###
     get '/reservations', to: 'general#reservations'
+    get '/reservation/:id/auditor', to: 'general#show_auditor', as: 'reservation_auditor'
 
     scope :audits do
       get '/search', to: 'audits#search'
@@ -114,6 +119,7 @@ Rails.application.routes.draw do
   get '/sign_out', to: 'website#destroy', as: 'sign_out'
   get '/terms', to: 'website#terms', as: 'terms'
   post '/sign_in', to: 'website#create'
+  post '/accept_terms', to: 'website#accept_terms'
 
   get '/new_forgot_password', to: 'website#new_forgot_password'
   post '/create_forgot_password', to: 'website#create_forgot_password'
