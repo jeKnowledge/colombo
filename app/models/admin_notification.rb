@@ -1,5 +1,5 @@
 class AdminNotification < ApplicationRecord
-  def read
+  def mark_as_read
     self.update_attribute(:read, true)
   end
 end
