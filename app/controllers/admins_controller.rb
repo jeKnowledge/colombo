@@ -66,6 +66,11 @@ class AdminsController < ApplicationController
     redirect_to dashboard_admin_path
   end
 
+  def set_default_auditor_rating
+    Auditor::set_default_rating(params[:rating])
+    redirect_to dashboard_admin_path
+  end
+
   private
     def set_user
       @user = User.find(params[:id])
