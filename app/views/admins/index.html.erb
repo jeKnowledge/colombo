@@ -138,49 +138,48 @@
 
 <div class="table-responsive">
   <table class="table">
-  <thead>
-    <tr>
-      <th>Products</th>
-      <th>Date</th>
-      <th>Client</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @requests.each do |request| %>
+    <thead>
       <tr>
-        <td><%= request.products %></td>
-        <td><%= request.date %></td>
-        <td><%= link_to request.client.username, show_user_admin_path(request.client_id) %></td>
-        <td><%= link_to "Details", show_request_admin_path(request.id) %></td>
+        <th>Products</th>
+        <th>Date</th>
+        <th>Client</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+
+    <tbody>
+      <% @requests.each do |request| %>
+        <tr>
+          <td><%= request.products %></td>
+          <td><%= request.date %></td>
+          <td><%= link_to request.client.username, show_user_admin_path(request.client_id) %></td>
+          <td><%= link_to "Details", show_request_admin_path(request.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
 <%= paginate @requests, param_name: :request_page %>
 </div>
 
-<h1>Listing Messages</h1>
+<h1>Notifications</h1>
 
 <div class="table-responsive">
   <table class="table">
-  <thead>
-    <tr>
-      <th>Source</th>
-      <th>Destiny</th>
-    </tr>
-  </thead>
+    <tbody>
+      <% if @notifications.empty? %>
+        <tr><td><%= "No notifications available" %></td></tr>
+      <% else %>
+        <% @notifications.each do |notification| %>
+          <tr>
+            <% bold = notification.read ? "" : 'font-weight: bold;' %>
+            <td style="<%= bold %>"><%= notification.body %></td>
+            <td style="<%= bold %>"><%= notification.created_at.to_date %></td>
+            <td style="<%= bold %>"><%= link_to "Read", show_notification_admin_path(notification.id) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
 
-  <tbody>
-    <% @messages.each do |message| %>
-      <tr>
-        <td><%= message.source.username %></td>
-        <td><%= message.destiny.username %></td>
-        <td><%= link_to "Read", show_message_admin_path(message.id) %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= paginate @messages, param_name: :message_page %>
+<%= paginate @notifications, param_name: :notification_page %>
 </div>
