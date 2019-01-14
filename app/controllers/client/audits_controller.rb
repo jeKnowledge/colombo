@@ -1,6 +1,6 @@
 class Client::AuditsController < ApplicationController
   before_action :client_authenticated?
-  before_action :client_validated?
+  before_action :user_validated?
 
   layout 'client'
 

@@ -1,4 +1,4 @@
-<h1>Auditors</h1>
+<h1>Admins</h1>
 
 <div>
   <%= render "shared/error_messages", resource: @admin %>
@@ -8,6 +8,13 @@
     <%= f.submit "Create" %>
   <% end %>
 </div>
+
+<h1>Auditors</h1>
+
+<%= form_with url: set_default_auditor_rating_admin_path do |f| %>
+  <%= f.number_field :rating, in: 0..5, step: 0.1, min: 0, max: 5, value: Auditor::get_default_rating %>
+  <%= f.submit "Set" %>
+<% end %>
 
 <div class="table-responsive">
   <table class="table">

@@ -8,10 +8,15 @@ Rails.application.routes.draw do
     post '/user/invalidate/:id', to: 'admins#invalidate_user', as: 'invalidate_user'
     delete '/user/:id', to: 'admins#delete_user', as: 'delete_user'
 
+    ### Auditor ###
+    post '/auditor/set_default_rating', to: 'admins#set_default_auditor_rating', as: 'set_default_auditor_rating'
+
     ### Audits ###
     get '/audit/show/:id', to: 'admins#show_audit', as: 'show_audit'
     get '/audit/validate/:id', to: 'admins#validate_audit', as: 'validate_audit'
-    post '/audit/set_default_rating', to: 'admins#set_default_report_rating', as: 'set_default_report_rating'
+
+    ### Report ###
+    post '/report/set_default_rating', to: 'admins#set_default_report_rating', as: 'set_default_report_rating'
 
     ### Notifications ###
     get '/notification/show/:id', to: 'admins#show_notification', as: 'show_notification'
