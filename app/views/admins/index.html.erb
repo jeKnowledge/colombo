@@ -171,10 +171,10 @@
       <% else %>
         <% @notifications.each do |notification| %>
           <tr>
-            <% is_read = notification.read ? "" : 'font-weight: bold;' %>
-            <td style="<%= is_read %>"><%= notification.body %></td>
-            <td style="<%= is_read %>"><%= notification.created_at %></td>
-            <td style="<%= is_read %>"><%= link_to "Read", show_notification_admin_path(notification.id) %></td>
+            <% bold = notification.read ? "" : 'font-weight: bold;' %>
+            <td style="<%= bold %>"><%= notification.body %></td>
+            <td style="<%= bold %>"><%= notification.created_at.to_date %></td>
+            <td style="<%= bold %>"><%= link_to "Read", show_notification_admin_path(notification.id) %></td>
           </tr>
         <% end %>
       <% end %>
