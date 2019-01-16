@@ -31,6 +31,7 @@ Rails.application.routes.draw do
     ### Contracts ###
     resources :contracts, controller: "admin/contracts"
     post 'contracts/:id/select', to: "admin/contracts#select", as: "contract_select"
+    post 'contracts/:id/download', to: "admin/contracts#download", as: "contract_download"
   end
 
   namespace :client do

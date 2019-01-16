@@ -43,6 +43,15 @@ class Admin::ContractsController < ApplicationController
     redirect_to admin_contracts_path
   end
 
+  def download
+    pdf_format = WickedPdf.new.pdf_from_string(Markdown.new(@contract.body).to_html)
+
+    save_path = Rails.root.join('storage','contract.pdf')
+    File.open(save_path, 'wb') { |file| file << pdf_format }
+
+    send_file "storage/contract.pdf", type: 'application/pdf'
+  end
+
   private
     def set_contract
       @contract = Contract.find(params[:id])

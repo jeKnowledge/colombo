@@ -21,6 +21,8 @@ gem 'faker', '~> 1.9.1'
 gem 'country_select', '~> 3.1'
 gem 'rubysl-securerandom', '~> 2.0'
 gem 'markdown', '~> 1.2'
+gem 'wicked_pdf', '~> 1.1'
+gem 'wkhtmltopdf_binary', '~> 0.12.3.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
