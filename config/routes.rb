@@ -24,9 +24,9 @@ Rails.application.routes.draw do
     ### Requests ###
     get '/request/show/:id', to: 'admins#show_request', as: 'show_request'
 
-    ### Consents ###
-    get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
-    resources :consents, controller: 'admin/consents'
+    ### Terms ###
+    resources :terms, controller: "admin/terms"
+    post 'terms/:id/select', to: "admin/terms#select", as: "term_select"
   end
 
   namespace :client do
