@@ -1,0 +1,11 @@
+<h1>New terms and conditions</h1>
+
+<%= render "shared/error_messages", resource: @term %>
+
+<%= form_for @term, url: admin_terms_path do |f| %>
+  <div class="form-material form-horizontal">
+    <%= f.text_area :body %>
+  </div>
+
+  <%= f.submit "Save", class:"btn" %>
+<% end %>
