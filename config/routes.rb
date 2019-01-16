@@ -21,11 +21,6 @@ Rails.application.routes.draw do
     post '/auditor/set_default_rating', to: 'admins#set_default_auditor_rating', as: 'set_default_auditor_rating'
 
     ### Audits ###
-<<<<<<< HEAD
-    get '/audit/show/:id', to: 'general#show_audit', as: 'show_audit'
-    get '/audit/validate/:id', to: 'general#validate_audit', as: 'validate_audit'
-    post '/audit/set_default_rating', to: 'general#set_default_report_rating', as: 'set_default_report_rating'
-=======
     get '/audit/show/:id', to: 'admins#show_audit', as: 'show_audit'
     get '/audit/validate/:id', to: 'admins#validate_audit', as: 'validate_audit'
 
@@ -34,7 +29,6 @@ Rails.application.routes.draw do
 
     ### Notifications ###
     get '/notification/show/:id', to: 'admins#show_notification', as: 'show_notification'
->>>>>>> master
 
     ### Requests ###
     get '/request/show/:id', to: 'general#show_request', as: 'show_request'
