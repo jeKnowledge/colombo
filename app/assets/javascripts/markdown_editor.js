@@ -3,4 +3,8 @@ document.addEventListener('turbolinks:load', function() {
   if (body.id == "terms_edit" || body.id == "terms_new") {
     new SimpleMDE({ element: document.getElementById("term_body") })
   }
+
+  if (body.id == "contracts_edit" || body.id == "contracts_new") {
+    new SimpleMDE({ element: document.getElementById("contract_body") })
+  }
 })

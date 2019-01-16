@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     ### Terms ###
     resources :terms, controller: "admin/terms"
     post 'terms/:id/select', to: "admin/terms#select", as: "term_select"
+
+    ### Contracts ###
+    resources :contracts, controller: "admin/contracts"
+    post 'contracts/:id/select', to: "admin/contracts#select", as: "contract_select"
   end
 
   namespace :client do
