@@ -160,27 +160,13 @@
   <%= paginate @requests, param_name: :request_page %>
 </div>
 
-<%#<h1>Listing Messages</h1>%>
+<h1>Notification</h1>
 
-<%#<div class="table-responsive">%>
-  <%#<table class="table">%>
-    <%#<thead>%>
-      <%#<tr>%>
-        <%#<th>Source</th>%>
-        <%#<th>Destiny</th>%>
-      <%#</tr>%>
-    <%#</thead>%>
-
-    <%#<tbody>%>
-      <%#<% @messages.each do |message| %>%>
-        <%#<tr>%>
-          <%#<td><%= message.source.username %></td>%>
-          <%#<td><%= message.destiny.username %></td>%>
-          <%#<td><%= link_to "Read", show_message_admin_path(message.id) %></td>%>
-        <%#</tr>%>
-      <%#<% end %>%>
-    <%#</tbody>%>
-  <%#</table>%>
-
-  <%#<%= paginate @messages, param_name: :message_page %>%>
-<%#</div>%>
+<div class="form-material form-horizontal">
+  <div class="form group">
+    <label class="col-md-12"><%= @notification.created_at %></label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @notification.body %> </p>
+    </div>
+  </div>
+</div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_12_021540) do
+ActiveRecord::Schema.define(version: 2019_01_15_000526) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_01_12_021540) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2019-01-15", null: false
+    t.date "date", default: "2019-01-16", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -52,11 +52,21 @@ ActiveRecord::Schema.define(version: 2019_01_12_021540) do
   end
 
   create_table "consents", force: :cascade do |t|
-    t.integer "type_id", null: false
-    t.text "description", default: "", null: false
+    t.string "type"
+    t.string "body", default: "", null: false
     t.boolean "active", default: false, null: false
+    t.date "date", default: "2019-01-16", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "forgot_passwords", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "token"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["token"], name: "index_forgot_passwords_on_token"
+    t.index ["user_id"], name: "index_forgot_passwords_on_user_id"
   end
 
   create_table "conversations", force: :cascade do |t|

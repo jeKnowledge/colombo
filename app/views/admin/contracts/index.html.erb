@@ -1,0 +1,23 @@
+<h1>Contracts</h1>
+<div class="table-responsive">
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @contracts.each do |contract| %>
+      <tr>
+        <td><%= contract.date %></td>
+        <td><%= contract.active ? "Active" : "Inactive" %></td>
+        <td><%= link_to "Details", admin_contract_path(contract.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= link_to "New contract", new_admin_contract_path, class:"btn" %>

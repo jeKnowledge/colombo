@@ -1,0 +1,23 @@
+<h1>Terms</h1>
+<div class="table-responsive">
+  <table class="table">
+  <thead>
+    <tr>
+      <th>Date</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @terms.each do |term| %>
+      <tr>
+        <td><%= term.date %></td>
+        <td><%= term.active ? "Active" : "Inactive" %></td>
+        <td><%= link_to "Details", admin_term_path(term.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+
+<%= link_to "New terms and conditions", new_admin_term_path, class:"btn" %>

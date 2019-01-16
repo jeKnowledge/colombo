@@ -14,7 +14,7 @@ class Admin::GeneralController < ApplicationController
     @reports = Report.order(:validated).page(params[:report_page]).per(5)
     @plans = Plan.order(:validated).page(params[:plan_page]).per(5)
     @requests = Request.order(:created_at).page(params[:request_page]).per(5)
-    @messages = Message.order(:created_at).page(params[:message_page]).per(5)
+    @notifications = AdminNotification.order(:created_at).order(:read).page(params[:notification_page]).per(5)
   end
 
   def create
@@ -38,8 +38,9 @@ class Admin::GeneralController < ApplicationController
     @request = Request.find(params[:id])
   end
 
-  def show_message
-    @message = Message.find(params[:id])
+  def show_notification
+    @notification = AdminNotification.find(params[:id])
+    @notification.mark_as_read()
   end
 
   def validate_user
@@ -65,6 +66,11 @@ class Admin::GeneralController < ApplicationController
   def set_default_report_rating
     Report::set_default_rating(params[:rating])
     redirect_to admin_dashboard_path
+  end
+
+  def set_default_auditor_rating
+    Auditor::set_default_rating(params[:rating])
+    redirect_to dashboard_admin_path
   end
 
   private

@@ -1,9 +1,10 @@
 class User < ApplicationRecord
   # Attributes
-  attr_accessor :password_confirmation
+  attr_accessor :password_confirmation, :generated_password
 
   # Callbacks
   after_create :generate_username
+  after_create :send_credentials
   before_create :generate_password
 
   # Validations
@@ -23,14 +24,26 @@ class User < ApplicationRecord
     ISO3166::Country[self.country].name
   end
 
+  def reset_password
+    self.password = nil
+    self.generate_password()
+    self.send_credentials() if self.save(:validate => false)
+  end
+
   # Callback methods
   def generate_password
     self.password = SecureRandom.base64(12) unless self.password.present?
+
+    self.generated_password = self.password
     self.password = BCrypt::Password.create(self.password)
   end
 
   def generate_username
     self.update_column(:username , "#{self.prefix}#{Date.today.year}#{self.id}".downcase)
+  end
+
+  def send_credentials
+    UserMailer.send_credentials(self, self.generated_password).deliver_now
   end
 
   # Validation methods

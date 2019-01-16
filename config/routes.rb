@@ -17,17 +17,36 @@ Rails.application.routes.draw do
     post '/user/invalidate/:id', to: 'general#invalidate_user', as: 'invalidate_user'
     delete '/user/:id', to: 'general#delete_user', as: 'delete_user'
 
+    ### Auditor ###
+    post '/auditor/set_default_rating', to: 'admins#set_default_auditor_rating', as: 'set_default_auditor_rating'
+
     ### Audits ###
+<<<<<<< HEAD
     get '/audit/show/:id', to: 'general#show_audit', as: 'show_audit'
     get '/audit/validate/:id', to: 'general#validate_audit', as: 'validate_audit'
     post '/audit/set_default_rating', to: 'general#set_default_report_rating', as: 'set_default_report_rating'
+=======
+    get '/audit/show/:id', to: 'admins#show_audit', as: 'show_audit'
+    get '/audit/validate/:id', to: 'admins#validate_audit', as: 'validate_audit'
+
+    ### Report ###
+    post '/report/set_default_rating', to: 'admins#set_default_report_rating', as: 'set_default_report_rating'
+
+    ### Notifications ###
+    get '/notification/show/:id', to: 'admins#show_notification', as: 'show_notification'
+>>>>>>> master
 
     ### Requests ###
     get '/request/show/:id', to: 'general#show_request', as: 'show_request'
 
-    ### Consents ###
-    get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
-    resources :consents, controller: 'admin/consents'
+    ### Terms ###
+    resources :terms, controller: "admin/terms"
+    post 'terms/:id/select', to: "admin/terms#select", as: "term_select"
+
+    ### Contracts ###
+    resources :contracts, controller: "admin/contracts"
+    post 'contracts/:id/select', to: "admin/contracts#select", as: "contract_select"
+    post 'contracts/:id/download', to: "admin/contracts#download", as: "contract_download"
   end
 
   namespace :client do
@@ -120,6 +139,10 @@ Rails.application.routes.draw do
   get '/terms', to: 'website#terms', as: 'terms'
   post '/sign_in', to: 'website#create'
   post '/accept_terms', to: 'website#accept_terms'
+
+  get '/new_forgot_password', to: 'website#new_forgot_password'
+  post '/create_forgot_password', to: 'website#create_forgot_password'
+  get '/new_credentials/:token', to: 'website#new_credentials', as: 'new_credentials'
 
   root 'website#index'
 end
