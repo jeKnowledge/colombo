@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_000526) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2019-01-12", null: false
+    t.date "date", default: "2019-01-16", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -52,9 +52,10 @@ ActiveRecord::Schema.define(version: 2019_01_15_000526) do
   end
 
   create_table "consents", force: :cascade do |t|
-    t.integer "type_id", null: false
-    t.text "description", default: "", null: false
+    t.string "type"
+    t.string "body", default: "", null: false
     t.boolean "active", default: false, null: false
+    t.date "date", default: "2019-01-16", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -104,14 +105,6 @@ ActiveRecord::Schema.define(version: 2019_01_15_000526) do
     t.index ["auditor_id"], name: "index_reservations_on_auditor_id"
     t.index ["client_id"], name: "index_reservations_on_client_id"
     t.index ["plan_id"], name: "index_reservations_on_plan_id"
-  end
-
-  create_table "terms", force: :cascade do |t|
-    t.string "body", default: "", null: false
-    t.boolean "active", default: false, null: false
-    t.date "date", default: "2019-01-15", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
