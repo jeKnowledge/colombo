@@ -1,10 +1,14 @@
 <ul class="nav in" id="side-menu-auditor">
   <li>
-    <%= link_to "Dashboard", dashboard_admin_path %>
+    <%= link_to "Dashboard", admin_dashboard_path %>
   </li>
 
   <li>
     <%= link_to "Consents", admin_consents_path %>
+  </li>
+
+  <li>
+    <%= link_to "Messages", conversation_path(:index) %>
   </li>
 
   <li>

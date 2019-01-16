@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_30_224653) do
+ActiveRecord::Schema.define(version: 2019_01_12_021540) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2018_12_30_224653) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2019-01-11", null: false
+    t.date "date", default: "2019-01-15", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -59,17 +59,22 @@ ActiveRecord::Schema.define(version: 2018_12_30_224653) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "messages", force: :cascade do |t|
-    t.bigint "source_id", null: false
-    t.bigint "destiny_id", null: false
-    t.bigint "audit_id", null: false
-    t.text "body", default: "", null: false
-    t.boolean "read", default: false, null: false
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "auditor_id"
+    t.string "subject"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["audit_id"], name: "index_messages_on_audit_id"
-    t.index ["destiny_id"], name: "index_messages_on_destiny_id"
-    t.index ["source_id"], name: "index_messages_on_source_id"
+    t.index ["auditor_id"], name: "index_conversations_on_auditor_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "conversation_id"
+    t.boolean "direction", default: true, null: false
+    t.text "body", null: false
+    t.boolean "read", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["conversation_id"], name: "index_messages_on_conversation_id"
   end
 
   create_table "purchases", force: :cascade do |t|
@@ -117,6 +122,4 @@ ActiveRecord::Schema.define(version: 2018_12_30_224653) do
     t.index ["validated"], name: "index_users_on_validated"
   end
 
-  add_foreign_key "messages", "users", column: "destiny_id"
-  add_foreign_key "messages", "users", column: "source_id"
 end

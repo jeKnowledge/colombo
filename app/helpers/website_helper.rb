@@ -2,15 +2,20 @@ module WebsiteHelper
   include ActionView::Helpers::UrlHelper
 
   def dashboard_path(user)
-    if user.is_a? Client
-      return client_dashboard_path
-    elsif user.is_a? Auditor
-      return auditor_dashboard_path
-    elsif user.is_a? Admin
-      return dashboard_admin_path
-    else
-      return root_path
+    return send(current_user.type.downcase + '_dashboard_path')
+  end
+
+  def conversation_path(type, id=1)
+    case type
+    when :index, :create
+      send(current_user.type.downcase + '_conversations_path')
+    when :show
+      send(current_user.type.downcase + '_show_conversation_path', id)
     end
+  end
+
+  def message_path
+    send(current_user.type.downcase + '_message_path')
   end
 
   def client_authenticated?
@@ -56,6 +61,13 @@ module WebsiteHelper
   def admin_authenticated?
     unless session[:user_id] && Admin.exists?(session[:user_id])
       redirect_to sign_in_path
+    end
+  end
+
+  def current_user
+    user_id = session[:user_id]
+    if user_id
+      @current_user ||= User.find(user_id)
     end
   end
 end

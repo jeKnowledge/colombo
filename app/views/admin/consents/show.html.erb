@@ -19,7 +19,7 @@
 <%= link_to "Delete", admin_consent_path(@consent.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" %>
 
 <% unless @consent.active %>
-  <%= link_to "Activate", toggle_consent_admin_path(@consent.id), class:"btn" %>
+  <%= link_to "Activate", admin_toggle_consent_path(@consent.id), class:"btn" %>
 <% else %>
-  <%= link_to "Deactivate", toggle_consent_admin_path(@consent.id), class:"btn" %>
+  <%= link_to "Deactivate", admin_toggle_consent_path(@consent.id), class:"btn" %>
 <% end %>

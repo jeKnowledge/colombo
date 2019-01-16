@@ -1,24 +1,29 @@
 Rails.application.routes.draw do
-  resource :admin do
-    get '/', to: 'admins#index', as: 'dashboard'
+  namespace :admin do
+    get '/dashboard', to: 'general#index', as: 'dashboard'
+    post '/create', to: 'general#create'
+
+    get '/', to: 'general#index'
+
+    #Conversations
+    post '/conversations', to: 'general#create_conversation'
+    get '/conversations', to: 'general#conversation_index'
+    get '/conversations/:id', to: 'general#show_conversation', as: 'show_conversation'
+    post '/message', to: 'general#create_message'
 
     ### Users ###
-    get '/user/:id', to: 'admins#show_user', as: 'show_user'
-    post '/user/validate/:id', to: 'admins#validate_user', as: 'validate_user'
-    post '/user/invalidate/:id', to: 'admins#invalidate_user', as: 'invalidate_user'
-    delete '/user/:id', to: 'admins#delete_user', as: 'delete_user'
+    get '/user/:id', to: 'general#show_user', as: 'show_user'
+    post '/user/validate/:id', to: 'general#validate_user', as: 'validate_user'
+    post '/user/invalidate/:id', to: 'general#invalidate_user', as: 'invalidate_user'
+    delete '/user/:id', to: 'general#delete_user', as: 'delete_user'
 
     ### Audits ###
-    get '/audit/show/:id', to: 'admins#show_audit', as: 'show_audit'
-    get '/audit/validate/:id', to: 'admins#validate_audit', as: 'validate_audit'
-    post '/audit/set_default_rating', to: 'admins#set_default_report_rating', as: 'set_default_report_rating'
-
-    ### Messages ###
-    get '/message/show/:id', to: 'admins#show_message', as: 'show_message'
-    get '/message/validate/:id', to: 'admins#validate_message', as: 'validate_message'
+    get '/audit/show/:id', to: 'general#show_audit', as: 'show_audit'
+    get '/audit/validate/:id', to: 'general#validate_audit', as: 'validate_audit'
+    post '/audit/set_default_rating', to: 'general#set_default_report_rating', as: 'set_default_report_rating'
 
     ### Requests ###
-    get '/request/show/:id', to: 'admins#show_request', as: 'show_request'
+    get '/request/show/:id', to: 'general#show_request', as: 'show_request'
 
     ### Consents ###
     get '/consents/toggle/:id', to: 'admin/consents#toggle', as: 'toggle_consent'
@@ -33,12 +38,6 @@ Rails.application.routes.draw do
     patch '/profile/edit', to: 'general#update'
     get '/profile', to: 'general#show'
     delete '/profile', to: 'general#delete'
-
-    ### Messages ###
-    get '/messages', to: 'general#messages'
-    post '/messages', to: 'general#send_message'
-    get '/message/:id', to: 'general#show_message', as: 'message'
-    get '/messages/new', to: 'general#new_message'
 
     ### Purchases ###
     get '/purchases', to: 'general#purchases'
@@ -71,6 +70,7 @@ Rails.application.routes.draw do
   end
 
   get '/auditor', to: 'auditor/general#index'
+
   namespace :auditor do
     root 'general#index'
     get '/', to: 'general#index', as: 'dashboard'
@@ -82,11 +82,11 @@ Rails.application.routes.draw do
     post '/sign_up', to: 'general#create'
     post '/accept_terms', to: 'general#accept_terms'
 
-    ### Messages ###
-    get '/messages', to: 'general#messages'
-    post '/messages', to: 'general#send_message'
-    get '/message/:id', to: 'general#show_message', as: 'message'
-    get '/messages/new', to: 'general#new_message'
+    #Conversations
+    post '/conversations', to: 'general#create_conversation'
+    get '/conversations', to: 'general#conversation_index'
+    get '/conversations/:id', to: 'general#show_conversation', as: 'show_conversation'
+    post '/message', to: 'general#create_message'
 
     ### Purchases ###
     get '/purchases', to: 'general#purchases'

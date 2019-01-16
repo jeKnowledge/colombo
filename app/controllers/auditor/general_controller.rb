@@ -2,6 +2,8 @@ class Auditor::GeneralController < ApplicationController
   before_action :auditor_authenticated?, except: [:create, :new]
   before_action :user_validated?, except: [:create, :new]
 
+  include ConversationHandler
+
   layout 'auditor', except: [:new, :create]
 
   def index
