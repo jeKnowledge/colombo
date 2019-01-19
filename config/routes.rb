@@ -4,25 +4,26 @@ Rails.application.routes.draw do
 
     ### Users ###
     get '/user/:id', to: 'admins#show_user', as: 'show_user'
-    post '/user/validate/:id', to: 'admins#validate_user', as: 'validate_user'
-    post '/user/invalidate/:id', to: 'admins#invalidate_user', as: 'invalidate_user'
     delete '/user/:id', to: 'admins#delete_user', as: 'delete_user'
+    post '/user/:id/validate', to: 'admins#validate_user', as: 'validate_user'
+    post '/user/:id/invalidate', to: 'admins#invalidate_user', as: 'invalidate_user'
 
     ### Auditor ###
     post '/auditor/set_default_rating', to: 'admins#set_default_auditor_rating', as: 'set_default_auditor_rating'
 
     ### Audits ###
-    get '/audit/show/:id', to: 'admins#show_audit', as: 'show_audit'
-    get '/audit/validate/:id', to: 'admins#validate_audit', as: 'validate_audit'
+    get '/audit/:id/show', to: 'admins#show_audit', as: 'show_audit'
+    post '/audit/:id/validate', to: 'admins#validate_audit', as: 'validate_audit'
+    post '/audit/:id/download', to: 'admins#download_audit', as: 'download_audit'
 
     ### Report ###
     post '/report/set_default_rating', to: 'admins#set_default_report_rating', as: 'set_default_report_rating'
 
     ### Notifications ###
-    get '/notification/show/:id', to: 'admins#show_notification', as: 'show_notification'
+    get '/notification/:id/show', to: 'admins#show_notification', as: 'show_notification'
 
     ### Requests ###
-    get '/request/show/:id', to: 'admins#show_request', as: 'show_request'
+    get '/request/:id/show', to: 'admins#show_request', as: 'show_request'
 
     ### Terms ###
     resources :terms, controller: "admin/terms"
@@ -53,6 +54,7 @@ Rails.application.routes.draw do
     get '/purchases', to: 'general#purchases'
     post '/purchases/:id/rate', to: 'general#rate_purchase', as: 'rate_purchase'
     get '/purchase/:id/auditor', to: 'general#show_auditor', as: 'purchase_auditor'
+    post '/purchase/:id/download', to: 'general#download_audit', as: 'download_audit'
 
     ### Requests ###
     get '/requests', to: 'general#requests'
@@ -66,11 +68,11 @@ Rails.application.routes.draw do
       get '/advanced_search', to: 'audits#advanced_search'
 
       ### Purchase ###
-      get '/purchase/preview/:id', to: 'audits#purchase_preview', as: 'purchase_preview'
+      get '/purchase/:id/preview', to: 'audits#purchase_preview', as: 'purchase_preview'
       get '/purchase/:id', to: 'audits#purchase', as: 'purchase'
 
       ### Reserve ###
-      get '/reserve/preview/:id', to: 'audits#reserve_preview', as: 'reserve_preview'
+      get '/reserve/:id/preview', to: 'audits#reserve_preview', as: 'reserve_preview'
       get '/reserve/:id', to: 'audits#reserve', as: 'reserve'
 
       ### Request ###
@@ -96,6 +98,9 @@ Rails.application.routes.draw do
     post '/messages', to: 'general#send_message'
     get '/message/:id', to: 'general#show_message', as: 'message'
     get '/messages/new', to: 'general#new_message'
+
+    ### Audits ###
+    post '/audit/:id/download', to: 'general#download_audit', as: 'download_audit'
 
     ### Purchases ###
     get '/purchases', to: 'general#purchases'

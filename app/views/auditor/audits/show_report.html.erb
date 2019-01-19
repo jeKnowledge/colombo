@@ -43,4 +43,8 @@
       <p class="form-control form-control-line"><%= @report.upload_date %></p>
     </div>
   </div>
+
+  <div class="form group">
+    <%= link_to "Download", auditor_download_audit_path(@report.id), method: :post %>
+  </div>
 </div>

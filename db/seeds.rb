@@ -2,21 +2,16 @@ require 'factory_bot'
 
 FactoryBot.find_definitions
 
+FactoryBot.create :contract
+FactoryBot.create :term
+
 FactoryBot.create :admin
-
-2.times do
-  FactoryBot.create :auditor
-end
-
-2.times do
-  FactoryBot.create :client
-end
+2.times { FactoryBot.create :auditor }
+2.times { FactoryBot.create :client }
 
 FactoryBot.create :request
 FactoryBot.create :report
 FactoryBot.create :plan
-
-FactoryBot.create :consent
 
 FactoryBot.create :purchase
 FactoryBot.create :reservation

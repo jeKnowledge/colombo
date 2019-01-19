@@ -56,7 +56,7 @@
   </div>
 
   <div class="col-md-12">
-    <p class="form-control form-control-line"><%= link_to "Report file", @audit.report.url %></p>
+    <p class="form-control form-control-line"><%= link_to "Download report", download_audit_admin_path(@audit.id), method: :post %></p>
   </div>
 <% end %>
 

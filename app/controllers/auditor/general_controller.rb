@@ -101,6 +101,11 @@ class Auditor::GeneralController < ApplicationController
     @client = Client.find(params[:id])
   end
 
+  def download_audit
+    @audit = Audit.find(params[:id])
+    send_file File.open(File.join(Rails.root, @audit.report.url)) if @audit.auditor_id = session[:user_id]
+  end
+
   private
     def auditor_signup_params
       params.require(:auditor).permit(

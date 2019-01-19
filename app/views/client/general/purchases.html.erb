@@ -31,7 +31,7 @@
               <%= purchase.rating %>
             <% end %>
           </td>
-          <td><%= link_to "Download", purchase.report.report.url %></td>
+          <td><%= link_to "Download", client_download_audit_path(purchase.id), method: :post %></td>
         </tr>
       <% end %>
     </tbody>
