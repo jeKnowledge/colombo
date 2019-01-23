@@ -67,6 +67,12 @@ class Client::GeneralController < ApplicationController
     redirect_to client_purchases_path, note: "Thanks for the rating"
   end
 
+  def download_audit
+    purchase = Purchase.find(params[:id])
+    audit = purchase.report
+    send_file File.open(File.join(Rails.root, audit.report.url)) if purchase.client_id = session[:user_id]
+  end
+
   def accept_terms
     @client.update_attribute(:terms_of_service, true)
     redirect_to client_dashboard_path

@@ -38,18 +38,28 @@ module WebsiteHelper
     @current_user = User.find(session[:user_id])
 
     unless @current_user.validated
-      @current_user.errors.add(:your_account, "hasn't been validated yet, please wait until our administrators have done so.")
+      @current_user.errors.add(
+        :your_account,
+        "hasn't been validated yet, please wait until our administrators have done so."
+      )
     end
 
     unless @current_user.terms_of_service
-      @current_user.errors.add(:new_terms, "have been set. To continue using the platform you must accept them. Accept #{link_to 'terms', terms_path}. #{link_to 'Accept', accept_terms_path, method: :post}")
+      @current_user.errors.add(
+        :new_terms,
+        "have been set. To continue using the platform you must accept them.
+        Accept #{link_to 'terms', terms_path}.
+        #{link_to 'Accept', accept_terms_path, method: :post}"
+      )
     end
 
     unless @current_user.errors.count == 0
       allowed = true
 
       if @current_user.is_a? Auditor
-        allowed = auditor_profile_edit_path == request.path || auditor_profile_path == request.path
+        allowed = auditor_profile_edit_path == request.path ||
+          auditor_profile_path == request.path ||
+          auditor_download_cv_path == request.path
       else
         allowed = client_profile_edit_path == request.path || client_profile_path == request.path
       end

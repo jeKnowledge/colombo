@@ -1,4 +1,4 @@
-<h1>Auditors</h1>
+<h1>Admins</h1>
 
 <div>
   <%= render "shared/error_messages", resource: @admin %>
@@ -8,6 +8,13 @@
     <%= f.submit "Create" %>
   <% end %>
 </div>
+
+<h1>Auditors</h1>
+
+<%= form_with url: set_default_auditor_rating_admin_path do |f| %>
+  <%= f.number_field :rating, in: 0..5, step: 0.1, min: 0, max: 5, value: Auditor::get_default_rating %>
+  <%= f.submit "Set" %>
+<% end %>
 
 <div class="table-responsive">
   <table class="table">
@@ -35,6 +42,7 @@
       <% end %>
     </tbody>
   </table>
+
   <%= paginate @auditors, param_name: :auditor_page %>
 </div>
 
@@ -42,31 +50,31 @@
 
 <div class="table-responsive">
   <table class="table">
-    <thead>
-      <tr>
-        <th>Username</th>
-        <th>Name</th>
-      </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Username</th>
+      <th>Name</th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <% @clients.each do |client| %>
-        <tr>
-          <td><%= client.username %></td>
-          <td><%= client.name %></td>
-          <% if client.validated %>
-            <td><%= link_to "Invalidate", admin_invalidate_user_path(client.id), method: :post %></td>
-          <% else %>
-            <td><%= link_to "Validate", admin_validate_user_path(client.id), method: :post %></td>
-          <% end %>
-          <td><%= link_to "Details", admin_show_user_path(client.id) %></td>
-          <td><%= link_to "Delete", admin_delete_user_path(client.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <br>
-  <%= paginate @clients, param_name: :client_page %>
+  <tbody>
+    <% @clients.each do |client| %>
+      <tr>
+        <td><%= client.username %></td>
+        <td><%= client.name %></td>
+        <% if client.validated %>
+          <td><%= link_to "Invalidate", admin_invalidate_user_path(client.id), method: :post %></td>
+        <% else %>
+          <td><%= link_to "Validate", admin_validate_user_path(client.id), method: :post %></td>
+        <% end %>
+        <td><%= link_to "Details", admin_show_user_path(client.id) %></td>
+        <td><%= link_to "Delete", admin_delete_user_path(client.id), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<br>
+<%= paginate @clients, param_name: :client_page %>
 </div>
 
 <h1>Reports</h1>
@@ -78,31 +86,31 @@
 
 <div class="table-responsive">
   <table class="table">
-    <thead>
-      <tr>
-        <th>Products</th>
-        <th>Date</th>
-        <th>Auditor</th>
-        <th>Upload date</th>
-      </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Products</th>
+      <th>Date</th>
+      <th>Auditor</th>
+      <th>Upload date</th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <% @reports.each do |report| %>
-        <tr>
-          <td><%= report.products %></td>
-          <td><%= report.date %></td>
-          <td><%= link_to report.auditor.username, admin_show_user_path(report.auditor_id) %></td>
-          <td><%= report.upload_date %></td>
-          <% unless report.validated %>
-            <td><%= link_to "Validate", admin_validate_audit_path(report.id) %></td>
-          <% end %>
-          <td><%= link_to "Details", admin_show_audit_path(report.id) %></td>
-        </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <%= paginate @reports, param_name: :report_page %>
+  <tbody>
+    <% @reports.each do |report| %>
+      <tr>
+        <td><%= report.products %></td>
+        <td><%= report.date %></td>
+        <td><%= link_to report.auditor.username, admin_show_user_path(report.auditor_id) %></td>
+        <td><%= report.upload_date %></td>
+        <% unless report.validated %>
+          <td><%= link_to "Validate", admin_validate_audit_path(report.id), method: :post %></td>
+        <% end %>
+        <td><%= link_to "Details", admin_show_audit_path(report.id) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= paginate @reports, param_name: :report_page %>
 </div>
 
 <h1>Plans</h1>
@@ -124,13 +132,14 @@
           <td><%= plan.date %></td>
           <td><%= link_to plan.auditor.username, admin_show_user_path(plan.auditor_id) %></td>
           <% unless plan.validated %>
-            <td><%= link_to "Validate", admin_validate_audit_path(plan.id) %></td>
+            <td><%= link_to "Validate", admin_validate_audit_path(plan.id), method: :post%></td>
           <% end %>
           <td><%= link_to "Details", admin_show_audit_path(plan.id) %></td>
         </tr>
       <% end %>
     </tbody>
   </table>
+
   <%= paginate @plans, param_name: :plan_page %>
 </div>
 
@@ -157,16 +166,29 @@
       <% end %>
     </tbody>
   </table>
-  <%= paginate @requests, param_name: :request_page %>
+
+<%= paginate @requests, param_name: :request_page %>
 </div>
 
-<h1>Notification</h1>
+<h1>Notifications</h1>
 
-<div class="form-material form-horizontal">
-  <div class="form group">
-    <label class="col-md-12"><%= @notification.created_at %></label>
-    <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @notification.body %> </p>
-    </div>
-  </div>
+<div class="table-responsive">
+  <table class="table">
+    <tbody>
+      <% if @notifications.empty? %>
+        <tr><td><%= "No notifications available" %></td></tr>
+      <% else %>
+        <% @notifications.each do |notification| %>
+          <tr>
+            <% bold = notification.read ? "" : 'font-weight: bold;' %>
+            <td style="<%= bold %>"><%= notification.body %></td>
+            <td style="<%= bold %>"><%= notification.created_at.to_date %></td>
+            <td style="<%= bold %>"><%= link_to "Read", show_notification_admin_path(notification.id) %></td>
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+
+<%= paginate @notifications, param_name: :notification_page %>
 </div>

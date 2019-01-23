@@ -1,7 +1,7 @@
 class Admin::GeneralController < ApplicationController
   before_action :admin_authenticated?
-  before_action :set_user, only: [:show_user, :validate_user, :invalidate_user, :delete_user]
-  before_action :set_audit, only: [:show_audit, :validate_audit]
+  before_action :set_user, only: [:show_user, :validate_user, :invalidate_user, :delete_user, :download_cv]
+  before_action :set_audit, only: [:show_audit, :validate_audit, :download_audit]
 
   include ConversationHandler
 
@@ -71,6 +71,14 @@ class Admin::GeneralController < ApplicationController
   def set_default_auditor_rating
     Auditor::set_default_rating(params[:rating])
     redirect_to dashboard_admin_path
+  end
+
+  def download_audit
+    send_file File.open(File.join(Rails.root, @audit.report.url))
+  end
+
+  def download_cv
+    send_file File.open(File.join(Rails.root, @user.cv.url))
   end
 
   private

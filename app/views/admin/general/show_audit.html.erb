@@ -1,30 +1,66 @@
-<h1>Message deatils</h1>
+<% if @audit.is_a? Report %>
+  <h1>Report details</h1>
+<% else %>
+  <h1>Plan details</h1>
+<% end %>
+
 <div class="form-material form-horizontal">
   <div class="form group">
-    <label class="col-md-12">Source</label>
+    <label class="col-md-12">Products</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @message.source.username %></p>
+      <p class="form-control form-control-line"><%= @audit.products %> </p>
     </div>
   </div>
 
   <div class="form group">
-    <label class="col-md-12">Destiny</label>
+    <label class="col-md-12">Price</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @message.destiny.username %></p>
+      <p class="form-control form-control-line"><<%= @audit.price %></p>
     </div>
   </div>
 
   <div class="form group">
-    <label class="col-md-12">Body</label>
+    <label class="col-md-12">Date</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @message.body %></p>
+      <p class="form-control form-control-line"><%= @audit.date %></p>
     </div>
   </div>
 
   <div class="form group">
-    <label class="col-md-12">Read</label>
+    <label class="col-md-12">Summary</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @message.read %></p>
+      <p class="form-control form-control-line"><%= @audit.summary %></p>
     </div>
   </div>
-</div>
+
+  <div class="form group">
+    <label class="col-md-12">Auditor</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %></p>
+    </div>
+  </div>
+
+<% if @audit.is_a? Report %>
+  <div class="form group">
+    <label class="col-md-12">Rating</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @audit.rating %></p>
+    </div>
+  </div>
+
+  <div class="form group">
+    <label class="col-md-12">Upload date</label>
+    <div class="col-md-12">
+      <p class="form-control form-control-line"><%= @audit.upload_date %></p>
+    </div>
+  </div>
+
+  <div class="col-md-12">
+    <p class="form-control form-control-line"><%= link_to "Download report", download_audit_admin_path(@audit.id), method: :post %></p>
+  </div>
+<% end %>
+
+
+<% unless @audit.validated %>
+  <%= link_to "Validate", validate_audit_admin_path(@audit.id), method: :post %>
+<% end %>
