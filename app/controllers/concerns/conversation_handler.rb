@@ -8,23 +8,26 @@ module ConversationHandler
               when "Auditor"
                 current_user
               end
+
     conversation = Conversation.new(auditor: auditor, subject: conversation_params[:subject])
 
     if conversation.save
       redirect_to conversation_path(:show, conversation.id)
     else
-      redirect_to dashboard_path
+      redirect_to dashboard_path(current_user)
     end
   end
 
   def conversation_index
     @conversation = Conversation.new
+
     @conversations = case current_user.type
                      when "Admin"
-                       Conversation.all
+                       Conversation.all.order(created_at: :desc)
                      when "Auditor"
-                       Conversation.where(auditor_id: current_user.id)
+                       Conversation.where(auditor_id: current_user.id).order(created_at: :desc)
                      end
+
     render 'conversations/index'
   end
 
@@ -32,6 +35,7 @@ module ConversationHandler
     @message = Message.new
     @conversation = Conversation.find(params[:id])
     @messages = Conversation.find(params[:id]).messages
+
     render 'conversations/show'
   end
 
@@ -47,12 +51,11 @@ module ConversationHandler
   end
 
   private
-  def conversation_params
-    params.require(:conversation).permit(:auditor_id, :subject)
-  end
+    def conversation_params
+      params.require(:conversation).permit(:auditor_id, :subject)
+    end
 
-  private
-  def message_params
-    params.require(:message).permit(:conversation_id, :body)
-  end
+    def message_params
+      params.require(:message).permit(:conversation_id, :body)
+    end
 end

@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2019_01_15_000526) do
 
   create_table "audits", force: :cascade do |t|
     t.string "type"
-    t.date "date", default: "2019-01-19", null: false
+    t.date "date", default: "2019-01-23", null: false
     t.string "products", default: "", null: false
     t.boolean "validated", default: false, null: false
     t.bigint "auditor_id"
@@ -55,9 +55,17 @@ ActiveRecord::Schema.define(version: 2019_01_15_000526) do
     t.string "type"
     t.string "body", default: "", null: false
     t.boolean "active", default: false, null: false
-    t.date "date", default: "2019-01-19", null: false
+    t.date "date", default: "2019-01-23", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "conversations", force: :cascade do |t|
+    t.bigint "auditor_id"
+    t.string "subject"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["auditor_id"], name: "index_conversations_on_auditor_id"
   end
 
   create_table "forgot_passwords", force: :cascade do |t|
@@ -67,14 +75,6 @@ ActiveRecord::Schema.define(version: 2019_01_15_000526) do
     t.datetime "updated_at", null: false
     t.index ["token"], name: "index_forgot_passwords_on_token"
     t.index ["user_id"], name: "index_forgot_passwords_on_user_id"
-  end
-
-  create_table "conversations", force: :cascade do |t|
-    t.bigint "auditor_id"
-    t.string "subject"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["auditor_id"], name: "index_conversations_on_auditor_id"
   end
 
   create_table "messages", force: :cascade do |t|
