@@ -50,13 +50,15 @@
       </div>
     </div>
       <div class="col-md-12">
-        <p class="form-control form-control-line"><%= link_to "Download CV", download_auditor_cv_admin_path(@user.id), method: :post %></p>
+        <p class="form-control form-control-line"><%= link_to "Download CV", admin_download_auditor_cv_path(@user), method: :post %></p>
       </div>
   <% end %>
 </div>
 
 <br>
-<% if !@user.validated %>
-  <%= link_to "Validate", validate_user_admin_path(@user.id), method: :post %>
+<% if @user.validated %>
+  <td><%= link_to "Invalidate", admin_invalidate_user_path(@user.id), method: :post %></td>
+<% else %>
+  <td><%= link_to "Validate", admin_validate_user_path(@user.id), method: :post %></td>
 <% end %>
 <br>

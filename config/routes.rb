@@ -24,6 +24,7 @@ Rails.application.routes.draw do
     ### Audits ###
     get '/audit/:id/show', to: 'general#show_audit', as: 'show_audit'
     post '/audit/:id/validate', to: 'general#validate_audit', as: 'validate_audit'
+    post '/audit/:id/invalidate', to: 'general#invalidate_audit', as: 'invalidate_audit'
     post '/audit/:id/download', to: 'general#download_audit', as: 'download_audit'
 
     ### Report ###
@@ -36,13 +37,13 @@ Rails.application.routes.draw do
     get '/request/:id/show', to: 'general#show_request', as: 'show_request'
 
     ### Terms ###
-    resources :terms, controller: "admin/terms"
-    post 'terms/:id/select', to: "admin/terms#select", as: "term_select"
+    resources :terms, controller: "terms"
+    post 'terms/:id/select', to: "terms#select", as: "term_select"
 
     ### Contracts ###
-    resources :contracts, controller: "admin/contracts"
-    post 'contracts/:id/select', to: "admin/contracts#select", as: "contract_select"
-    post 'contracts/:id/download', to: "admin/contracts#download", as: "contract_download"
+    resources :contracts, controller: "contracts"
+    post 'contracts/:id/select', to: "contracts#select", as: "contract_select"
+    post 'contracts/:id/download', to: "contracts#download", as: "contract_download"
   end
 
   namespace :client do

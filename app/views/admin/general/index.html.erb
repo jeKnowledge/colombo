@@ -102,7 +102,9 @@
         <td><%= report.date %></td>
         <td><%= link_to report.auditor.username, admin_show_user_path(report.auditor_id) %></td>
         <td><%= report.upload_date %></td>
-        <% unless report.validated %>
+        <% if report.validated %>
+          <td><%= link_to "Invalidate", admin_invalidate_audit_path(report.id), method: :post %></td>
+        <% else %>
           <td><%= link_to "Validate", admin_validate_audit_path(report.id), method: :post %></td>
         <% end %>
         <td><%= link_to "Details", admin_show_audit_path(report.id) %></td>
@@ -131,8 +133,10 @@
           <td><%= plan.products %></td>
           <td><%= plan.date %></td>
           <td><%= link_to plan.auditor.username, admin_show_user_path(plan.auditor_id) %></td>
-          <% unless plan.validated %>
-            <td><%= link_to "Validate", admin_validate_audit_path(plan.id), method: :post%></td>
+          <% if plan.validated %>
+            <td><%= link_to "Invalidate", admin_invalidate_audit_path(plan.id), method: :post %></td>
+          <% else %>
+            <td><%= link_to "Validate", admin_validate_audit_path(plan.id), method: :post %></td>
           <% end %>
           <td><%= link_to "Details", admin_show_audit_path(plan.id) %></td>
         </tr>

@@ -45,31 +45,43 @@ class Admin::GeneralController < ApplicationController
 
   def validate_user
     @user.update_column(:validated, true)
-    redirect_to admin_dashboard_path
+
+    redirect_to request.referrer unless request.referrer.nil?
   end
 
   def invalidate_user
     @user.update_column(:validated, false)
-    redirect_to admin_dashboard_path
+
+    redirect_to request.referrer unless request.referrer.nil?
   end
 
   def delete_user
     @user.destroy
+
     redirect_to admin_dashboard_path
   end
 
   def validate_audit
     @audit.update_column(:validated, true)
-    redirect_to admin_dashboard_path
+
+    redirect_to request.referrer unless request.referrer.nil?
+  end
+
+  def invalidate_audit
+    @audit.update_column(:validated, false)
+
+    redirect_to request.referrer unless request.referrer.nil?
   end
 
   def set_default_report_rating
     Report::set_default_rating(params[:rating])
+
     redirect_to admin_dashboard_path
   end
 
   def set_default_auditor_rating
     Auditor::set_default_rating(params[:rating])
+
     redirect_to dashboard_admin_path
   end
 
