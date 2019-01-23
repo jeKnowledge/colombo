@@ -1,7 +1,9 @@
-class AdminsController < ApplicationController
+class Admin::GeneralController < ApplicationController
   before_action :admin_authenticated?
   before_action :set_user, only: [:show_user, :validate_user, :invalidate_user, :delete_user, :download_cv]
   before_action :set_audit, only: [:show_audit, :validate_audit, :download_audit]
+
+  include ConversationHandler
 
   layout 'admin'
 
@@ -19,7 +21,7 @@ class AdminsController < ApplicationController
     @admin = Admin.new(admin_params)
 
     if @admin.save
-      redirect_to dashboard_admin_path
+      redirect_to admin_dashboard_path
     else
       index(@admin)
       render :index
@@ -43,27 +45,27 @@ class AdminsController < ApplicationController
 
   def validate_user
     @user.update_column(:validated, true)
-    redirect_to dashboard_admin_path
+    redirect_to admin_dashboard_path
   end
 
   def invalidate_user
     @user.update_column(:validated, false)
-    redirect_to dashboard_admin_path
+    redirect_to admin_dashboard_path
   end
 
   def delete_user
     @user.destroy
-    redirect_to dashboard_admin_path
+    redirect_to admin_dashboard_path
   end
 
   def validate_audit
     @audit.update_column(:validated, true)
-    redirect_to dashboard_admin_path
+    redirect_to admin_dashboard_path
   end
 
   def set_default_report_rating
     Report::set_default_rating(params[:rating])
-    redirect_to dashboard_admin_path
+    redirect_to admin_dashboard_path
   end
 
   def set_default_auditor_rating

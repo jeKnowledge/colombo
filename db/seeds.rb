@@ -6,12 +6,14 @@ FactoryBot.create :contract
 FactoryBot.create :term
 
 FactoryBot.create :admin
-2.times { FactoryBot.create :auditor }
-2.times { FactoryBot.create :client }
+FactoryBot.create_list(:auditor, 5)
+FactoryBot.create_list(:client, 5)
 
-FactoryBot.create :request
-FactoryBot.create :report
-FactoryBot.create :plan
+FactoryBot.create_list(:request, 5)
+FactoryBot.create_list(:report, 5)
+FactoryBot.create_list(:plan, 5)
 
-FactoryBot.create :purchase
-FactoryBot.create :reservation
+FactoryBot.create_list(:purchase, 5)
+FactoryBot.create_list(:reservation, 5)
+
+FactoryBot.create_list(:conversation_with_messages, 10)
