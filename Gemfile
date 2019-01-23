@@ -3,6 +3,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'rails', '~> 5.2.1'
 gem 'pg', '>= 0.18', '< 2.0'
 gem 'puma', '~> 3.11'
@@ -23,6 +24,7 @@ gem 'rubysl-securerandom', '~> 2.0'
 gem 'markdown', '~> 1.2'
 gem 'wicked_pdf', '~> 1.1'
 gem 'wkhtmltopdf_binary', '~> 0.12.3.2'
+gem 'bootstrap_tokenfield_rails', '~> 0.12.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
