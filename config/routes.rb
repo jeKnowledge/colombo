@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
     ### Auditor ###
     post '/auditor/set_default_rating', to: 'admins#set_default_auditor_rating', as: 'set_default_auditor_rating'
+    post '/auditor/:id/download_cv', to: 'admins#download_cv', as: 'download_auditor_cv'
 
     ### Audits ###
     get '/audit/:id/show', to: 'admins#show_audit', as: 'show_audit'
@@ -89,6 +90,7 @@ Rails.application.routes.draw do
     delete '/profile', to: 'general#delete'
     get '/profile/edit', to: 'general#edit'
     patch '/profile/edit', to: 'general#update'
+    post '/profile/download_cv', to: 'general#download_cv', as: 'download_cv'
     get '/sign_up', to: 'general#new'
     post '/sign_up', to: 'general#create'
     post '/accept_terms', to: 'general#accept_terms'

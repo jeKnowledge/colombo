@@ -50,7 +50,7 @@
       </div>
     </div>
       <div class="col-md-12">
-        <p class="form-control form-control-line"><%= link_to "CV", @user.cv.url %></p>
+        <p class="form-control form-control-line"><%= link_to "Download CV", download_auditor_cv_admin_path(@user.id), method: :post %></p>
       </div>
   <% end %>
 </div>

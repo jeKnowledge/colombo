@@ -106,6 +106,11 @@ class Auditor::GeneralController < ApplicationController
     send_file File.open(File.join(Rails.root, @audit.report.url)) if @audit.auditor_id = session[:user_id]
   end
 
+  def download_cv
+    user = User.find(session[:user_id])
+    send_file File.open(File.join(Rails.root, user.cv.url))
+  end
+
   private
     def auditor_signup_params
       params.require(:auditor).permit(
