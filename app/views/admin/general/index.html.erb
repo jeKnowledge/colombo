@@ -99,9 +99,9 @@
     <% @reports.each do |report| %>
       <tr>
         <td><%= report.products %></td>
-        <td><%= report.date %></td>
+        <td><%= l report.date %></td>
         <td><%= link_to report.auditor.username, admin_show_user_path(report.auditor_id) %></td>
-        <td><%= report.upload_date %></td>
+        <td><%= l report.upload_date %></td>
         <% if report.validated %>
           <td><%= link_to "Invalidate", admin_invalidate_audit_path(report.id), method: :post %></td>
         <% else %>
@@ -131,7 +131,7 @@
       <% @plans.each do |plan| %>
         <tr>
           <td><%= plan.products %></td>
-          <td><%= plan.date %></td>
+          <td><%= l plan.date %></td>
           <td><%= link_to plan.auditor.username, admin_show_user_path(plan.auditor_id) %></td>
           <% if plan.validated %>
             <td><%= link_to "Invalidate", admin_invalidate_audit_path(plan.id), method: :post %></td>
@@ -163,7 +163,7 @@
       <% @requests.each do |request| %>
         <tr>
           <td><%= request.products %></td>
-          <td><%= request.date %></td>
+          <td><%= l request.date %></td>
           <td><%= link_to request.client.username, admin_show_user_path(request.client_id) %></td>
           <td><%= link_to "Details", admin_show_request_path(request.id) %></td>
         </tr>

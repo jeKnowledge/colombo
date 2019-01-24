@@ -20,7 +20,7 @@
           <td><%= purchase.price %></td>
           <td><%= purchase.report.auditor.company %></td>
           <td><%= purchase.report.auditor.address %></td>
-          <td><%= purchase.report.date %></td>
+          <td><%= l purchase.report.date %></td>
           <td>
             <% if purchase.rating == -1 %>
               <%= form_with url: client_rate_purchase_path(purchase.id) do |f| %>

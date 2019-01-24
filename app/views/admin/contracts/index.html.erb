@@ -11,7 +11,7 @@
   <tbody>
     <% @contracts.each do |contract| %>
       <tr>
-        <td><%= contract.date %></td>
+        <td><%= l contract.date %></td>
         <td><%= contract.active ? "Active" : "Inactive" %></td>
         <td><%= link_to "Details", admin_contract_path(contract.id) %></td>
       </tr>

@@ -11,7 +11,7 @@
   <tbody>
     <% @terms.each do |term| %>
       <tr>
-        <td><%= term.date %></td>
+        <td><%= l term.date %></td>
         <td><%= term.active ? "Active" : "Inactive" %></td>
         <td><%= link_to "Details", admin_term_path(term.id) %></td>
       </tr>

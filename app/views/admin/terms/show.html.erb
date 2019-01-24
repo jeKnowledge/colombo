@@ -1,6 +1,6 @@
 <h1>Terms and conditions</h1>
 
-<label class="col-md-12"><%= @term.date %></label>
+<label class="col-md-12"><%= l @term.date %></label>
 
 <div class="col-md-12"><%= Markdown.new(@term.body).to_html.html_safe %></div>
 
