@@ -16,7 +16,7 @@ FactoryBot.create :request
 FactoryBot.create :report
 FactoryBot.create :plan
 
-FactoryBot.create :consent
+#FactoryBot.create :consent
 
 FactoryBot.create :purchase
 FactoryBot.create :reservation

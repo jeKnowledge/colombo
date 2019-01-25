@@ -21,6 +21,8 @@ class Client::AuditsController < ApplicationController
     end
 
     @reports = reports.validated().paginate(params[:report_page], 5)
+    ap "PLANSSS"
+    ap Plan.all
     @plans = plans.validated().not_expired().paginate(params[:report_page], 5)
   end
 

@@ -124,6 +124,11 @@ Rails.application.routes.draw do
     end
   end
 
+  scope :paypal, as: 'paypal' do
+    post '/checkout', to: 'paypal#checkout'
+    post '/execute', to: 'paypal#execute'
+  end
+
   get '/sign_in', to: 'website#new', as: 'sign_in'
   get '/sign_out', to: 'website#destroy', as: 'sign_out'
   get '/terms', to: 'website#terms', as: 'terms'
