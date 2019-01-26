@@ -44,48 +44,57 @@
     </div>
   </div>
 
-  <%= link_to "Purchase", client_purchase_path(@report.id), class:"btn", id: 'purchase_button' %>
-
-  <div id="paypal-button"></div>
+  <div id="paypal-button-container"></div>
 </div>
 
 <script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
   paypal.Button.render({
-    // Configure environment
     env: 'sandbox',
-    client: {
-      sandbox: 'AR2WJqYoN559PEEfyPeOKkHgvNXi6mcOWl9tPkiCCYUI9Dh71WtkBxaWbwX-Z_haiHS8XcC6ZQ7_sR74',
-      production: 'demo_production_client_id'
-    },
-    // Customize button (optional)
-    locale: 'en_US',
-    style: {
-      size: 'small',
-      color: 'gold',
-      shape: 'pill',
-    },
-
-    // Enable Pay Now checkout flow (optional)
     commit: true,
-
-    // Set up a payment
-    payment: function(data, actions) {
-      return actions.payment.create({
-        transactions: [{
-          amount: {
-            total: '<%= @report.price %>',
-            currency: 'USD'
-          }
-        }]
-      });
+    style: {
+      label: 'checkout',  // horizontal | vertical
+      size:   'responsive',    // medium | large | responsive
+      shape:  'rect',      // pill | rect
+      color:  'black'       // gold | blue | silver | black
     },
-    // Execute the payment
-    onAuthorize: function(data, actions) {
-      return actions.payment.execute().then(function() {
-        // Show a confirmation message to the buyer
-        document.getElementById("purchase_button").click();
-      });
+    payment: (data, actions) => {
+      var CREATE_URL = "<%= paypal_checkout_url %>";
+      var data = {
+        items: [{
+          name: "Report",
+          price: "<%= @report.price %>",
+          currency: "USD",
+          quantity: "1"
+        },
+          {
+            name: "Fee",
+            price: "<%= @report.fee %>",
+            currency: "USD",
+            quantity: "1"
+          }],
+        total_amount: "<%= @report.price + @report.fee %>",
+        description: "<%= @report.summary %>"
+      }
+
+      return actions.request.post(CREATE_URL, {data: JSON.stringify(data)})
+        .then((res) => {
+          return res.payment_id;
+        });
+    },
+    onAuthorize: (data, actions) => {
+      var EXECUTE_URL = "<%= paypal_execute_url %>";
+      var data = {
+        payment_id: data.paymentID,
+        payer_id: data.payerID,
+      };
+
+      return actions.request.post(EXECUTE_URL, data)
+        .then((res) => {
+          if(res.success){
+            window.location.replace("<%= client_purchase_url %>");
+          }
+        });
     }
-  }, '#paypal-button');
+  }, '#paypal-button-container');
 </script>

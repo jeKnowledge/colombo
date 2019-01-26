@@ -56,9 +56,6 @@
       <p class="form-control form-control-line"><%= @plan.fee %></p>
     </div>
   </div>
-
-  <%= link_to "Reserve", client_reserve_path(@plan.id), class: 'btn', id: 'purchase_button' %>
-
   <div id="paypal-button-container"></div>
 </div>
 
@@ -90,26 +87,25 @@
         total_amount: "<%= @plan.price + @plan.fee %>",
         description: "<%= @plan.summary %>"
       }
-      console.log(JSON.stringify(data))
 
       return actions.request.post(CREATE_URL, {data: JSON.stringify(data)})
         .then((res) => {
-          return res.paymentID;
+          return res.payment_id;
         });
     },
     onAuthorize: (data, actions) => {
       var EXECUTE_URL = "<%= paypal_execute_url %>";
       var data = {
-        paymentID: data.paymentID,
-        payerID: data.payerID,
-      }
-    };
+        payment_id: data.paymentID,
+        payer_id: data.payerID,
+      };
 
-    return actions.request.post(EXECUTE_URL, {data: JSON.stringify(data)})
-    .then((res) => {
-      window.alert('Payment Complete!');
-      console.log(res);
-    });
-  }
-}, '#paypal-button-container');
+      return actions.request.post(EXECUTE_URL, data)
+        .then((res) => {
+          if(res.success){
+            window.location.replace("<%= client_reserve_url %>");
+          }
+        });
+    }
+  }, '#paypal-button-container');
 </script>

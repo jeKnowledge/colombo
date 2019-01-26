@@ -73,6 +73,7 @@ class Client::AuditsController < ApplicationController
 
   def reserve_preview
     @plan = Plan.find(params[:id])
+    @object = @plan
   end
 
   def reserve

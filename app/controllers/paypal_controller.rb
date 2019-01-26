@@ -1,9 +1,9 @@
 require 'json'
 require 'paypal-sdk-rest'
-include PayPal::SDK::REST
-include PayPal::SDK::Core::Logging
 
 class PaypalController < ApplicationController
+  include PayPal::SDK::REST
+  include PayPal::SDK::Core::Logging
   skip_before_action :verify_authenticity_token
 
   def checkout
@@ -30,16 +30,16 @@ class PaypalController < ApplicationController
     })
 
     if @payment.create
-      render json: {success: true, paymentID: @payment.id}
+      render json: {success: true, payment_id: @payment.id}
     else
       render json: {success: false}
     end
   end
 
   def execute
-    payment = Payment.find(params[:paymentID])
+    payment = Payment.find(params[:payment_id])
 
-    if payment.execute(payer_id: params[:payerID])
+    if payment.execute(payer_id: params[:payer_id])
       render json: {success: true, msg: 'Payment Complete'}
     else
       render json: {success: false, msg: payment.error}
