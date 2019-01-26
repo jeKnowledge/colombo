@@ -1,37 +1,49 @@
 Rails.application.routes.draw do
-  resource :admin do
-    get '/', to: 'admins#index', as: 'dashboard'
+  namespace :admin do
+    get '/dashboard', to: 'general#index', as: 'dashboard'
+    post '/create', to: 'general#create'
+
+    get '/', to: 'general#index'
+
+    #Conversations
+    post '/conversations', to: 'general#create_conversation'
+    get '/conversations', to: 'general#conversation_index'
+    get '/conversations/:id', to: 'general#show_conversation', as: 'show_conversation'
+    post '/message', to: 'general#create_message'
 
     ### Users ###
-    get '/user/:id', to: 'admins#show_user', as: 'show_user'
-    post '/user/validate/:id', to: 'admins#validate_user', as: 'validate_user'
-    post '/user/invalidate/:id', to: 'admins#invalidate_user', as: 'invalidate_user'
-    delete '/user/:id', to: 'admins#delete_user', as: 'delete_user'
+    get '/user/:id', to: 'general#show_user', as: 'show_user'
+    delete '/user/:id', to: 'general#delete_user', as: 'delete_user'
+    post '/user/:id/validate', to: 'general#validate_user', as: 'validate_user'
+    post '/user/:id/invalidate', to: 'general#invalidate_user', as: 'invalidate_user'
 
     ### Auditor ###
-    post '/auditor/set_default_rating', to: 'admins#set_default_auditor_rating', as: 'set_default_auditor_rating'
+    post '/auditor/set_default_rating', to: 'general#set_default_auditor_rating', as: 'set_default_auditor_rating'
+    post '/auditor/:id/download_cv', to: 'general#download_cv', as: 'download_auditor_cv'
 
     ### Audits ###
-    get '/audit/show/:id', to: 'admins#show_audit', as: 'show_audit'
-    get '/audit/validate/:id', to: 'admins#validate_audit', as: 'validate_audit'
+    get '/audit/:id/show', to: 'general#show_audit', as: 'show_audit'
+    post '/audit/:id/validate', to: 'general#validate_audit', as: 'validate_audit'
+    post '/audit/:id/invalidate', to: 'general#invalidate_audit', as: 'invalidate_audit'
+    post '/audit/:id/download', to: 'general#download_audit', as: 'download_audit'
 
     ### Report ###
-    post '/report/set_default_rating', to: 'admins#set_default_report_rating', as: 'set_default_report_rating'
+    post '/report/set_default_rating', to: 'general#set_default_report_rating', as: 'set_default_report_rating'
 
     ### Notifications ###
-    get '/notification/show/:id', to: 'admins#show_notification', as: 'show_notification'
+    get '/notification/:id/show', to: 'general#show_notification', as: 'show_notification'
 
     ### Requests ###
-    get '/request/show/:id', to: 'admins#show_request', as: 'show_request'
+    get '/request/:id/show', to: 'general#show_request', as: 'show_request'
 
     ### Terms ###
-    resources :terms, controller: "admin/terms"
-    post 'terms/:id/select', to: "admin/terms#select", as: "term_select"
+    resources :terms, controller: "terms"
+    post 'terms/:id/select', to: "terms#select", as: "term_select"
 
     ### Contracts ###
-    resources :contracts, controller: "admin/contracts"
-    post 'contracts/:id/select', to: "admin/contracts#select", as: "contract_select"
-    post 'contracts/:id/download', to: "admin/contracts#download", as: "contract_download"
+    resources :contracts, controller: "contracts"
+    post 'contracts/:id/select', to: "contracts#select", as: "contract_select"
+    post 'contracts/:id/download', to: "contracts#download", as: "contract_download"
   end
 
   namespace :client do
@@ -43,16 +55,11 @@ Rails.application.routes.draw do
     get '/profile', to: 'general#show'
     delete '/profile', to: 'general#delete'
 
-    ### Messages ###
-    get '/messages', to: 'general#messages'
-    post '/messages', to: 'general#send_message'
-    get '/message/:id', to: 'general#show_message', as: 'message'
-    get '/messages/new', to: 'general#new_message'
-
     ### Purchases ###
     get '/purchases', to: 'general#purchases'
     post '/purchases/:id/rate', to: 'general#rate_purchase', as: 'rate_purchase'
     get '/purchase/:id/auditor', to: 'general#show_auditor', as: 'purchase_auditor'
+    post '/purchase/:id/download', to: 'general#download_audit', as: 'download_audit'
 
     ### Requests ###
     get '/requests', to: 'general#requests'
@@ -66,11 +73,11 @@ Rails.application.routes.draw do
       get '/advanced_search', to: 'audits#advanced_search'
 
       ### Purchase ###
-      get '/purchase/preview/:id', to: 'audits#purchase_preview', as: 'purchase_preview'
+      get '/purchase/:id/preview', to: 'audits#purchase_preview', as: 'purchase_preview'
       get '/purchase/:id', to: 'audits#purchase', as: 'purchase'
 
       ### Reserve ###
-      get '/reserve/preview/:id', to: 'audits#reserve_preview', as: 'reserve_preview'
+      get '/reserve/:id/preview', to: 'audits#reserve_preview', as: 'reserve_preview'
       get '/reserve/:id', to: 'audits#reserve', as: 'reserve'
 
       ### Request ###
@@ -80,6 +87,7 @@ Rails.application.routes.draw do
   end
 
   get '/auditor', to: 'auditor/general#index'
+
   namespace :auditor do
     root 'general#index'
     get '/', to: 'general#index', as: 'dashboard'
@@ -87,15 +95,19 @@ Rails.application.routes.draw do
     delete '/profile', to: 'general#delete'
     get '/profile/edit', to: 'general#edit'
     patch '/profile/edit', to: 'general#update'
+    post '/profile/download_cv', to: 'general#download_cv', as: 'download_cv'
     get '/sign_up', to: 'general#new'
     post '/sign_up', to: 'general#create'
     post '/accept_terms', to: 'general#accept_terms'
 
-    ### Messages ###
-    get '/messages', to: 'general#messages'
-    post '/messages', to: 'general#send_message'
-    get '/message/:id', to: 'general#show_message', as: 'message'
-    get '/messages/new', to: 'general#new_message'
+    #Conversations
+    post '/conversations', to: 'general#create_conversation'
+    get '/conversations', to: 'general#conversation_index'
+    get '/conversations/:id', to: 'general#show_conversation', as: 'show_conversation'
+    post '/message', to: 'general#create_message'
+
+    ### Audits ###
+    post '/audit/:id/download', to: 'general#download_audit', as: 'download_audit'
 
     ### Purchases ###
     get '/purchases', to: 'general#purchases'

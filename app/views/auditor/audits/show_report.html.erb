@@ -5,7 +5,7 @@
   <div class="form group">
     <label class="col-md-12">Date</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @report.date %></p>
+      <p class="form-control form-control-line"><%= l @report.date %></p>
     </div>
   </div>
 
@@ -40,7 +40,11 @@
   <div class="form group">
     <label class="col-md-12">Upload date</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @report.upload_date %></p>
+      <p class="form-control form-control-line"><%= l @report.upload_date %></p>
     </div>
+  </div>
+
+  <div class="form group">
+    <%= link_to "Download", auditor_download_audit_path(@report.id), method: :post %>
   </div>
 </div>

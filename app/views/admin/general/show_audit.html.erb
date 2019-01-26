@@ -22,7 +22,7 @@
   <div class="form group">
     <label class="col-md-12">Date</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @audit.date %></p>
+      <p class="form-control form-control-line"><%= l @audit.date %></p>
     </div>
   </div>
 
@@ -36,7 +36,7 @@
   <div class="form group">
     <label class="col-md-12">Auditor</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= link_to @audit.auditor.username, show_user_admin_path(@audit.auditor_id) %></p>
+      <p class="form-control form-control-line"><%= link_to @audit.auditor.username, admin_show_user_path(@audit.auditor_id) %></p>
     </div>
   </div>
 
@@ -51,16 +51,18 @@
   <div class="form group">
     <label class="col-md-12">Upload date</label>
     <div class="col-md-12">
-      <p class="form-control form-control-line"><%= @audit.upload_date %></p>
+      <p class="form-control form-control-line"><%= l @audit.upload_date %></p>
     </div>
   </div>
 
   <div class="col-md-12">
-    <p class="form-control form-control-line"><%= link_to "Report file", @audit.report.url %></p>
+    <p class="form-control form-control-line"><%= link_to "Download report", admin_download_audit_path(@audit.id), method: :post %></p>
   </div>
 <% end %>
 
 
-<% unless @audit.validated %>
-  <%= link_to "Validate", validate_audit_admin_path(@audit.id), method: :post %>
+<% if @audit.validated %>
+  <td><%= link_to "Invalidate", admin_invalidate_audit_path(@audit.id), method: :post %></td>
+<% else %>
+  <td><%= link_to "Validate", admin_validate_audit_path(@audit.id), method: :post %></td>
 <% end %>

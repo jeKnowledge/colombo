@@ -78,11 +78,11 @@
           <td><%= report.auditor.address %></td>
           <td><%= link_to report.auditor.username, client_purchase_auditor_path(report.auditor.id) %></td>
           <td><%= report.products %></td>
-          <td><%= report.date %></td>
+          <td><%= l report.date %></td>
           <td><%= report.price %></td>
           <td><%= report.fee %></td>
           <td><%= report.rating %></td>
-          <td><%= report.upload_date %></td>
+          <td><%= l report.upload_date %></td>
           <td><%= link_to "Purchase", client_purchase_preview_path(report.id) %></td>
         </tr>
       <% end %>
@@ -118,7 +118,7 @@
           <td><%= plan.auditor.address %></td>
           <td><%= link_to plan.auditor.username, client_reservation_auditor_path(plan.auditor.id) %></td>
           <td><%= plan.products %></td>
-          <td><%= plan.date %></td>
+          <td><%= l plan.date %></td>
           <td><%= plan.price %></td>
           <td><%= plan.fee %></td>
           <td><%= link_to "Reserve", client_reserve_preview_path(plan.id) %></td>

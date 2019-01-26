@@ -5,11 +5,13 @@ ruby '2.5.1'
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'bootsnap', '>= 1.1.0', require: false
+gem 'bootstrap_tokenfield_rails', '~> 0.12.1'
 gem 'carrierwave', '~> 1.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'country_select', '~> 3.1'
 gem 'factory_bot', '~> 4.11.1'
 gem 'faker', '~> 1.9.1'
+gem 'jquery-rails', '~> 4.3', '>= 4.3.3'
 gem 'kaminari', '~> 1.1.1'
 gem 'local-env', '~> 0.0.1'
 gem 'markdown', '~> 1.2'

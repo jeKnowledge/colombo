@@ -17,7 +17,7 @@
     <div class="form group">
       <label class="col-md-12">Registered since</label>
       <div class="col-md-12">
-        <p class="form-control form-control-line"><%= @auditor.created_at.to_date %></p>
+        <p class="form-control form-control-line"><%= l @auditor.created_at.to_date %></p>
       </div>
     </div>
 
@@ -63,10 +63,7 @@
       </div>
     </div>
     <div class="form group">
-      <label class="col-md-12">CV</label>
-      <div class="col-md-12">
-        <p class="form-control form-control-line"><%= @auditor.cv %></p>
-      </div>
+      <%= link_to "Download CV", auditor_download_cv_path, method: :post %>
     </div>
   </div>
 

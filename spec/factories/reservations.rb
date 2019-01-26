@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :reservation do
     price {  Faker::Number.decimal(2) }
-    plan { FactoryBot.create(:plan) }
-    client { FactoryBot.create(:client) }
-    auditor { FactoryBot.create(:auditor) }
+    plan { Plan.all.sample }
+    client { Client.all.sample }
+    auditor { Auditor.all.sample }
   end
 end

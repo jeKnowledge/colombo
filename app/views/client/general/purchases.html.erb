@@ -20,7 +20,7 @@
           <td><%= purchase.price %></td>
           <td><%= purchase.report.auditor.company %></td>
           <td><%= purchase.report.auditor.address %></td>
-          <td><%= purchase.report.date %></td>
+          <td><%= l purchase.report.date %></td>
           <td>
             <% if purchase.rating == -1 %>
               <%= form_with url: client_rate_purchase_path(purchase.id) do |f| %>
@@ -31,7 +31,7 @@
               <%= purchase.rating %>
             <% end %>
           </td>
-          <td><%= link_to "Download", purchase.report.report.url %></td>
+          <td><%= link_to "Download", client_download_audit_path(purchase.id), method: :post %></td>
         </tr>
       <% end %>
     </tbody>
