@@ -50,49 +50,22 @@
       <p class="form-control form-control-line"><%= @plan.fee %></p>
     </div>
   </div>
-
-  <%= link_to "Reserve", client_reserve_path(@plan.id), class: 'btn', id: 'purchase_button' %>
-
-  <div id="paypal-button"></div>
+  <div id="paypal-button-container"></div>
 </div>
 
-<script src="https://www.paypalobjects.com/api/checkout.js"></script>
 <script>
-  paypal.Button.render({
-    // Configure environment
-    env: 'sandbox',
-    client: {
-      sandbox: 'AR2WJqYoN559PEEfyPeOKkHgvNXi6mcOWl9tPkiCCYUI9Dh71WtkBxaWbwX-Z_haiHS8XcC6ZQ7_sR74',
-      production: 'demo_production_client_id'
-    },
-    // Customize button (optional)
-    locale: 'en_US',
-    style: {
-      size: 'small',
-      color: 'gold',
-      shape: 'pill',
-    },
+  document.addEventListener('turbolinks:load', function() {
+    var body = document.getElementsByTagName("body")[0]
 
-    // Enable Pay Now checkout flow (optional)
-    commit: true,
-
-    // Set up a payment
-    payment: function(data, actions) {
-      return actions.payment.create({
-        transactions: [{
-          amount: {
-            total: '<%= @plan.price + @plan.fee %>',
-            currency: 'USD'
-          }
-        }]
-      });
-    },
-    // Execute the payment
-    onAuthorize: function(data, actions) {
-      return actions.payment.execute().then(function() {
-        // Show a confirmation message to the buyer
-        document.getElementById("purchase_button").click();
-      });
+    if (body.id == "audits_reserve_preview") {
+      render_paypal(
+        "<%= paypal_checkout_url %>",
+        "<%= @plan.price + @plan.fee %>",
+        "<%= @plan.summary %>",
+        "<%= paypal_execute_url %>",
+        "<%= client_reserve_url %>",
+        "Plan"
+      )
     }
-  }, '#paypal-button');
+  })
 </script>
