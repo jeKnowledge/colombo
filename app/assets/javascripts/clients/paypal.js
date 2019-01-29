@@ -1,6 +1,6 @@
 function render_paypal(create_url, price, description, execute_url, action_url, name) {
-  let paypal_api = "https://www.paypalobjects.com/api/checkout.js"
-  let script_node = document.createElement("script")
+  var paypal_api = "https://www.paypalobjects.com/api/checkout.js"
+  var script_node = document.createElement("script")
   script_node.src = paypal_api
   script_node.onload = function() {
     paypal.Button.render({
@@ -45,6 +45,6 @@ function render_paypal(create_url, price, description, execute_url, action_url, 
     }, '#paypal-button-container');
   }
 
-  let head = document.getElementsByTagName("head")[0]
+  var head = document.getElementsByTagName("head")[0]
   head.appendChild(script_node)
 }
