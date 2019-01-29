@@ -25,18 +25,18 @@ function render_paypal(create_url, price, description, execute_url, action_url, 
         }
 
         return actions.request.post(create_url, {data: JSON.stringify(data)})
-          .then((res) => {
+          .then(function(res) {
             return res.payment_id;
           });
       },
-      onAuthorize: (data, actions) => {
+      onAuthorize: function(data, actions) {
         var data = {
           payment_id: data.paymentID,
           payer_id: data.payerID,
         };
 
         return actions.request.post(execute_url, data)
-          .then((res) => {
+          .then(function(res) {
             if(res.success){
               window.location.replace(action_url);
             }
