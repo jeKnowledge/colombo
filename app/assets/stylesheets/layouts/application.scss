@@ -1,0 +1,30 @@
+.row {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: 50rem;
+}
+
+.col-md-12 {
+  padding: 0 !important;
+}
+
+input {
+  padding-left: 1rem !important;
+}
+
+.pink-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  width: 60rem;
+}
+
+.form-group {
+  margin-bottom: 1rem !important;
+}
