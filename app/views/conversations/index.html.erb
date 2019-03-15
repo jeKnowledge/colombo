@@ -1,44 +1,47 @@
-<h1>New Conversation</h1>
-<%= form_for @conversation, url: conversation_path(:create) do |f| %>
-  <div class="form-material form-horizontal">
+<div class="main">
+  <h1>New Conversation</h1>
+  <%= form_for @conversation, url: conversation_path(:create) do |f| %>
+    <div class="form-material form-horizontal">
 
-    <div class="form group">
-      <% if current_user.is_a? Admin %>
-        <%= f.label :auditor, "Auditor" %>
-        <%= f.select :auditor_id, Auditor.pluck(:username, :id) %>
-      <% end %>
-      <%= f.label :Subject %>
-      <%= f.text_field :subject %>
-    </div>
-  </div>
-
-  <%= f.submit "Create conversation", class:"btn" %>
-<% end %>
-
-<h1>Listing Conversations</h1>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
+      <div class="form group">
         <% if current_user.is_a? Admin %>
-          <th>Auditor</th>
+          <%= f.label :auditor, "Auditor" %>
+          <%= f.select :auditor_id, Auditor.pluck(:username, :id) %>
         <% end %>
-        <th>Subject</th>
-        <th>Created at</th>
-      </tr>
-    </thead>
+        <%= f.label :Subject %>
+        <%= f.text_field :subject %>
+      </div>
+    </div>
 
-    <tbody>
-      <% @conversations.each do |conversation| %>
+    <%= f.submit "Create conversation", class:"btn" %>
+  <% end %>
+
+  <h1>Listing Conversations</h1>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
         <tr>
           <% if current_user.is_a? Admin %>
-            <th><%= conversation.auditor.username %></th>
+            <th>Auditor</th>
           <% end %>
-          <td><%= conversation.subject %></td>
-          <td><%= conversation.created_at %></td>
-          <td><%= link_to "See Messages", conversation_path(:show, conversation.id) %> </td>
+          <th>Subject</th>
+          <th>Created at</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
+      </thead>
+
+      <tbody>
+        <% @conversations.each do |conversation| %>
+          <tr>
+            <% if current_user.is_a? Admin %>
+              <th><%= conversation.auditor.username %></th>
+            <% end %>
+            <td><%= conversation.subject %></td>
+            <td><%= conversation.created_at %></td>
+            <td><%= link_to "See Messages", conversation_path(:show, conversation.id) %> </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
 </div>

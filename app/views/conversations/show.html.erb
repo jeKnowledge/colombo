@@ -1,42 +1,46 @@
-<h1><%= @conversation.subject %></h1>
-<div class="table-responsive">
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Message</th>
-        <th>Sent by</th>
-        <th>Sent</th>
-      </tr>
-    </thead>
-
-    <tbody>
-      <% @messages.each do |message| %>
+<div class="main">
+  <h1><%= @conversation.subject %></h1>
+  <div class="table-responsive">
+    <table class="table">
+      <thead>
         <tr>
-          <td><%= message.body %></td>
-
-          <% unless message.direction %>
-            <td> Admin </td>
-          <% else %>
-            <td> <%= @conversation.auditor.username %> </td>
-          <% end %>
-
-          <td><%= message.created_at %></td>
+          <th>Message</th>
+          <th>Sent by</th>
+          <th>Sent</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-</div>
+      </thead>
 
-<h1>New Message</h1>
-<%= form_for @message, url: message_path do |f| %>
-  <div class="form-material form-horizontal">
+      <tbody>
+        <% @messages.each do |message| %>
+          <tr>
+            <td><%= message.body %></td>
 
-    <div class="form group">
-      <%= f.hidden_field :conversation_id, value: params[:id] %>
-      <%= f.label :message %>
-      <%= f.text_field :body %>
-    </div>
+            <% unless message.direction %>
+              <td> Admin </td>
+            <% else %>
+              <td> <%= @conversation.auditor.username %> </td>
+            <% end %>
+
+            <td><%= message.created_at %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
   </div>
 
-  <%= f.submit "Send", class:"btn" %>
-<% end %>
+  <h1>New Message</h1>
+  <%= form_for @message, url: message_path do |f| %>
+    <div class="form-material form-horizontal">
+
+      <div class="form group">
+        <%= f.hidden_field :conversation_id, value: params[:id] %>
+        <%= f.label :message %>
+        <%= f.text_field :body %>
+      </div>
+    </div>
+
+    <%= f.submit "Send", class:"btn" %>
+  <% end %>
+
+
+</div>

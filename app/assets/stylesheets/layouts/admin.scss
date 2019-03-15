@@ -1,3 +1,32 @@
-.admin_body {
-  padding: 2em;
+.main {
+  padding-left: 20rem;
+}
+
+.button_admin_menu {
+    background: var(--color-white);
+    color: var(--color-pink);
+    font-weight: 500;
+    padding: 15px 15px ;
+    margin: 0;
+    width: 20%;
+    border: none;
+    outline: none;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    cursor: pointer;
+}
+
+.button_admin_menu_all {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.button_admin_menu:hover {
+  background: var(--color-pink);
+  color: var(--color-white);
+}
+
+.button_admin_menu .active {
+  background: var(--color-pink);
+  color: var(--color-white);
 }

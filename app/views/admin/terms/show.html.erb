@@ -1,11 +1,13 @@
-<h1>Terms and conditions</h1>
+<div class="main">
+  <h1>Terms and conditions</h1>
 
-<label class="col-md-12"><%= l @term.date %></label>
+  <label class="col-md-12"><%= l @term.date %></label>
 
-<div class="col-md-12"><%= Markdown.new(@term.body).to_html.html_safe %></div>
+  <div class="col-md-12"><%= Markdown.new(@term.body).to_html.html_safe %></div>
 
-<div class="col-md-12">
-  <%= link_to "Select", term_select_admin_path(@term.id), class:"btn", method: :post unless @term.active %>
-  <%= link_to "Edit", edit_admin_term_path(@term.id), class:"btn" %>
-  <%= link_to "Delete", admin_term_path(@term.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" %>
+  <div class="col-md-12">
+    <%= link_to "Select", term_select_admin_path(@term.id), class:"btn", method: :post unless @term.active %>
+    <%= link_to "Edit", edit_admin_term_path(@term.id), class:"btn" %>
+    <%= link_to "Delete", admin_term_path(@term.id), method: :delete, data: { confirm: 'Are you sure?' }, class:"btn" %>
+  </div>
 </div>

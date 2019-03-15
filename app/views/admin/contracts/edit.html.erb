@@ -1,11 +1,14 @@
-<h1>Update contracts and conditions</h1>
+<div class="main">
+  <h1>Update contracts and conditions</h1>
 
-<%= render "shared/error_messages", resource: @contract %>
+  <%= render "shared/error_messages", resource: @contract %>
 
-<%= form_for @contract, url: admin_contract_path do |f| %>
-  <div class="form-material form-horizontal">
-    <%= f.text_area :body %>
-  </div>
+  <%= form_for @contract, url: admin_contract_path do |f| %>
+    <div class="form-material form-horizontal">
+      <%= f.text_area :body %>
+    </div>
 
-  <%= f.submit "Save", class:"btn" %>
-<% end %>
+    <%= f.submit "Save", class:"btn" %>
+  <% end %>
+
+</div>
