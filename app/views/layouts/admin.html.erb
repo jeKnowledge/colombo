@@ -48,7 +48,7 @@
 
   <body class="admin_body" id='<%= "#{controller_name}_#{action_name}" %>'>
     <%= render partial: '/admin/shared/sidebar' %>
-
+<div class="main">
     <!-- /.container-fluid -->
     <!-- ============================================================== -->
     <!-- End Wrapper -->
@@ -78,5 +78,6 @@
     <script src="/plugins/bower_components/toast-master/js/jquery.toast.js"></script>
 
     <%= yield %>
+    </div>
   </body>
 </html>

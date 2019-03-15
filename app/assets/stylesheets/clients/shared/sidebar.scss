@@ -57,6 +57,10 @@ html body {
     border-color: #e7e7e7;
 }
 
+.sidebar-nav, .slimScrollDiv, .navbar-default {
+  width: 20rem !important;
+}
+
 .nav {
     padding-left: 0;
     margin-bottom: 0;
@@ -105,7 +109,6 @@ html #side-menu > li > a.active {
     flex-direction: row;
     align-items: center;
     background: var(--color-white);
-    width: 100%;
     padding: .5em;
     border-bottom: 1px solid rgba(0,0,0,.1);
 }
